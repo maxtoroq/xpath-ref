@@ -193,6 +193,12 @@
       <xsl:sequence select="loc:showXPath(string-join($code, ''))"/>
    </xsl:template>
 
+   <xsl:template match="var">
+      <i>
+         <xsl:apply-templates/>
+      </i>
+   </xsl:template>
+   
    <xsl:template match="loc[@href]">
       <a href="{resolve-uri(@href, $spec-url)}">
          <xsl:value-of select="."/>

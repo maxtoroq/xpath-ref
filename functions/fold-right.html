@@ -25,14 +25,14 @@
   </span><span class="ez">&lt;/</span><span class="clxsl">xsl:choose</span><span class="ec">&gt;</span><span class="txt">
 </span><span class="ez">&lt;/</span><span class="clxsl">xsl:function</span><span class="ec">&gt;</span><span class="txt">
          </span></code></pre><h2>Error Conditions</h2><p>As a consequence of the function signature and the function calling
-            rules, a type error occurs if the supplied function $f cannot be applied to
-            two arguments, where the first argument is any item in the sequence $seq, and
-            the second is either the value of $zero or the result of a previous
-            application of $f.</p><h2>Notes</h2><p>This operation is often referred to in the functional programming literature as
+            rules, a type error occurs if the supplied function <i>$f</i> cannot be applied to
+            two arguments, where the first argument is any item in the sequence <i>$seq</i>, and
+            the second is either the value of <i>$zero</i> or the result of a previous
+            application of <i>$f</i>.</p><h2>Notes</h2><p>This operation is often referred to in the functional programming literature as
             "folding" or "reducing" a sequence. It takes a function that operates on a pair of
             values, and applies it repeatedly, with the next item in the sequence as the first
             argument, and the result of processing the remainder of the sequence as the second
-            argument. The accumulated result is initially set to the value of the $zero
+            argument. The accumulated result is initially set to the value of the <i>$zero</i>
             argument, which is conventionally a value (such as zero in the case of addition, one in
             the case of multiplication, or a zero-length string in the case of string concatenation)
             that causes the function to return the value of the other argument unchanged.</p><p>In cases where the function performs an associative operation on its two arguments (such

@@ -20,14 +20,14 @@
             that follows is taken as the format modifier; if the string contains no
             semicolon then the entire picture is taken as the primary format token, and the
             format modifier is taken to be absent (which is equivalent to supplying a
-            zero-length string).</p><p>The primary format token is classified as one of the following:</p><ul><li><p>A decimal-digit-pattern made up of optional-digit-signs,
-                     mandatory-digit-signs, and grouping-separator-signs.</p><ul><li><p>The optional-digit-sign is the character "#".</p></li><li><p>A mandatory-digit-sign is a <a href="http://www.w3.org/TR/xpath-functions-30/#character">character</a> in Unicode category Nd. All
-                           mandatory-digit-signs within the format token must be from the
+            zero-length string).</p><p>The primary format token is classified as one of the following:</p><ul><li><p>A <i>decimal-digit-pattern</i> made up of <i>optional-digit-signs</i>,
+                     <i>mandatory-digit-signs</i>, and <i>grouping-separator-signs</i>.</p><ul><li><p>The <i>optional-digit-sign</i> is the character "#".</p></li><li><p>A <i>mandatory-digit-sign</i> is a <a href="http://www.w3.org/TR/xpath-functions-30/#character">character</a> in Unicode category Nd. All
+                           <i>mandatory-digit-signs</i> within the format token must be from the
                         same digit family, where a digit family is a sequence of ten consecutive
                         characters in Unicode category Nd, having digit values 0 through 9. Within
                         the format token, these digits are interchangeable: a three-digit number may
                         thus be indicated equivalently by <code>000</code>, <code>001</code>, or
-                           <code>999</code>.</p></li><li><p>a grouping-separator-sign is a non-alphanumeric character, that
+                           <code>999</code>.</p></li><li><p>a <i>grouping-separator-sign</i> is a non-alphanumeric character, that
                         is a <a href="http://www.w3.org/TR/xpath-functions-30/#character">character</a> whose Unicode category is
                         other than Nd, Nl, No, Lu, Ll, Lt, Lm or Lo.</p></li></ul><p>If the primary format token contains at least one Unicode digit 
                   then it is taken as a decimal digit pattern, and in this case it must
@@ -36,42 +36,42 @@
                   is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODF1310">ERRFODF1310</a>].</p><blockquote><p>If a semicolon is to be used as a grouping separator, then the primary
                format token as a whole must be followed by another semicolon, to ensure that
                the grouping separator is not mistaken as a separator between the primary format
-               token and the format modifier.</p></blockquote><p>There must be at least one mandatory-digit-sign. There may be zero or
-                  more optional-digit-signs, and (if present) these must precede all
-                     mandatory-digit-signs. There may be zero or more
-                     grouping-separator-signs. A grouping-separator-sign must
-                  not appear at the start or end of the decimal-digit-pattern, nor
-                  adjacent to another grouping-separator-sign.</p><p>The corresponding output format is a decimal number, using this digit family, with
-                  at least as many digits as there are mandatory-digit-signs in the
+               token and the format modifier.</p></blockquote><p>There must be at least one <i>mandatory-digit-sign</i>. There may be zero or
+                  more <i>optional-digit-signs</i>, and (if present) these must precede all
+                     <i>mandatory-digit-signs</i>. There may be zero or more
+                     <i>grouping-separator-signs</i>. A <i>grouping-separator-sign</i> must
+                  not appear at the start or end of the <i>decimal-digit-pattern</i>, nor
+                  adjacent to another <i>grouping-separator-sign</i>.</p><p>The corresponding output format is a decimal number, using this digit family, with
+                  at least as many digits as there are <i>mandatory-digit-signs</i> in the
                   format token. Thus, a format token <code>1</code> generates the sequence <code>0 1
                      2 ... 10 11 12 ...</code>, and a format token <code>01</code> (or equivalently,
                      <code>00</code> or <code>99</code>) generates the sequence <code>00 01 02 ...
                      09 10 11 12 ... 99 100 101</code>. A format token of <code>&amp;#x661;</code>
                   (Arabic-Indic digit one) generates the sequence <code>١</code> then <code>٢</code>
-                  then <code>٣</code> ...</p><p>The grouping-separator-signs are handled as follows. The position of
+                  then <code>٣</code> ...</p><p>The <i>grouping-separator-signs</i> are handled as follows. The position of
                   grouping separators within the format token, counting backwards from the last
                   digit, indicates the position of grouping separators to appear within the
-                  formatted number, and the character used as the grouping-separator-sign
+                  formatted number, and the character used as the <i>grouping-separator-sign</i>
                   within the format token indicates the character to be used as the corresponding
-                  grouping separator in the formatted number. If grouping-separator-signs
+                  grouping separator in the formatted number. If <i>grouping-separator-signs</i>
                   appear at regular intervals within the format token, that is if the same grouping
-                  separator appears at positions forming a sequence N, 2N,
-                     3N, ... for some integer value N (including the case
+                  separator appears at positions forming a sequence <i>N</i>, 2<i>N</i>,
+                     3<i>N</i>, ... for some integer value <i>N</i> (including the case
                   where there is only one number in the list), then the sequence is extrapolated to
                   the left, so grouping separators will be used in the formatted number at every
-                  multiple of N. For example, if the format token is <code>0'000</code>
+                  multiple of <i>N</i>. For example, if the format token is <code>0'000</code>
                   then the number one million will be formatted as <code>1'000'000</code>, while the
-                  number fifteen will be formatted as <code>0'015</code>.</p><p>The only purpose of optional-digit-signs is to mark the position of
-                     grouping-separator-signs. For example, if the format token is
+                  number fifteen will be formatted as <code>0'015</code>.</p><p>The only purpose of <i>optional-digit-signs</i> is to mark the position of
+                     <i>grouping-separator-signs</i>. For example, if the format token is
                      <code>#'##0</code> then the number one million will be formatted as
                      <code>1'000'000</code>, while the number fifteen will be formatted as
                      <code>15</code>. A grouping separator is included in the formatted number only
                   if there is a digit to its left, which will only be the case if either (a) the
                   number is large enough to require that digit, or (b) the number of
-                     mandatory-digit-signs in the format token requires insignificant
-                  leading zeros to be present.</p><blockquote><p>Numbers will never be truncated. Given the decimal-digit-pattern
+                     <i>mandatory-digit-signs</i> in the format token requires insignificant
+                  leading zeros to be present.</p><blockquote><p>Numbers will never be truncated. Given the <i>decimal-digit-pattern</i>
                      <code>01</code>, the number three hundred will be output as <code>300</code>,
-                     despite the absence of any optional-digit-sign.</p></blockquote></li><li><p>The format token <code>A</code>, which generates the sequence <code>A B C ... Z AA AB
+                     despite the absence of any <i>optional-digit-sign</i>.</p></blockquote></li><li><p>The format token <code>A</code>, which generates the sequence <code>A B C ... Z AA AB
                      AC...</code>.</p></li><li><p>The format token <code>a</code>, which generates the sequence <code>a b c ... z aa ab
                      ac...</code>.</p></li><li><p>The format token <code>i</code>, which generates the sequence <code>i ii iii iv v vi vii
                      viii ix x ...</code>.</p></li><li><p>The format token <code>I</code>, which generates the sequence <code>I II III IV V VI VII

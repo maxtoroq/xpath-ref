@@ -38,8 +38,8 @@
             will be the corresponding substring of <code>$input</code>, and the string value of the
             returned element node will therefore be the same as <code>$input</code>.</p><p>The content of an <code>fn:non-match</code> element is always a single text node.</p><p>The content of a <code>fn:match</code> element, however, is in general a sequence of
             text nodes and <code>fn:group</code> element children. An <code>fn:group</code> element
-            with a <code>nr</code> attribute having the integer value N identifies the
-            substring captured by the Nth parenthesized sub-expression in the regular
+            with a <code>nr</code> attribute having the integer value <i>N</i> identifies the
+            substring captured by the <i>Nth</i> parenthesized sub-expression in the regular
             expression. For each capturing subexpression there will be at most one corresponding
                <code>fn:group</code> element in each <code>fn:match</code> element in the
             result.</p><p>If the function is called twice with the same arguments, it is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a> whether the two calls return the same element node
