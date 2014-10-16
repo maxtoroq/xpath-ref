@@ -27,6 +27,7 @@
                <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
                <link rel="stylesheet" href="bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css"/>
                <link rel="stylesheet" href="css/site.css"/>
+               <link rel="shortcut icon" href="favicon.ico"/>
             </head>
             <body class="index">
                <div class="container">
