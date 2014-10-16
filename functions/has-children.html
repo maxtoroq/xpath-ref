@@ -7,7 +7,7 @@
                item is absent, dynamic error
                [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]</p><p>If the context item is not a
                node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].</p><h2>Notes</h2><p>If <code>$node</code> is an empty sequence the result is false.</p><p>The motivation for this function is to support streamed evaluation. According to the
-            streaming rules in <span>[XSL Transformations (XSLT) Version 3.0]</span>, the following construct is not
+            streaming rules in <a href="http://www.w3.org/TR/xslt-30/">[XSL Transformations (XSLT) Version 3.0]</a>, the following construct is not
             streamable:</p><pre><code><span class="es">&lt;</span><span class="enxsl">xsl:if</span><span class="z"> </span><span class="atn">test</span><span class="atneq">=</span><span class="z">"</span><span class="function">exists</span><span class="parenthesis">(</span><span class="qname">row</span><span class="parenthesis">)</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">ul</span><span class="scx">&gt;</span><span class="txt">
     </span><span class="es">&lt;</span><span class="enxsl">xsl:for-each</span><span class="z"> </span><span class="atn">select</span><span class="atneq">=</span><span class="z">"</span><span class="qname">row</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">

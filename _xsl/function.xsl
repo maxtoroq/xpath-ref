@@ -25,6 +25,7 @@
       <spec href="http://www.w3.org/TR/xinclude/" bibref="xinclude"/>
       <spec href="http://www.w3.org/TR/xquery/" bibref="xquery"/>
       <spec href="http://www.w3.org/TR/xslt20/" bibref="xslt20"/>
+      <spec href="http://www.w3.org/TR/xslt-30/" bibref="xslt-30"/>
    </xsl:variable>
 
    <xsl:variable name="spec-loc" select="/*/header/latestloc/loc[1]"/>

@@ -7,7 +7,7 @@
             returned in document order with duplicates eliminated.</p><h2>Notes</h2><p>The formulation <code>$nodes except $nodes/descendant::node()</code> might appear to be
             simpler, but does not correctly account for attribute nodes, as these are not
             descendants of their parent element.</p><p>The motivation for the function was based on XSLT streaming use cases. There are cases
-            where the <span>[XSL Transformations (XSLT) Version 3.0]</span> streaming rules allow the construct
+            where the <a href="http://www.w3.org/TR/xslt-30/">[XSL Transformations (XSLT) Version 3.0]</a> streaming rules allow the construct
                <code>outermost(//section)</code> but do not allow <code>//section</code>; the
             function can therefore be useful in cases where it is known that sections will not be
             nested, as well as cases where the application actually wishes to process all sections
