@@ -36,13 +36,13 @@
                <xsl:value-of select="head"/>
             </title>
             <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
-            <link rel="stylesheet" href="../../css/site.css"/>
+            <link rel="stylesheet" href="../css/site.css"/>
          </head>
          <body>
             <div class="container">
                <ol class="breadcrumb">
                   <li>
-                     <a href="../../">XPath Reference</a>
+                     <a href="../">XPath Reference</a>
                   </li>
                   <li class="active">
                      <xsl:value-of select="head"/>
