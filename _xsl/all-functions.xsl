@@ -35,7 +35,9 @@
                   <ol class="breadcrumb">
                      <li class="active">XPath Reference</li>
                   </ol>
-                  <h1 class="page-header">XPath Functions</h1>
+                  <h1 class="page-header">XPath Functions<iframe src="github-buttons/github-btn.html?user=maxtoroq&amp;repo=xpath-ref&amp;type=watch&amp;size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30" style="float:right" class="hidden-xs"></iframe>
+               </h1>
                   <xsl:call-template name="index">
                      <xsl:with-param name="functions" select="$functions"/>
                   </xsl:call-template>
