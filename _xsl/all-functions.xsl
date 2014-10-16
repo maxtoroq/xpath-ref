@@ -23,6 +23,7 @@
          <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
          <html>
             <head>
+               <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
                <title>XPath Reference</title>
                <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
                <link rel="stylesheet" href="bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css"/>
@@ -62,7 +63,7 @@
    <xsl:template name="index">
       <xsl:param name="functions" as="element()+"/>
 
-      <div class="col-xs-3">
+      <div class="col-xs-3 hidden-xs">
          <ul class="nav nav-tabs tabs-left" role="tablist">
             <li class="active">
                <a href="#all" role="tab" data-toggle="tab">All functions</a>
