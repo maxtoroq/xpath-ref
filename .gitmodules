@@ -1,0 +1,6 @@
+[submodule "xmlspectrum"]
+	path = xmlspectrum
+	url = https://github.com/pgfearo/xmlspectrum
+[submodule "bootstrap-vertical-tabs"]
+	path = bootstrap-vertical-tabs
+	url = https://github.com/dbtek/bootstrap-vertical-tabs

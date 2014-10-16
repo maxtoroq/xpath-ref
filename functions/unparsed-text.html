@@ -1,0 +1,72 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>fn:unparsed-text</title><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" /><link rel="stylesheet" href="../../css/site.css" /></head><body><div class="container"><ol class="breadcrumb"><li><a href="../../">XPath Reference</a></li><li class="active">fn:unparsed-text</li></ol><h1 class="page-header">fn:unparsed-text</h1><p>The <code>fn:unparsed-text</code> function reads an external resource (for example, a
+            file) and returns a string representation of the resource.</p><h2>Signatures</h2><p><pre><code class="signature"><span class="function">fn:unparsed-text</span><span class="parenthesis">(</span><span class="variable">$href</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:unparsed-text</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$href</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$encoding</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre></p><h2>Properties</h2><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+		static base uri.
+	</p><h2>Rules</h2><p>The <code>$href</code> argument must be a string in the form of a URI
+            reference, which must contain no fragment identifier, and
+               must identify a resource 
+            for which a string representation is available. If the URI is a
+            relative URI reference, then it is resolved relative to the 
+            Static Base URI property from the static context.</p><p>The mapping of URIs to the string representation of a resource is the mapping defined
+            in the available text resources
+         component of the dynamic context.</p><p>If the value of the <code>$href</code> argument is an empty sequence, the function
+            returns an empty sequence.</p><p>The <code>$encoding</code> argument, if present, is the name of an encoding. The values
+            for this attribute follow the same rules as for the <code>encoding</code> attribute in
+            an XML declaration. The only values which every <a href="http://www.w3.org/TR/xpath-functions-30/#implementation">implementation</a> is required to recognize are
+               <code>utf-8</code> and <code>utf-16</code>.</p><p>The encoding of the external resource is determined as follows:</p><ol><li><p>external encoding information is used if available, otherwise</p></li><li><p>if the media type of the resource is <code>text/xml</code> or
+                     <code>application/xml</code> (see <a href="http://www.ietf.org/rfc/rfc2376.txt">[RFC 2376]</a>), or if it matches
+                  the conventions <code>text/*+xml</code> or <code>application/*+xml</code> (see
+                     <a href="http://www.ietf.org/rfc/rfc3023.txt">[RFC 3023]</a> and/or its successors), then the encoding is recognized
+                  as specified in <a href="http://www.w3.org/TR/xml/">[Extensible Markup Language (XML) 1.0 (Fifth Edition)]</a>, otherwise</p></li><li><p>the value of the <code>$encoding</code> argument is used if present, otherwise</p></li><li><p>the processor may use <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a> heuristics to determine the likely encoding,
+                  otherwise</p></li><li><p>UTF-8 is assumed.</p></li></ol><p>The result of the function is a string containing the 
+            string representation of the resource retrieved
+            using the URI.</p><h2>Error Conditions</h2><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOUT1170">ERRFOUT1170</a>] if <code>$href</code>
+            contains a fragment identifier, or if it cannot be used to retrieve the 
+            string representation of a resource.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOUT1190">ERRFOUT1190</a>] if the value 
+            of the <code>$encoding</code> argument is not a valid encoding name, if the <a href="http://www.w3.org/TR/xpath-functions-30/#dt-processor">processor</a> does not support the specified encoding,
+            if the string representation of the retrieved
+            resource contains octets that cannot be decoded into Unicode <a href="http://www.w3.org/TR/xpath-functions-30/#character">characters</a> using the specified encoding, or if the resulting characters
+            are not permitted XML characters.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOUT1200">ERRFOUT1200</a>] if
+               <code>$encoding</code> is absent and the <a href="http://www.w3.org/TR/xpath-functions-30/#dt-processor">processor</a> cannot infer the encoding using external information and the
+            encoding is not UTF-8.</p><h2>Notes</h2><p>If it is appropriate to use a base URI other than the dynamic base URI (for example, when
+            resolving a relative URI reference read from a source document) then it is advisable to
+            resolve the relative URI reference using the <code>fn:resolve-uri</code> function before
+            passing it to the fn:unparsed-text function.</p><p>There is no essential relationship between the sets of URIs accepted by
+            the two functions <code>fn:unparsed-text</code> and <code>fn:doc</code> (a URI accepted by one may or may
+            not be accepted by the other), and if a URI is accepted by both there is no
+            essential relationship between the results (different resource representations
+            are permitted by the architecture of the web).</p><p>There are no constraints on the MIME type of the resource.</p><p>The fact that the resolution of URIs is defined by a mapping
+            in the dynamic context means that in effect, various aspects of the behavior of this
+            function are <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a>.
+            Implementations may provide external configuration options that allow any aspect of the
+            processing to be controlled by the user. In particular:</p><ul><li><p>The set of URI schemes that the implementation recognizes is
+                  implementation-defined. Implementations may allow the mapping of URIs to resources
+                  to be configured by the user, using mechanisms such as catalogs or user-written
+                  URI handlers.</p></li><li><p>The handling of media types is implementation-defined.</p></li><li><p>Implementations may provide user-defined error handling options that allow
+                  processing to continue following an error in retrieving a resource, or in reading its content. 
+                  When errors have been handled in this way, the
+                  function may return a fallback document provided by
+                  the error handler.</p></li><li><p>Implementations may provide user options that relax the requirement for the
+                  function to return deterministic results.</p></li></ul><p>The rules for determining the encoding are chosen for consistency with <a href="http://www.w3.org/TR/xinclude/">[XML Inclusions (XInclude) Version 1.0 (Second Edition)]</a>. Files with an XML media type are treated specially because there
+            are use cases for this function where the retrieved text is to be included as unparsed
+            XML within a CDATA section of a containing document, and because processors are likely
+            to be able to reuse the code that performs encoding detection for XML external
+            entities.</p><p>If the text file contains characters such as <code>&lt;</code> and <code>&amp;</code>,
+            these will typically be output as <code>&amp;lt;</code> and <code>&amp;amp;</code> if
+            the string is serialized as XML or HTML. If these characters actually represent markup (for
+            example, if the text file contains HTML), then an XSLT stylesheet can attempt to write
+            them as markup to the output file using the <code>disable-output-escaping</code>
+            attribute of the <code>xsl:value-of</code> instruction. Note, however, that XSLT
+            implementations are not required to support this feature.</p><h2>Examples</h2><p>This XSLT example attempts to read a file containing 'boilerplate' HTML and copy it directly to the serialized
+               output file:</p><pre><code><span class="es">&lt;</span><span class="enxsl">xsl:output</span><span class="z"> </span><span class="atn">method</span><span class="atneq">=</span><span class="z">"</span><span class="av">html</span><span class="z">"</span><span class="sc">/&gt;</span><span class="txt">
+
+</span><span class="es">&lt;</span><span class="enxsl">xsl:template</span><span class="z"> </span><span class="atn">match</span><span class="atneq">=</span><span class="z">"</span><span class="open"></span><span class="step">/</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
+  </span><span class="es">&lt;</span><span class="enxsl">xsl:value-of</span><span class="z"> </span><span class="atn">select</span><span class="atneq">=</span><span class="z">"</span><span class="open"></span><span class="function">unparsed-text</span><span class="parenthesis">(</span><span class="op">'</span><span class="literal">header.html</span><span class="op">'</span><span class="open"></span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal">iso-8859-1</span><span class="op">'</span><span class="parenthesis">)</span><span class="z">"</span><span class="z">
+                </span><span class="atn">disable-output-escaping</span><span class="atneq">=</span><span class="z">"</span><span class="av">yes</span><span class="z">"</span><span class="sc">/&gt;</span><span class="txt">
+  </span><span class="es">&lt;</span><span class="enxsl">xsl:apply-templates</span><span class="sc">/&gt;</span><span class="txt">
+  </span><span class="es">&lt;</span><span class="enxsl">xsl:value-of</span><span class="z"> </span><span class="atn">select</span><span class="atneq">=</span><span class="z">"</span><span class="open"></span><span class="function">unparsed-text</span><span class="parenthesis">(</span><span class="op">'</span><span class="literal">footer.html</span><span class="op">'</span><span class="open"></span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal">iso-8859-1</span><span class="op">'</span><span class="parenthesis">)</span><span class="z">"</span><span class="z">
+                </span><span class="atn">disable-output-escaping</span><span class="atneq">=</span><span class="z">"</span><span class="av">yes</span><span class="z">"</span><span class="sc">/&gt;</span><span class="txt">
+</span><span class="ez">&lt;/</span><span class="clxsl">xsl:template</span><span class="ec">&gt;</span><span class="txt">
+</span></code></pre><section><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-unparsed-text">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.saxonica.com/documentation/html/functions/fn/unparsed-text.html">Saxon Function Library</a></li></ul></section></div><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
