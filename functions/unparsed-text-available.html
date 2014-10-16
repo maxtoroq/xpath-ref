@@ -16,9 +16,9 @@
                <code>fn:doc</code> and <code>fn:doc-available</code>. This means that unless the
             user has explicitly stated a requirement for a reduced level of determinism, either of
             these functions if called twice with the same arguments during the course of a
-            transformation must return the same results each time; moreover, the
+            transformation <b>must</b> return the same results each time; moreover, the
             results of a call on fn:unparsed-text-available
-            must be consistent with the results of a subsequent call on
+            <b>must</b> be consistent with the results of a subsequent call on
                unparsed-text with the same arguments.</p><h2>Notes</h2><p>This requires that the unparsed-text-available function should
             actually attempt to read the resource identified by the URI, and check that it is
             correctly encoded and contains no characters that are invalid in XML. Implementations

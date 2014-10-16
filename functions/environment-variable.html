@@ -17,13 +17,13 @@
                <code>(letter|_) (letter|_|digit)*</code>, but this varies by platform.</p><p>On some platforms, there may sometimes be multiple environment variables with the same name;
             in this case, it is implementation-dependent as to which is returned; see for example
                <a href="http://pubs.opengroup.org/onlinepubs/9699919799/">[POSIX.1-2008]</a> (Chapter 8, Environment Variables).
-            Implementations may use prefixes or other naming conventions
+            Implementations <b>may</b> use prefixes or other naming conventions
             to disambiguate the names.</p><p>The requirement to ensure that the function is deterministic means in practice that
          the implementation must make a snapshot of the environment variables at some time
          during execution, and return values obtained from this snapshot, rather than using
          live values that are subject to change at any time.</p><p>Operating system environment variables may be associated with a particular process,
          while queries and stylesheets may execute across multiple processes (or multiple machines).
-         In such circumstances implementations may choose to provide access
+         In such circumstances implementations <b>may</b> choose to provide access
          to the environment variables associated with the process in which the query or stylesheet
          processing was initiated.</p><p>Security advice: Queries from untrusted sources should not be permitted unrestricted
             access to environment variables. For example, the name of the account under which the

@@ -9,7 +9,7 @@
             <code>$paramQName</code>.</p><h2>Error Conditions</h2><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramQName</code> does
             not have the correct lexical form for an instance of <code>xs:QName</code>.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramURI</code> is the
             zero-length string or the empty sequence, and the value of <code>$paramQName</code>
-            contains a colon (<code>:</code>).</p><p>A dynamic error may be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramURI</code> is not a valid URI (XML Namespaces 1.0) or
+            contains a colon (<code>:</code>).</p><p>A dynamic error <b>may</b> be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramURI</code> is not a valid URI (XML Namespaces 1.0) or
             IRI (XML Namespaces 1.1). </p><h2>Notes</h2><h2>Examples</h2><p>
                <code>fn:QName("http://www.example.com/example", "person")</code> returns an
                   <code>xs:QName</code> with namespace URI = "http://www.example.com/example", local

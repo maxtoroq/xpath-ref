@@ -21,7 +21,7 @@
             function behaves as if the supplied value were the <code>xs:double</code> value
                <code>NaN</code>.</p><p>The value of <code>$decimal-format-name</code>, 
             if present and non-empty, 
-            must be a string which after removal of leading and trailing whitespace is in the form of an
+            <b>must</b> be a string which after removal of leading and trailing whitespace is in the form of an
             an <code>EQName</code> as defined in the XPath 3.0 grammar, that is one of the following:</p><ul><li><p>A lexical QName, which is expanded using the 
                statically known namespaces. 
                The default namespace is not used (no prefix means no namespace).</p></li><li><p>A <code>URIQualifiedName</code> using the syntax <code>Q{uri}local</code>,
@@ -41,7 +41,7 @@
             uses a prefix that is not found in the statically known namespaces, or if the static
             context does not contain a declaration of a decimal-format with a matching expanded
             QName. If the processor is able to detect the error statically (for example, when the
-            argument is supplied as a string literal), then the processor may
+            argument is supplied as a string literal), then the processor <b>may</b>
             optionally signal this as a static error.</p><h2>Notes</h2><p>Numbers will always be formatted with the most significant digit on the left.</p><h2>Examples</h2><p>The following examples assume a default decimal format in which the
             chosen digits are the ASCII digits 0-9, the
             decimal separator is ".", the grouping separator is ",", the minus-sign is

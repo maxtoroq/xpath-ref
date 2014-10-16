@@ -45,7 +45,7 @@
                   and validating its content. When errors have been handled in this way, the
                   function may return either an empty sequence, or a fallback document provided by
                   the error handler.</p></li><li><p>Implementations may provide user options that relax the requirement for the
-                  function to return deterministic results.</p></li></ul><h2>Error Conditions</h2><p>A dynamic error may be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0005">ERRFODC0005</a>] if <code>$uri</code> is not a valid URI.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>] if the
+                  function to return deterministic results.</p></li></ul><h2>Error Conditions</h2><p>A dynamic error <b>may</b> be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0005">ERRFODC0005</a>] if <code>$uri</code> is not a valid URI.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>] if the
                available documents provides no mapping for the absolutized URI.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>] if the resource cannot be
             retrieved or cannot be parsed successfully as XML.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0003">ERRFODC0003</a>] if the implementation is not able
             to guarantee that the result of the function will be deterministic, and the user has not

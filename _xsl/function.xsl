@@ -198,6 +198,12 @@
          <xsl:apply-templates/>
       </i>
    </xsl:template>
+
+   <xsl:template match="rfc2119">
+      <b>
+         <xsl:apply-templates/>
+      </b>
+   </xsl:template>
    
    <xsl:template match="loc[@href]">
       <a href="{resolve-uri(@href, $spec-url)}">
