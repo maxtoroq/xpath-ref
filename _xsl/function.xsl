@@ -53,7 +53,10 @@
                      <xsl:value-of select="head"/>
                   </li>
                </ol>
-               <xsl:apply-templates/>
+               <h1 class="page-header">
+                  <xsl:value-of select="head"/>
+               </h1>
+               <xsl:apply-templates select="node()[not(self::head)]"/>
 
                <section>
                   <h2>See Also</h2>
@@ -107,18 +110,12 @@
       </small>
    </xsl:template>
    
-   <xsl:template match="*[head]">
+   <xsl:template match="*[head and not(self::example)]">
       <section>
          <xsl:apply-templates/>
       </section>
    </xsl:template>
    
-   <xsl:template match="head">
-      <h1 class="page-header">
-         <xsl:value-of select="."/>
-      </h1>
-   </xsl:template>
-
    <xsl:template match="gitem/label">
       <h2>
          <xsl:value-of select="."/>
@@ -157,24 +154,30 @@
       </blockquote>
    </xsl:template>
 
-   <xsl:template match="example|eg">
+   <xsl:template match="example[head and not(@role='signature')]">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+             <xsl:value-of select="'Example:', head"/>
+          </h3>
+        </div>
+        <div class="panel-body">
+           <xsl:apply-templates select="node()[not(self::head)]"/>
+        </div>
+      </div>
+   </xsl:template>
+   
+   <xsl:template match="eg">
       <pre>
          <code>
-            <xsl:if test="proto">
-               <xsl:attribute name="class" select="'signature'"/>
-            </xsl:if>
-            <xsl:apply-templates mode="#current"/>
+            <xsl:variable name="code" select="replace(., '^\s', '')"/>
+            <xsl:variable name="is-xml" select="starts-with($code, '&lt;')"/>
+            <xsl:sequence select="if ($is-xml) then f:render($code, 'xslt', 'xsl') else loc:showXPath($code)" xmlns:f="internal" xmlns:loc="com.qutoric.sketchpath.functions"/>
          </code>
       </pre>
    </xsl:template>
 
-   <xsl:template match="example/text()|eg/text()" xmlns:f="internal" xmlns:loc="com.qutoric.sketchpath.functions">
-      <xsl:variable name="code" select="replace(., '^\s', '')"/>
-      <xsl:variable name="is-xml" select="starts-with($code, '&lt;')"/>
-      <xsl:sequence select="if ($is-xml) then f:render($code, 'xslt', 'xsl') else loc:showXPath($code)"/>
-   </xsl:template>
-
-   <xsl:template match="proto" xmlns:loc="com.qutoric.sketchpath.functions">
+   <xsl:template match="proto">
       <xsl:variable name="code" as="text()+">
          <xsl:value-of select="@prefix, ':', @name, '('" separator=""/>
          <xsl:for-each select="arg">
@@ -190,7 +193,11 @@
          </xsl:if>
          <xsl:value-of select="') as ', @return-type" separator=""/>
       </xsl:variable>
-      <xsl:sequence select="loc:showXPath(string-join($code, ''))"/>
+      <pre>
+         <code class="signature">
+            <xsl:sequence select="loc:showXPath(string-join($code, ''))" xmlns:loc="com.qutoric.sketchpath.functions"/>
+         </code>
+      </pre>
    </xsl:template>
 
    <xsl:template match="var">
