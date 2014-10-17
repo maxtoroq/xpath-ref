@@ -39,7 +39,7 @@
             <title>
                <xsl:value-of select="head"/>
             </title>
-            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css"/>
             <link rel="stylesheet" href="../css/site.css"/>
             <link rel="shortcut icon" href="../favicon.ico"/>
          </head>
