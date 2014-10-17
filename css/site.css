@@ -29,6 +29,10 @@ ol ol {
    list-style-type: lower-alpha;
 }
 
+.nav-tabs > li.active > a {
+   font-weight: bold;
+}
+
 pre {
    background-color: #f8f8f8;
    border-color: #ddd;
