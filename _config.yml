@@ -1,2 +1,2 @@
 title: XPath Reference
-exclude: [xpath-ref.sln, packages.config, xmlspectrum/]
+exclude: [xpath-ref.sln, packages.config, xmlspectrum/, bootstrap/docs/]
