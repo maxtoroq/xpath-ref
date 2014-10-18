@@ -31,7 +31,11 @@
    <xsl:variable name="spec-loc" select="/*/header/latestloc/loc[1]"/>
    <xsl:variable name="spec-url" select="$spec-loc/@href"/>
 
+   <xsl:variable name="spec-v2-loc" select="$spec-v2/*/header/latestloc/loc[1]"/>
+
    <xsl:template name="function">
+      <xsl:param name="exists-in-v2" as="xs:boolean"/>
+      
       <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
       <html>
          <head>
@@ -63,9 +67,16 @@
                   <ul>
                      <li>
                         <a href="{$spec-loc/@href}#func-{if (substring-before(head, ':') eq 'math') then 'math-' else ''}{substring-after(head, ':')}">
-                           <xsl:value-of select="$spec-loc/../@doc"/>
+                           <xsl:value-of select="$spec-loc/ancestor::header[1]/title"/>
                         </a>
                      </li>
+                     <xsl:if test="$exists-in-v2">
+                        <li>
+                           <a href="{$spec-v2-loc/@href}#func-{substring-after(head, ':')}">
+                              <xsl:value-of select="$spec-v2-loc/ancestor::header[1]/title"/>
+                           </a>
+                        </li>
+                     </xsl:if>
                      <li>
                         <a href="http://www.saxonica.com/documentation/html/functions/{substring-before(head, ':')}/{substring-after(head, ':')}.html">Saxon Function Library</a>
                      </li>

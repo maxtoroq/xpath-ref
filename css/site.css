@@ -12,12 +12,22 @@ footer {
    margin-top: 10px;
 }
 
+body.index #function-filters {
+   padding-bottom: 10px;
+   text-align: right;
+}
+
 body.index div.tab-pane {
    padding-top: 10px;
 }
 
 body.index div.tab-pane a {
    display: block;
+}
+
+body.index div.tab-pane a.disabled {
+   color: #aaa;
+   cursor: not-allowed;
 }
 
 /* Style */

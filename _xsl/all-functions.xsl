@@ -7,7 +7,8 @@
 
    <xsl:import href="function.xsl"/>
 
-   <xsl:param name="index-only" select="false()"/>
+   <xsl:param name="index-only" as="xs:boolean" select="false()"/>
+   <xsl:param name="spec-v2" as="document-node()" required="yes"/>
    
    <xsl:output name="html" method="xhtml" indent="no" omit-xml-declaration="yes" use-character-maps="html"/>
 
@@ -15,9 +16,10 @@
       <xsl:output-character character="&#xa0;" string="&amp;nbsp;"/>
    </xsl:character-map>
 
-   <xsl:template match="/">
+   <xsl:variable name="functions" select=".//*[head[not(*) and (some $prefix in ('fn', 'math') satisfies starts-with(text(), concat($prefix, ':')))]]"/>
+   <xsl:variable name="functions-20" select="$spec-v2//*[head/starts-with(string(), 'fn:') or example[@role='signature']/proto[@isOp='no' and not(@role='example')]]"/>
 
-      <xsl:variable name="functions" select=".//*[head[not(*) and (some $prefix in ('fn', 'math') satisfies starts-with(text(), concat($prefix, ':')))]]"/>
+   <xsl:template match="/">
 
       <xsl:result-document href="{resolve-uri('../index.html')}" format="html">
          <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
@@ -27,7 +29,7 @@
                <title>XPath Reference</title>
                <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css"/>
                <link rel="stylesheet" href="bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css"/>
-               <link rel="stylesheet" href="css/site.css"/>
+               <link rel="stylesheet" href="css/site.css?v=141018"/>
                <link rel="shortcut icon" href="favicon.ico"/>
             </head>
             <body class="index">
@@ -38,9 +40,7 @@
                   <h1 class="page-header">XPath Functions<iframe src="github-buttons/github-btn.html?user=maxtoroq&amp;repo=xpath-ref&amp;type=watch&amp;size=large"
   allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30" style="float:right" class="hidden-xs"></iframe>
                </h1>
-                  <xsl:call-template name="index">
-                     <xsl:with-param name="functions" select="$functions"/>
-                  </xsl:call-template>
+                  <xsl:call-template name="index"/>
                </div>
                <footer>
                   <div class="container">
@@ -50,22 +50,52 @@
 
                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
                <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+               <script>
+                  <xsl:variable name="js" as="text()">
+                     <![CDATA[
+                     $(document).on('ready', function() { 
+                        $('#function-filters :radio:checked').click();
+                     });
+                     
+                     $(document).on('change', '#function-filters :radio', function() {
+                        var version = parseFloat($(this).val());
+                        $('div.tab-pane a').each(function(){ 
+                           $(this).toggleClass('disabled', $(this).data('xpath-version') > version); 
+                        });
+                     });
+                     ]]>
+                  </xsl:variable>
+                  <xsl:value-of select="normalize-space($js)" disable-output-escaping="yes"/>
+               </script>
             </body>
          </html>
       </xsl:result-document>
 
       <xsl:for-each select="$functions[not($index-only)]">
          <xsl:result-document href="{resolve-uri(concat('../functions/', local:file-name(.)))}" format="html">
-            <xsl:call-template name="function"/>
+            <xsl:call-template name="function">
+               <xsl:with-param name="exists-in-v2" select="local:exists-in-v2(.)"/>
+            </xsl:call-template>
          </xsl:result-document>
       </xsl:for-each>
 
    </xsl:template>
 
    <xsl:template name="index">
-      <xsl:param name="functions" as="element()+"/>
 
       <div class="col-xs-3 hidden-xs">
+         <div id="function-filters">
+            <div class="btn-group btn-group-xs" data-toggle="buttons">
+               <label class="btn btn-default active">
+                  <input type="radio" name="version" value="3.0" checked="checked"/>
+                  <xsl:text>3.0</xsl:text>
+               </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="version" value="2.0"/>
+                  <xsl:text>2.0</xsl:text>
+              </label>
+            </div>
+         </div>
          <ul class="nav nav-tabs tabs-left" role="tablist">
             <li class="active">
                <a href="#all" role="tab" data-toggle="tab">All functions</a>
@@ -93,9 +123,7 @@
                         </h3>
                         <xsl:for-each select="current-group()">
                            <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
-                           <a href="functions/{local:file-name(.)}">
-                              <xsl:value-of select="head/substring-after(., ':')"/>
-                           </a>
+                           <xsl:call-template name="function-link"/>
                         </xsl:for-each>
                      </div>
                   </xsl:for-each-group>
@@ -106,9 +134,7 @@
                <div class="tab-pane" id="{local:title-to-id(current-grouping-key())}">
                   <xsl:for-each select="current-group()">
                      <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
-                     <a href="functions/{local:file-name(.)}">
-                        <xsl:value-of select="head/substring-after(., ':')"/>
-                     </a>
+                     <xsl:call-template name="function-link"/>
                   </xsl:for-each>
                </div>
             </xsl:for-each-group>
@@ -116,6 +142,18 @@
       </div>
    </xsl:template>
 
+   <xsl:template name="function-link">
+      <a href="functions/{local:file-name(.)}" data-xpath-version="{if (local:exists-in-v2(.)) then '2.0' else '3.0'}">
+         <xsl:value-of select="head/substring-after(., ':')"/>
+      </a>
+   </xsl:template>
+
+   <xsl:function name="local:exists-in-v2" as="xs:boolean">
+      <xsl:param name="function" as="element()"/>
+
+      <xsl:sequence select="exists($functions-20[example[1]/proto[1]/@name eq $function/head/substring-after(string(), ':')])"/>
+   </xsl:function>
+   
    <xsl:function name="local:file-name" as="xs:string">
       <xsl:param name="node" as="node()"/>
 
