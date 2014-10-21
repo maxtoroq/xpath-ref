@@ -17,15 +17,15 @@ body.index #function-filters {
    text-align: right;
 }
 
-body.index div.tab-pane {
+body.index .tab-pane {
    padding-top: 10px;
 }
 
-body.index div.tab-pane a {
+body.index .tab-pane a {
    display: block;
 }
 
-body.index div.tab-pane a.disabled {
+body.index .tab-pane a.disabled {
    color: #aaa;
    cursor: not-allowed;
 }
@@ -33,6 +33,10 @@ body.index div.tab-pane a.disabled {
 /* Style */
 a, a:hover, a:focus {
    color: #00C;
+}
+
+.page-header {
+   margin-top: 20px;
 }
 
 ol ol {

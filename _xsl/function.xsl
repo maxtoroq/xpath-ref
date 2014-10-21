@@ -37,7 +37,7 @@
       <xsl:param name="exists-in-v2" as="xs:boolean"/>
       
       <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-      <html>
+      <html itemscope="itemscope" itemtype="http://schema.org/WebPage">
          <head>
             <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
             <title>
@@ -48,21 +48,26 @@
             <link rel="shortcut icon" href="../favicon.ico"/>
          </head>
          <body>
-            <div class="container">
-               <ol class="breadcrumb">
-                  <li>
-                     <a href="../">XPath Reference</a>
-                  </li>
-                  <li class="active">
+            <header role="navigation">
+               <nav class="container">
+                  <ol class="breadcrumb" itemprop="breadcrumb">
+                     <li>
+                        <a href="../">XPath Reference</a>
+                     </li>
+                     <li class="active">
+                        <xsl:value-of select="head"/>
+                     </li>
+                  </ol>
+               </nav>
+            </header>
+            <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+               <header>
+                  <h1 class="page-header">
                      <xsl:value-of select="head"/>
-                  </li>
-               </ol>
-               <h1 class="page-header">
-                  <xsl:value-of select="head"/>
-               </h1>
+                  </h1>
+               </header>
                <xsl:apply-templates select="node()[not(self::head)]"/>
-
-               <section>
+               <footer>
                   <h2>See Also</h2>
                   <ul>
                      <li>
@@ -81,8 +86,8 @@
                         <a href="http://www.saxonica.com/documentation/html/functions/{substring-before(head, ':')}/{substring-after(head, ':')}.html">Saxon Function Library</a>
                      </li>
                   </ul>
-               </section>
-            </div>
+               </footer>
+            </article>
             <footer>
                <div class="container">
                   <xsl:call-template name="copyright"/>
@@ -121,16 +126,18 @@
       </small>
    </xsl:template>
    
-   <xsl:template match="*[head and not(self::example)]">
+   <xsl:template match="div1|div2|div3|div4|gitem[label[text() != 'Summary']]">
       <section>
          <xsl:apply-templates/>
       </section>
    </xsl:template>
-   
+
    <xsl:template match="gitem/label">
-      <h2>
-         <xsl:value-of select="."/>
-      </h2>
+      <header>
+         <h2>
+            <xsl:value-of select="."/>
+         </h2>
+      </header>
    </xsl:template>
    
    <xsl:template match="gitem/label[text() = 'Summary']" priority="1"/>

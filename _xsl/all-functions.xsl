@@ -23,23 +23,31 @@
 
       <xsl:result-document href="{resolve-uri('../index.html')}" format="html">
          <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-         <html>
+         <html itemscope="itemscope" itemtype="http://schema.org/WebPage">
             <head>
                <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
                <title>XPath Reference</title>
                <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css"/>
                <link rel="stylesheet" href="bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css"/>
-               <link rel="stylesheet" href="css/site.css?v=141018"/>
+               <link rel="stylesheet" href="css/site.css?v=141021"/>
                <link rel="shortcut icon" href="favicon.ico"/>
+               <meta name="description" content="XPath 3.0 Functions Reference"/>
             </head>
             <body class="index">
+               <header role="navigation">
+                  <nav class="container">
+                     <ol class="breadcrumb" itemprop="breadcrumb">
+                        <li class="active">XPath Reference</li>
+                     </ol>
+                  </nav>
+               </header>
                <div class="container">
-                  <ol class="breadcrumb">
-                     <li class="active">XPath Reference</li>
-                  </ol>
-                  <h1 class="page-header">XPath Functions<iframe src="github-buttons/github-btn.html?user=maxtoroq&amp;repo=xpath-ref&amp;type=watch&amp;size=large"
-  allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30" style="float:right" class="hidden-xs"></iframe>
-               </h1>
+                  <header>
+                     <h1 class="page-header">
+                        <xsl:text>XPath Functions</xsl:text>
+                        <iframe src="github-buttons/github-btn.html?user=maxtoroq&amp;repo=xpath-ref&amp;type=watch&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30" class="pull-right hidden-xs"></iframe>
+                     </h1>
+                  </header>
                   <xsl:call-template name="index"/>
                </div>
                <footer>
@@ -47,7 +55,6 @@
                      <xsl:call-template name="copyright"/>
                   </div>
                </footer>
-
                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
                <script src="bootstrap/dist/js/bootstrap.min.js"></script>
                <script>
@@ -59,7 +66,7 @@
                      
                      $(document).on('change', '#function-filters :radio', function() {
                         var version = parseFloat($(this).val());
-                        $('div.tab-pane a').each(function(){ 
+                        $('.tab-pane a').each(function(){ 
                            $(this).toggleClass('disabled', $(this).data('xpath-version') > version); 
                         });
                      });
@@ -112,31 +119,33 @@
 
       <div class="col-xs-9">
          <div class="tab-content">
-            <div class="tab-pane active" id="all">
+            <section class="tab-pane active" id="all">
                <div class="row">
                   <xsl:for-each-group select="$functions" group-by="head/substring(substring-after(., ':'), 1, 1)">
                      <xsl:sort select="current-grouping-key()" case-order="lower-first"/>
 
-                     <div class="col-xs-12 col-sm-6 col-md-4">
-                        <h3>
-                           <xsl:value-of select="upper-case(substring(current-grouping-key(), 1, 1))"/>
-                        </h3>
+                     <section class="col-xs-12 col-sm-6 col-md-4">
+                        <header>
+                           <h3>
+                              <xsl:value-of select="upper-case(substring(current-grouping-key(), 1, 1))"/>
+                           </h3>
+                        </header>
                         <xsl:for-each select="current-group()">
                            <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
                            <xsl:call-template name="function-link"/>
                         </xsl:for-each>
-                     </div>
+                     </section>
                   </xsl:for-each-group>
                </div>
-            </div>
+            </section>
 
             <xsl:for-each-group select="$functions" group-by="ancestor::div1[1]/head">
-               <div class="tab-pane" id="{local:title-to-id(current-grouping-key())}">
+               <section class="tab-pane" id="{local:title-to-id(current-grouping-key())}">
                   <xsl:for-each select="current-group()">
                      <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
                      <xsl:call-template name="function-link"/>
                   </xsl:for-each>
-               </div>
+               </section>
             </xsl:for-each-group>
          </div>
       </div>
