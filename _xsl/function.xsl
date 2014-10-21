@@ -44,7 +44,7 @@
                <xsl:value-of select="head"/>
             </title>
             <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css"/>
-            <link rel="stylesheet" href="../css/site.css"/>
+            <link rel="stylesheet" href="../css/site.css?v=141021"/>
             <link rel="shortcut icon" href="../favicon.ico"/>
          </head>
          <body>
