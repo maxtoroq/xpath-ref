@@ -1,0 +1,48 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:function-lookup</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:function-lookup</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:function-lookup</h1></header><p>Returns the function having a given name and arity, if there is one.</p><section><header><h2>Signature</h2></header><p><pre><code class="signature"><span class="function">fn:function-lookup</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$name</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:QName</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$arity</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. </p></section><section><header><h2>Rules</h2></header><p>A call to <code>fn:function-lookup</code> returns the function obtained by looking up the expanded QName
+            supplied as <code>$name</code> and the arity supplied as <code>$arity</code> in the named functions component 
+            of the dynamic context (specifically, the dynamic context of the call to <code>fn:function-lookup</code>).</p><p>Furthermore, if that function has an implementation-dependent implementation (see note below), 
+            then the implementation of the function returned by 
+            <code>fn:function-lookup</code> is associated with the static and dynamic context of the call to 
+            <code>fn:function-lookup</code>.</p><blockquote><p>The above rule deliberately uses the same wording as the corresponding rule for Named Function References. The
+         term "a function [with] an implementation-dependent implementation" essentially means a function whose implementation
+         is provided by the language processor rather than by the stylesheet or query author. This rule is therefore relevant
+         to built-in functions and vendor-supplied extension functions whose result depends on the context of the function
+         call.</p></blockquote><p>Otherwise (if no known function can be identified by name and arity), 
+         an empty sequence is returned.</p><p>If the arguments to <code>fn:function-lookup</code> identify a function that is present
+         in the static context of the function call, the function will always return the same function
+         that a static reference to this function would bind to. If there is no such function in the
+         static context, then the results depend on what is present in the dynamic context, which
+         is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a>.</p></section><section><header><h2>Notes</h2></header><p>This function can be useful where there is a need to make a dynamic decision on which
+         of several statically-known functions to call. It can thus be used as a substitute for polymorphism,
+         in the case where the application has been designed so several functions implement the same
+         interface.</p><p>The function can also be useful in cases where a query or stylesheet module is written to work 
+            with alternative versions of a library module. In such cases the author of the main module might wish to
+            test whether an imported library module contains or does not contain a particular function, and to
+            call a function in that module only if it is available in the version that was imported. A static
+            call would cause a static error if the function is not available, whereas getting the function
+            using <code>fn:function-lookup</code> allows the caller to take fallback action in this situation.
+         </p><p>If the function that is retrieved by <code>fn:function-lookup</code> is 
+            <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>, that is, 
+            if it has dependencies on the static or dynamic context of its caller, the context that 
+            applies is the static and/or dynamic context of the call to the <code>fn:function-lookup</code> 
+            function itself. The context thus effectively forms part of the closure of the returned 
+            function. In practice this applies only where the target of <code>fn:function-lookup</code> is a 
+            built-in function, because user-defined functions never depend on the static or dynamic 
+            context of the function call. The rule applies recursively, since <code>fn:function-lookup</code> 
+            is itself a context-dependent built-in function.
+         </p><p>These specifications do not define any circumstances in which the dynamic context 
+            will contain functions that are not present in the static context, but neither do 
+            they rule this out. For example an API <b>may</b> provide the ability to add 
+            functions to the dynamic context. Equally, these specifications do not define any mechanism 
+            for creating context-dependent functions other than the built-in context-depedendent 
+            functions, but neither do they rule out the existence of such functions.
+         </p></section><section><header><h2>Examples</h2></header><p>The expression <code>fn:function-lookup(xs:QName('fn:substring'), 2)('abcd', 2)</code> returns <code>'bcd'</code>.</p><p>The expression <code>(fn:function-lookup(xs:QName('xs:dateTimeStamp'), 1), xs:dateTime#1)[1] ('2011-11-11T11:11:11Z')</code>
+            returns an <code>xs:dateTime</code> value set to the specified date, time, and timezone; if the implementation supports
+            XSD 1.1 then the result will be an instance of the derived type <code>xs:dateTimeStamp</code>. The query is written to
+            ensure that no failure occurs when the implementation does not recognize the type <code>xs:dateTimeStamp</code>.</p><p>The expression <code>(let $f := fn:function-lookup(xs:QName('zip:binary-entry', 2) 
+            return if (exists($f)) then $f($href, $entry) else ()</code> returns the result of calling
+            <code>zip:binary-entry($href, $entry)</code> if the function is available, or an empty sequence
+            otherwise.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-function-lookup">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.saxonica.com/documentation/html/functions/fn/function-lookup.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>

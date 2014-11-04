@@ -2,6 +2,7 @@
 <xsl:stylesheet version="2.0" exclude-result-prefixes="#all"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:html="http://www.w3.org/1999/xhtml"
    xmlns="http://www.w3.org/1999/xhtml">
 
    <xsl:import href="../xmlspectrum/app/xsl/xmlspectrum.xsl"/>
@@ -44,22 +45,20 @@
                <xsl:value-of select="head"/>
             </title>
             <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css"/>
-            <link rel="stylesheet" href="../css/site.css?v=141021"/>
+            <link rel="stylesheet" href="../site.css"/>
             <link rel="shortcut icon" href="../favicon.ico"/>
          </head>
          <body>
-            <header role="navigation">
-               <nav class="container">
-                  <ol class="breadcrumb" itemprop="breadcrumb">
-                     <li>
-                        <a href="../">XPath Reference</a>
-                     </li>
-                     <li class="active">
-                        <xsl:value-of select="head"/>
-                     </li>
-                  </ol>
-               </nav>
-            </header>
+            <xsl:call-template name="navigation-header">
+               <xsl:with-param name="breadcrumb-items" as="element()+">
+                  <li>
+                     <a href="../">XPath Reference</a>
+                  </li>
+                  <li class="active">
+                     <xsl:value-of select="head"/>
+                  </li>
+               </xsl:with-param>
+            </xsl:call-template>
             <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
                <header>
                   <h1 class="page-header">
@@ -97,6 +96,39 @@
       </html>
    </xsl:template>
 
+   <xsl:template name="navigation-header">
+      <xsl:param name="breadcrumb-items" as="element(html:li)+"/>
+      
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <xsl:sequence select="$breadcrumb-items"/>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col" xmlns:gcse="http://www.google.com/cse">
+               <script>
+                  <xsl:variable name="js" as="text()">
+                     <![CDATA[
+                     (function() {
+                        var cx = '012329136009221431645:sv1eakamyny';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                     })();
+                     ]]>
+                  </xsl:variable>
+                  <xsl:value-of select="normalize-space($js)" disable-output-escaping="yes"/>
+               </script>
+               <gcse:searchbox-only></gcse:searchbox-only>
+            </div>
+         </nav>
+      </header>
+   </xsl:template>
+   
    <xsl:template name="copyright">
       <small class="copyright">
          <xsl:text>Portions of this document were copied from </xsl:text>

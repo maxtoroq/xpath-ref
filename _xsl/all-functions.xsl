@@ -29,18 +29,16 @@
                <title>XPath Reference</title>
                <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css"/>
                <link rel="stylesheet" href="bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css"/>
-               <link rel="stylesheet" href="css/site.css?v=141021"/>
+               <link rel="stylesheet" href="site.css"/>
                <link rel="shortcut icon" href="favicon.ico"/>
                <meta name="description" content="XPath 3.0 Functions Reference"/>
             </head>
             <body class="index">
-               <header role="navigation">
-                  <nav class="container">
-                     <ol class="breadcrumb" itemprop="breadcrumb">
-                        <li class="active">XPath Reference</li>
-                     </ol>
-                  </nav>
-               </header>
+               <xsl:call-template name="navigation-header">
+                  <xsl:with-param name="breadcrumb-items" as="element()+">
+                     <li class="active">XPath Reference</li>
+                  </xsl:with-param>
+               </xsl:call-template>
                <div class="container">
                   <header>
                      <h1 class="page-header">
@@ -79,7 +77,7 @@
       </xsl:result-document>
 
       <xsl:for-each select="$functions[not($index-only)]">
-         <xsl:result-document href="{resolve-uri(concat('../functions/', local:file-name(.)))}" format="html">
+         <xsl:result-document href="{resolve-uri(concat('../', head/substring-before(., ':'), '/', local:file-name(.)))}" format="html">
             <xsl:call-template name="function">
                <xsl:with-param name="exists-in-v2" select="local:exists-in-v2(.)"/>
             </xsl:call-template>
@@ -152,7 +150,7 @@
    </xsl:template>
 
    <xsl:template name="function-link">
-      <a href="functions/{local:file-name(.)}" data-xpath-version="{if (local:exists-in-v2(.)) then '2.0' else '3.0'}">
+      <a href="{head/substring-before(., ':')}/{local:file-name(.)}" data-xpath-version="{if (local:exists-in-v2(.)) then '2.0' else '3.0'}">
          <xsl:value-of select="head/substring-after(., ':')"/>
       </a>
    </xsl:template>
