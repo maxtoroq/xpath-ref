@@ -82,7 +82,7 @@
                         </li>
                      </xsl:if>
                      <li>
-                        <a href="http://www.saxonica.com/documentation/html/functions/{substring-before(head, ':')}/{substring-after(head, ':')}.html">Saxon Function Library</a>
+                        <a href="http://www.saxonica.com/html/documentation/functions/{substring-before(head, ':')}/{substring-after(head, ':')}.html">Saxon Function Library</a>
                      </li>
                   </ul>
                </footer>
