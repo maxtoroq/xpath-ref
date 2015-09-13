@@ -43,7 +43,7 @@
                   <header>
                      <h1 class="page-header">
                         <xsl:text>XPath Functions</xsl:text>
-                        <iframe src="github-buttons/github-btn.html?user=maxtoroq&amp;repo=xpath-ref&amp;type=watch&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30" class="pull-right hidden-xs"></iframe>
+                        <iframe src="github-btn.html?user=maxtoroq&amp;repo=xpath-ref&amp;type=star&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="80" height="30" class="pull-right hidden-xs"></iframe>
                      </h1>
                   </header>
                   <xsl:call-template name="index"/>
