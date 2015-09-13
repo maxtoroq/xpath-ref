@@ -4,9 +4,6 @@
 [submodule "bootstrap-vertical-tabs"]
 	path = bootstrap-vertical-tabs
 	url = https://github.com/dbtek/bootstrap-vertical-tabs
-[submodule "github-buttons"]
-	path = github-buttons
-	url = https://github.com/mdo/github-buttons
 [submodule "bootstrap"]
 	path = bootstrap
 	url = https://github.com/twbs/bootstrap
