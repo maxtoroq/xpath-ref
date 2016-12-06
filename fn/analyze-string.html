@@ -1,57 +1,135 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:analyze-string</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:analyze-string</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:analyze-string</h1></header><p>Analyzes a string using a regular expression, returning an XML structure that
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:analyze-string</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:analyze-string</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:analyze-string</h1>
+         </header>
+         <p>Analyzes a string using a regular expression, returning an XML structure that
             identifies which parts of the input string matched or failed to match the regular
             expression, and in the case of matched substrings, which substrings matched each
-            capturing group in the regular expression.</p><section><header><h2>Signatures</h2></header><p><pre><code class="signature"><span class="function">fn:analyze-string</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            capturing group in the regular expression.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:analyze-string</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$pattern</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="qname">fn:analyze-string-result</span><span class="parenthesis">)</span></code></pre><pre><code class="signature"><span class="function">fn:analyze-string</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$pattern</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$flags</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="qname">fn:analyze-string-result</span><span class="parenthesis">)</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-nondeterministic">nondeterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. </p></section><section><header><h2>Rules</h2></header><p>The effect of calling the first version of this function (omitting the argument
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="qname">fn:analyze-string-result</span><span class="parenthesis">)</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-nondeterministic">nondeterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The effect of calling the first version of this function (omitting the argument
                <code>$flags</code>) is the same as the effect of calling the second version with the
                <code>$flags</code> argument set to a zero-length string. Flags are defined in
-               <a href="http://www.w3.org/TR/xpath-functions-30/#flags">Flags</a>.</p><p>The <code>$flags</code> argument is interpreted in the same way as for the
-               <code>fn:matches</code> function.</p><p>If <code>$input</code> is the empty sequence the function behaves as if
+               <a href="http://www.w3.org/TR/xpath-functions-30/#flags">Flags</a>.
+            </p>
+            <p>The <code>$flags</code> argument is interpreted in the same way as for the
+               <code>fn:matches</code> function.
+            </p>
+            <p>If <code>$input</code> is the empty sequence the function behaves as if
                <code>$input</code> were the zero-length string. In this situation the result will be
-            an element node with no children.</p><p>The function returns an element node whose local name is
+               an element node with no children.
+            </p>
+            <p>The function returns an element node whose local name is
                <code>analyze-string-result</code>. This element and all its descendant elements have
-            the namespace URI <code>http://www.w3.org/2005/xpath-functions</code>. The namespace
-            prefix is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a>. The children of this element are a
-            sequence of <code>fn:match</code> and <code>fn:non-match</code> elements. This sequence
-            is formed by breaking the <code>$input</code> string into a sequence of strings,
-            returning any substring that matches <code>$pattern</code> as the content of a
+               the namespace URI <code>http://www.w3.org/2005/xpath-functions</code>. The namespace
+               prefix is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a>. The children of this element are a
+               sequence of <code>fn:match</code> and <code>fn:non-match</code> elements. This sequence
+               is formed by breaking the <code>$input</code> string into a sequence of strings,
+               returning any substring that matches <code>$pattern</code> as the content of a
                <code>match</code> element, and any intervening substring as the content of a
-               <code>non-match</code> element.</p><p>More specifically, the function starts at the beginning of the input string and attempts
-            to find the first substring that matches the regular expression. If there are several
-            matches, the first match is defined to be the one whose starting position comes first in
-            the string. If several alternatives within the regular expression both match at the same
-            position in the input string, then the match that is chosen is the first alternative
-            that matches. For example, if the input string is <code>The quick brown fox jumps</code>
-            and the regular expression is <code>jump|jumps</code>, then the match that is chosen is
-               <code>jump</code>.</p><p>Having found the first match, the instruction proceeds to find the second and subsequent
-            matches by repeating the search, starting at the first <a href="http://www.w3.org/TR/xpath-functions-30/#character">character</a> that was not included in the previous match.</p><p>The input string is thus partitioned into a sequence of substrings, some of which match
-            the regular expression, others which do not match it. Each substring will contain at
-            least one character. This sequence is represented in the result by the sequence of
+               <code>non-match</code> element.
+            </p>
+            <p>More specifically, the function starts at the beginning of the input string and attempts
+               to find the first substring that matches the regular expression. If there are several
+               matches, the first match is defined to be the one whose starting position comes first
+               in
+               the string. If several alternatives within the regular expression both match at the
+               same
+               position in the input string, then the match that is chosen is the first alternative
+               that matches. For example, if the input string is <code>The quick brown fox jumps</code>
+               and the regular expression is <code>jump|jumps</code>, then the match that is chosen is
+               <code>jump</code>.
+            </p>
+            <p>Having found the first match, the instruction proceeds to find the second and subsequent
+               matches by repeating the search, starting at the first <a href="http://www.w3.org/TR/xpath-functions-30/#character">character</a> that was not included in the previous match.
+            </p>
+            <p>The input string is thus partitioned into a sequence of substrings, some of which
+               match
+               the regular expression, others which do not match it. Each substring will contain
+               at
+               least one character. This sequence is represented in the result by the sequence of
                <code>fn:match</code> and <code>fn:non-match</code> children of the returned element
-            node; the string value of the <code>fn:match</code> or <code>fn:non-match</code> element
-            will be the corresponding substring of <code>$input</code>, and the string value of the
-            returned element node will therefore be the same as <code>$input</code>.</p><p>The content of an <code>fn:non-match</code> element is always a single text node.</p><p>The content of a <code>fn:match</code> element, however, is in general a sequence of
-            text nodes and <code>fn:group</code> element children. An <code>fn:group</code> element
-            with a <code>nr</code> attribute having the integer value <i>N</i> identifies the
-            substring captured by the <i>Nth</i> parenthesized sub-expression in the regular
-            expression. For each capturing subexpression there will be at most one corresponding
+               node; the string value of the <code>fn:match</code> or <code>fn:non-match</code> element
+               will be the corresponding substring of <code>$input</code>, and the string value of the
+               returned element node will therefore be the same as <code>$input</code>.
+            </p>
+            <p>The content of an <code>fn:non-match</code> element is always a single text node.
+            </p>
+            <p>The content of a <code>fn:match</code> element, however, is in general a sequence of
+               text nodes and <code>fn:group</code> element children. An <code>fn:group</code> element
+               with a <code>nr</code> attribute having the integer value <i>N</i> identifies the
+               substring captured by the <i>Nth</i> parenthesized sub-expression in the regular
+               expression. For each capturing subexpression there will be at most one corresponding
                <code>fn:group</code> element in each <code>fn:match</code> element in the
-            result.</p><p>If the function is called twice with the same arguments, it is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a> whether the two calls return the same element node
-            or distinct (but deep equal) element nodes. In this respect it is
-            <a href="http://www.w3.org/TR/xpath-functions-30/#nondeterministic">nondeterministic</a>.</p><p>The base URI of the element nodes in the result is
-         <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a></p><p>A schema is defined for the structure of the returned element, containing the
-            definitions below. The returned element and its descendants will have type annotations
-            obtained by validating the returned element against this schema, unless the function is
-            used in an environment where type annotations are not supported (for example, a Basic
-            XSLT Processor), in which case the elements will all be annotated as
-               <code>xs:untyped</code> and the attributes as <code>xs:untypedAtomic</code>.</p><blockquote><p>A free-standing copy of this schema can be found at <a href="http://www.w3.org/TR/xpath-functions-30/analyze-string.xsd">analyze-string.xsd</a></p></blockquote><p>
-            <pre><code><span class="z">&lt;?</span><span class="pi">xml version="1.0" encoding="UTF-8"</span><span class="z">?&gt;</span><span class="txt">
+               result.
+            </p>
+            <p>If the function is called twice with the same arguments, it is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a> whether the two calls return the same element node
+               or distinct (but deep equal) element nodes. In this respect it is
+               <a href="http://www.w3.org/TR/xpath-functions-30/#nondeterministic">nondeterministic</a>.
+            </p>
+            <p>The base URI of the element nodes in the result is
+               <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a></p>
+            <p>A schema is defined for the structure of the returned element, containing the
+               definitions below. The returned element and its descendants will have type annotations
+               obtained by validating the returned element against this schema, unless the function
+               is
+               used in an environment where type annotations are not supported (for example, a Basic
+               XSLT Processor), in which case the elements will all be annotated as
+               <code>xs:untyped</code> and the attributes as <code>xs:untypedAtomic</code>.
+            </p>
+            <blockquote>
+               <p>A free-standing copy of this schema can be found at <a href="http://www.w3.org/TR/xpath-functions-30/analyze-string.xsd">analyze-string.xsd</a></p>
+            </blockquote>
+            <p>
+               <pre><code><span class="z">&lt;?</span><span class="pi">xml version="1.0" encoding="UTF-8"</span><span class="z">?&gt;</span><span class="txt">
 </span><span class="es">&lt;</span><span class="en">xs:schema</span><span class="z"> </span><span class="atn">xmlns:xs</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2001/XMLSchema</span><span class="z">"</span><span class="z">
     </span><span class="atn">targetNamespace</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2005/xpath-functions</span><span class="z">"</span><span class="z">
     </span><span class="atn">xmlns:fn</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2005/xpath-functions</span><span class="z">"</span><span class="z">
@@ -84,15 +162,43 @@
  
 </span><span class="ez">&lt;/</span><span class="cl">xs:schema</span><span class="ec">&gt;</span><span class="txt">
 </span></code></pre>
-         </p></section><section><header><h2>Error Conditions</h2></header><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORX0002">ERRFORX0002</a>] if the value of
-               <code>$pattern</code> is invalid according to the rules described in section <a href="http://www.w3.org/TR/xpath-functions-30/#regex-syntax">Regular expression syntax</a>.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORX0001">ERRFORX0001</a>] if the value of
-               <code>$flags</code> is invalid according to the rules described in section <a href="http://www.w3.org/TR/xpath-functions-30/#regex-syntax">Regular expression syntax</a>.</p><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORX0003">ERRFORX0003</a>] if the supplied
+               </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORX0002">ERRFORX0002</a>] if the value of
+               <code>$pattern</code> is invalid according to the rules described in section <a href="http://www.w3.org/TR/xpath-functions-30/#regex-syntax">Regular expression syntax</a>.
+            </p>
+            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORX0001">ERRFORX0001</a>] if the value of
+               <code>$flags</code> is invalid according to the rules described in section <a href="http://www.w3.org/TR/xpath-functions-30/#regex-syntax">Regular expression syntax</a>.
+            </p>
+            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORX0003">ERRFORX0003</a>] if the supplied
                <code>$pattern</code> matches a zero-length string, that is, if <code>fn:matches("",
-               $pattern, $flags)</code> returns <code>true</code>.</p></section><section><header><h2>Notes</h2></header><p>The declarations and definitions in the above schema are not automatically
-            available in the static context of the <code>fn:analyze-string</code> call (or of any other expression).
-            The contents of the static context are host-language defined, and in some host languages are implementation-defined.</p></section><section><header><h2>Examples</h2></header><p>In the following examples, the result document is shown in serialized form, with
+                  $pattern, $flags)</code> returns <code>true</code>.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>The declarations and definitions in the above schema are not automatically
+               available in the static context of the <code>fn:analyze-string</code> call (or of any other expression).
+               The contents of the static context are host-language defined, and in some host languages
+               are implementation-defined.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>In the following examples, the result document is shown in serialized form, with
                whitespace between the element nodes. This whitespace is not actually present in the
-               result.</p><p>The expression <code>fn:analyze-string("The cat sat on the mat.", "\w+")</code> returns (with whitespace added for legibility):</p><pre><code><span class="es">&lt;</span><span class="en">analyze-string-result</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2005/xpath-functions</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
+               result.
+            </p>
+            <p>The expression <code>fn:analyze-string("The cat sat on the mat.", "\w+")</code> returns (with whitespace added for legibility):
+            </p><pre><code><span class="es">&lt;</span><span class="en">analyze-string-result</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2005/xpath-functions</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">match</span><span class="scx">&gt;</span><span class="txt">The</span><span class="ez">&lt;/</span><span class="cl">match</span><span class="ec">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">non-match</span><span class="scx">&gt;</span><span class="txt"> </span><span class="ez">&lt;/</span><span class="cl">non-match</span><span class="ec">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">match</span><span class="scx">&gt;</span><span class="txt">cat</span><span class="ez">&lt;/</span><span class="cl">match</span><span class="ec">&gt;</span><span class="txt">
@@ -106,10 +212,12 @@
   </span><span class="es">&lt;</span><span class="en">match</span><span class="scx">&gt;</span><span class="txt">mat</span><span class="ez">&lt;/</span><span class="cl">match</span><span class="ec">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">non-match</span><span class="scx">&gt;</span><span class="txt">.</span><span class="ez">&lt;/</span><span class="cl">non-match</span><span class="ec">&gt;</span><span class="txt">
 </span><span class="ez">&lt;/</span><span class="cl">analyze-string-result</span><span class="ec">&gt;</span><span class="txt"></span></code></pre><p>The expression <code>fn:analyze-string("2008-12-03",
-                  "^(\d+)\-(\d+)\-(\d+)$")</code> returns (with whitespace added for legibility):</p><pre><code><span class="es">&lt;</span><span class="en">analyze-string-result</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2005/xpath-functions</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
+                  "^(\d+)\-(\d+)\-(\d+)$")</code> returns (with whitespace added for legibility):
+            </p><pre><code><span class="es">&lt;</span><span class="en">analyze-string-result</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2005/xpath-functions</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">match</span><span class="scx">&gt;</span><span class="txt"></span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">1</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">2008</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt">-</span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">2</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">12</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt">-</span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">3</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">03</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt"></span><span class="ez">&lt;/</span><span class="cl">match</span><span class="ec">&gt;</span><span class="txt">
 </span><span class="ez">&lt;/</span><span class="cl">analyze-string-result</span><span class="ec">&gt;</span><span class="txt"></span></code></pre><p>The expression <code>fn:analyze-string("A1,C15,,D24, X50,",
-                  "([A-Z])([0-9]+)")</code> returns (with whitespace added for legibility):</p><pre><code><span class="es">&lt;</span><span class="en">analyze-string-result</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2005/xpath-functions</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">                  
+                  "([A-Z])([0-9]+)")</code> returns (with whitespace added for legibility):
+            </p><pre><code><span class="es">&lt;</span><span class="en">analyze-string-result</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2005/xpath-functions</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">                  
   </span><span class="es">&lt;</span><span class="en">match</span><span class="scx">&gt;</span><span class="txt"></span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">1</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">A</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt"></span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">2</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">1</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt"></span><span class="ez">&lt;/</span><span class="cl">match</span><span class="ec">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">non-match</span><span class="scx">&gt;</span><span class="txt">,</span><span class="ez">&lt;/</span><span class="cl">non-match</span><span class="ec">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">match</span><span class="scx">&gt;</span><span class="txt"></span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">1</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">C</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt"></span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">2</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">15</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt"></span><span class="ez">&lt;/</span><span class="cl">match</span><span class="ec">&gt;</span><span class="txt">
@@ -118,4 +226,17 @@
   </span><span class="es">&lt;</span><span class="en">non-match</span><span class="scx">&gt;</span><span class="txt">, </span><span class="ez">&lt;/</span><span class="cl">non-match</span><span class="ec">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">match</span><span class="scx">&gt;</span><span class="txt"></span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">1</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">X</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt"></span><span class="es">&lt;</span><span class="en">group</span><span class="z"> </span><span class="atn">nr</span><span class="atneq">=</span><span class="z">"</span><span class="av">2</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">50</span><span class="ez">&lt;/</span><span class="cl">group</span><span class="ec">&gt;</span><span class="txt"></span><span class="ez">&lt;/</span><span class="cl">match</span><span class="ec">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">non-match</span><span class="scx">&gt;</span><span class="txt">,</span><span class="ez">&lt;/</span><span class="cl">non-match</span><span class="ec">&gt;</span><span class="txt">
-</span><span class="ez">&lt;/</span><span class="cl">analyze-string-result</span><span class="ec">&gt;</span><span class="txt"></span></code></pre></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-analyze-string">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/analyze-string.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+</span><span class="ez">&lt;/</span><span class="cl">analyze-string-result</span><span class="ec">&gt;</span><span class="txt"></span></code></pre></section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-analyze-string">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/analyze-string.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

@@ -1,7 +1,81 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:static-base-uri</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:static-base-uri</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:static-base-uri</h1></header><p>This function returns the value of the Static Base URI property from the static context.</p><section><header><h2>Signature</h2></header><p><pre><code class="signature"><span class="function">fn:static-base-uri</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI</span><span class="quantifier">?</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-		static base uri.
-	</p></section><section><header><h2>Rules</h2></header><p>The function returns the value of the Static Base URI property from the static context. If the
-            property is absent, the empty sequence is returned.</p><p>Components of the static context are discussed in <a href="http://www.w3.org/TR/xpath-30/#static_context">Static Context</a> .</p></section><section><header><h2>Notes</h2></header><p>XQuery 3.0 and XSLT 3.0 give an implementation freedom to use different base URIs during the
-         static analysis phase and the dynamic evaluation phase, that is, for compile-time and run-time resources respectively.
-         In this situation, the <code>fn:static-base-uri</code> function should return a URI suitable for locating resources needed
-         during dynamic evaluation.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-static-base-uri">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.w3.org/TR/xpath-functions/#func-static-base-uri">XQuery 1.0 and XPath 2.0 Functions and Operators</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/static-base-uri.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:static-base-uri</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:static-base-uri</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:static-base-uri</h1>
+         </header>
+         <p>This function returns the value of the Static Base URI property from the static context.</p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:static-base-uri</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI</span><span class="quantifier">?</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		static base uri.
+               	
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The function returns the value of the Static Base URI property from the static context.
+               If the
+               property is absent, the empty sequence is returned.
+            </p>
+            <p>Components of the static context are discussed in <a href="http://www.w3.org/TR/xpath-30/#static_context">Static Context</a> .
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>XQuery 3.0 and XSLT 3.0 give an implementation freedom to use different base URIs
+               during the
+               static analysis phase and the dynamic evaluation phase, that is, for compile-time
+               and run-time resources respectively.
+               In this situation, the <code>fn:static-base-uri</code> function should return a URI suitable for locating resources needed
+               during dynamic evaluation.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-static-base-uri">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions/#func-static-base-uri">XPath 2.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/static-base-uri.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

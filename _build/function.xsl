@@ -18,7 +18,7 @@
       <spec href="http://www.w3.org/TR/xpath-datamodel-30/" specref="DM30" errorref="DM" bibref="xpath-datamodel-30">
          <xml href="../_build/specs/xpath-datamodel-30.xml"/>
       </spec>
-      <spec href="http://www.w3.org/TR/xslt-xquery-serialization-30/" specref="SER30" errorref="SER" bibref="xslt-xquery-serialization-30">
+      <spec href="http://www.w3.org/TR/xslt-xquery-serialization-30/" specref="SER30" errorref="SER" bibref="xslt-xquery-serialization-30" title="Serialization 3.0">
          <xml href="../_build/specs/xslt-xquery-serialization-30.xml"/>
       </spec>
       <spec href="http://www.w3.org/TR/xquery-semantics/" bibref="xquery-semantics"/>
@@ -36,7 +36,7 @@
 
    <xsl:template name="function">
       <xsl:param name="exists-in-v2" as="xs:boolean"/>
-      
+
       <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
       <html itemscope="itemscope" itemtype="http://schema.org/WebPage">
          <head>
@@ -45,7 +45,7 @@
                <xsl:value-of select="head"/>
             </title>
             <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css"/>
-            <link rel="stylesheet" href="../site.css"/>
+            <link rel="stylesheet" href="../css/site.css"/>
             <link rel="shortcut icon" href="../favicon.ico"/>
          </head>
          <body>
@@ -71,13 +71,13 @@
                   <ul>
                      <li>
                         <a href="{$spec-loc/@href}#func-{if (substring-before(head, ':') eq 'math') then 'math-' else ''}{substring-after(head, ':')}">
-                           <xsl:value-of select="$spec-loc/ancestor::header[1]/title"/>
+                           <xsl:text>XPath 3.0 Functions and Operators</xsl:text>
                         </a>
                      </li>
                      <xsl:if test="$exists-in-v2">
                         <li>
                            <a href="{$spec-v2-loc/@href}#func-{substring-after(head, ':')}">
-                              <xsl:value-of select="$spec-v2-loc/ancestor::header[1]/title"/>
+                              <xsl:text>XPath 2.0 Functions and Operators</xsl:text>
                            </a>
                         </li>
                      </xsl:if>
@@ -98,7 +98,7 @@
 
    <xsl:template name="navigation-header">
       <xsl:param name="breadcrumb-items" as="element(html:li)+"/>
-      
+
       <header role="navigation">
          <nav class="container">
             <div class="col-md-9 breadcrumb-col">
@@ -106,29 +106,21 @@
                   <xsl:sequence select="$breadcrumb-items"/>
                </ol>
             </div>
-            <div class="col-md-3 search-col" xmlns:gcse="http://www.google.com/cse">
-               <script>
-                  <xsl:variable name="js" as="text()">
-                     <![CDATA[
-                     (function() {
-                        var cx = '012329136009221431645:sv1eakamyny';
-                        var gcse = document.createElement('script');
-                        gcse.type = 'text/javascript';
-                        gcse.async = true;
-                        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(gcse, s);
-                     })();
-                     ]]>
-                  </xsl:variable>
-                  <xsl:value-of select="normalize-space($js)" disable-output-escaping="yes"/>
-               </script>
-               <gcse:searchbox-only></gcse:searchbox-only>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse">
+                  <input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny"/>
+                  <div class="input-group">
+                     <input type="search" name="q" class="form-control" placeholder="Search for..."/>
+                     <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                     </span>
+                  </div>
+               </form>
             </div>
          </nav>
       </header>
    </xsl:template>
-   
+
    <xsl:template name="copyright">
       <small class="copyright">
          <xsl:text>Portions of this document were copied from </xsl:text>
@@ -157,7 +149,7 @@
          <xsl:text>), All Rights Reserved.</xsl:text>
       </small>
    </xsl:template>
-   
+
    <xsl:template match="div1|div2|div3|div4|gitem[label[text() != 'Summary']]">
       <section>
          <xsl:apply-templates/>
@@ -171,7 +163,7 @@
          </h2>
       </header>
    </xsl:template>
-   
+
    <xsl:template match="gitem/label[text() = 'Summary']" priority="1"/>
 
    <xsl:template match="p|code">
@@ -206,17 +198,17 @@
 
    <xsl:template match="example[head and not(@role='signature')]">
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-             <xsl:value-of select="'Example:', head"/>
-          </h3>
-        </div>
-        <div class="panel-body">
-           <xsl:apply-templates select="node()[not(self::head)]"/>
-        </div>
+         <div class="panel-heading">
+            <h3 class="panel-title">
+               <xsl:value-of select="'Example:', head"/>
+            </h3>
+         </div>
+         <div class="panel-body">
+            <xsl:apply-templates select="node()[not(self::head)]"/>
+         </div>
       </div>
    </xsl:template>
-   
+
    <xsl:template match="eg">
       <pre>
          <code>
@@ -261,7 +253,7 @@
          <xsl:apply-templates/>
       </b>
    </xsl:template>
-   
+
    <xsl:template match="loc[@href]">
       <a href="{resolve-uri(@href, $spec-url)}">
          <xsl:value-of select="."/>
@@ -284,13 +276,13 @@
       <xsl:variable name="spec" select="$xspecs/*[@bibref=current()/@ref]"/>
       <xsl:variable name="bibl" select="key('id', @ref)"/>
       <xsl:variable name="href" select="($bibl/loc[1]/@href, $spec/@href)[1]"/>
-      
+
       <xsl:element name="{if ($href) then 'a' else 'span'}">
          <xsl:if test="$href">
             <xsl:attribute name="href" select="$href"/>
          </xsl:if>
          <xsl:text>[</xsl:text>
-         <xsl:value-of select="$bibl/@key"/>
+         <xsl:value-of select="($spec/@title, $bibl/@key)[1]"/>
          <xsl:text>]</xsl:text>
       </xsl:element>
    </xsl:template>
@@ -306,7 +298,7 @@
    <xsl:template match="xspecref">
 
       <xsl:variable name="spec" select="$xspecs/*[@specref=current()/@spec]"/>
-      
+
       <a href="{$spec/@href}#{@ref}">
          <xsl:value-of select="$spec/xml/doc(@href)//*[@id=current()/@ref]/head/string()"/>
       </a>
@@ -325,5 +317,5 @@
 
    <!-- Omit deleted section -->
    <xsl:template match="*[@diff='del']" priority="10"/>
-   
+
 </xsl:stylesheet>

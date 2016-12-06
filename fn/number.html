@@ -1,19 +1,119 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:number</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:number</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:number</h1></header><p>Returns the value indicated by <code>$arg</code> or, if <code>$arg</code> is
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:number</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:number</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:number</h1>
+         </header>
+         <p>Returns the value indicated by <code>$arg</code> or, if <code>$arg</code> is
             not specified, the context item after atomization, converted to an
-               <code>xs:double</code>. </p><section><header><h2>Signatures</h2></header><p><pre><code class="signature"><span class="function">fn:number</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span></code></pre><pre><code class="signature"><span class="function">fn:number</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>The zero-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. </p><p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. </p></section><section><header><h2>Rules</h2></header><p>Calling the zero-argument version of the function is defined to give the same result as
-            calling the single-argument version with the context item (<code>.</code>). That is,
+            <code>xs:double</code>. 
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:number</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span></code></pre><pre><code class="signature"><span class="function">fn:number</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>The zero-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. 
+            </p>
+            <p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>Calling the zero-argument version of the function is defined to give the same result
+               as
+               calling the single-argument version with the context item (<code>.</code>). That is,
                <code>fn:number()</code> is equivalent to <code>fn:number(.)</code>, as
-         defined by the rules that follow.</p><p>If <code>$arg</code> is the empty sequence or if <code>$arg</code> 
-            cannot be converted to an <code>xs:double</code>, the <code>xs:double</code> value
-               <code>NaN</code> is returned. </p><p>Otherwise, <code>$arg</code>  is converted to an
+               defined by the rules that follow.
+            </p>
+            <p>If <code>$arg</code> is the empty sequence or if <code>$arg</code> 
+               cannot be converted to an <code>xs:double</code>, the <code>xs:double</code> value
+               <code>NaN</code> is returned. 
+            </p>
+            <p>Otherwise, <code>$arg</code>  is converted to an
                <code>xs:double</code> following the rules of <a href="http://www.w3.org/TR/xpath-functions-30/#casting-to-double">Casting to xs:double</a>. If
-            the conversion to <code>xs:double</code> fails, the <code>xs:double</code> value
-               <code>NaN</code> is returned.</p></section><section><header><h2>Error Conditions</h2></header><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>] if
-               <code>$arg</code> is omitted and the context item is absent.</p><p>As a consequence of the rules given above, a type error occurs if the context
-         item cannot be atomized, or if the result of atomizing the context item is a sequence containing
-         more than one atomic value.</p></section><section><header><h2>Notes</h2></header><p>XSD 1.1 allows the string <code>+INF</code> as a representation of positive infinity;
-         XSD 1.0 does not. It is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a> whether XSD 1.1 is supported.</p><p>Generally <code>fn:number</code> returns <code>NaN</code> rather than raising a dynamic
-         error if the argument cannot be converted to <code>xs:double</code>. 
-            However, a type error is raised in the usual way if the supplied argument cannot be
-         atomized or if the result of atomization does not match the required argument type.</p></section><section><header><h2>Examples</h2></header><p>The expression <code>fn:number($item1/quantity)</code> returns <code>5.0e0</code>.</p><p>The expression <code>fn:number($item2/description)</code> returns <code>xs:double('NaN')</code>.</p><p>Assume that the context item is the <code>xs:string</code> value "<code>15</code>".
-               Then <code>fn:number()</code> returns <code>1.5e1</code>.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-number">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.w3.org/TR/xpath-functions/#func-number">XQuery 1.0 and XPath 2.0 Functions and Operators</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/number.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+               the conversion to <code>xs:double</code> fails, the <code>xs:double</code> value
+               <code>NaN</code> is returned.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>] if
+               <code>$arg</code> is omitted and the context item is absent.
+            </p>
+            <p>As a consequence of the rules given above, a type error occurs if the context
+               item cannot be atomized, or if the result of atomizing the context item is a sequence
+               containing
+               more than one atomic value.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>XSD 1.1 allows the string <code>+INF</code> as a representation of positive infinity;
+               XSD 1.0 does not. It is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a> whether XSD 1.1 is supported.
+            </p>
+            <p>Generally <code>fn:number</code> returns <code>NaN</code> rather than raising a dynamic
+               error if the argument cannot be converted to <code>xs:double</code>. 
+               However, a type error is raised in the usual way if the supplied argument cannot be
+               atomized or if the result of atomization does not match the required argument type.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The expression <code>fn:number($item1/quantity)</code> returns <code>5.0e0</code>.
+            </p>
+            <p>The expression <code>fn:number($item2/description)</code> returns <code>xs:double('NaN')</code>.
+            </p>
+            <p>Assume that the context item is the <code>xs:string</code> value "<code>15</code>".
+               Then <code>fn:number()</code> returns <code>1.5e1</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-number">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions/#func-number">XPath 2.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/number.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

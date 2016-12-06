@@ -1,12 +1,160 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>math:pow</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">math:pow</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">math:pow</h1></header><p>Returns the result of raising the first argument to the power of the
-            second.</p><section><header><h2>Signature</h2></header><p><pre><code class="signature"><span class="function">math:pow</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>math:pow</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">math:pow</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">math:pow</h1>
+         </header>
+         <p>Returns the result of raising the first argument to the power of the
+            second.
+         </p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">math:pow</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$x</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$y</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">numeric</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. </p></section><section><header><h2>Rules</h2></header><p>If <code>$x</code> is the empty sequence, the function returns the empty sequence.</p><p>If <code>$y</code> is an instance of <code>xs:integer</code>, the result is
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>If <code>$x</code> is the empty sequence, the function returns the empty sequence.
+            </p>
+            <p>If <code>$y</code> is an instance of <code>xs:integer</code>, the result is
                <code>$x</code> raised to the power of <code>$y</code> as defined in the <span>[IEEE 754-2008]</span> specification of the <code>pown</code> function applied to a
-            64-bit binary floating point value and an integer.</p><p>Otherwise <code>$y</code> is converted to an <code>xs:double</code> by numeric
-            promotion, and the result is the value of <code>$x</code> raised to the power of
+               64-bit binary floating point value and an integer.
+            </p>
+            <p>Otherwise <code>$y</code> is converted to an <code>xs:double</code> by numeric
+               promotion, and the result is the value of <code>$x</code> raised to the power of
                <code>$y</code> as defined in the <span>[IEEE 754-2008]</span> specification of the
-               <code>pow</code> function applied to two 64-bit binary floating point values.</p></section><section><header><h2>Notes</h2></header><p>The treatment of the <code>divideByZero</code> and <code>invalidOperation</code>
-            exceptions is defined in <a href="http://www.w3.org/TR/xpath-functions-30/#op.numeric">Arithmetic operators on numeric values</a>. Some of the consequences are
-            illustrated in the examples below.</p></section><section><header><h2>Examples</h2></header><p>The expression <code>math:pow((), 93.7)</code> returns <code>()</code>.</p><p>The expression <code>math:pow(2, 3)</code> returns <code>8.0e0</code>.</p><p>The expression <code>math:pow(-2, 3)</code> returns <code>-8.0e0</code>.</p><p>The expression <code>math:pow(2, -3)</code> returns <code>0.125e0</code>.</p><p>The expression <code>math:pow(-2, -3)</code> returns <code>-0.125e0</code>.</p><p>The expression <code>math:pow(2, 0)</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(0, 0)</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(xs:double('INF'), 0)</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(xs:double('NaN'), 0)</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(-math:pi(), 0)</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(0e0, 3)</code> returns <code>0.0e0</code>.</p><p>The expression <code>math:pow(0e0, 4)</code> returns <code>0.0e0</code>.</p><p>The expression <code>math:pow(-0e0, 3)</code> returns <code>-0.0e0</code>.</p><p>The expression <code>math:pow(0, 4)</code> returns <code>0.0e0</code>.</p><p>The expression <code>math:pow(0e0, -3)</code> returns <code>xs:double('INF')</code>.</p><p>The expression <code>math:pow(0e0, -4)</code> returns <code>xs:double('INF')</code>.</p><p>The expression <code>math:pow(-0e0, -3)</code> returns <code>xs:double('-INF')</code>.</p><p>The expression <code>math:pow(0, -4)</code> returns <code>xs:double('INF')</code>.</p><p>The expression <code>math:pow(16, 0.5e0)</code> returns <code>4.0e0</code>.</p><p>The expression <code>math:pow(16, 0.25e0)</code> returns <code>2.0e0</code>.</p><p>The expression <code>math:pow(0e0, -3.0e0)</code> returns <code>xs:double('INF')</code>.</p><p>The expression <code>math:pow(-0e0, -3.0e0)</code> returns <code>xs:double('-INF')</code>. (Odd-valued whole numbers are treated specially).</p><p>The expression <code>math:pow(0e0, -3.1e0)</code> returns <code>xs:double('INF')</code>.</p><p>The expression <code>math:pow(-0e0, -3.1e0)</code> returns <code>xs:double('INF')</code>.</p><p>The expression <code>math:pow(0e0, 3.0e0)</code> returns <code>0.0e0</code>.</p><p>The expression <code>math:pow(-0e0, 3.0e0)</code> returns <code>-0.0e0</code>. (Odd-valued whole numbers are treated specially).</p><p>The expression <code>math:pow(0e0, 3.1e0)</code> returns <code>0.0e0</code>.</p><p>The expression <code>math:pow(-0e0, 3.1e0)</code> returns <code>0.0e0</code>.</p><p>The expression <code>math:pow(-1, xs:double('INF'))</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(-1, xs:double('-INF'))</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(1, xs:double('INF'))</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(1, xs:double('-INF'))</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(1, xs:double('NaN'))</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:pow(-2.5e0, 2.0e0)</code> returns <code>6.25e0</code>.</p><p>The expression <code>math:pow(-2.5e0, 2.00000001e0)</code> returns <code>xs:double('NaN')</code>.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-math-pow">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/math/pow.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+               <code>pow</code> function applied to two 64-bit binary floating point values.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>The treatment of the <code>divideByZero</code> and <code>invalidOperation</code>
+               exceptions is defined in <a href="http://www.w3.org/TR/xpath-functions-30/#op.numeric">Arithmetic operators on numeric values</a>. Some of the consequences are
+               illustrated in the examples below.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The expression <code>math:pow((), 93.7)</code> returns <code>()</code>.
+            </p>
+            <p>The expression <code>math:pow(2, 3)</code> returns <code>8.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-2, 3)</code> returns <code>-8.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(2, -3)</code> returns <code>0.125e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-2, -3)</code> returns <code>-0.125e0</code>.
+            </p>
+            <p>The expression <code>math:pow(2, 0)</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(0, 0)</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(xs:double('INF'), 0)</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(xs:double('NaN'), 0)</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-math:pi(), 0)</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(0e0, 3)</code> returns <code>0.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(0e0, 4)</code> returns <code>0.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-0e0, 3)</code> returns <code>-0.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(0, 4)</code> returns <code>0.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(0e0, -3)</code> returns <code>xs:double('INF')</code>.
+            </p>
+            <p>The expression <code>math:pow(0e0, -4)</code> returns <code>xs:double('INF')</code>.
+            </p>
+            <p>The expression <code>math:pow(-0e0, -3)</code> returns <code>xs:double('-INF')</code>.
+            </p>
+            <p>The expression <code>math:pow(0, -4)</code> returns <code>xs:double('INF')</code>.
+            </p>
+            <p>The expression <code>math:pow(16, 0.5e0)</code> returns <code>4.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(16, 0.25e0)</code> returns <code>2.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(0e0, -3.0e0)</code> returns <code>xs:double('INF')</code>.
+            </p>
+            <p>The expression <code>math:pow(-0e0, -3.0e0)</code> returns <code>xs:double('-INF')</code>. (Odd-valued whole numbers are treated specially).
+            </p>
+            <p>The expression <code>math:pow(0e0, -3.1e0)</code> returns <code>xs:double('INF')</code>.
+            </p>
+            <p>The expression <code>math:pow(-0e0, -3.1e0)</code> returns <code>xs:double('INF')</code>.
+            </p>
+            <p>The expression <code>math:pow(0e0, 3.0e0)</code> returns <code>0.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-0e0, 3.0e0)</code> returns <code>-0.0e0</code>. (Odd-valued whole numbers are treated specially).
+            </p>
+            <p>The expression <code>math:pow(0e0, 3.1e0)</code> returns <code>0.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-0e0, 3.1e0)</code> returns <code>0.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-1, xs:double('INF'))</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-1, xs:double('-INF'))</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(1, xs:double('INF'))</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(1, xs:double('-INF'))</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(1, xs:double('NaN'))</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-2.5e0, 2.0e0)</code> returns <code>6.25e0</code>.
+            </p>
+            <p>The expression <code>math:pow(-2.5e0, 2.00000001e0)</code> returns <code>xs:double('NaN')</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-math-pow">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/math/pow.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

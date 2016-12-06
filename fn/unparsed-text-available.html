@@ -1,33 +1,110 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:unparsed-text-available</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:unparsed-text-available</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:unparsed-text-available</h1></header><p>Because errors in evaluating the fn:unparsed-text function are
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:unparsed-text-available</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:unparsed-text-available</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:unparsed-text-available</h1>
+         </header>
+         <p>Because errors in evaluating the fn:unparsed-text function are
             non-recoverable, these two functions are provided to allow an application to determine
-            whether a call with particular arguments would succeed.</p><section><header><h2>Signatures</h2></header><p><pre><code class="signature"><span class="function">fn:unparsed-text-available</span><span class="parenthesis">(</span><span class="variable">$href</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre><pre><code class="signature"><span class="function">fn:unparsed-text-available</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            whether a call with particular arguments would succeed.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:unparsed-text-available</span><span class="parenthesis">(</span><span class="variable">$href</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre><pre><code class="signature"><span class="function">fn:unparsed-text-available</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$href</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$encoding</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-		static base uri.
-	</p></section><section><header><h2>Rules</h2></header><p>The fn:unparsed-text-available function determines whether a call
-            on the fn:unparsed-text function with identical arguments would
-            return a string.</p><p>If the first argument is an empty sequence, the function returns false. </p><p>In other cases, the function returns true if a call on
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		static base uri.
+               	
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The fn:unparsed-text-available function determines whether a call
+               on the fn:unparsed-text function with identical arguments would
+               return a string.
+            </p>
+            <p>If the first argument is an empty sequence, the function returns false. </p>
+            <p>In other cases, the function returns true if a call on
                fn:unparsed-text with the same arguments would succeed, and
-            false if a call on fn:unparsed-text with the same arguments would
-            fail with a non-recoverable dynamic error.</p><p>The functions fn:unparsed-text and
+               false if a call on fn:unparsed-text with the same arguments would
+               fail with a non-recoverable dynamic error.
+            </p>
+            <p>The functions fn:unparsed-text and
                fn:unparsed-text-available have the same requirement for
                <a href="http://www.w3.org/TR/xpath-functions-30/#deterministic">determinism</a> as the functions
                <code>fn:doc</code> and <code>fn:doc-available</code>. This means that unless the
-            user has explicitly stated a requirement for a reduced level of determinism, either of
-            these functions if called twice with the same arguments during the course of a
-            transformation <b>must</b> return the same results each time; moreover, the
-            results of a call on fn:unparsed-text-available
-            <b>must</b> be consistent with the results of a subsequent call on
-               unparsed-text with the same arguments.</p></section><section><header><h2>Notes</h2></header><p>This requires that the unparsed-text-available function should
-            actually attempt to read the resource identified by the URI, and check that it is
-            correctly encoded and contains no characters that are invalid in XML. Implementations
-            may avoid the cost of repeating these checks for example by caching the validated
-            contents of the resource, to anticipate a subsequent call on the
+               user has explicitly stated a requirement for a reduced level of determinism, either
+               of
+               these functions if called twice with the same arguments during the course of a
+               transformation <b>must</b> return the same results each time; moreover, the
+               results of a call on fn:unparsed-text-available
+               <b>must</b> be consistent with the results of a subsequent call on
+               unparsed-text with the same arguments.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>This requires that the unparsed-text-available function should
+               actually attempt to read the resource identified by the URI, and check that it is
+               correctly encoded and contains no characters that are invalid in XML. Implementations
+               may avoid the cost of repeating these checks for example by caching the validated
+               contents of the resource, to anticipate a subsequent call on the
                unparsed-text
-            or unparsed-text-lines
-             function. Alternatively, implementations may be able to rewrite an expression
-            such as <code>if (unparsed-text-available(A)) then unparsed-text(A) else ...</code> to
-            generate a single call internally.</p><p>Since the function unparsed-text-lines succeeds or fails
-         under exactly the same circumstances as unparsed-text, the unparsed-text-availabl
-         function may equally be used to test whether a call on unparsed-text-lines would succeed.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-unparsed-text-available">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/unparsed-text-available.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+               or unparsed-text-lines
+                function. Alternatively, implementations may be able to rewrite an expression
+               such as <code>if (unparsed-text-available(A)) then unparsed-text(A) else ...</code> to
+               generate a single call internally.
+            </p>
+            <p>Since the function unparsed-text-lines succeeds or fails
+               under exactly the same circumstances as unparsed-text, the unparsed-text-availabl
+               function may equally be used to test whether a call on unparsed-text-lines would succeed.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-unparsed-text-available">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/unparsed-text-available.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

@@ -1,16 +1,104 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:document-uri</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:document-uri</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:document-uri</h1></header><p>Returns the URI of a resource where a document can be found, if available.</p><section><header><h2>Signatures</h2></header><p><pre><code class="signature"><span class="function">fn:document-uri</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:document-uri</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI</span><span class="quantifier">?</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>The zero-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. </p><p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. </p></section><section><header><h2>Rules</h2></header><p>If the argument is omitted, it defaults to the context item
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:document-uri</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:document-uri</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:document-uri</h1>
+         </header>
+         <p>Returns the URI of a resource where a document can be found, if available.</p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:document-uri</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:document-uri</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI</span><span class="quantifier">?</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>The zero-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. 
+            </p>
+            <p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>If the argument is omitted, it defaults to the context item
                (<code>.</code>). The behavior of the function if the argument is omitted is exactly
-            the same as if the context item had been passed as the argument.</p><p>If <code>$arg</code> is the empty sequence, the function returns the empty sequence.</p><p>If <code>$arg</code> is not a document node, the function returns the empty
-            sequence.</p><p>Otherwise, the function returns the value of the <code>document-uri</code> accessor
-            applied to <code>$arg</code>, as defined in <a href="http://www.w3.org/TR/xpath-datamodel-30/">[XQuery and XPath Data Model (XDM) 3.0]</a> (See
-               <a href="http://www.w3.org/TR/xpath-datamodel-30/#DocumentNodeAccessors">Accessors</a>).</p></section><section><header><h2>Error Conditions</h2></header><p>The following errors may be raised when <code>$arg</code> is omitted:</p><p>If the context
+               the same as if the context item had been passed as the argument.
+            </p>
+            <p>If <code>$arg</code> is the empty sequence, the function returns the empty sequence.
+            </p>
+            <p>If <code>$arg</code> is not a document node, the function returns the empty
+               sequence.
+            </p>
+            <p>Otherwise, the function returns the value of the <code>document-uri</code> accessor
+               applied to <code>$arg</code>, as defined in <a href="http://www.w3.org/TR/xpath-datamodel-30/">[XQuery and XPath Data Model (XDM) 3.0]</a> (See
+               <a href="http://www.w3.org/TR/xpath-datamodel-30/#DocumentNodeAccessors">Accessors</a>).
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>The following errors may be raised when <code>$arg</code> is omitted:
+            </p>
+            <p>If the context
                item is absent, dynamic error
-               [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]</p><p>If the context item is not a
-               node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].</p></section><section><header><h2>Notes</h2></header><p>In the case of a document node <code>$D</code> returned by the <code>fn:doc</code>
-            function, or a document node at the root of a tree containing a node returned by the
+               [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
+            </p>
+            <p>If the context item is not a
+               node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>In the case of a document node <code>$D</code> returned by the <code>fn:doc</code>
+               function, or a document node at the root of a tree containing a node returned by the
                <code>fn:collection</code> function, it will always be true that either
                <code>fn:document-uri($D)</code> returns the empty sequence, or that the following
-            expression is true: <code>fn:doc(fn:document-uri($D))</code> is <code>$D</code>. It is
-            <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a> whether this guarantee also holds for document nodes obtained by
-            other means, for example a document node passed as the initial context node of a query
-            or transformation.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-document-uri">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.w3.org/TR/xpath-functions/#func-document-uri">XQuery 1.0 and XPath 2.0 Functions and Operators</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/document-uri.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+               expression is true: <code>fn:doc(fn:document-uri($D))</code> is <code>$D</code>. It is
+               <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a> whether this guarantee also holds for document nodes obtained by
+               other means, for example a document node passed as the initial context node of a query
+               or transformation.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-document-uri">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions/#func-document-uri">XPath 2.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/document-uri.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

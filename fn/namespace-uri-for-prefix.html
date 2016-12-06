@@ -1,13 +1,98 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:namespace-uri-for-prefix</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:namespace-uri-for-prefix</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:namespace-uri-for-prefix</h1></header><p>Returns the namespace URI of one of the in-scope namespaces for
-               <code>$element</code>, identified by its namespace prefix.</p><section><header><h2>Signature</h2></header><p><pre><code class="signature"><span class="function">fn:namespace-uri-for-prefix</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:namespace-uri-for-prefix</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:namespace-uri-for-prefix</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:namespace-uri-for-prefix</h1>
+         </header>
+         <p>Returns the namespace URI of one of the in-scope namespaces for
+            <code>$element</code>, identified by its namespace prefix.
+         </p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:namespace-uri-for-prefix</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$prefix</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$element</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI</span><span class="quantifier">?</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. </p></section><section><header><h2>Rules</h2></header><p>If <code>$element</code> has an in-scope namespace whose namespace prefix is equal to
-               <code>$prefix</code>, the function returns the namespace URI of that namespace.</p><p>If <code>$element</code> has no in-scope namespace whose namespace prefix is equal to
-            <code>$prefix</code>, the function returns the empty sequence.</p><p>If <code>$prefix</code> is the zero-length string or the empty
-            sequence, then if <code>$element</code> has a default namespace (that is, a namespace
-            node with no name), the function returns the namespace URI of the default namespace. If
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI</span><span class="quantifier">?</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>If <code>$element</code> has an in-scope namespace whose namespace prefix is equal to
+               <code>$prefix</code>, the function returns the namespace URI of that namespace.
+            </p>
+            <p>If <code>$element</code> has no in-scope namespace whose namespace prefix is equal to
+               <code>$prefix</code>, the function returns the empty sequence.
+            </p>
+            <p>If <code>$prefix</code> is the zero-length string or the empty
+               sequence, then if <code>$element</code> has a default namespace (that is, a namespace
+               node with no name), the function returns the namespace URI of the default namespace.
+               If
                <code>$element</code> has no default namespace, the function returns the empty
-            sequence.</p><p>Prefixes are equal only if their Unicode codepoints match exactly.</p></section><section><header><h2>Examples</h2></header><p>let <code>$e</code> := <pre><code><span class="es">&lt;</span><span class="en">z:a</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://example.org/one</span><span class="z">"</span><span class="z"> </span><span class="atn">xmlns:z</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://example.org/two</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
+               sequence.
+            </p>
+            <p>Prefixes are equal only if their Unicode codepoints match exactly.</p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>let <code>$e</code> := <pre><code><span class="es">&lt;</span><span class="en">z:a</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://example.org/one</span><span class="z">"</span><span class="z"> </span><span class="atn">xmlns:z</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://example.org/two</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">b</span><span class="z"> </span><span class="atn">xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av"></span><span class="z">"</span><span class="sc">/&gt;</span><span class="txt">
-</span><span class="ez">&lt;/</span><span class="cl">z:a</span><span class="ec">&gt;</span><span class="txt"></span></code></pre></p><p>The expression <code>fn:namespace-uri-for-prefix("z", $e)</code> returns <code>"http://example.org/two"</code>.</p><p>The expression <code>fn:namespace-uri-for-prefix("", $e)</code> returns <code>"http://example.org/one"</code>.</p><p>The expression <code>fn:namespace-uri-for-prefix((), $e)</code> returns <code>"http://example.org/one"</code>.</p><p>The expression <code>fn:namespace-uri-for-prefix("xml", $e)</code> returns <code>"http://www.w3.org/XML/1998/namespace"</code>.</p><p>The expression <code>fn:namespace-uri-for-prefix("xml", $e)</code> returns <code>"http://www.w3.org/XML/1998/namespace"</code>.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-namespace-uri-for-prefix">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.w3.org/TR/xpath-functions/#func-namespace-uri-for-prefix">XQuery 1.0 and XPath 2.0 Functions and Operators</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/namespace-uri-for-prefix.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+</span><span class="ez">&lt;/</span><span class="cl">z:a</span><span class="ec">&gt;</span><span class="txt"></span></code></pre></p>
+            <p>The expression <code>fn:namespace-uri-for-prefix("z", $e)</code> returns <code>"http://example.org/two"</code>.
+            </p>
+            <p>The expression <code>fn:namespace-uri-for-prefix("", $e)</code> returns <code>"http://example.org/one"</code>.
+            </p>
+            <p>The expression <code>fn:namespace-uri-for-prefix((), $e)</code> returns <code>"http://example.org/one"</code>.
+            </p>
+            <p>The expression <code>fn:namespace-uri-for-prefix("xml", $e)</code> returns <code>"http://www.w3.org/XML/1998/namespace"</code>.
+            </p>
+            <p>The expression <code>fn:namespace-uri-for-prefix("xml", $e)</code> returns <code>"http://www.w3.org/XML/1998/namespace"</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-namespace-uri-for-prefix">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions/#func-namespace-uri-for-prefix">XPath 2.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/namespace-uri-for-prefix.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

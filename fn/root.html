@@ -1,15 +1,86 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:root</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:root</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:root</h1></header><p>Returns the root of the tree to which <code>$arg</code> belongs. This will
-            usually, but not necessarily, be a document node.</p><section><header><h2>Signatures</h2></header><p><pre><code class="signature"><span class="function">fn:root</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code></pre><pre><code class="signature"><span class="function">fn:root</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>The zero-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. </p><p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. </p></section><section><header><h2>Rules</h2></header><p>If the function is called without an argument, the context item (<code>.</code>) is used
-            as the default argument. The behavior of the function if the argument is omitted is
-            exactly the same as if the context item had been passed as the argument.</p><p>The function returns the value of the expression
-               <code>($arg/ancestor-or-self::node())[1]</code>.</p></section><section><header><h2>Error Conditions</h2></header><p>The following errors may be raised when <code>$arg</code> is omitted:</p><p>If the context
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:root</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:root</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:root</h1>
+         </header>
+         <p>Returns the root of the tree to which <code>$arg</code> belongs. This will
+            usually, but not necessarily, be a document node.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:root</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span></code></pre><pre><code class="signature"><span class="function">fn:root</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>The zero-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. 
+            </p>
+            <p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>If the function is called without an argument, the context item (<code>.</code>) is used
+               as the default argument. The behavior of the function if the argument is omitted is
+               exactly the same as if the context item had been passed as the argument.
+            </p>
+            <p>The function returns the value of the expression
+               <code>($arg/ancestor-or-self::node())[1]</code>.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>The following errors may be raised when <code>$arg</code> is omitted:
+            </p>
+            <p>If the context
                item is absent, dynamic error
-               [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]</p><p>If the context item is not a
-               node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].</p></section><section><header><h2>Examples</h2></header><p>These examples use some variables which could be defined in <a href="http://www.w3.org/TR/xquery/">[XQuery 1.0: An XML Query Language]</a>
-               as:</p><pre><code><span class="open"></span><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$i</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="es">&lt;</span><span class="en">tool</span><span class="z">&gt;</span><span class="txt">wrench</span><span class="sc">&lt;/</span><span class="cl">tool</span><span class="z">&gt;</span><span class="open"></span><span class="whitespace">
+               [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
+            </p>
+            <p>If the context item is not a
+               node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>These examples use some variables which could be defined in <a href="http://www.w3.org/TR/xquery/">[XQuery 1.0: An XML Query Language]</a>
+               as:
+            </p><pre><code><span class="open"></span><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$i</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="es">&lt;</span><span class="en">tool</span><span class="z">&gt;</span><span class="txt">wrench</span><span class="sc">&lt;/</span><span class="cl">tool</span><span class="z">&gt;</span><span class="open"></span><span class="whitespace">
 </span><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$o</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="es">&lt;</span><span class="en">order</span><span class="z">&gt;</span><span class="txt"> </span><span class="op">{</span><span class="variable">$i</span><span class="op">}</span><span class="txt"> </span><span class="es">&lt;</span><span class="en">quantity</span><span class="z">&gt;</span><span class="txt">5</span><span class="sc">&lt;/</span><span class="cl">quantity</span><span class="z">&gt;</span><span class="txt"> </span><span class="sc">&lt;/</span><span class="cl">order</span><span class="z">&gt;</span><span class="whitespace">
 </span><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$odoc</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="axis">document</span><span class="whitespace"> </span><span class="op">{</span><span class="variable">$o</span><span class="op">}</span><span class="whitespace">
-</span><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$newi</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="variable">$o</span><span class="step">/</span><span class="qname">tool</span></code></pre><p>Or they could be defined in <a href="http://www.w3.org/TR/xslt20/">[XSL Transformations (XSLT) Version 2.0]</a> as:</p><pre><code><span class="es">&lt;</span><span class="enxsl">xsl:variable</span><span class="z"> </span><span class="atn">name</span><span class="atneq">=</span><span class="z">"</span><span class="vname">i</span><span class="z">"</span><span class="z"> </span><span class="atn">as</span><span class="atneq">=</span><span class="z">"</span><span class="av">element()</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
+</span><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$newi</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="variable">$o</span><span class="step">/</span><span class="qname">tool</span></code></pre><p>Or they could be defined in <a href="http://www.w3.org/TR/xslt20/">[XSL Transformations (XSLT) Version 2.0]</a> as:
+            </p><pre><code><span class="es">&lt;</span><span class="enxsl">xsl:variable</span><span class="z"> </span><span class="atn">name</span><span class="atneq">=</span><span class="z">"</span><span class="vname">i</span><span class="z">"</span><span class="z"> </span><span class="atn">as</span><span class="atneq">=</span><span class="z">"</span><span class="av">element()</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
   </span><span class="es">&lt;</span><span class="en">tool</span><span class="scx">&gt;</span><span class="txt">wrench</span><span class="ez">&lt;/</span><span class="cl">tool</span><span class="ec">&gt;</span><span class="txt">
 </span><span class="ez">&lt;/</span><span class="clxsl">xsl:variable</span><span class="ec">&gt;</span><span class="txt">
 
@@ -25,8 +96,32 @@
 </span><span class="ez">&lt;/</span><span class="clxsl">xsl:variable</span><span class="ec">&gt;</span><span class="txt">
 
 </span><span class="es">&lt;</span><span class="enxsl">xsl:variable</span><span class="z"> </span><span class="atn">name</span><span class="atneq">=</span><span class="z">"</span><span class="vname">newi</span><span class="z">"</span><span class="z"> </span><span class="atn">select</span><span class="atneq">=</span><span class="z">"</span><span class="variable">$o</span><span class="step">/</span><span class="qname">tool</span><span class="z">"</span><span class="sc">/&gt;</span><span class="txt"></span></code></pre><p><code>fn:root($i)</code> returns the element node <code>$i</code>
-            </p><p><code>fn:root($o/quantity)</code> returns the element node <code>$o</code>
-            </p><p><code>fn:root($odoc//quantity)</code> returns the document node <code>$odoc</code>
-            </p><p><code>fn:root($newi)</code> returns the element node <code>$o</code>
-            </p><p>The final three examples could be made type-safe by wrapping their operands with
-                  <code>fn:exactly-one()</code>.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-root">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.w3.org/TR/xpath-functions/#func-root">XQuery 1.0 and XPath 2.0 Functions and Operators</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/root.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+               
+            </p>
+            <p><code>fn:root($o/quantity)</code> returns the element node <code>$o</code>
+               
+            </p>
+            <p><code>fn:root($odoc//quantity)</code> returns the document node <code>$odoc</code>
+               
+            </p>
+            <p><code>fn:root($newi)</code> returns the element node <code>$o</code>
+               
+            </p>
+            <p>The final three examples could be made type-safe by wrapping their operands with
+               <code>fn:exactly-one()</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-root">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions/#func-root">XPath 2.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/root.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

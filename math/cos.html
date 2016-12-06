@@ -1,8 +1,108 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>math:cos</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">math:cos</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">math:cos</h1></header><p>Returns the cosine of the argument, expressed in radians.</p><section><header><h2>Signature</h2></header><p><pre><code class="signature"><span class="function">math:cos</span><span class="parenthesis">(</span><span class="variable">$θ</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. </p></section><section><header><h2>Rules</h2></header><p>If <code>$</code><i>θ</i> is the empty sequence, the function returns the empty
-            sequence.</p><p>If <code>$</code><i>θ</i> is positive or negative infinity, or <code>NaN</code>,
-            then the result is <code>NaN</code>.</p><p>Otherwise the result is the cosine of <code>$</code><i>θ</i>,
-            treated as an angle in radians, as defined in the <span>[IEEE 754-2008]</span>
-            specification of the <code>cos</code> function applied to 64-bit binary floating point
-            values.</p></section><section><header><h2>Notes</h2></header><p>The treatment of the <code>invalidOperation</code> exception is defined in <a href="http://www.w3.org/TR/xpath-functions-30/#op.numeric">Arithmetic operators on numeric values</a>. </p><p>If <code>$</code><i>θ</i> is positive or negative zero, the result is
-               <code>$</code><i>θ</i>.</p><p>If <code>$</code><i>θ</i> is positive or negative infinity, or <code>NaN</code>,
-            then the result is <code>NaN</code>.</p><p>Otherwise the result is always in the range -1.0e0 to +1.0e0</p></section><section><header><h2>Examples</h2></header><p>The expression <code>math:cos(())</code> returns <code>()</code>.</p><p>The expression <code>math:cos(0)</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:cos(-0.0e0)</code> returns <code>1.0e0</code>.</p><p>The expression <code>math:cos(math:pi() div 2)</code> returns <code>0.0e0</code> (approximately).</p><p>The expression <code>math:cos(-math:pi() div 2)</code> returns <code>0.0e0</code> (approximately).</p><p>The expression <code>math:cos(math:pi())</code> returns <code>-1.0e0</code>.</p><p>The expression <code>math:cos(xs:double('NaN'))</code> returns <code>xs:double('NaN')</code>.</p><p>The expression <code>math:cos(xs:double('INF'))</code> returns <code>xs:double('NaN')</code>.</p><p>The expression <code>math:cos(xs:double('-INF'))</code> returns <code>xs:double('NaN')</code>.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-math-cos">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/math/cos.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>math:cos</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">math:cos</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">math:cos</h1>
+         </header>
+         <p>Returns the cosine of the argument, expressed in radians.</p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">math:cos</span><span class="parenthesis">(</span><span class="variable">$θ</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>If <code>$</code><i>θ</i> is the empty sequence, the function returns the empty
+               sequence.
+            </p>
+            <p>If <code>$</code><i>θ</i> is positive or negative infinity, or <code>NaN</code>,
+               then the result is <code>NaN</code>.
+            </p>
+            <p>Otherwise the result is the cosine of <code>$</code><i>θ</i>,
+               treated as an angle in radians, as defined in the <span>[IEEE 754-2008]</span>
+               specification of the <code>cos</code> function applied to 64-bit binary floating point
+               values.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>The treatment of the <code>invalidOperation</code> exception is defined in <a href="http://www.w3.org/TR/xpath-functions-30/#op.numeric">Arithmetic operators on numeric values</a>. 
+            </p>
+            <p>If <code>$</code><i>θ</i> is positive or negative zero, the result is
+               <code>$</code><i>θ</i>.
+            </p>
+            <p>If <code>$</code><i>θ</i> is positive or negative infinity, or <code>NaN</code>,
+               then the result is <code>NaN</code>.
+            </p>
+            <p>Otherwise the result is always in the range -1.0e0 to +1.0e0</p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The expression <code>math:cos(())</code> returns <code>()</code>.
+            </p>
+            <p>The expression <code>math:cos(0)</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:cos(-0.0e0)</code> returns <code>1.0e0</code>.
+            </p>
+            <p>The expression <code>math:cos(math:pi() div 2)</code> returns <code>0.0e0</code> (approximately).
+            </p>
+            <p>The expression <code>math:cos(-math:pi() div 2)</code> returns <code>0.0e0</code> (approximately).
+            </p>
+            <p>The expression <code>math:cos(math:pi())</code> returns <code>-1.0e0</code>.
+            </p>
+            <p>The expression <code>math:cos(xs:double('NaN'))</code> returns <code>xs:double('NaN')</code>.
+            </p>
+            <p>The expression <code>math:cos(xs:double('INF'))</code> returns <code>xs:double('NaN')</code>.
+            </p>
+            <p>The expression <code>math:cos(xs:double('-INF'))</code> returns <code>xs:double('NaN')</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-math-cos">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/math/cos.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

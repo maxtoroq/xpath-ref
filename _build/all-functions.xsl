@@ -10,7 +10,7 @@
    <xsl:param name="index-only" as="xs:boolean" select="false()"/>
    <xsl:param name="spec-v2" as="document-node()" required="yes"/>
    
-   <xsl:output name="html" method="xhtml" indent="no" omit-xml-declaration="yes" use-character-maps="html"/>
+   <xsl:output name="html" method="xhtml" indent="yes" omit-xml-declaration="yes" use-character-maps="html"/>
 
    <xsl:character-map name="html">
       <xsl:output-character character="&#xa0;" string="&amp;nbsp;"/>
@@ -29,7 +29,7 @@
                <title>XPath Reference</title>
                <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css"/>
                <link rel="stylesheet" href="bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css"/>
-               <link rel="stylesheet" href="site.css"/>
+               <link rel="stylesheet" href="css/site.css"/>
                <link rel="shortcut icon" href="favicon.ico"/>
                <meta name="description" content="XPath 3.0 Functions Reference"/>
             </head>

@@ -1,27 +1,134 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:substring-before</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:substring-before</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:substring-before</h1></header><p>Returns the part of <code>$arg1</code> that precedes the first occurrence of
-               <code>$arg2</code>, taking collations into account.</p><section><header><h2>Signatures</h2></header><p><pre><code class="signature"><span class="function">fn:substring-before</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:substring-before</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:substring-before</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:substring-before</h1>
+         </header>
+         <p>Returns the part of <code>$arg1</code> that precedes the first occurrence of
+            <code>$arg2</code>, taking collations into account.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:substring-before</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg1</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$arg2</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:substring-before</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg1</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$arg2</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$collation</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>The two-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-		collations.
-	</p><p>The three-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-		collations, and static base uri.
-	</p></section><section><header><h2>Rules</h2></header><p> If the value of <code>$arg1</code> or <code>$arg2</code> is the empty sequence, or
-            contains only ignorable collation units, it is interpreted as the zero-length
-            string.</p><p>If the value of <code>$arg2</code> is the zero-length string, then the function returns
-            the zero-length string. </p><p>If the value of <code>$arg1</code> does not contain a string that is equal to the value
-            of <code>$arg2</code>, then the function returns the zero-length string. </p><p>The collation used by this function is determined according to the rules in <a href="http://www.w3.org/TR/xpath-functions-30/#choosing-a-collation">Choosing a collation</a>.</p><p>The function returns the substring of the value of <code>$arg1</code> that precedes in
-            the value of <code>$arg1</code> the first occurrence of a sequence of collation units
-            that provides a minimal match to the collation units of <code>$arg2</code>
-            according to the collation that is used.</p><blockquote><p>Minimal match is defined in <a href="http://www.unicode.org/reports/tr10/">[Unicode Collation Algorithm]</a>. </p></blockquote></section><section><header><h2>Error Conditions</h2></header><p>A dynamic error <b>may</b> be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCH0004">ERRFOCH0004</a>] if the
-            specified collation does not support collation units.</p></section><section><header><h2>Examples</h2></header><p>The collation used in these examples, <code>http://example.com/CollationA</code> is a
-               collation in which both "-" and "*" are ignorable collation units.</p><p>"Ignorable collation unit" is equivalent to "ignorable collation element" in <a href="http://www.unicode.org/reports/tr10/">[Unicode Collation Algorithm]</a>.</p><p>The expression <code>fn:substring-before ( "tattoo", "attoo")</code> returns <code>"t"</code>.</p><p>The expression <code>fn:substring-before ( "tattoo", "tatto")</code> returns <code>""</code>.</p><p>The expression <code>fn:substring-before ((), ())</code> returns <code>""</code>.</p><p>The expression <code>fn:substring-before ( "abcdefghi", "--d-e-",
-                  "http://example.com/CollationA")</code> returns <code>"abc"</code>.</p><p>The expression <code>fn:substring-before ( "abc--d-e-fghi", "--d-e-",
-                  "http://example.com/CollationA")</code> returns <code>"abc--"</code>.</p><p>The expression <code>fn:substring-before ( "a*b*c*d*e*f*g*h*i*", "***cde",
-                  "http://example.com/CollationA")</code> returns <code>"a*b*"</code>.</p><p>The expression <code>fn:substring-before ( "Eureka!", "--***-*---",
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>The two-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		collations.
+               	
+            </p>
+            <p>The three-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		collations, and static base uri.
+               	
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p> If the value of <code>$arg1</code> or <code>$arg2</code> is the empty sequence, or
+               contains only ignorable collation units, it is interpreted as the zero-length
+               string.
+            </p>
+            <p>If the value of <code>$arg2</code> is the zero-length string, then the function returns
+               the zero-length string. 
+            </p>
+            <p>If the value of <code>$arg1</code> does not contain a string that is equal to the value
+               of <code>$arg2</code>, then the function returns the zero-length string. 
+            </p>
+            <p>The collation used by this function is determined according to the rules in <a href="http://www.w3.org/TR/xpath-functions-30/#choosing-a-collation">Choosing a collation</a>.
+            </p>
+            <p>The function returns the substring of the value of <code>$arg1</code> that precedes in
+               the value of <code>$arg1</code> the first occurrence of a sequence of collation units
+               that provides a minimal match to the collation units of <code>$arg2</code>
+               according to the collation that is used.
+            </p>
+            <blockquote>
+               <p>Minimal match is defined in <a href="http://www.unicode.org/reports/tr10/">[Unicode Collation Algorithm]</a>. 
+               </p>
+            </blockquote>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>A dynamic error <b>may</b> be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCH0004">ERRFOCH0004</a>] if the
+               specified collation does not support collation units.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The collation used in these examples, <code>http://example.com/CollationA</code> is a
+               collation in which both "-" and "*" are ignorable collation units.
+            </p>
+            <p>"Ignorable collation unit" is equivalent to "ignorable collation element" in <a href="http://www.unicode.org/reports/tr10/">[Unicode Collation Algorithm]</a>.
+            </p>
+            <p>The expression <code>fn:substring-before ( "tattoo", "attoo")</code> returns <code>"t"</code>.
+            </p>
+            <p>The expression <code>fn:substring-before ( "tattoo", "tatto")</code> returns <code>""</code>.
+            </p>
+            <p>The expression <code>fn:substring-before ((), ())</code> returns <code>""</code>.
+            </p>
+            <p>The expression <code>fn:substring-before ( "abcdefghi", "--d-e-",
+                  "http://example.com/CollationA")</code> returns <code>"abc"</code>.
+            </p>
+            <p>The expression <code>fn:substring-before ( "abc--d-e-fghi", "--d-e-",
+                  "http://example.com/CollationA")</code> returns <code>"abc--"</code>.
+            </p>
+            <p>The expression <code>fn:substring-before ( "a*b*c*d*e*f*g*h*i*", "***cde",
+                  "http://example.com/CollationA")</code> returns <code>"a*b*"</code>.
+            </p>
+            <p>The expression <code>fn:substring-before ( "Eureka!", "--***-*---",
                   "http://example.com/CollationA")</code> returns <code>""</code>. (The second argument contains only ignorable collation units and is
-                  equivalent to the zero-length string.).</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-substring-before">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.w3.org/TR/xpath-functions/#func-substring-before">XQuery 1.0 and XPath 2.0 Functions and Operators</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/substring-before.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+               equivalent to the zero-length string.).
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-substring-before">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions/#func-substring-before">XPath 2.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/substring-before.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

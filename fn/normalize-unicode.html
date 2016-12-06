@@ -1,43 +1,184 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" /><title>fn:normalize-unicode</title><link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" /><link rel="stylesheet" href="../site.css" /><link rel="shortcut icon" href="../favicon.ico" /></head><body><header role="navigation"><nav class="container"><div class="col-md-9 breadcrumb-col"><ol class="breadcrumb" itemprop="breadcrumb"><li><a href="../">XPath Reference</a></li><li class="active">fn:normalize-unicode</li></ol></div><div xmlns:gcse="http://www.google.com/cse" class="col-md-3 search-col"><script>(function() { var cx = '012329136009221431645:sv1eakamyny'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })();</script><gcse:searchbox-only></gcse:searchbox-only></div></nav></header><article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage"><header><h1 class="page-header">fn:normalize-unicode</h1></header><p>Returns the value of <code>$arg</code> after applying Unicode
-            normalization.</p><section><header><h2>Signatures</h2></header><p><pre><code class="signature"><span class="function">fn:normalize-unicode</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:normalize-unicode</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:normalize-unicode</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:normalize-unicode</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search for..." /><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:normalize-unicode</h1>
+         </header>
+         <p>Returns the value of <code>$arg</code> after applying Unicode
+            normalization.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header>
+            <p><pre><code class="signature"><span class="function">fn:normalize-unicode</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:normalize-unicode</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$normalizationForm</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p></section><section><header><h2>Properties</h2></header><p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. </p></section><section><header><h2>Rules</h2></header><p>If the value of <code>$arg</code> is the empty sequence, the function returns the
-            zero-length string.</p><p>If the single-argument version of the function is used, the result is the same as
-            calling the two-argument version with <code>$normalizationForm</code> set to the string
-            "NFC".</p><p>Otherwise, the function returns the value of <code>$arg</code> normalized according to
-            the rules of the normalization form identified by the value of
-               <code>$normalizationForm</code>.</p><p>The effective value of <code>$normalizationForm</code> is the value of the expression
-               <code>fn:upper-case(fn:normalize-space($normalizationForm))</code>.</p><ul><li><p>If the effective value of <code>$normalizationForm</code> is NFC,
-                  then the function returns the value of <code>$arg</code> converted to Unicode
-                  Normalization Form C (NFC).</p></li><li><p>If the effective value of <code>$normalizationForm</code> is NFD,
-                  then the function returns the value of <code>$arg</code> converted to Unicode
-                  Normalization Form D (NFD).</p></li><li><p>If the effective value of <code>$normalizationForm</code> is NFKC,
-                  then the function returns the value of <code>$arg</code> in Unicode Normalization
-                  Form KC (NFKC).</p></li><li><p>If the effective value of <code>$normalizationForm</code> is NFKD,
-                  then the function returns the value of <code>$arg</code> converted to Unicode
-                  Normalization Form KD (NFKD).</p></li><li><p>If the effective value of <code>$normalizationForm</code> is
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p>
+         </section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>If the value of <code>$arg</code> is the empty sequence, the function returns the
+               zero-length string.
+            </p>
+            <p>If the single-argument version of the function is used, the result is the same as
+               calling the two-argument version with <code>$normalizationForm</code> set to the string
+               "NFC".
+            </p>
+            <p>Otherwise, the function returns the value of <code>$arg</code> normalized according to
+               the rules of the normalization form identified by the value of
+               <code>$normalizationForm</code>.
+            </p>
+            <p>The effective value of <code>$normalizationForm</code> is the value of the expression
+               <code>fn:upper-case(fn:normalize-space($normalizationForm))</code>.
+            </p>
+            <ul>
+               <li>
+                  <p>If the effective value of <code>$normalizationForm</code> is NFC,
+                     then the function returns the value of <code>$arg</code> converted to Unicode
+                     Normalization Form C (NFC).
+                  </p>
+               </li>
+               <li>
+                  <p>If the effective value of <code>$normalizationForm</code> is NFD,
+                     then the function returns the value of <code>$arg</code> converted to Unicode
+                     Normalization Form D (NFD).
+                  </p>
+               </li>
+               <li>
+                  <p>If the effective value of <code>$normalizationForm</code> is NFKC,
+                     then the function returns the value of <code>$arg</code> in Unicode Normalization
+                     Form KC (NFKC).
+                  </p>
+               </li>
+               <li>
+                  <p>If the effective value of <code>$normalizationForm</code> is NFKD,
+                     then the function returns the value of <code>$arg</code> converted to Unicode
+                     Normalization Form KD (NFKD).
+                  </p>
+               </li>
+               <li>
+                  <p>If the effective value of <code>$normalizationForm</code> is
                      FULLY-NORMALIZED, then the function returns the value of
-                     <code>$arg</code> converted to fully normalized form. </p></li><li><p>If the effective value of <code>$normalizationForm</code> is the zero-length
-                  string, no normalization is performed and <code>$arg</code> is returned.</p></li></ul><p>Normalization forms NFC, NFD, NFKC, and NFKD, and the algorithms to be
-            used for converting a string to each of these forms, are defined in <a href="http://www.unicode.org/reports/tr15/">[Unicode Normalization Forms]</a>.</p><p>The motivation for normalization form FULLY-NORMALIZED is explained in
+                     <code>$arg</code> converted to fully normalized form. 
+                  </p>
+               </li>
+               <li>
+                  <p>If the effective value of <code>$normalizationForm</code> is the zero-length
+                     string, no normalization is performed and <code>$arg</code> is returned.
+                  </p>
+               </li>
+            </ul>
+            <p>Normalization forms NFC, NFD, NFKC, and NFKD, and the algorithms to be
+               used for converting a string to each of these forms, are defined in <a href="http://www.unicode.org/reports/tr15/">[Unicode Normalization Forms]</a>.
+            </p>
+            <p>The motivation for normalization form FULLY-NORMALIZED is explained in
                <a href="http://www.w3.org/TR/2004/WD-charmod-norm-20040225/">[Character Model for the World Wide Web 1.0: Normalization]</a>. However, as that specification did not
-            progress beyond working draft status, the normative specification is as follows:</p><ul><li><p>A string is fully-normalized if (a) it is in normalization form NFC
-                  as defined in <a href="http://www.unicode.org/reports/tr15/">[Unicode Normalization Forms]</a>, and (b) it does not start
-                  with a composing character.</p></li><li><p>A composing character is a character that is one or both of the following:</p><ul><li><p>the second character in the canonical decomposition mapping of some
-                        character that is not listed in the Composition Exclusion Table defined in
-                           <a href="http://www.unicode.org/reports/tr15/">[Unicode Normalization Forms]</a>;</p></li><li><p>of non-zero canonical combining class (as defined in <a href="http://www.unicode.org/standard/versions/">[The Unicode Standard]</a>).</p></li></ul></li><li><p>A string is converted to FULLY-NORMALIZED form as follows:</p><ul><li><p>if the first character in the string is a composing character, prepend a
-                        single space (x20);</p></li><li><p>convert the resulting string to normalization form NFC.</p></li></ul></li></ul><p>Conforming implementations <b>must</b> support normalization form "NFC" and
+               progress beyond working draft status, the normative specification is as follows:
+            </p>
+            <ul>
+               <li>
+                  <p>A string is fully-normalized if (a) it is in normalization form NFC
+                     as defined in <a href="http://www.unicode.org/reports/tr15/">[Unicode Normalization Forms]</a>, and (b) it does not start
+                     with a composing character.
+                  </p>
+               </li>
+               <li>
+                  <p>A composing character is a character that is one or both of the following:</p>
+                  <ul>
+                     <li>
+                        <p>the second character in the canonical decomposition mapping of some
+                           character that is not listed in the Composition Exclusion Table defined in
+                           <a href="http://www.unicode.org/reports/tr15/">[Unicode Normalization Forms]</a>;
+                        </p>
+                     </li>
+                     <li>
+                        <p>of non-zero canonical combining class (as defined in <a href="http://www.unicode.org/standard/versions/">[The Unicode Standard]</a>).
+                        </p>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <p>A string is converted to FULLY-NORMALIZED form as follows:</p>
+                  <ul>
+                     <li>
+                        <p>if the first character in the string is a composing character, prepend a
+                           single space (x20);
+                        </p>
+                     </li>
+                     <li>
+                        <p>convert the resulting string to normalization form NFC.</p>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+            <p>Conforming implementations <b>must</b> support normalization form "NFC" and
                <b>may</b> support normalization forms "NFD", "NFKC", "NFKD", and
-            "FULLY-NORMALIZED". They <b>may</b> also support other normalization forms
-            with <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a> semantics. </p><p>It is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-implementation-defined">implementation-defined</a> which version of
-            Unicode (and therefore, of the normalization algorithms and their underlying
-            data) is supported by the implementation. See <a href="http://www.unicode.org/reports/tr15/">[Unicode Normalization Forms]</a> for details of the
-            stability policy regarding changes to the normalization rules in future
-            versions of Unicode. If the input string contains codepoints that are
-            unassigned in the relevant version of Unicode, or for which no normalization
-            rules are defined, the <code>fn:normalize-unicode</code> function leaves such codepoints
-            unchanged. If the implementation supports the requested normalization form then
-            it <b>must</b> be able to handle every input string without raising an error.</p></section><section><header><h2>Error Conditions</h2></header><p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCH0003">ERRFOCH0003</a>] if the effective value of the
+               "FULLY-NORMALIZED". They <b>may</b> also support other normalization forms
+               with <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a> semantics. 
+            </p>
+            <p>It is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-implementation-defined">implementation-defined</a> which version of
+               Unicode (and therefore, of the normalization algorithms and their underlying
+               data) is supported by the implementation. See <a href="http://www.unicode.org/reports/tr15/">[Unicode Normalization Forms]</a> for details of the
+               stability policy regarding changes to the normalization rules in future
+               versions of Unicode. If the input string contains codepoints that are
+               unassigned in the relevant version of Unicode, or for which no normalization
+               rules are defined, the <code>fn:normalize-unicode</code> function leaves such codepoints
+               unchanged. If the implementation supports the requested normalization form then
+               it <b>must</b> be able to handle every input string without raising an error.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCH0003">ERRFOCH0003</a>] if the effective value of the
                <code>$normalizationForm</code> argument is not one of the values supported by the
-            implementation.</p></section><footer><h2>See Also</h2><ul><li><a href="http://www.w3.org/TR/xpath-functions-30/#func-normalize-unicode">XPath and XQuery Functions and Operators 3.0</a></li><li><a href="http://www.w3.org/TR/xpath-functions/#func-normalize-unicode">XQuery 1.0 and XPath 2.0 Functions and Operators</a></li><li><a href="http://www.saxonica.com/html/documentation/functions/fn/normalize-unicode.html">Saxon Function Library</a></li></ul></footer></article><footer><div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div></footer></body></html>
+               implementation.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-normalize-unicode">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions/#func-normalize-unicode">XPath 2.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/normalize-unicode.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">XPath and XQuery Functions and Operators 3.0</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>
