@@ -12,7 +12,7 @@
    <xsl:key name="id" match="*[@id]" use="@id"/>
 
    <xsl:variable name="xspecs" xmlns="">
-      <spec href="http://www.w3.org/TR/xpath-30/" specref="XP30" errorref="XP" bibref="xpath-30">
+      <spec href="http://www.w3.org/TR/xpath-30/" specref="XP30" errorref="XP" bibref="xpath-30" title="XPath 3.0">
          <xml href="../_build/specs/xpath-30.xml"/>
       </spec>
       <spec href="http://www.w3.org/TR/xpath-datamodel-30/" specref="DM30" errorref="DM" bibref="xpath-datamodel-30" title="Data Model (XDM) 3.0">
@@ -22,9 +22,9 @@
          <xml href="../_build/specs/xslt-xquery-serialization-30.xml"/>
       </spec>
       <spec href="http://www.w3.org/TR/xquery-semantics/" bibref="xquery-semantics"/>
-      <spec href="http://www.w3.org/TR/xml/" bibref="xml"/>
-      <spec href="http://www.w3.org/TR/xinclude/" bibref="xinclude"/>
-      <spec href="http://www.w3.org/TR/xquery/" bibref="xquery"/>
+      <spec href="http://www.w3.org/TR/xml/" bibref="xml" title="XML 1.0"/>
+      <spec href="http://www.w3.org/TR/xinclude/" bibref="xinclude" title="XInclude 1.0"/>
+      <spec href="http://www.w3.org/TR/xquery/" bibref="xquery" title="XQuery 1.0"/>
       <spec href="http://www.w3.org/TR/xslt20/" bibref="xslt20" title="XSLT 2.0"/>
       <spec href="http://www.w3.org/TR/xslt-30/" bibref="xslt-30" title="XSLT 3.0"/>
    </xsl:variable>
