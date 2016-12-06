@@ -124,9 +124,7 @@
    <xsl:template name="copyright">
       <small class="copyright">
          <xsl:text>Portions of this document were copied from </xsl:text>
-         <a href="{/*/header/altlocs/loc[string()='XML']/@href}">
-            <xsl:value-of select="$spec-loc/../@doc"/>
-         </a>
+         <a href="{/*/header/altlocs/loc[string()='XML']/@href}">this file</a>
          <xsl:text>, </xsl:text>
          <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
          <xsl:text>&#xa0;©&#xa0;2014&#xa0;</xsl:text>
