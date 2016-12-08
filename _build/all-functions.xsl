@@ -128,15 +128,15 @@
                               <xsl:value-of select="upper-case(substring(current-grouping-key(), 1, 1))"/>
                            </h3>
                         </header>
-                        <xsl:for-each select="current-group()">
-                           <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
+                        <ul class="list-unstyled">
+                           <xsl:for-each select="current-group()">
+                              <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
 
-                           <ul class="list-unstyled">
                               <li>
                                  <xsl:call-template name="function-link"/>
                               </li>
-                           </ul>
-                        </xsl:for-each>
+                           </xsl:for-each>
+                        </ul>
                      </section>
                   </xsl:for-each-group>
                </div>
@@ -144,15 +144,15 @@
 
             <xsl:for-each-group select="$functions" group-by="ancestor::div1[1]/head">
                <section class="tab-pane" id="{local:title-to-id(current-grouping-key())}">
-                  <xsl:for-each select="current-group()">
-                     <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
+                  <ul class="list-unstyled">
+                     <xsl:for-each select="current-group()">
+                        <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
 
-                     <ul class="list-unstyled">
                         <li>
                            <xsl:call-template name="function-link"/>
                         </li>
-                     </ul>
-                  </xsl:for-each>
+                     </xsl:for-each>
+                  </ul>
                </section>
             </xsl:for-each-group>
          </div>
