@@ -110,9 +110,11 @@
                <form method="get" action="https://cse.google.com/cse">
                   <input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny"/>
                   <div class="input-group">
-                     <input type="search" name="q" class="form-control" placeholder="Search for..."/>
+                     <input type="search" name="q" class="form-control" placeholder="Search"/>
                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
+                        <button class="btn btn-default" type="button">
+                           <i class="glyphicon glyphicon-search"/>
+                        </button>
                      </span>
                   </div>
                </form>
