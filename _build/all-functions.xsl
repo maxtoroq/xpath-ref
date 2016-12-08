@@ -9,7 +9,7 @@
 
    <xsl:param name="index-only" as="xs:boolean" select="false()"/>
    <xsl:param name="spec-v2" as="document-node()" required="yes"/>
-   
+
    <xsl:output name="html" method="xhtml" indent="yes" omit-xml-declaration="yes" use-character-maps="html"/>
 
    <xsl:character-map name="html">
@@ -98,7 +98,7 @@
                <label class="btn btn-default">
                   <input type="radio" name="version" value="2.0"/>
                   <xsl:text>2.0</xsl:text>
-              </label>
+               </label>
             </div>
          </div>
          <ul class="nav nav-tabs tabs-left" role="tablist">
@@ -130,7 +130,12 @@
                         </header>
                         <xsl:for-each select="current-group()">
                            <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
-                           <xsl:call-template name="function-link"/>
+
+                           <ul class="list-unstyled">
+                              <li>
+                                 <xsl:call-template name="function-link"/>
+                              </li>
+                           </ul>
                         </xsl:for-each>
                      </section>
                   </xsl:for-each-group>
@@ -141,7 +146,12 @@
                <section class="tab-pane" id="{local:title-to-id(current-grouping-key())}">
                   <xsl:for-each select="current-group()">
                      <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
-                     <xsl:call-template name="function-link"/>
+
+                     <ul class="list-unstyled">
+                        <li>
+                           <xsl:call-template name="function-link"/>
+                        </li>
+                     </ul>
                   </xsl:for-each>
                </section>
             </xsl:for-each-group>
@@ -160,7 +170,7 @@
 
       <xsl:sequence select="exists($functions-20[example[1]/proto[1]/@name eq $function/head/substring-after(string(), ':')])"/>
    </xsl:function>
-   
+
    <xsl:function name="local:file-name" as="xs:string">
       <xsl:param name="node" as="node()"/>
 

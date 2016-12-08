@@ -118,7 +118,7 @@
                            lexically an <code>xs:NCName</code>), it is ignored. Formally, the
                            candidate <code>IDREF</code> values are the strings in the sequence given
                            by the expression:
-                        </p><pre><code><span class="open"></span><span class="higher">for</span><span class="whitespace"> </span><span class="variable">$s</span><span class="whitespace"> </span><span class="op">in</span><span class="whitespace"> </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">return</span><span class="whitespace"> 
+                        </p><pre><code><span class="higher">for</span><span class="whitespace"> </span><span class="variable">$s</span><span class="whitespace"> </span><span class="op">in</span><span class="whitespace"> </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">return</span><span class="whitespace"> 
    </span><span class="function">fn:tokenize</span><span class="parenthesis">(</span><span class="function">fn:normalize-space</span><span class="parenthesis">(</span><span class="variable">$s</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal"> </span><span class="op">'</span><span class="parenthesis">)</span><span class="filter">[</span><span class="context">.</span><span class="whitespace"> </span><span class="type-op">castable as</span><span class="whitespace"> </span><span class="type-name">xs:IDREF</span><span class="filter">]</span></code></pre></li>
                   </ul>
                </li>
@@ -199,7 +199,7 @@
             <header>
                <h2>Examples</h2>
             </header>
-            <p>let <code>$emp</code> := <pre><code><span class="open"></span><span class="whitespace">            </span><span class="es">&lt;</span><span class="en">employee</span><span class="atn"> xml:id</span><span class="atneq">=</span><span class="z">"</span><span class="av">ID21256</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
+            <p>let <code>$emp</code> := <pre><code><span class="whitespace">            </span><span class="es">&lt;</span><span class="en">employee</span><span class="atn"> xml:id</span><span class="atneq">=</span><span class="z">"</span><span class="av">ID21256</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
                </span><span class="es">&lt;</span><span class="en">empnr</span><span class="z">&gt;</span><span class="txt">E21256</span><span class="sc">&lt;/</span><span class="cl">empnr</span><span class="z">&gt;</span><span class="txt">
                </span><span class="es">&lt;</span><span class="en">first</span><span class="z">&gt;</span><span class="txt">John</span><span class="sc">&lt;/</span><span class="cl">first</span><span class="z">&gt;</span><span class="txt">
                </span><span class="es">&lt;</span><span class="en">last</span><span class="z">&gt;</span><span class="txt">Brown</span><span class="sc">&lt;/</span><span class="cl">last</span><span class="z">&gt;</span><span class="txt">
