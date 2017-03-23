@@ -192,8 +192,9 @@
 
    <xsl:function name="local:exists-in-v2" as="xs:boolean">
       <xsl:param name="function" as="element()"/>
-
-      <xsl:sequence select="exists($functions-20[example[1]/proto[1]/@name eq $function/head/substring-after(string(), ':')])"/>
+      
+      <xsl:variable name="prefix" select="$function/head/substring-before(., ':')"/>
+      <xsl:sequence select="$prefix eq 'fn' and exists($functions-20[example[1]/proto[1]/@name eq $function/head/substring-after(string(), ':')])"/>
    </xsl:function>
 
    <xsl:function name="local:file-name" as="xs:string">
