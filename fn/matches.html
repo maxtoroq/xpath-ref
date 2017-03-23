@@ -30,21 +30,19 @@
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:matches</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:matches</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$pattern</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre><pre><code class="signature"><span class="function">fn:matches</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$pattern</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$flags</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -54,7 +52,7 @@
             <p>The effect of calling the first version of this function (omitting the argument
                <code>$flags</code>) is the same as the effect of calling the second version with the
                <code>$flags</code> argument set to a zero-length string. Flags are defined in
-               <a href="http://www.w3.org/TR/xpath-functions-30/#flags">Flags</a>.
+               <a href="https://www.w3.org/TR/xpath-functions-31/#flags">Flags</a>.
             </p>
             <p>If <code>$input</code> is the empty sequence, it is interpreted as the zero-length
                string.
@@ -69,11 +67,11 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORX0002">ERRFORX0002</a>] if the value of
-               <code>$pattern</code> is invalid according to the rules described in <a href="http://www.w3.org/TR/xpath-functions-30/#regex-syntax">Regular expression syntax</a>. 
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFORX0002">ERRFORX0002</a>] if the value of
+               <code>$pattern</code> is invalid according to the rules described in <a href="https://www.w3.org/TR/xpath-functions-31/#regex-syntax">Regular expression syntax</a>. 
             </p>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORX0001">ERRFORX0001</a>] if the value of
-               <code>$flags</code> is invalid according to the rules described in <a href="http://www.w3.org/TR/xpath-functions-30/#flags">Flags</a>. 
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFORX0001">ERRFORX0001</a>] if the value of
+               <code>$flags</code> is invalid according to the rules described in <a href="https://www.w3.org/TR/xpath-functions-31/#flags">Flags</a>. 
             </p>
          </section>
          <section>
@@ -104,14 +102,13 @@
             </p>
             <p>The expression <code>fn:matches("abracadabra", "^bra")</code> returns <code>false()</code>.
             </p>
-            <p>Given the source document:</p>
-            <p>let <code>$poem</code> := <pre><code><span class="es">&lt;</span><span class="en">poem</span><span class="z"> </span><span class="atn">author</span><span class="atneq">=</span><span class="z">"</span><span class="av">Wilhelm Busch</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt"> 
-Kaum hat dies der Hahn gesehen, 
-Fängt er auch schon an zu krähen: 
-Kikeriki! Kikikerikih!! 
-Tak, tak, tak! - da kommen sie. 
-</span><span class="ez">&lt;/</span><span class="cl">poem</span><span class="ec">&gt;</span><span class="txt"></span></code></pre></p>
-            <p>the following function calls produce the following results, with the
+            <p>Given the source document:</p><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$poem</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> 
+</span><span class="es">&lt;</span><span class="en">poem</span><span class="atn"> author</span><span class="atneq">=</span><span class="z">"</span><span class="av">Wilhelm Busch</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
+Kaum hat dies der Hahn gesehen,
+Fängt er auch schon an zu krähen:
+Kikeriki! Kikikerikih!!
+Tak, tak, tak! - da kommen sie.
+</span><span class="sc">&lt;/</span><span class="cl">poem</span><span class="z">&gt;</span><span class="txt"></span></code></pre><p>the following function calls produce the following results, with the
                <code>poem</code> element as the context node:
             </p>
             <p>The expression <code>fn:matches($poem, "Kaum.*krähen")</code> returns <code>false()</code>.
@@ -128,6 +125,7 @@ Tak, tak, tak! - da kommen sie.
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-matches">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-matches">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-matches">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/matches.html">Saxon Function Library</a></li>
@@ -135,7 +133,7 @@ Tak, tak, tak! - da kommen sie.
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

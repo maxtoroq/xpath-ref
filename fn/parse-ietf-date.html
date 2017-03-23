@@ -1,0 +1,253 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:parse-ietf-date</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:parse-ietf-date</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:parse-ietf-date</h1>
+         </header>
+         <p>Parses a string containing the date and time in IETF format, returning the corresponding
+            <code>xs:dateTime</code> value.
+         </p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header><pre><code class="signature"><span class="function">fn:parse-ietf-date</span><span class="parenthesis">(</span><span class="variable">$value</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:dateTime</span><span class="quantifier">?</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The function accepts a string matching the production <code>input</code> in the
+               following grammar:
+            </p>
+            <code>input</code>
+            <code>::=</code>
+            <code>S? (dayname ","? S)? ((datespec S time) | asctime) S?</code>
+            
+            <code>dayname</code>
+            <code>::=</code>
+            <code>"Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun" | "Monday | "Tuesday"
+               | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday"</code>
+            
+            <code>datespec</code>
+            <code>::=</code>
+            <code>daynum dsep monthname dsep year</code>
+            
+            <code>asctime</code>
+            <code>::=</code>
+            <code>monthname dsep daynum S time S year</code>
+            
+            <code>dsep</code>
+            <code>::=</code>
+            <code>S | (S? "-" S?)</code>
+            
+            <code>daynum</code>
+            <code>::=</code>
+            <code>digit digit?</code>
+            
+            <code>year</code>
+            <code>::=</code>
+            <code>digit digit (digit digit)?</code>
+            
+            <code>digit</code>
+            <code>::=</code>
+            <code>[0-9]</code>
+            
+            <code>monthname</code>
+            <code>::=</code>
+            <code>"Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" |
+               "Oct" | "Nov" | "Dec"</code>
+            
+            <code>time</code>
+            <code>::=</code>
+            <code>hours ":" minutes (":" seconds)? (S? timezone)?</code>
+            
+            <code>hours</code>
+            <code>::=</code>
+            <code>digit digit?</code>
+            
+            <code>minutes</code>
+            <code>::=</code>
+            <code>digit digit</code>
+            
+            <code>seconds</code>
+            <code>::=</code>
+            <code>digit digit ("." digit+)?</code>
+            
+            <code>timezone</code>
+            <code>::=</code>
+            <code>tzname | tzoffset (S? "(" S? tzname S? ")")?</code>
+            
+            <code>tzname</code>
+            <code>::=</code>
+            <code>"UT" | "UTC" | "GMT" | "EST" | "EDT" | "CST" | "CDT" | "MST" | "MDT" | "PST"
+               | "PDT" </code>
+            
+            <code>tzoffset</code>
+            <code>::=</code>
+            <code>("+"|"-") hours ":"? minutes?</code>
+            
+            <code>S</code>
+            <code>::=</code>
+            <code>( x09 | x0A | x0D | x20 )+</code>
+            
+            <p>The input is case-insensitive: upper-case and lower-case distinctions in the above
+               grammar show the conventional usage, but otherwise have no significance.
+            </p>
+            <p>If the input is an empty sequence, the result is an empty sequence.</p>
+            <p>The <code>dayname</code>, if present, is ignored.
+            </p>
+            <p>The <code>daynum</code>, <code>monthname</code>, and <code>year</code> supply the day,
+               month, and year of the resulting <code>xs:dateTime</code> value. A two-digit year
+               <b>must</b> have 1900 added to it. A year such as 0070 is to be treated
+               as given; negative years are not permitted.
+            </p>
+            <p>The <code>hours</code>, <code>minutes</code>, and <code>seconds</code> (including
+               fractional seconds) values supply the corresponding components of the resulting
+               <code>xs:dateTime</code> value; if the <code>seconds</code> value 
+               or the fractional seconds value is absent then zero
+               is assumed.
+            </p>
+            <p>If both a <code>tzoffset</code> and a <code>tzname</code> are supplied then the
+               <code>tzname</code> is ignored.
+            </p>
+            <p>If a <code>tzoffset</code> is supplied then this defines the hours and minutes parts of the timezone offset:
+            </p>
+            <ul>
+               <li>
+                  <p>If it contains a colon, this separates the hours part from the minutes part.</p>
+               </li>
+               <li>
+                  <p>Otherwise, the grammar allows a sequence of from one to four digits. These are interpreted
+                     as <code>H</code>, <code>HH</code>, <code>HMM</code>, or <code>HHMM</code> respectively, where <code>H</code>
+                     or <code>HH</code> is the hours part, and <code>MM</code> (if present) is the minutes part.
+                  </p>
+               </li>
+               <li>If the minutes part is absent it defaults to <code>00</code>.
+               </li>
+            </ul>
+            <p>If a <code>tzname</code> is supplied with no <code>tzoffset</code> then it is translated
+               to a timezone offset as follows:
+            </p>tznameOffsetUT, UTC, GMT00:00EST-05:00EDT-04:00CST-06:00CDT-05:00MST-07:00MDT-06:00PST-08:00PDT-07:00
+            <p>If neither a <code>tzoffset</code> nor <code>tzname</code> is supplied, a timezone
+               offset of <code>00:00</code> is assumed.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFORG0010">ERRFORG0010</a>] if the input does
+               not match the grammar, or if the resulting date/time value is invalid (for example,
+               31
+               February).
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>The <code>parse-ietf-date</code> function attempts to interpret its input as a date
+               in any of the three formats specified by HTTP <a href="http://www.ietf.org/rfc/rfc2616.txt">[RFC 2616]</a>.
+            </p>
+            <p>These formats are used widely on the Internet to represent timestamps, and were
+               specified in:
+            </p>
+            <ul>
+               <li><a href="http://www.ietf.org/rfc/rfc822.txt">[RFC 822]</a> (electronic mail), extended in <a href="http://www.ietf.org/rfc/rfc1123.txt">[RFC 1123]</a> to allow four-digit years;
+               </li>
+               <li><a href="http://www.ietf.org/rfc/rfc850.txt">[RFC 850]</a> (Usenet Messages), obsoleted by <a href="http://www.ietf.org/rfc/rfc1036.txt">[RFC 1036]</a>;
+               </li>
+               <li>POSIX <code>asctime()</code> format
+               </li>
+            </ul>
+            <p><a href="http://www.ietf.org/rfc/rfc2616.txt">[RFC 2616]</a> (HTTP) officially uses a subset of those three formats restricted to GMT.
+            </p>
+            <p>The grammar for this function is slightly more liberal than the RFCs (reflecting the
+               internet tradition of being liberal in what is accepted).
+               For example the function:
+            </p>
+            <ol>
+               <li>
+                  <p>Accepts a single-digit value where appropriate in place of a two-digit value with
+                     a leading zero (so
+                     "Wed 1 Jun" is acceptable in place of "Wed 01 Jun", and the timezone offset "-5:00" is equivalent
+                     to "-05:00")
+                  </p>
+               </li>
+               <li>
+                  <p>Accepts one or more whitespace characters (x20, x09, x0A, x0D) wherever a single
+                     space is required, and allows whitespace to be omitted where it is not required
+                     for parsing
+                  </p>
+               </li>
+               <li>
+                  <p>Accepts and ignores whitespace characters (x20, x09, x0A, x0D) at the start or end
+                     of the string.
+                  </p>
+               </li>
+            </ol>
+            <p>In new protocols IETF recommends the format of <a href="http://www.ietf.org/rfc/rfc3339.txt">[RFC 3339]</a> which is based on a profile of
+               ISO 8601 similar to that already used in XPath and XSD, but the "approximate" <a href="http://www.ietf.org/rfc/rfc822.txt">[RFC 822]</a>
+               format described here is very widely used.
+            </p>
+            <p>An <a href="http://www.ietf.org/rfc/rfc1123.txt">[RFC 1123]</a> date can be generated approximately using <code>fn:format-dateTime</code> with a picture
+               string of <code>"[FNn3], [D01] [MNn3] [Y04] [H01]:[m01]:[s01] [Z0000]"</code>.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The expression <code>fn:parse-ietf-date("Wed, 06 Jun 1994 07:29:35 GMT")</code> returns <code>xs:dateTime("1994-06-06T07:29:35Z")</code>.
+            </p>
+            <p>The expression <code>fn:parse-ietf-date("Wed, 6 Jun 94 07:29:35 GMT")</code> returns <code>xs:dateTime("1994-06-06T07:29:35Z")</code>.
+            </p>
+            <p>The expression <code>fn:parse-ietf-date("Wed Jun 06 11:54:45 EST 2013")</code> returns <code>xs:dateTime("2013-06-06T11:54:45-05:00")</code>.
+            </p>
+            <p>The expression <code>fn:parse-ietf-date("Sunday, 06-Nov-94 08:49:37 GMT")</code> returns <code>xs:dateTime("1994-11-06T08:49:37Z")</code>.
+            </p>
+            <p>The expression <code>fn:parse-ietf-date("Wed, 6 Jun 94 07:29:35 +0500")</code> returns <code>xs:dateTime("1994-06-06T07:29:35+05:00")</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-parse-ietf-date">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-parse-ietf-date">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/parse-ietf-date.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

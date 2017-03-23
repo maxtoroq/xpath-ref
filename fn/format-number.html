@@ -26,29 +26,27 @@
          <header>
             <h1 class="page-header">fn:format-number</h1>
          </header>
-         <p>Returns a string containing a number formatted according to a given picture
-            string, taking account of decimal formats specified in the static context.
+         <p>Returns a string containing a number formatted according to a given picture string,
+            taking account of decimal formats specified in the static context.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:format-number</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
-    </span><span class="variable">$value</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">numeric</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
+            </header><pre><code class="signature"><span class="function">fn:format-number</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$value</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:numeric</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$picture</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:format-number</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
-    </span><span class="variable">$value</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">numeric</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$value</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:numeric</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$picture</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$decimal-format-name</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>The two-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>The two-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
-            <p>The three-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+            <p>The three-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
                		decimal formats, and namespaces.
                	
             </p>
@@ -57,14 +55,14 @@
             <header>
                <h2>Rules</h2>
             </header>
-            <p>The effect of the two-argument form of the function is equivalent to calling
-               the three-argument form with an empty sequence as the value of the third argument.
+            <p>The effect of the two-argument form of the function is equivalent to calling the
+               three-argument form with an empty sequence as the value of the third argument.
             </p>
-            <p>The function formats <code>$value</code> as a string using the <a href="http://www.w3.org/TR/xpath-functions-30/#dt-picture-string">picture string</a> specified by the
+            <p>The function formats <code>$value</code> as a string using the <a href="https://www.w3.org/TR/xpath-functions-31/#dt-picture-string">picture string</a> specified by the
                <code>$picture</code> argument and the decimal-format named by the
-               <code>$decimal-format-name</code> argument, or the default decimal-format, if there
+               <code>$decimal-format-name</code> argument, or the unnamed decimal-format, if there
                is no <code>$decimal-format-name</code> argument. The syntax of the picture string is
-               described in <a href="http://www.w3.org/TR/xpath-functions-30/#syntax-of-picture-string">Syntax of the picture string</a>.
+               described in <a href="https://www.w3.org/TR/xpath-functions-31/#syntax-of-picture-string">Syntax of the picture string</a>.
             </p>
             <p>The <code>$value</code> argument may be of any numeric data type
                (<code>xs:double</code>, <code>xs:float</code>, <code>xs:decimal</code>, or their
@@ -76,34 +74,33 @@
                function behaves as if the supplied value were the <code>xs:double</code> value
                <code>NaN</code>.
             </p>
-            <p>The value of <code>$decimal-format-name</code>, 
-               if present and non-empty, 
-               <b>must</b> be a string which after removal of leading and trailing whitespace is in the form
-               of an
-               an <code>EQName</code> as defined in the XPath 3.0 grammar, that is one of the following:
+            <p>The value of <code>$decimal-format-name</code>, if present and non-empty,
+               <b>must</b> be a string which after removal of leading and trailing
+               whitespace is in the form of an <code>EQName</code> as defined in the XPath 3.0
+               grammar, that is one of the following:
             </p>
             <ul>
                <li>
-                  <p>A lexical QName, which is expanded using the 
-                     statically known namespaces. 
-                     The default namespace is not used (no prefix means no namespace).
+                  <p>A lexical QName, which is expanded using the statically known namespaces. The
+                     default namespace is not used (no prefix means no namespace).
                   </p>
                </li>
                <li>
-                  <p>A <code>URIQualifiedName</code> using the syntax <code>Q{uri}local</code>,
-                     where the URI can be zero-length to indicate a name in no namespace.
+                  <p>A <code>URIQualifiedName</code> using the syntax <code>Q{uri}local</code>, where
+                     the URI can be zero-length to indicate a name in no namespace.
                   </p>
                </li>
             </ul>
-            <p>The decimal format that is used is the decimal format
-               in the static context whose name matches <code>$decimal-format-name</code> if supplied,
-               or the default decimal format in the static context otherwise.
+            <p>The decimal format that is used is the decimal format in the static context whose
+               name
+               matches <code>$decimal-format-name</code> if supplied, or the unnamed decimal format in
+               the static context otherwise.
             </p>
-            <p>The evaluation of the format-number function takes place in two
-               phases, an analysis phase described in <a href="http://www.w3.org/TR/xpath-functions-30/#analysing-picture-string">Analysing the picture string</a> and a
-               formatting phase described in <a href="http://www.w3.org/TR/xpath-functions-30/#formatting-the-number">Formatting the number</a>.
+            <p>The evaluation of the <code>fn:format-number</code> function takes place in two
+               phases, an analysis phase described in <a href="https://www.w3.org/TR/xpath-functions-31/#analyzing-picture-string">Analyzing the picture string</a> and a
+               formatting phase described in <a href="https://www.w3.org/TR/xpath-functions-31/#formatting-the-number">Formatting the number</a>.
             </p>
-            <p>The analysis phase takes as its inputs the <a href="http://www.w3.org/TR/xpath-functions-30/#dt-picture-string">picture
+            <p>The analysis phase takes as its inputs the <a href="https://www.w3.org/TR/xpath-functions-31/#dt-picture-string">picture
                   string</a> and the variables derived from the relevant decimal format in the
                static context, and produces as its output a number of variables with defined values.
                The formatting phase takes as its inputs the number to be formatted and the variables
@@ -118,32 +115,42 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODF1280">ERRFODF1280</a>] if the name specified as the
-               <code>$decimal-format-name</code> argument is 
-               neither a valid lexical QName nor a valid <code>URIQualifiedName</code>, or if it
-               uses a prefix that is not found in the statically known namespaces, or if the static
-               context does not contain a declaration of a decimal-format with a matching expanded
-               QName. If the processor is able to detect the error statically (for example, when
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODF1280">ERRFODF1280</a>] if the name specified as
+               the <code>$decimal-format-name</code> argument is neither a valid lexical QName nor a
+               valid <code>URIQualifiedName</code>, or if it uses a prefix that is not found in the
+               statically known namespaces, or if the static context does not contain a declaration
+               of
+               a decimal-format with a matching expanded QName. If the processor is able to detect
                the
-               argument is supplied as a string literal), then the processor <b>may</b>
-               optionally signal this as a static error.
+               error statically (for example, when the argument is supplied as a string literal),
+               then
+               the processor <b>may</b> optionally signal this as a static error.
             </p>
          </section>
          <section>
             <header>
                <h2>Notes</h2>
             </header>
-            <p>Numbers will always be formatted with the most significant digit on the left.</p>
+            <p>A string is an ordered sequence of characters, and this specification 
+               uses terms such as "left" and "right", "preceding" and "following" in relation to
+               this ordering, 
+               irrespective of the position of the characters when visually rendered on some output
+               medium. 
+               Both in the picture string and in the result string, digits with higher significance
+               (that is, 
+               representing higher powers of ten) always precede digits with lower significance,
+               even when 
+               the rendered text flow is from right to left.
+            </p>
          </section>
          <section>
             <header>
                <h2>Examples</h2>
             </header>
-            <p>The following examples assume a default decimal format in which the
-               chosen digits are the ASCII digits 0-9, the
-               decimal separator is ".", the grouping separator is ",", the minus-sign is
-               "-", the percent-sign is "%", and the exponent
-               separator is "e".
+            <p>The following examples assume a default decimal format in which the chosen digits
+               are
+               the ASCII digits 0-9, the decimal separator is ".", the grouping separator is ",",
+               the minus-sign is "-", and the percent-sign is "%".
             </p>
             <p>The expression <code>format-number(12345.6, '#,###.00')</code> returns <code>"12,345.60"</code>.
             </p>
@@ -155,27 +162,36 @@
             </p>
             <p>The expression <code>format-number(-6, '000')</code> returns <code>"-006"</code>.
             </p>
-            <p>The expression <code>format-number(12.34, '0.000e00')</code> returns <code>"1.234e01"</code>.
-            </p>
-            <p>The expression <code>format-number(12.34, '#.000e0')</code> returns <code>"0.123e2"</code>.
-            </p>
             <p>The following example assumes the existence of a decimal format named 'ch' in which
-               the grouping
-               separator is <code>ʹ</code> and the decimal separator is <code>·</code>:
+               the grouping separator is <code>ʹ</code> and the decimal separator is
+               <code>·</code>:
             </p>
-            <p>The expression <code>format-number(1234.5678, '#ʹ##0·00', 'ch')</code> returns <code>"1ʹ234·57"</code>.
+            <p>The expression <code>format-number(1234.5678, '#ʹ##0·00',
+                  'ch')</code> returns <code>"1ʹ234·57"</code>.
+            </p>
+            <p>The following examples assume that the exponent separator is
+               in decimal format 'fortran' is 'E':
+            </p>
+            <p>The expression <code>format-number(1234.5678, '00.000E0', 'fortran')</code> returns <code>"12.346E2"</code>.
+            </p>
+            <p>The expression <code>format-number(0.234, '0.0E0', 'fortran')</code> returns <code>"2.3E-1"</code>.
+            </p>
+            <p>The expression <code>format-number(0.234, '#.00E0', 'fortran')</code> returns <code>"0.23E0"</code>.
+            </p>
+            <p>The expression <code>format-number(0.234, '.00E0', 'fortran')</code> returns <code>".23E0"</code>.
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-format-number">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-format-number">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/format-number.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

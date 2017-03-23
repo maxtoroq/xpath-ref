@@ -26,32 +26,30 @@
          <header>
             <h1 class="page-header">fn:starts-with</h1>
          </header>
-         <p>Returns true if the string <code>$arg1</code> contains <code>$arg2</code> as a
-            leading substring, taking collations into account.
+         <p>Returns true if the string <code>$arg1</code> contains <code>$arg2</code> as a leading
+            substring, taking collations into account.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:starts-with</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:starts-with</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg1</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$arg2</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre><pre><code class="signature"><span class="function">fn:starts-with</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg1</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$arg2</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$collation</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>The two-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+            <p>The two-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
                		collations.
                	
             </p>
-            <p>The three-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-               		collations, and static base uri.
+            <p>The three-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		collations, and static base URI.
                	
             </p>
          </section>
@@ -68,7 +66,7 @@
                the value of <code>$arg2</code> is not the zero-length string, then the function returns
                <code>false</code>.
             </p>
-            <p>The collation used by this function is determined according to the rules in <a href="http://www.w3.org/TR/xpath-functions-30/#choosing-a-collation">Choosing a collation</a>.
+            <p>The collation used by this function is determined according to the rules in <a href="https://www.w3.org/TR/xpath-functions-31/#choosing-a-collation">Choosing a collation</a>.
             </p>
             <p>The function returns an <code>xs:boolean</code> indicating whether or not the value of
                <code>$arg1</code> starts with a sequence of collation units that provides a
@@ -76,7 +74,7 @@
                collation that is used.
             </p>
             <blockquote>
-               <p>Match is defined in <a href="http://www.unicode.org/reports/tr10/">[Unicode Collation Algorithm]</a>.
+               <p>Match is defined in <a href="http://www.unicode.org/reports/tr10/">[UTS #10]</a>.
                </p>
             </blockquote>
          </section>
@@ -84,8 +82,7 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error <b>may</b> be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCH0004">ERRFOCH0004</a>] if the
-               specified collation does not support collation units.
+            <p>A dynamic error <b>may</b> be raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOCH0004">ERRFOCH0004</a>] if the specified collation does not support collation units.
             </p>
          </section>
          <section>
@@ -95,7 +92,7 @@
             <p>The collation used in these examples, <code>http://example.com/CollationA</code> is a
                collation in which both "-" and "*" are ignorable collation units.
             </p>
-            <p>"Ignorable collation unit" is equivalent to "ignorable collation element" in <a href="http://www.unicode.org/reports/tr10/">[Unicode Collation Algorithm]</a>.
+            <p>"Ignorable collation unit" is equivalent to "ignorable collation element" in <a href="http://www.unicode.org/reports/tr10/">[UTS #10]</a>.
             </p>
             <p>The expression <code>fn:starts-with("tattoo", "tat")</code> returns <code>true()</code>.
             </p>
@@ -104,25 +101,26 @@
             <p>The expression <code>fn:starts-with ((), ())</code> returns <code>true()</code>.
             </p>
             <p>The expression <code>fn:starts-with ( "abcdefghi", "-a-b-c-",
-                  "http://example.com/CollationA")</code> returns <code>true()</code>.
+                  "http://www.w3.org/2013/collation/UCA?lang=en;alternate=blanked;strength=primary")</code> returns <code>true()</code>.
             </p>
             <p>The expression <code>fn:starts-with ( "a*b*c*d*e*f*g*h*i*", "a-bc-",
-                  "http://example.com/CollationA")</code> returns <code>true()</code>.
+                  "http://www.w3.org/2013/collation/UCA?lang=en;alternate=blanked;strength=primary")</code> returns <code>true()</code>.
             </p>
             <p>The expression <code>fn:starts-with ( "abcd***e---f*--*ghi", "abcdef",
-                  "http://example.com/CollationA")</code> returns <code>true()</code>.
+                  "http://www.w3.org/2013/collation/UCA?lang=en;alternate=blanked;strength=primary")</code> returns <code>true()</code>.
             </p>
             <p>The expression <code>fn:starts-with ( (), "--***-*---",
-                  "http://example.com/CollationA")</code> returns <code>true()</code>. (The second argument contains only ignorable collation units and is
-               equivalent to the zero-length string.).
+                  "http://www.w3.org/2013/collation/UCA?lang=en;alternate=blanked;strength=primary")</code> returns <code>true()</code>. (The second argument contains only ignorable collation units and is
+               equivalent to the zero-length string.)
             </p>
             <p>The expression <code>fn:starts-with ( "-abcdefghi", "-abc",
-                  "http://example.com/CollationA")</code> returns <code>true()</code>.
+                  "http://www.w3.org/2013/collation/UCA?lang=en;alternate=blanked;strength=primary")</code> returns <code>true()</code>.
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-starts-with">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-starts-with">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-starts-with">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/starts-with.html">Saxon Function Library</a></li>
@@ -130,7 +128,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

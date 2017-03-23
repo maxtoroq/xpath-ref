@@ -1,0 +1,241 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>map:merge</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">map:merge</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">map:merge</h1>
+         </header>
+         <p>Returns a map that combines the entries from a number of existing maps.</p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header><pre><code class="signature"><span class="function">map:merge</span><span class="parenthesis">(</span><span class="variable">$maps</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span></code></pre><pre><code class="signature"><span class="function">map:merge</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$maps</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$options</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The function <code>map:merge</code> returns a map that
+               is formed by combining the contents of the maps supplied in the <code>$maps</code>
+               argument.
+            </p>
+            <p>Informally, the supplied maps are combined as follows:</p>
+            <ol>
+               <li>
+                  <p>There is one entry in the returned map for each distinct key present in the union
+                     of the input maps, where two keys are distinct if they are not the <a href="https://www.w3.org/TR/xpath-functions-31/#dt-same-key">same key</a>.
+                  </p>
+               </li>
+               <li>
+                  <p>If there are duplicate keys, that is, if two or more maps contain entries having the
+                     <a href="https://www.w3.org/TR/xpath-functions-31/#dt-same-key">same key</a>, then the way this is handled is
+                     controlled by the second (<code>$options</code>) argument.
+                  </p>
+               </li>
+            </ol>
+            <p>The definitive specification is as follows.</p>
+            <ol>
+               <li>
+                  <p>The effect of calling the single-argument function is the same as the effect of
+                     calling the two-argument function with an empty map as the value of <code>$options</code>.
+                  </p>
+               </li>
+               <li>
+                  <p>The <code>$options</code> argument can be used to control the way in which duplicate keys are handled.
+                     The <a href="https://www.w3.org/TR/xpath-functions-31/#dt-option-parameter-conventions">option parameter conventions</a> apply.
+                     
+                  </p>
+               </li>
+               <li>
+                  <p>The entries that may appear in the <code>$options</code> map are as follows:
+                  </p>KeyValueMeaning<code>duplicates</code>Determines the policy for handling duplicate keys: specifically, the action to be
+                  taken if two maps in the input sequence <code>$maps</code> contain entries with key values
+                  <i>K1</i> and <i>K2</i> where <i>K1</i> and <i>K2</i> are the 
+                  <a href="https://www.w3.org/TR/xpath-functions-31/#same-key">same key</a>.
+                  
+                  <ul>
+                     <li>
+                        <p>Type: <code>xs:string</code></p>
+                     </li>
+                     <li>
+                        <p>Default: <code>use-first</code></p>
+                     </li>
+                  </ul><code>reject</code>
+                  An error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0003">ERRFOJS0003</a>] if duplicate keys are encountered.
+                  <code>use-first</code>
+                  If duplicate keys are present, all but the first of a set of duplicates are ignored,
+                  
+                  where the ordering is based on the order of maps in the <code>$maps</code> argument.
+                  <code>use-last</code>
+                  If duplicate keys are present, all but the last of a set of duplicates are ignored,
+                  
+                  where the ordering is based on the order of maps in the <code>$maps</code> argument.
+                  <code>use-any</code>
+                  If duplicate keys are present, all but one of a set of duplicates are ignored, 
+                  and it is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a>
+                  which one is retained. 
+                  <code>combine</code>
+                  If duplicate keys are present, the result map includes an entry for the key whose
+                  
+                  associated value is the sequence-concatenation of all the values associated with the
+                  key, 
+                  retaining order based on the order of maps in the <code>$maps</code> argument.
+                  The key value in the result map that corresponds to such a set of duplicates must
+                  be the <a href="https://www.w3.org/TR/xpath-functions-31/#same-key">same key</a> as each of the duplicates, but it is
+                  otherwise unconstrained: for example if the duplicate keys are <code>xs:byte(1)</code>
+                  and <code>xs:short(1)</code>, the key in the result could legitimately be <code>xs:long(1)</code>.
+                  
+               </li>
+            </ol>
+            <p>The result of the function call <code>map:merge($MAPS, $OPTIONS)</code>
+               is defined to be consistent with the result of the expression:
+            </p><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$FOJS0003</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="function">QName</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">http://www.w3.org/2005/xqt-errors</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">FOJS0003</span><span class="op">"</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace">
+
+</span><span class="variable">$duplicates-handler</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="qname">map</span><span class="whitespace"> </span><span class="op">{</span><span class="whitespace">
+  </span><span class="op">"</span><span class="property">use-first</span><span class="op">"</span><span class="op">:</span><span class="whitespace">   </span><span class="type">function</span><span class="parenthesis">(</span><span class="variable">$a</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$b</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">{</span><span class="variable">$a</span><span class="op">}</span><span class="op">,</span><span class="whitespace">
+  </span><span class="op">"</span><span class="property">use-last</span><span class="op">"</span><span class="op">:</span><span class="whitespace">    </span><span class="type">function</span><span class="parenthesis">(</span><span class="variable">$a</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$b</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">{</span><span class="variable">$b</span><span class="op">}</span><span class="op">,</span><span class="whitespace">
+  </span><span class="op">"</span><span class="property">combine</span><span class="op">"</span><span class="op">:</span><span class="whitespace">     </span><span class="type">function</span><span class="parenthesis">(</span><span class="variable">$a</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$b</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">{</span><span class="variable">$a</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$b</span><span class="op">}</span><span class="op">,</span><span class="whitespace">
+  </span><span class="op">"</span><span class="property">reject</span><span class="op">"</span><span class="op">:</span><span class="whitespace">      </span><span class="type">function</span><span class="parenthesis">(</span><span class="variable">$a</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$b</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">{</span><span class="function">fn:error</span><span class="parenthesis">(</span><span class="variable">$FOJS0003</span><span class="parenthesis">)</span><span class="op">}</span><span class="op">,</span><span class="whitespace">
+  </span><span class="op">"</span><span class="property">use-any</span><span class="op">"</span><span class="op">:</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="variable">$a</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$b</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">{</span><span class="function">fn:random-number-generator</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="function">permute</span><span class="parenthesis">(</span><span class="parenthesis">(</span><span class="variable">$a</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$b</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="filter">[</span><span class="numeric">1</span><span class="filter">]</span><span class="op">}</span><span class="whitespace">
+</span><span class="op">}</span><span class="op">,</span><span class="whitespace">
+
+</span><span class="variable">$combine-maps</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="variable">$A</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$B</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$deduplicator</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">{</span><span class="whitespace">
+    </span><span class="function">fn:fold-left</span><span class="parenthesis">(</span><span class="function">map:keys</span><span class="parenthesis">(</span><span class="variable">$B</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$A</span><span class="op">,</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="variable">$z</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$k</span><span class="parenthesis">)</span><span class="op">{</span><span class="whitespace"> 
+        </span><span class="if">if</span><span class="whitespace"> </span><span class="parenthesis">(</span><span class="function">map:contains</span><span class="parenthesis">(</span><span class="variable">$z</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$k</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace">
+        </span><span class="op">then</span><span class="whitespace"> </span><span class="function">map:put</span><span class="parenthesis">(</span><span class="variable">$z</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$k</span><span class="op">,</span><span class="whitespace"> </span><span class="function">$deduplicator</span><span class="parenthesis">(</span><span class="function">$z</span><span class="parenthesis">(</span><span class="variable">$k</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="function">$B</span><span class="parenthesis">(</span><span class="variable">$k</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace">
+        </span><span class="op">else</span><span class="whitespace"> </span><span class="function">map:put</span><span class="parenthesis">(</span><span class="variable">$z</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$k</span><span class="op">,</span><span class="whitespace"> </span><span class="function">$B</span><span class="parenthesis">(</span><span class="variable">$k</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace">
+    </span><span class="op">}</span><span class="parenthesis">)</span><span class="whitespace">
+</span><span class="op">}</span><span class="whitespace">
+</span><span class="op">return</span><span class="whitespace"> </span><span class="function">fn:fold-left</span><span class="parenthesis">(</span><span class="variable">$MAPS</span><span class="op">,</span><span class="whitespace"> </span><span class="qname">map</span><span class="op">{</span><span class="op">}</span><span class="op">,</span><span class="whitespace"> 
+    </span><span class="function">$combine-maps</span><span class="parenthesis">(</span><span class="op">?</span><span class="op">,</span><span class="whitespace"> </span><span class="op">?</span><span class="op">,</span><span class="whitespace"> </span><span class="function">$duplicates-handler</span><span class="parenthesis">(</span><span class="parenthesis">(</span><span class="variable">$OPTIONS</span><span class="op">?</span><span class="qname">duplicates</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">use-first</span><span class="op">"</span><span class="parenthesis">)</span><span class="filter">[</span><span class="numeric">1</span><span class="filter">]</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace">
+            
+            </span></code></pre><blockquote>
+               <p>By way of explanation, <code>$combine-maps</code> is a function that combines
+                  two maps by iterating over the keys of the second map, adding each key and its corresponding
+                  value to the first map as it proceeds. The second call of <code>fn:fold-left</code>
+                  in the <code>return</code> clause then iterates over the maps supplied in the call
+                  to <code>map:merge</code>, accumulating a single map that absorbs successive maps
+                  in the input sequence by calling <code>$combine-maps</code>.
+               </p>
+               <p>This algorithm processes the supplied maps in a defined order, but processes the keys
+                  within
+                  each map in implementation-dependent order.
+               </p>
+               <p>The use of <code>fn:random-number-generator</code> represents one possible conformant
+                  implementation for <code>"duplicates":"use-any"</code>, but it is not the only conformant
+                  implementation and is not intended to be a realistic implementation. The purpose of
+                  this
+                  option is to allow the implementation to use whatever strategy is most efficient;
+                  for example,
+                  if the input maps are processed in parallel, then specifying <code>"duplicates":"use-any"</code>
+                  means that the implementation does not need to keep track of the original order of
+                  the sequence of input
+                  maps.
+               </p>
+            </blockquote>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>An error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0003">ERRFOJS0003</a>] if the value of 
+               <code>$options</code> indicates that duplicates are to be rejected, and a duplicate key is encountered.
+            </p>
+            <p>An error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0005">ERRFOJS0005</a>] if the value of 
+               <code>$options</code> includes an entry whose key is defined 
+               in this specification, and whose value is not a permitted value for that key.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>If the input is an empty sequence, the result is an empty map.</p>
+            <p>If the input is a sequence of length one, the result map is 
+               indistinguishable from the supplied map.
+            </p>
+            <p>There is no requirement that the supplied input maps should have the same or compatible
+               types. The type of a map (for example <code>map(xs:integer, xs:string)</code>) is
+               descriptive of the entries it currently contains, but is not a constraint on how the
+               map
+               may be combined with other maps.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$week</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="qname">map</span><span class="op">{</span><span class="numeric">0</span><span class="op">:</span><span class="op">"</span><span class="literal">Sonntag</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">1</span><span class="op">:</span><span class="op">"</span><span class="literal">Montag</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">2</span><span class="op">:</span><span class="op">"</span><span class="literal">Dienstag</span><span class="op">"</span><span class="op">,</span><span class="whitespace">
+     </span><span class="numeric">3</span><span class="op">:</span><span class="op">"</span><span class="literal">Mittwoch</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">4</span><span class="op">:</span><span class="op">"</span><span class="literal">Donnerstag</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">5</span><span class="op">:</span><span class="op">"</span><span class="literal">Freitag</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">6</span><span class="op">:</span><span class="op">"</span><span class="literal">Samstag</span><span class="op">"</span><span class="op">}</span></code></pre><p>The expression <code>map:merge(())</code> returns <code>map{}</code>. (Returns an empty map).
+            </p>
+            <p>The expression <code>map:merge((map:entry(0, "no"), map:entry(1, "yes")))</code> returns <code>map{0:"no", 1:"yes"}</code>. (Returns a map with two entries).
+            </p>
+            <p>The expression <code>map:merge(($week, map{7:"Unbekannt"}))</code> returns <code>map{0:"Sonntag", 1:"Montag", 2:"Dienstag", 3:"Mittwoch", 4:"Donnerstag",
+                  5:"Freitag", 6:"Samstag", 7:"Unbekannt"}</code>. (The value of the existing map is unchanged; the returned map 
+               contains all the entries from <code>$week</code>, supplemented with an additional
+               entry.)
+            </p>
+            <p>The expression <code>map:merge(($week, map{6:"Sonnabend"}), map{"duplicates":"use-last"})</code> returns <code>map{0:"Sonntag", 1:"Montag", 2:"Dienstag", 3:"Mittwoch", 4:"Donnerstag",
+                  5:"Freitag", 6:"Sonnabend"}</code>. (The value of the existing map is unchanged; the returned map
+               contains all the entries from <code>$week</code>, with one entry replaced by a
+               new entry. Both input maps contain an entry with the key <code>6</code>; the
+               one used in the result is the one that comes last in the input
+               sequence.)
+            </p>
+            <p>The expression <code>map:merge(($week, map{6:"Sonnabend"}), map{"duplicates":"use-first"})</code> returns <code>map{0:"Sonntag", 1:"Montag", 2:"Dienstag", 3:"Mittwoch", 4:"Donnerstag",
+                  5:"Freitag", 6:"Samstag"}</code>. (The value of the existing map is unchanged; the returned map
+               contains all the entries from <code>$week</code>, with one entry replaced by a
+               new entry. Both input maps contain an entry with the key <code>6</code>; the
+               one used in the result is the one that comes first in the input
+               sequence.)
+            </p>
+            <p>The expression <code>map:merge(($week, map{6:"Sonnabend"}), map{"duplicates":"combine"})</code> returns <code>map{0:"Sonntag", 1:"Montag", 2:"Dienstag", 3:"Mittwoch", 4:"Donnerstag",
+                  5:"Freitag", 6:("Samstag", "Sonnabend")}</code>. (The value of the existing map is unchanged; the returned map
+               contains all the entries from <code>$week</code>, with one entry replaced by a
+               new entry. Both input maps contain an entry with the key <code>6</code>; the
+               entry that appears in the result is the sequence-concatenation of the entries
+               in the input maps, retaining order.)
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-merge">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/map/merge.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

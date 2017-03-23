@@ -31,14 +31,12 @@
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:year-from-dateTime</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:dateTime</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:year-from-dateTime</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:dateTime</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -53,6 +51,16 @@
          </section>
          <section>
             <header>
+               <h2>Notes</h2>
+            </header>
+            <p>Ignoring complications that arise with midnight on the last day
+               of the year, the year returned is the same numeric value that appears in the lexical
+               representation, which for negative years means the meaning may vary depending on whether
+               XSD 1.0 or XSD 1.1 conventions are in use.
+            </p>
+         </section>
+         <section>
+            <header>
                <h2>Examples</h2>
             </header>
             <p>The expression <code>fn:year-from-dateTime(xs:dateTime("1999-05-31T13:20:00-05:00"))</code> returns <code>1999</code>.
@@ -63,10 +71,14 @@
             </p>
             <p>The expression <code>fn:year-from-dateTime(xs:dateTime("1999-12-31T24:00:00"))</code> returns <code>2000</code>.
             </p>
+            <p>The expression <code>fn:year-from-dateTime(xs:dateTime("-0002-06-06T00:00:00"))</code> returns <code>-2</code>. (The result is the same whether XSD 1.0 or 1.1 is in use, despite
+               the absence of a year 0 in the XSD 1.0 value space.)
+            </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-year-from-dateTime">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-year-from-dateTime">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-year-from-dateTime">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/year-from-dateTime.html">Saxon Function Library</a></li>
@@ -74,7 +86,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:json-doc</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:json-doc</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:json-doc</h1>
+         </header>
+         <p>Reads an external resource containing JSON, and returns the result of parsing the
+            resource as JSON.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header><pre><code class="signature"><span class="function">fn:json-doc</span><span class="parenthesis">(</span><span class="variable">$href</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:json-doc</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$href</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$options</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		static base URI.
+               	
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The effect of the single-argument call <code>fn:json-doc($H)</code> is the same as the effect of the two-argument call
+               <code>fn:json-doc($H, map{})</code> where an empty map is supplied as the second argument.
+            </p>
+            <p>The effect of the two-argument function call <code>fn:json-doc($H, $M)</code>is equivalent to the function composition
+               <code>fn:unparsed-text($H) =&gt; fn:parse-json($M)</code>; except that:
+            </p>
+            <ol>
+               <li>
+                  <p>The function <b>may</b> accept a resource in any encoding. <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">[RFC 7159]</a> requires
+                     UTF-8, UTF-16, or UTF-32 to be accepted, but it is not an error if a different encoding
+                     is used. 
+                     Unless external encoding information is available, the function <b>must</b>
+                     assume that the encoding is one of UTF-8, UTF-16, or UTF-32, and <b>must</b> distinguish these cases by examination 
+                     of the initial octets of the resource.
+                  </p>
+               </li>
+               <li>
+                  <p>If the resource contains characters that are not valid in the version of XML used
+                     by the processor,
+                     then rather than raising an error as <code>fn:unparsed-text#1</code> does, the function replaces such characters by the equivalent
+                     JSON escape sequence prior to parsing.
+                  </p>
+                  <blockquote>
+                     <p>Equivalently, the implementation can use some other internal representation of strings
+                        that allows non-XML characters to
+                        be manipulated.
+                     </p>
+                  </blockquote>
+               </li>
+            </ol>
+            <p>If the value of <code>$href</code> is the empty sequence, the function returns the empty sequence.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>The function may raise any error defined for the <code>fn:unparsed-text</code> or <code>fn:parse-json</code>
+               functions.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>If the input cannot be decoded (that is, converted into a sequence of Unicode codepoints,
+               which may or may not represent characters),
+               then a dynamic error occurs as with the <code>fn:unparsed-text</code> function.
+            </p>
+            <p>If the input can be decoded,
+               then the possibility still arises that the resulting sequence of codepoints includes
+               codepoints that do not represent characters that are valid in the
+               version of XML that the processor supports. Such codepoints are translated into JSON
+               escape sequences (for example, <code>\uFFFF</code>),
+               and the JSON escape sequence is then passed to the fallback function specified in
+               the <code>$options</code> argument, which in turn
+               defaults to a function that returns the Unicode <code>REPLACEMENT CHARACTER</code> (<code>xFFFD</code>).
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-json-doc">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-json-doc">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/json-doc.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

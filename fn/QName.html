@@ -26,23 +26,20 @@
          <header>
             <h1 class="page-header">fn:QName</h1>
          </header>
-         <p>Constructs an <code>xs:QName</code> value given a namespace URI and a lexical
-            QName.
+         <p>Returns an <code>xs:QName</code> value formed using a supplied namespace URI and lexical QName.
          </p>
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:QName</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:QName</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$paramURI</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$paramQName</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:QName</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:QName</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -64,21 +61,17 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramQName</code> does
-               not have the correct lexical form for an instance of <code>xs:QName</code>.
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramQName</code>
+               does not have the correct lexical form for an instance of <code>xs:QName</code>.
             </p>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramURI</code> is the
-               zero-length string or the empty sequence, and the value of <code>$paramQName</code>
-               contains a colon (<code>:</code>).
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramURI</code>
+               is the zero-length string or the empty sequence, and the value of
+               <code>$paramQName</code> contains a colon (<code>:</code>).
             </p>
-            <p>A dynamic error <b>may</b> be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOCA0002">ERRFOCA0002</a>] if <code>$paramURI</code> is not a valid URI (XML Namespaces 1.0) or
-               IRI (XML Namespaces 1.1). 
+            <p>A dynamic error <b>may</b> be raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOCA0002">ERRFOCA0002</a>] if
+               <code>$paramURI</code> is not a valid URI (XML Namespaces 1.0) or IRI (XML Namespaces
+               1.1). 
             </p>
-         </section>
-         <section>
-            <header>
-               <h2>Notes</h2>
-            </header>
          </section>
          <section>
             <header>
@@ -98,6 +91,7 @@
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-QName">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-QName">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-QName">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/QName.html">Saxon Function Library</a></li>
@@ -105,7 +99,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

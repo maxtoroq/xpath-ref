@@ -8,7 +8,8 @@
    <xsl:import href="function.xsl"/>
 
    <xsl:param name="index-only" as="xs:boolean" select="false()"/>
-   <xsl:param name="spec-v2" as="document-node()" required="yes"/>
+   <xsl:param name="spec-v3" select="doc('specs/xpath-functions-30.xml')" as="document-node()"/>
+   <xsl:param name="spec-v2" select="doc('specs/xpath-functions-20101214.xml')" as="document-node()"/>
 
    <xsl:output name="html" method="xhtml" indent="yes" omit-xml-declaration="yes" use-character-maps="html"/>
 
@@ -16,7 +17,8 @@
       <xsl:output-character character="&#xa0;" string="&amp;nbsp;"/>
    </xsl:character-map>
 
-   <xsl:variable name="functions" select=".//*[head[not(*) and (some $prefix in ('fn', 'math') satisfies starts-with(text(), concat($prefix, ':')))]]"/>
+   <xsl:variable name="functions" select=".//*[head[not(*) and (some $prefix in ('fn', 'math', 'map', 'array') satisfies starts-with(text(), concat($prefix, ':')))]]"/>
+   <xsl:variable name="functions-30" select=".//*[head[not(*) and (some $prefix in ('fn', 'math') satisfies starts-with(text(), concat($prefix, ':')))]]"/>
    <xsl:variable name="functions-20" select="$spec-v2//*[head/starts-with(string(), 'fn:') or example[@role='signature']/proto[@isOp='no' and not(@role='example')]]"/>
 
    <xsl:template match="/">
@@ -31,7 +33,7 @@
                <link rel="stylesheet" href="bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css"/>
                <link rel="stylesheet" href="css/site.css"/>
                <link rel="shortcut icon" href="favicon.ico"/>
-               <meta name="description" content="XPath 3.0 Functions Reference"/>
+               <meta name="description" content="XPath 3.1 Functions Reference"/>
             </head>
             <body class="index">
                <xsl:call-template name="navigation-header">
@@ -79,6 +81,7 @@
       <xsl:for-each select="$functions[not($index-only)]">
          <xsl:result-document href="{resolve-uri(concat('../', head/substring-before(., ':'), '/', local:file-name(.)))}" format="html">
             <xsl:call-template name="function">
+               <xsl:with-param name="exists-in-v3" select="local:exists-in-v3(.)"/>
                <xsl:with-param name="exists-in-v2" select="local:exists-in-v2(.)"/>
             </xsl:call-template>
          </xsl:result-document>
@@ -92,7 +95,11 @@
          <div id="function-filters">
             <div class="btn-group btn-group-xs" data-toggle="buttons">
                <label class="btn btn-default active">
-                  <input type="radio" name="version" value="3.0" checked="checked"/>
+                  <input type="radio" name="version" value="3.1" checked="checked"/>
+                  <xsl:text>3.1</xsl:text>
+               </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="version" value="3.0"/>
                   <xsl:text>3.0</xsl:text>
                </label>
                <label class="btn btn-default">
@@ -160,10 +167,28 @@
    </xsl:template>
 
    <xsl:template name="function-link">
-      <a href="{head/substring-before(., ':')}/{local:file-name(.)}" data-xpath-version="{if (local:exists-in-v2(.)) then '2.0' else '3.0'}">
-         <xsl:value-of select="head/substring-after(., ':')"/>
+      <xsl:variable name="prefix" select="head/substring-before(., ':')"/>
+      <a href="{$prefix}/{local:file-name(.)}"
+         data-xpath-version="{
+            if (local:exists-in-v2(.)) then '2.0'
+            else if (local:exists-in-v3(.)) then '3.0'
+            else '3.1'}">
+         <xsl:choose>
+            <xsl:when test="$prefix eq 'fn'">
+               <xsl:value-of select="head/substring-after(., ':')"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:value-of select="head"/>
+            </xsl:otherwise>
+         </xsl:choose>
       </a>
    </xsl:template>
+
+   <xsl:function name="local:exists-in-v3" as="xs:boolean">
+      <xsl:param name="function" as="element()"/>
+
+      <xsl:sequence select="exists($functions-30[head/string() eq $function/head/string()])"/>
+   </xsl:function>
 
    <xsl:function name="local:exists-in-v2" as="xs:boolean">
       <xsl:param name="function" as="element()"/>

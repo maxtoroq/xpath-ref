@@ -26,44 +26,50 @@
          <header>
             <h1 class="page-header">fn:serialize</h1>
          </header>
-         <p>This function serializes the supplied input
-            sequence
-            <code>$arg</code> as described in <a href="http://www.w3.org/TR/xslt-xquery-serialization-30/">[Serialization 3.0]</a>,
-            returning the serialized representation of the
-            sequence as a string.
+         <p>This function serializes the supplied input sequence <code>$arg</code> as described in
+            <span>[XSLT and XQuery Serialization 3.1]</span>, returning the serialized representation
+            of the sequence as a string.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:serialize</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:serialize</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:serialize</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:serialize</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> &#xD;
-    </span><span class="variable">$params</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="qname">output:serialization-parameters</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p>
-         </section>
+    </span><span class="variable">$params</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
             <header>
                <h2>Rules</h2>
             </header>
-            <p>The value of <code>$arg</code> acts as the input sequence to the serialization process,
+            <p>The value of the first argument <code>$arg</code> acts as the input sequence to the serialization process,
                which starts with sequence normalization.
             </p>
-            <p>The single-argument version of this function has the same effect as
-               the two-argument version called with <code>$params</code> set to an empty sequence. This
-               in turn is the same as the effect of passing an
-               <code>output:serialization-parameters</code> element with no child elements.
+            <p>The second argument <code>$params</code>, if present, provides serialization parameters. These may be supplied in either 
+               of two forms:
             </p>
-            <p>The <code>$params</code> argument is used to identify a set of
-               serialization parameters. These are supplied in the form of an
-               <code>output:serialization-parameters</code> element, having the format described in
-               <a href="http://www.w3.org/TR/xslt-xquery-serialization-30/#serparams-in-xdm-instance">Setting Serialization Parameters by Means of a Data Model Instance</a>.
+            <ol>
+               <li>
+                  <p>As an <code>output:serialization-parameters</code>
+                     element, having the format described in <a href="#serparams-in-xdm-instance"></a>. In this case the type of the supplied
+                     argument must match the required type <code>element(output:serialization-parameters)</code>.
+                  </p>
+               </li>
+               <li>
+                  <p>As a map. In this case the type of the supplied argument must match the required type
+                     <code>map(*)</code></p>
+               </li>
+            </ol>
+            <p>The single-argument version of this function has the same effect as the two-argument
+               version called with <code>$params</code> set to an empty sequence. This in turn is the
+               same as the effect of passing an <code>output:serialization-parameters</code> element
+               with no child elements.
             </p>
             <p>The final stage of serialization, that is, encoding, is skipped. If the serializer
                does
@@ -72,21 +78,92 @@
                in the
                final stage.
             </p>
+            <p>If the second argument is omitted, or is supplied in the form of an <code>output:serialization-parameters</code>
+               element, then the values of any serialization parameters that are not explicitly specified
+               is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>,
+               and may depend on the context.
+            </p>
+            <p>If the second argument is supplied as a map, then the <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a>
+               apply. In this case:
+            </p>
+            <ol>
+               <li>
+                  <p>Each entry in the map defines one serialization parameter.</p>
+               </li>
+               <li>
+                  <p>The key of the entry is an <code>xs:string</code> value in the cases of parameter names defined in these specifications, or an
+                     <code>xs:QName</code> (with non-absent namespace) in the case of implementation-defined serialization parameters.
+                  </p>
+               </li>
+               <li>
+                  <p>The required type of each parameter, and its default value, are defined by the following
+                     table. The default
+                     value is used when the map contains no entry for the parameter in question, and also
+                     when an entry is present, with the
+                     empty sequence as its value. The table also indicates how the value of the map entry
+                     is to be interpreted in cases
+                     where further explanation is needed.
+                  </p>
+               </li>
+            </ol>ParameterRequired typeInterpretationDefault Value<code>allow-duplicate-names</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>no</code><code>byte-order-mark</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>no</code><code>cdata-section-elements</code><code>xs:QName*</code><code>()</code><code>doctype-public</code><code>xs:string?</code>Zero-length string and <code>()</code> both represent "absent"absent<code>doctype-system</code><code>xs:string?</code>Zero-length string and <code>()</code> both represent "absent"absent<code>encoding</code><code>xs:string?</code><code>utf-8</code><code>escape-uri-attributes</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>yes</code><code>html-version</code><code>xs:decimal?</code><code>5</code><code>include-content-type</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>yes</code><code>indent</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>no</code><code>item-separator</code><code>xs:string?</code>absent<code>json-node-output-method</code><code>union(xs:string, xs:QName)?</code>See Notes 1, 2<code>xml</code><code>media-type</code><code>xs:string?</code>(a media type suitable for the chosen <code>method</code>)<code>method</code><code>union(xs:string, xs:QName)?</code>See Notes 1, 2<code>xml</code><code>normalization-form</code><code>xs:string?</code><code>none</code><code>omit-xml-declaration</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>yes</code><code>standalone</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no", <code>()</code> means "omit"<code>omit</code><code>suppress-indentation</code><code>xs:QName*</code><code>()</code><code>undeclare-prefixes</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>no</code><code>use-character-maps</code><code>map(xs:string, xs:string)?</code>See Note 3<code>map{}</code><code>version</code><code>xs:string?</code><code>1.0</code><p>Notes to the table:</p>
+            <ol>
+               <li>
+                  <p>The notation <code>union(A, B)</code> is used to represent a union type whose member types are <code>A</code>
+                     and <code>B</code>.
+                  </p>
+               </li>
+               <li>
+                  <p>If an <code>xs:QName</code> is supplied for the <code>method</code> or <code>json-node-output-method</code> 
+                     options, then it must have a non-absent namespace URI. This
+                     means that system-defined serialization methods such as <code>xml</code> and <code>json</code>
+                     are defined as strings, not as <code>xs:QName</code> values.
+                  </p>
+               </li>
+               <li>
+                  <p>For the <code>use-character-maps</code> option, the value is a map, whose keys 
+                     are the characters to be mapped (as <code>xs:string</code> instances),
+                     and whose corresponding values are the strings to be substituted for these characters.
+                     
+                     
+                  </p>
+               </li>
+            </ol>
          </section>
          <section>
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>If the host language makes serialization an optional feature and
-               the implementation does not support serialization, then a dynamic error
-               [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0010">ERRFODC0010</a>] is raised.
+            <p>A type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>] occurs if the second argument
+               is present and does not match either of the types <code>element(output:serialization-parameters)?</code>
+               or <code>map(*)</code>.
+            </p>
+            <blockquote>
+               <p>This is defined as a type error so that it can be enforced via the function signature
+                  by implementations
+                  that generalize the type system in a suitable way.
+               </p>
+            </blockquote>
+            <p>If the host language makes serialization an optional feature and the implementation
+               does
+               not support serialization, then a dynamic error [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0010">ERRFODC0010</a>] is
+               raised.
             </p>
             <p>The serialization process will raise an error if <code>$arg</code> is an attribute or
                namespace node.
             </p>
+            <p>When the second argument is supplied as a map, 
+               and the supplied value is of the wrong type for the particular parameter, for example
+               if the value of <code>indent</code>
+               is a string rather than a boolean, then as defined by the <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a>,
+               a type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>] is raised. 
+               If the value is of the correct type, but does not satisfy the rules for that
+               parameter defined in <span>[XSLT and XQuery Serialization 3.1]</span>, then a dynamic error 
+               [<a href="#ERRSER31PM0016">ERRSER31PM0016</a>] is raised. (For example, this occurs if the map supplied to
+               <code>use-character-maps</code> includes a key that is a string whose length is not one (1)).
+            </p>
             <p>If any serialization error occurs, including the detection of an invalid value for
                a
-               serialization parameter, this results in the <code>fn:serialize</code> call failing with
+               serialization parameter as described above, this results in the <code>fn:serialize</code> call failing with
                a dynamic error.
             </p>
          </section>
@@ -107,32 +184,49 @@
                proprietary markup delimiters such as the <code>&lt;% ... %&gt;</code> used by some
                templating languages.
             </p>
+            <p>The ability to specify the serialization parameters in an <code>output:serialization-parameters</code>
+               element provides backwards compatibility with the 3.0 version of this specification;
+               the ability to
+               use a map takes advantage of new features in the 3.1 version. The default parameter
+               values are
+               implementation-defined when an <code>output:serialization-parameters</code>
+               element is used (or when the argument is omitted), but are fixed by this specification
+               in the
+               case where a map (including an empty map) is supplied for the argument.
+            </p>
          </section>
          <section>
             <header>
                <h2>Examples</h2>
             </header>
-            <p>Given the output parameters:</p>
-            <p>let <code>$params</code> := <pre><code><span class="es">&lt;</span><span class="en">output:serialization-parameters</span><span class="z"> </span><span class="atn">xmlns:output</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2010/xslt-xquery-serialization</span><span class="z">"</span><span class="scx">&gt;</span><span class="txt">
-  </span><span class="es">&lt;</span><span class="en">output:omit-xml-declaration</span><span class="z"> </span><span class="atn">value</span><span class="atneq">=</span><span class="z">"</span><span class="av">yes</span><span class="z">"</span><span class="sc">/&gt;</span><span class="txt">
-</span><span class="ez">&lt;/</span><span class="cl">output:serialization-parameters</span><span class="ec">&gt;</span><span class="txt">
-         </span></code></pre></p>
-            <p>let <code>$data</code> := <pre><code><span class="es">&lt;</span><span class="en">a</span><span class="z"> </span><span class="atn">b</span><span class="atneq">=</span><span class="z">'</span><span class="av">3</span><span class="z">'</span><span class="sc">/&gt;</span><span class="txt">
-         </span></code></pre></p>
-            <p>The following call might produce the output shown:</p>
+            <p>Given the variables:</p><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$params</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> 
+</span><span class="es">&lt;</span><span class="en">output:serialization-parameters</span><span class="atn"> 
+        xmlns:output</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2010/xslt-xquery-serialization</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
+  </span><span class="es">&lt;</span><span class="en">output:omit-xml-declaration</span><span class="atn"> value</span><span class="atneq">=</span><span class="z">"</span><span class="av">yes</span><span class="z">"</span><span class="z">/&gt;</span><span class="txt">
+</span><span class="sc">&lt;/</span><span class="cl">output:serialization-parameters</span><span class="z">&gt;</span><span class="whitespace">
+         </span></code></pre><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$data</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> 
+</span><span class="es">&lt;</span><span class="en">a</span><span class="atn"> b</span><span class="atneq">=</span><span class="z">"</span><span class="av">3</span><span class="z">"</span><span class="z">/&gt;</span><span class="whitespace">
+         </span></code></pre><p>The following call might produce the output shown:</p>
             <p>The expression <code>fn:serialize($data, $params)</code> returns <code>'&lt;a b="3"/&gt;'</code>.
+            </p>
+            <p>The following call would also produce the output shown (though the second argument
+               could equally well be supplied
+               as an empty map (<code>map{}</code>), since both parameters are given their default values):
+            </p>
+            <p>The expression <code>fn:serialize($data, map{"method":"xml", "omit-xml-declaration":true()})</code> returns <code>'&lt;a b="3"/&gt;'</code>.
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-serialize">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-serialize">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/serialize.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

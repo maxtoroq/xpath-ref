@@ -26,29 +26,26 @@
          <header>
             <h1 class="page-header">fn:subsequence</h1>
          </header>
-         <p>Returns the contiguous sequence of items in the value of
-            <code>$sourceSeq</code> beginning at the position indicated by the value of
-            <code>$startingLoc</code> and continuing for the number of items indicated by the
-            value of <code>$length</code>. 
+         <p>Returns the contiguous sequence of items in the value of <code>$sourceSeq</code>
+            beginning at the position indicated by the value of <code>$startingLoc</code> and
+            continuing for the number of items indicated by the value of <code>$length</code>. 
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:subsequence</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:subsequence</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$sourceSeq</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$startingLoc</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre><pre><code class="signature"><span class="function">fn:subsequence</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$sourceSeq</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$startingLoc</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$length</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -64,21 +61,22 @@
             <p>The first item of a sequence is located at position 1, not position 0.</p>
             <p>If <code>$sourceSeq</code> is the empty sequence, the empty sequence is returned.
             </p>
-            <p> If <code>$startingLoc</code> is zero or negative, the subsequence includes items from
-               the beginning of the <code>$sourceSeq</code>.
+            <p>In the two-argument case, the function returns a sequence comprising those items of
+               <code>$sourceSeq</code> whose index position (counting from one) 
+               is greater than or equal to the value of <code>$startingLoc</code> (rounded to an integer). No error occurs if <code>$startingLoc</code> is 
+               zero or negative.
             </p>
-            <p> If <code>$length</code> is not specified, the subsequence includes items to the end of
-               <code>$sourceSeq</code>.
+            <p>In the three-argument case, The function returns a sequence comprising those items
+               of <code>$sourceSeq</code> whose index position (counting from one) 
+               is greater than or equal to the value of <code>$startingLoc</code> (rounded to an integer), and 
+               less than the sum of <code>$startingLoc</code> and <code>$length</code> (both rounded to integers). No error occurs if <code>$startingLoc</code> is 
+               zero or negative, or if <code>$startingLoc</code> plus <code>$length</code> exceeds the number of items in the sequence, or if 
+               <code>$length</code> is negative.
             </p>
-            <p> If <code>$length</code> is greater than the number of items in the value of
-               <code>$sourceSeq</code> following <code>$startingLoc</code>, the subsequence includes
-               items to the end of <code>$sourceSeq</code>.
-            </p>
-            <p>As an exception to the previous two notes, if
-               <code>$startingLoc</code> is <code>-INF</code> and <code>$length</code> is
-               <code>+INF</code>, then <code>fn:round($startingLoc) + fn:round($length)</code> is
-               <code>NaN</code>; since <code>position() lt NaN</code> is always false, the result is
-               an empty sequence.
+            <p>As a consequence of the general rules, if <code>$startingLoc</code> is
+               <code>-INF</code> and <code>$length</code> is <code>+INF</code>, then
+               <code>fn:round($startingLoc) + fn:round($length)</code> is <code>NaN</code>; since
+               <code>position() lt NaN</code> is always false, the result is an empty sequence.
             </p>
             <p>The reason the function accepts arguments of type <code>xs:double</code> is that many
                computations on untyped data return an <code>xs:double</code> result; and the reason for
@@ -89,9 +87,7 @@
          <section>
             <header>
                <h2>Examples</h2>
-            </header>
-            <p>let <code>$seq</code> := <code>("item1", "item2", "item3", "item4", "item5")</code></p>
-            <p>The expression <code>fn:subsequence($seq, 4)</code> returns <code>("item4", "item5")</code>.
+            </header><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$seq</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">item1</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">item2</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">item3</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">item4</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">item5</span><span class="op">"</span><span class="parenthesis">)</span></code></pre><p>The expression <code>fn:subsequence($seq, 4)</code> returns <code>("item4", "item5")</code>.
             </p>
             <p>The expression <code>fn:subsequence($seq, 3, 2)</code> returns <code>("item3", "item4")</code>.
             </p>
@@ -99,6 +95,7 @@
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-subsequence">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-subsequence">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-subsequence">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/subsequence.html">Saxon Function Library</a></li>
@@ -106,7 +103,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

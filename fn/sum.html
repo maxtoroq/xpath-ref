@@ -26,23 +26,20 @@
          <header>
             <h1 class="page-header">fn:sum</h1>
          </header>
-         <p>Returns a value obtained by adding together the values in
-            <code>$arg</code>.
+         <p>Returns a value obtained by adding together the values in <code>$arg</code>.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:sum</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span></code></pre><pre><code class="signature"><span class="function">fn:sum</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:sum</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span></code></pre><pre><code class="signature"><span class="function">fn:sum</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType*</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$zero</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span><span class="quantifier">?</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -65,7 +62,7 @@
                addition, the type must support addition. Duration values must either all be
                <code>xs:yearMonthDuration</code> values or must all be
                <code>xs:dayTimeDuration</code> values. For numeric values, the numeric promotion
-               rules defined in <a href="http://www.w3.org/TR/xpath-functions-30/#op.numeric">Arithmetic operators on numeric values</a> are used to promote all values to a single
+               rules defined in <a href="https://www.w3.org/TR/xpath-functions-31/#op.numeric">Arithmetic operators on numeric values</a> are used to promote all values to a single
                common type. The sum of a sequence of integers will therefore be an integer, while
                the
                sum of a numeric sequence that includes at least one <code>xs:double</code> will be an
@@ -88,7 +85,7 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A type error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORG0006">ERRFORG0006</a>] if the input sequence contains
+            <p>A type error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFORG0006">ERRFORG0006</a>] if the input sequence contains
                items of incompatible types, as described above.
             </p>
          </section>
@@ -109,12 +106,7 @@
          <section>
             <header>
                <h2>Examples</h2>
-            </header>
-            <p>let <code>$d1</code> := <code>xs:yearMonthDuration("P20Y")</code></p>
-            <p>let <code>$d2</code> := <code>xs:yearMonthDuration("P10M")</code></p>
-            <p>let <code>$seq1</code> := <code>($d1, $d2)</code></p>
-            <p>let <code>$seq3</code> := <code>(3, 4, 5)</code></p>
-            <p>The expression <code>fn:sum(($d1, $d2))</code> returns <code>xs:yearMonthDuration("P20Y10M")</code>.
+            </header><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$d1</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="function">xs:yearMonthDuration</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">P20Y</span><span class="op">"</span><span class="parenthesis">)</span></code></pre><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$d2</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="function">xs:yearMonthDuration</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">P10M</span><span class="op">"</span><span class="parenthesis">)</span></code></pre><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$seq1</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="parenthesis">(</span><span class="variable">$d1</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$d2</span><span class="parenthesis">)</span></code></pre><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$seq3</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="parenthesis">(</span><span class="numeric">3</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">4</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">5</span><span class="parenthesis">)</span></code></pre><p>The expression <code>fn:sum(($d1, $d2))</code> returns <code>xs:yearMonthDuration("P20Y10M")</code>.
             </p>
             <p>The expression <code>fn:sum($seq1[. lt xs:yearMonthDuration('P3M')],
                   xs:yearMonthDuration('P0M'))</code> returns <code>xs:yearMonthDuration("P0M")</code>.
@@ -127,17 +119,21 @@
             </p>
             <p>The expression <code>fn:sum((1 to 100)[. lt 0], 0) </code> returns <code>0</code>.
             </p>
-            <p><code>fn:sum(($d1, 9E1))</code> raises a type error [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFORG0006">ERRFORG0006</a>].
-               
+            <p><code>fn:sum(($d1, 9E1))</code> raises a type error [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFORG0006">ERRFORG0006</a>]. 
             </p>
             <p>The expression <code>fn:sum(($d1, $d2), "ein Augenblick")</code> returns <code>xs:yearMonthDuration("P20Y10M")</code>. (There is no requirement that the <code>$zero</code> value should be
                the same type as the items in <code>$arg</code>, or even that it should belong to
-               a type that supports addition.).
+               a type that supports addition.)
+            </p>
+            <p>The expression <code>fn:sum([1, 2, 3])</code> returns <code>6</code>. (Atomizing an array returns the sequence obtained by atomizing its members.)
+            </p>
+            <p>The expression <code>fn:sum([[1, 2], [3, 4]])</code> returns <code>10</code>. (Atomizing an array returns the sequence obtained by atomizing its members.)
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-sum">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-sum">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-sum">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/sum.html">Saxon Function Library</a></li>
@@ -145,7 +141,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

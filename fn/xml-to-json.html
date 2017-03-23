@@ -1,0 +1,352 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:xml-to-json</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:xml-to-json</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:xml-to-json</h1>
+         </header>
+         <p>Converts an XML tree, whose format corresponds to the XML representation of JSON defined
+            in this specification, into a string conforming to the JSON grammar.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header><pre><code class="signature"><span class="function">fn:xml-to-json</span><span class="parenthesis">(</span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:xml-to-json</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$options</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The effect of the one-argument form of this function is the same as calling the
+               two-argument form with an empty map as the value of the <code>$options</code>
+               argument.
+            </p>
+            <p>The first argument <code>$input</code> is a node; the subtree rooted at this node will typically be
+               the XML representation of a JSON document as defined in <a href="https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping">XML Representation of JSON</a>.
+            </p>
+            <p>If <code>$input</code> is the empty sequence, the function returns the empty sequence.
+            </p>
+            <p>The <code>$options</code> argument can be used to control the way in which the conversion
+               takes place. The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> apply.
+            </p>
+            <p>The entries that may appear in the <code>$options</code> map are as follows:
+            </p>KeyValueMeaning<code>indent</code>Determines whether additional whitespace should be added to the output to improve
+            readability.
+            <ul>
+               <li>
+                  <p>Type: <code>xs:boolean</code></p>
+               </li>
+               <li>
+                  <p>Default: <code>false</code></p>
+               </li>
+            </ul><code>false</code>
+            The processor must not insert any insignificant whitespace between JSON tokens.
+            <code>true</code>
+            The processor <b>may</b> insert whitespace between JSON tokens in order to improve readability.
+            The specification imposes no constraints on how this is done.
+            
+            <p>The node supplied as <code>$input</code> must be one of the following: [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0006">ERRFOJS0006</a>]
+            </p>
+            <ol>
+               <li>
+                  <p>An element node whose name matches the name of a global element declaration in the
+                     schema given in 
+                     <a href="https://www.w3.org/TR/xpath-functions-31/#schema-for-json">Schema for the result of fn:json-to-xml</a> ("the schema") and that is valid as defined below:
+                  </p>
+                  <ol>
+                     <li>
+                        <p>If the type annotation of the element matches the type of the relevant element declaration
+                           
+                           in the schema (indicating that the element has been validated against the schema),
+                           then the element 
+                           is considered valid.
+                           
+                        </p>
+                     </li>
+                     <li>
+                        <p>Otherwise, the processor <b>may</b> attempt to validate the element against
+                           the schema, in which case it is treated as valid if and only if the outcome of validation
+                           is
+                           valid.
+                           
+                        </p>
+                     </li>
+                     <li>
+                        <p>Otherwise (if the processor does not attempt validation using the schema), 
+                           the processor <b>must</b> ensure that the content of the element, 
+                           after stripping all attributes (at any depth) in namespaces other than 
+                           <code>http://www.w3.org/2005/xpath-functions</code>, is such that validation 
+                           against the schema would have an outcome of valid.
+                           
+                        </p>
+                        <blockquote>
+                           <p>The process described here is not precisely equivalent to schema validation. 
+                              For example, schema validation will fail if there is an invalid <code>xsi:type</code> 
+                              or <code>xsi:nil</code> attribute, whereas this process will ignore such attributes.
+                              
+                           </p>
+                        </blockquote>
+                     </li>
+                  </ol>
+               </li>
+               <li>
+                  <p>An element node <i>E</i> having a <code>key</code> attribute and/or an <code>escaped-key</code> attribute 
+                     provided that <i>E</i> would satisfy one of the above
+                     conditions if the <code>key</code> and/or <code>escaped-key</code> attributes were removed.
+                  </p>
+               </li>
+               <li>
+                  <p>A document node having exactly one element child and no text node children, 
+                     where the element child satisfies one of the conditions above.
+                  </p>
+               </li>
+            </ol>
+            <p>Furthermore, <code>$input</code> must satisfy the following constraint
+               (which cannot be conveniently expressed in the schema). Every element <i>M</i> that is a descendant-or-self of 
+               <code>$input</code> and has local name <code>map</code> and namespace URI <code>http://www.w3.org/2005/xpath-functions</code>
+               must satisfy the following rule: there must not be two distinct children of <i>M</i> (say <i>C/1</i> and <i>C/2</i>) 
+               such that the normalized key of <i>C/1</i> is equal to the normalized key of <i>C/2</i>. The normalized key 
+               of an element <i>C</i> is as follows:
+            </p>
+            <ul>
+               <li>
+                  <p>If <i>C</i> has the attribute value <code>escaped-key="true"</code>, then the value of the 
+                     <code>key</code> attribute of <i>C</i>, with all JSON escape sequences replaced by the corresponding Unicode characters
+                     
+                     according to the JSON escaping rules.
+                     
+                  </p>
+               </li>
+               <li>
+                  <p>Otherwise (the <code>escaped-key</code> attribute of <i>C</i> is absent or set to false), 
+                     the value of the <code>key</code> attribute of <i>C</i>.
+                  </p>
+               </li>
+            </ul>
+            <p>Nodes in the input tree are handled by applying the following rules, recursively.
+               In these rules the term
+               "an element named <i>N</i>" means "an element node whose local name is <i>N</i> and whose namespace URI is 
+               <code>http://www.w3.org/2005/xpath-functions</code>".
+            </p>
+            <ol>
+               <li>
+                  <p>A document node having a single element node child is processed by processing that
+                     child.
+                  </p>
+               </li>
+               <li>
+                  <p>An element named <code>null</code> results in the output <code>null</code>.
+                  </p>
+               </li>
+               <li>
+                  <p>An element <code>$E</code> named <code>boolean</code> results in the output <code>true</code> or <code>false</code>
+                     depending on the result of <code>xs:boolean(fn:string($E))</code>.
+                  </p>
+               </li>
+               <li>
+                  <p>An element <code>$E</code> named <code>number</code> results in the output of the string 
+                     result of <code>xs:string(xs:double(fn:string($E)))</code>
+                     
+                  </p>
+               </li>
+               <li>
+                  <p>An element named <code>string</code> results in the output of the string value of the element, enclosed in
+                     quotation marks, with any special characters in the string escaped as described below.
+                  </p>
+               </li>
+               <li>
+                  <p>An element named <code>array</code> results in the output of the children of the <code>array</code> element, 
+                     each processed by applying these rules recursively: the items in the resulting list
+                     are enclosed between square brackets, 
+                     and separated by commas.
+                  </p>
+               </li>
+               <li>
+                  <p>An element named <code>map</code> results in the output of a sequence of map entries corresponding to 
+                     the children of the <code>map</code> element, enclosed between curly braces and separated by commas. 
+                     Each entry comprises the value of the <code>key</code> attribute of the child element, enclosed in quotation marks 
+                     and escaped as described below, followed by a colon, followed by the result of processing
+                     the child element 
+                     by applying these rules recursively.
+                  </p>
+               </li>
+               <li>
+                  <p>Comments, processing instructions, and whitespace text node children of <code>map</code> and <code>array</code>
+                     are ignored.
+                  </p>
+               </li>
+            </ol>
+            <p>Strings are escaped as follows:</p>
+            <ol>
+               <li>
+                  <p>If the attribute <code>escaped="true"</code> is present for a string value, or <code>escaped-key="true"</code> for a key value, then:
+                  </p>
+                  <ol>
+                     <li>
+                        <p>any valid JSON escape sequence present in the string is copied unchanged to the output;</p>
+                     </li>
+                     <li>
+                        <p>any invalid JSON escape sequence results in a dynamic error [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0007">ERRFOJS0007</a>];
+                        </p>
+                     </li>
+                     <li>
+                        <p>any unescaped occurrence of quotation mark, backspace, form-feed, newline, carriage
+                           return, tab, or solidus is replaced by
+                           <code>\"</code>, <code>\b</code>, <code>\f</code>, <code>\n</code>, <code>\r</code>, <code>\t</code>, or <code>\/</code> respectively; 
+                        </p>
+                     </li>
+                     <li>
+                        <p>any other codepoint in the range 1-31 or 127-159 is replaced by an escape in the form
+                           \uHHHH where HHHH 
+                           is the upper-case hexadecimal representation of the codepoint value.
+                        </p>
+                     </li>
+                  </ol>
+               </li>
+               <li>
+                  <p>Otherwise (that is, in the absence of the attribute <code>escaped="true"</code> for a string value, 
+                     or <code>escaped-key="true"</code> for a key value):
+                  </p>
+                  <ol>
+                     <li>
+                        <p>any occurrence of backslash is replaced by <code>\\</code></p>
+                     </li>
+                     <li>
+                        <p>any occurrence of quotation mark, backspace, form-feed, newline, carriage return,
+                           or tab is 
+                           replaced by <code>\"</code>, <code>\b</code>, <code>\f</code>, <code>\n</code>, <code>\r</code>, or <code>\t</code> respectively; 
+                        </p>
+                     </li>
+                     <li>
+                        <p>any other codepoint in the range 1-31 or 127-159 is replaced by an escape in 
+                           the form <code>\uHHHH</code> where <code>HHHH</code> is the upper-case hexadecimal representation of the codepoint value.
+                        </p>
+                     </li>
+                  </ol>
+               </li>
+            </ol>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0005">ERRFOJS0005</a>] if the value of
+               <code>$options</code> includes an entry whose key is defined in this specification, 
+               and whose value is not a permitted value for that key.
+            </p>
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0006">ERRFOJS0006</a>] if the value of
+               <code>$input</code> is not a document or element node or is not valid according to the schema for the
+               XML representation of
+               JSON, or if a <code>map</code> element has two children whose normalized key values are the same.
+            </p>
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0007">ERRFOJS0007</a>] if the value of
+               <code>$input</code> includes a string labeled with <code>escaped="true"</code>, or
+               a key labeled with <code>escaped-key="true"</code>, where the content of the string or key
+               contains an invalid JSON escape sequence: specifically, where it contains a backslash
+               (<code>\</code>) that is not followed by one
+               of the characters <code>"</code>, <code>\</code>, <code>/</code>, <code>b</code>, <code>f</code>, <code>n</code>, 
+               <code>r</code>, <code>t</code>, or <code>u</code>, or where it contains the characters <code>\u</code>
+               not followed by four hexadecimal digits (that is <code>[0-9A-Fa-f]{4}</code>).
+               
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>The rule requiring schema validity has a number of consequences, including the following:</p>
+            <ol>
+               <li>
+                  <p>The input cannot contain no-namespace attributes, or attributes in the namespace <code>http://www.w3.org/2005/xpath-functions</code>,
+                     except where explicitly allowed by the schema. Attributes in other namespaces, however,
+                     are ignored.
+                  </p>
+               </li>
+               <li>
+                  <p>Nodes that do not affect schema validity, such as comments, processing instructions,
+                     namespace nodes, and whitespace text node
+                     children of <code>map</code> and <code>array</code>, are ignored.
+                  </p>
+               </li>
+               <li>
+                  <p>Numeric values are restricted to those that are valid in JSON: 
+                     the schema disallows positive and negative infinity and NaN.
+                  </p>
+               </li>
+               <li>
+                  <p>Duplicate key values are not permitted. Most cases of duplicate keys are prevented by the rules in the schema; 
+                     additional cases (where the keys are equal only after expanding JSON escape sequences)
+                     are prevented by the prose rules 
+                     of this function. For example, the key values <code>\n</code> and <code>\u000A</code> are treated as duplicates even though
+                     the rules in the schema do not treat them as such.
+                  </p>
+               </li>
+            </ol>
+            <p>The rule allowing the top-level element to have a <code>key</code> attribute (which is ignored)
+               allows any element in the output of the <code>fn:json-to-xml</code> function
+               to be processed: for example, it is possible to take a JSON document, convert it to
+               XML, select
+               a subtree based on the value of a <code>key</code> attribute, and then convert this subtree
+               back to JSON, perhaps after a transformation. The rule means that an element with
+               the appropriate name will be 
+               accepted if it has been validated against one of the 
+               types <code>mapWithinMapType</code>, <code>arrayWithinMapType</code>, <code>stringWithinMapType</code>, 
+               <code>numberWithinMapType</code>, <code>booleanWithinMapType</code>, or <code>nullWithinMapType</code>.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The input <code>&lt;array xmlns="http://www.w3.org/2005/xpath-functions"&gt;&lt;number&gt;1&lt;/number&gt;&lt;string&gt;is&lt;/string&gt;&lt;boolean&gt;1&lt;/boolean&gt;&lt;/array&gt;</code>
+               produces the result <code>[1,"is",true]</code>.
+            </p>
+            <p>The input <code>&lt;map xmlns="http://www.w3.org/2005/xpath-functions"&gt;&lt;number key="Sunday"&gt;1&lt;/number&gt;&lt;number
+                  key="Monday"&gt;2&lt;/number&gt;&lt;/map&gt;</code>
+               produces the result <code>{"Sunday":1,"Monday":2}</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-xml-to-json">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-xml-to-json">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/xml-to-json.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

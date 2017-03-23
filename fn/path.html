@@ -26,22 +26,21 @@
          <header>
             <h1 class="page-header">fn:path</h1>
          </header>
-         <p>Returns a path expression that can be used to select the supplied node
-            relative to the root of its containing document.
+         <p>Returns a path expression that can be used to select the supplied node relative to
+            the
+            root of its containing document.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:path</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:path</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:path</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:path</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. 
+            <p>The one-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-dependent">focus-dependent</a>. 
             </p>
-            <p>The two-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>The two-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -49,25 +48,29 @@
                <h2>Rules</h2>
             </header>
             <p>The behavior of the function if the argument is omitted is exactly the same as if
-               the context item (<code>.</code>) had been passed as the argument.
+               the
+               context item (<code>.</code>) had been passed as the argument.
             </p>
             <p>If <code>$arg</code> is the empty sequence, the function returns the empty sequence.
             </p>
-            <p>If <code>$arg</code> is a document node, the function returns the string <code>"/"</code>.
+            <p>If <code>$arg</code> is a document node, the function returns the string
+               <code>"/"</code>.
             </p>
-            <p>Otherwise, the function constructs a string that consists of a sequence of
-               steps, one for each ancestor-or-self of <code>$arg</code> other than the root node.
-               This string is prefixed by <code>"Q{http://www.w3.org/2005/xpath-functions}root()"</code> if the root node
-               is not a document node.
-               Each step consists of the character <code>"/"</code> followed by a string whose form depends
-               on the kind of node selected by that step, as follows:
+            <p>Otherwise, the function returns a string that consists of a sequence of steps, one
+               for each ancestor-or-self of <code>$arg</code> other than the root node. This string is
+               prefixed by <code>"Q{http://www.w3.org/2005/xpath-functions}root()"</code> if the root
+               node is not a document node. Each step consists of the character <code>"/"</code>
+               followed by a string whose form depends on the kind of node selected by that step,
+               as
+               follows:
             </p>
             <ol>
                <li>
-                  <p>For an element node, <code>Q{uri}local[position]</code>, where 
-                     <code>uri</code> is the
-                     namespace URI of the node name or the empty string if the node is in no
-                     namespace, <code>local</code> is the local part of the node name, and <code>position</code> is an
+                  <p>For an element node,
+                     <code>Q{uri}local[position]</code>,
+                     where <code>uri</code> is the namespace URI of the node name or the
+                     empty string if the node is in no namespace, <code>local</code> is
+                     the local part of the node name, and <code>position</code> is an
                      integer representing the position of the selected node among its like-named
                      siblings.
                   </p>
@@ -76,33 +79,35 @@
                   <p>For an attribute node:</p>
                   <ol>
                      <li>
-                        <p>if the node is in no namespace, <code>@local</code>, 
-                           where <code>local</code> is the local part
-                           of the node name
+                        <p>if the node is in no namespace, <code>@local</code>, where
+                           <code>local</code> is the local part of the node name
                         </p>
                      </li>
                      <li>
-                        <p>otherwise, <code>@Q{uri}local</code>, where <code>uri</code> is the namespace URI of the
-                           node name, and <code>local</code> is the local part of the node name
+                        <p>otherwise, <code>@Q{uri}local</code>, where
+                           <code>uri</code> is the namespace URI of the node name,
+                           and <code>local</code> is the local part of the node name
                         </p>
                      </li>
                   </ol>
                </li>
                <li>
-                  <p>For a text node: <code>text()[position]</code> where <code>position</code> is an integer
-                     representing the position of the selected node among its text node siblings
+                  <p>For a text node: <code>text()[position]</code> where
+                     <code>position</code> is an integer representing the position
+                     of the selected node among its text node siblings
                   </p>
                </li>
                <li>
-                  <p>For a comment node: <code>comment()[position]</code> where <code>position</code> is an integer
-                     representing the position of the selected node among its comment node siblings
+                  <p>For a comment node: <code>comment()[position]</code> where
+                     <code>position</code> is an integer representing the position
+                     of the selected node among its comment node siblings
                   </p>
                </li>
                <li>
                   <p>For a processing-instruction node:
-                     <code>processing-instruction(local)[position]</code> where 
-                     <code>local</code> is the name of the
-                     processing instruction node and <code>position</code> is an integer representing the
+                     <code>processing-instruction(local)[position]</code>
+                     where <code>local</code> is the name of the processing instruction
+                     node and <code>position</code> is an integer representing the
                      position of the selected node among its like-named processing-instruction node
                      siblings
                   </p>
@@ -111,14 +116,15 @@
                   <p>For a namespace node:</p>
                   <ol>
                      <li>
-                        <p>If the namespace node has a name: 
-                           <code>namespace::prefix</code>, where <code>prefix</code> is the local part
-                           of the name of the namespace node (which represents the namespace prefix).
+                        <p>If the namespace node has a name:
+                           <code>namespace::prefix</code>, where
+                           <code>prefix</code> is the local part of the name of the
+                           namespace node (which represents the namespace prefix).
                         </p>
                      </li>
                      <li>
-                        <p>If the namespace node has no name (that is, it represents
-                           the default namespace): 
+                        <p>If the namespace node has no name (that is, it represents the default
+                           namespace):
                            <code>namespace::*[Q{http://www.w3.org/2005/xpath-functions}local-name()=""]</code></p>
                      </li>
                   </ol>
@@ -127,16 +133,33 @@
          </section>
          <section>
             <header>
-               <h2>Examples</h2>
+               <h2>Error Conditions</h2>
             </header>
-            <p>let <code>$e</code> := <pre><code><span class="function">fn:parse-xml</span><span class="parenthesis">(</span><span class="op">'</span><span class="literal">&lt;?xml version="1.0"?&gt;
-&lt;p xmlns="http://example.com/one" xml:lang="de" author="Friedrich von Schiller"&gt;
-Freude, schöner Götterfunken,&lt;br/&gt;
-Tochter aus Elysium,&lt;br/&gt;
-Wir betreten feuertrunken,&lt;br/&gt;
-Himmlische, dein Heiligtum.&lt;/p&gt;</span><span class="op">'</span><span class="parenthesis">)</span><span class="whitespace">
-         </span></code></pre></p>
-            <p>The expression <code>fn:path($e)</code> returns <code>'/'</code>.
+            <p>The following errors may be raised when <code>$arg</code> is omitted:
+            </p>
+            <ul>
+               <li>
+                  <p>If the context item is absent,
+                     dynamic error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
+                  </p>
+               </li>
+               <li>
+                  <p>If the context item is not a node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
+                  </p>
+               </li>
+            </ul>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$e</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> 
+</span><span class="axis">document</span><span class="whitespace"> </span><span class="op">{</span><span class="whitespace">            
+</span><span class="es">&lt;</span><span class="en">p</span><span class="atn"> xmlns</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://example.com/one</span><span class="z">"</span><span class="atn"> xml:lang</span><span class="atneq">=</span><span class="z">"</span><span class="av">de</span><span class="z">"</span><span class="atn"> author</span><span class="atneq">=</span><span class="z">"</span><span class="av">Friedrich von Schiller</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
+Freude, schöner Götterfunken,</span><span class="es">&lt;</span><span class="en">br</span><span class="z">/&gt;</span><span class="txt">
+Tochter aus Elysium,</span><span class="es">&lt;</span><span class="en">br</span><span class="z">/&gt;</span><span class="txt">
+Wir betreten feuertrunken,</span><span class="es">&lt;</span><span class="en">br</span><span class="z">/&gt;</span><span class="txt">
+Himmlische, dein Heiligtum.</span><span class="sc">&lt;/</span><span class="cl">p</span><span class="z">&gt;</span><span class="op">}</span><span class="whitespace">
+         </span></code></pre><p>The expression <code>fn:path($e)</code> returns <code>'/'</code>.
             </p>
             <p>The expression <code>fn:path($e/*:p)</code> returns <code>'/Q{http://example.com/one}p[1]'</code>.
             </p>
@@ -146,15 +169,15 @@ Himmlische, dein Heiligtum.&lt;/p&gt;</span><span class="op">'</span><span class
             </p>
             <p>The expression <code>fn:path($e/*:p/*:br[2])</code> returns <code>'/Q{http://example.com/one}p[1]/Q{http://example.com/one}br[2]'</code>.
             </p>
-            <p>The expression <code>fn:path($e//text()[starts-with(normalize-space(), 'Tochter')])</code> returns <code>'/Q{http://example.com/one}p[1]/text()[2]'</code>.
-            </p>
-            <p>let <code>$emp</code> := <pre><code><span class="whitespace">            </span><span class="es">&lt;</span><span class="en">employee</span><span class="atn"> xml:id</span><span class="atneq">=</span><span class="z">"</span><span class="av">ID21256</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
+            <p>The expression <code>fn:path($e//text()[starts-with(normalize-space(),
+                  'Tochter')])</code> returns <code>'/Q{http://example.com/one}p[1]/text()[2]'</code>.
+            </p><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$emp</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> 
+            </span><span class="es">&lt;</span><span class="en">employee</span><span class="atn"> xml:id</span><span class="atneq">=</span><span class="z">"</span><span class="av">ID21256</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
                </span><span class="es">&lt;</span><span class="en">empnr</span><span class="z">&gt;</span><span class="txt">E21256</span><span class="sc">&lt;/</span><span class="cl">empnr</span><span class="z">&gt;</span><span class="txt">
                </span><span class="es">&lt;</span><span class="en">first</span><span class="z">&gt;</span><span class="txt">John</span><span class="sc">&lt;/</span><span class="cl">first</span><span class="z">&gt;</span><span class="txt">
                </span><span class="es">&lt;</span><span class="en">last</span><span class="z">&gt;</span><span class="txt">Brown</span><span class="sc">&lt;/</span><span class="cl">last</span><span class="z">&gt;</span><span class="txt">
             </span><span class="sc">&lt;/</span><span class="cl">employee</span><span class="z">&gt;</span><span class="whitespace">
-         </span></code></pre></p>
-            <p>The expression <code>fn:path($emp)</code> returns <code>'Q{http://www.w3.org/2005/xpath-functions}root()'</code>.
+         </span></code></pre><p>The expression <code>fn:path($emp)</code> returns <code>'Q{http://www.w3.org/2005/xpath-functions}root()'</code>.
             </p>
             <p>The expression <code>fn:path($emp/@xml:id)</code> returns <code>'Q{http://www.w3.org/2005/xpath-functions}root()/@Q{http://www.w3.org/XML/1998/namespace}id'</code>.
             </p>
@@ -164,13 +187,14 @@ Himmlische, dein Heiligtum.&lt;/p&gt;</span><span class="op">'</span><span class
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-path">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-path">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/path.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

@@ -26,20 +26,17 @@
          <header>
             <h1 class="page-header">fn:iri-to-uri</h1>
          </header>
-         <p>Converts a string containing an IRI into a URI according to the rules of
-            <a href="http://www.ietf.org/rfc/rfc3987.txt">[RFC 3987]</a>.
+         <p>Converts a string containing an IRI into a URI according to the rules of <a href="http://www.ietf.org/rfc/rfc3987.txt">[RFC 3987]</a>.
          </p>
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:iri-to-uri</span><span class="parenthesis">(</span><span class="variable">$iri</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:iri-to-uri</span><span class="parenthesis">(</span><span class="variable">$iri</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -69,12 +66,13 @@
                <code>My%20Documents</code>.
             </p>
             <p>This function does not check whether <code>$iri</code> is a valid IRI. It treats it as
-               an <a href="http://www.w3.org/TR/xpath-functions-30/#string">string</a> and operates on the <a href="http://www.w3.org/TR/xpath-functions-30/#character">characters</a> in the string.
+               an <a href="https://www.w3.org/TR/xpath-functions-31/#string">string</a> and operates on the <a href="https://www.w3.org/TR/xpath-functions-31/#character">characters</a> in the string.
             </p>
             <p> The following printable ASCII characters are invalid in an IRI: "&lt;", "&gt;", 
                "  (double quote), space, "{", "}", "|", "\", "^", and "`". Since these
                characters should not appear in an IRI, if they do appear in <code>$iri</code> they will
-               be percent-encoded. In addition, characters outside the range x20-x7E will be percent-encoded because they are invalid in a URI. 
+               be percent-encoded. In addition, characters outside the range x20-x7E will be
+               percent-encoded because they are invalid in a URI. 
             </p>
             <p> Since this function does not escape the PERCENT SIGN "%" and this character is not
                allowed in data within a URI, users wishing to convert character strings (such as
@@ -96,6 +94,7 @@
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-iri-to-uri">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-iri-to-uri">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-iri-to-uri">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/iri-to-uri.html">Saxon Function Library</a></li>
@@ -103,7 +102,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>map:entry</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">map:entry</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">map:entry</h1>
+         </header>
+         <p>Returns a map that contains a single entry (a key-value pair).</p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header><pre><code class="signature"><span class="function">map:entry</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$key</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$value</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The function <code>map:entry</code> returns a <a href="https://www.w3.org/TR/xpath-functions-31/#dt-map">map</a> which  contains a single
+               entry. The key of the entry in the new map is
+               <code>$key</code>, and its associated value is <code>$value</code>.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>The function call <code>map:entry(K, V)</code> produces the same result as the
+               expression <code>map{K : V}</code>.
+            </p>
+            <p>The function <code>map:entry</code> is intended primarily for use in conjunction with
+               the function <code>map:merge</code>. For example, a map containing seven entries may be
+               constructed like this:
+            </p><pre><code><span class="function">map:merge</span><span class="parenthesis">(</span><span class="parenthesis">(</span><span class="whitespace">
+   </span><span class="function">map:entry</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">Su</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">Sunday</span><span class="op">"</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace">
+   </span><span class="function">map:entry</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">Mo</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">Monday</span><span class="op">"</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace">
+   </span><span class="function">map:entry</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">Tu</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">Tuesday</span><span class="op">"</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace">
+   </span><span class="function">map:entry</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">We</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">Wednesday</span><span class="op">"</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace">
+   </span><span class="function">map:entry</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">Th</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">Thursday</span><span class="op">"</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace">
+   </span><span class="function">map:entry</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">Fr</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">Friday</span><span class="op">"</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace">
+   </span><span class="function">map:entry</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">Sa</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="literal">Saturday</span><span class="op">"</span><span class="parenthesis">)</span><span class="whitespace">
+   </span><span class="parenthesis">)</span><span class="parenthesis">)</span></code></pre><p>The <code>map:merge</code> function can be used to construct
+               a map with a variable number of entries, for example:
+            </p><pre><code><span class="function">map:merge</span><span class="parenthesis">(</span><span class="higher">for</span><span class="whitespace"> </span><span class="variable">$b</span><span class="whitespace"> </span><span class="op">in</span><span class="whitespace"> </span><span class="step">//</span><span class="qname">book</span><span class="whitespace"> </span><span class="op">return</span><span class="whitespace"> </span><span class="function">map:entry</span><span class="parenthesis">(</span><span class="variable">$b</span><span class="step">/</span><span class="qname">isbn</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$b</span><span class="parenthesis">)</span><span class="parenthesis">)</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The expression <code>map:entry("M", "Monday")</code> returns <code>map{"M":"Monday"}</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-entry">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/map/entry.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

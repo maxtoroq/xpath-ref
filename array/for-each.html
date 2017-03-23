@@ -1,0 +1,75 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>array:for-each</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">array:for-each</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">array:for-each</h1>
+         </header>
+         <p>Returns an array whose size is the same as <code>array:size($array)</code>, in which
+            each member is computed by applying <code>$function</code> to the corresponding member of
+            <code>$array</code>.
+         </p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header><pre><code class="signature"><span class="function">array:for-each</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$array</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">array</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$action</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">array</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-higher-order">higher-order</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>Returns the result of the expression:
+               <code>array:join( (1 to array:size($array)) ! [ $action($array(.)) ] )</code></p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The expression <code>array:for-each(["A", "B", 1, 2], function($z) {$z instance of xs:integer})</code> returns <code>[false(), false(), true(), true()]</code>.
+            </p>
+            <p>The expression <code>array:for-each(["the cat", "sat", "on the mat"], fn:tokenize#1)</code> returns <code>[("the", "cat"), "sat", ("on", "the", "mat")]</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-for-each">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/array/for-each.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

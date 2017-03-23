@@ -26,20 +26,19 @@
          <header>
             <h1 class="page-header">fn:uri-collection</h1>
          </header>
-         <p>Returns a sequence of <code>xs:anyURI</code> values representing the URIs in a resource collection.
+         <p>Returns a sequence of <code>xs:anyURI</code> values representing the URIs in a URI
+            collection.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:uri-collection</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI*</span></code></pre><pre><code class="signature"><span class="function">fn:uri-collection</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI*</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:uri-collection</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI*</span></code></pre><pre><code class="signature"><span class="function">fn:uri-collection</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyURI*</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-               		available resource collections, and static base uri.
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		available URI collections, and static base URI.
                	
             </p>
          </section>
@@ -47,8 +46,8 @@
             <header>
                <h2>Rules</h2>
             </header>
-            <p>The zero-argument form of the function returns the URIs in the Default resource collection
-               described in <a href="http://www.w3.org/TR/xpath-30/#id-xp-evaluation-context-components">Dynamic Context Components</a>.
+            <p>The zero-argument form of the function returns the URIs in the default URI
+               collection described in <a href="#id-xp-evaluation-context-components"></a>.
             </p>
             <p>If the value of <code>$arg</code> is a relative <code>xs:anyURI</code>, it is resolved
                against the value of the base-URI property from the static context. 
@@ -57,95 +56,129 @@
                called without an argument. See above.
             </p>
             <p>The single-argument form of the function returns the sequence of URIs corresponding
-               to the 
-               supplied URI in the Available resource collections described in 
-               <a href="http://www.w3.org/TR/xpath-30/#id-xp-evaluation-context-components">Dynamic Context Components</a>.
+               to
+               the supplied URI in the available URI collections described in
+               <a href="#id-xp-evaluation-context-components"></a>.
+            </p>
+            <p>By default, this function is <a href="https://www.w3.org/TR/xpath-functions-31/#deterministic">deterministic</a>. This
+               means that repeated calls on the function with the same argument will return the same
+               result. However, for performance reasons, implementations may provide a user option
+               to
+               evaluate the function without a guarantee of determinism. The manner in which any
+               such
+               option is provided is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>. If the user has not
+               selected such an option, a call to this function must either return a deterministic
+               result or must raise a dynamic error [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0003">ERRFODC0003</a>].
+            </p>
+            <p>There is no requirement that the URIs returned by this function should all be distinct,
+               and no assumptions can be made about the order of URIs in the sequence, unless the
+               implementation defines otherwise.
             </p>
          </section>
          <section>
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>] if no URI is supplied (that is, if the
-               the function is called with no arguments, or with a single argument that evaluates
-               to an empty sequence), and the
-               value of the default resource collection is absent.
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0002">ERRFODC0002</a>] if no URI is supplied (that
+               is, if the function is called with no arguments, or with a single argument that
+               evaluates to an empty sequence), and the value of the default resource collection
+               is
+               absent.
             </p>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>] 
-               if available resource collections provides no mapping for the absolutized URI.
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0002">ERRFODC0002</a>] if a relative URI reference
+               is supplied, and the base-URI property in the static context is absent.
             </p>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0004">ERRFODC0004</a>] if <code>$arg</code> is not a
-               valid <code>xs:anyURI</code>.
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0002">ERRFODC0002</a>] if available resource
+               collections provides no mapping for the absolutized URI.
+            </p>
+            <p>A dynamic error <b>may</b> be raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0004">ERRFODC0004</a>] if <code>$arg</code> is not
+               a valid <code>xs:anyURI</code>.
             </p>
          </section>
          <section>
             <header>
                <h2>Notes</h2>
             </header>
-            <p>There are several reasons why it might be appropriate to use this function in preference
-               to the <code>fn:collection</code> function:
+            <p>In some implementations, there might be a close relationship between collections (as retrieved
+               by the <code>fn:collection</code> function), and URI collections (as retrieved by this function).
+               For example, a collection might return XML documents, and the corresponding URI collection
+               might return
+               the URIs of those documents. However, this specification does not impose such a close
+               relationship. For example, there
+               may be collection URIs accepted by one of the two functions and not by the other;
+               a collection might contain
+               items that do not have any URI; or a URI collection might contain URIs that cannot
+               be dereferenced to return any 
+               resource.
+            </p>
+            <p>Thus, some implementations might ensure that calling <code>fn:uri-collection</code> and then
+               applying <code>fn:doc</code> to each of the returned URIs delivers the same result as
+               calling <code>fn:collection</code> with the same argument; however, this is not
+               guaranteed.
+            </p>
+            <p>In the case where <code>fn:uri-collection</code> returns the URIs of resources that
+               could also be retrieved directly using <code>fn:collection</code>, there are several reasons why it 
+               might be appropriate to use this function in preference
+               to the <code>fn:collection</code> function. For example:
             </p>
             <ul>
                <li>
-                  <p>It allows resources to be retrieved that are not well-formed XML documents: for
-                     example, the returned URIs might be referenced using the <code>fn:unparsed-text</code>
-                     function rather than the <code>fn:doc</code> function.
+                  <p>It allows different URIs for different kinds of resource to be dereferenced in
+                     different ways: for
+                     example, the returned URIs might be referenced using the
+                     <code>fn:unparsed-text</code> function rather than the <code>fn:doc</code>
+                     function.
                   </p>
                </li>
                <li>
-                  <p>In XSLT 3.0 it allows the documents to be processed in streaming mode using the
+                  <p>In XSLT 3.0 it allows the documents in a collection to be processed in streaming mode
+                     using the
                      <code>xsl:stream</code> instruction.
                   </p>
                </li>
                <li>
                   <p>It allows recovery from failures to read, parse, or validate individual documents,
-                     by calling the <code>fn:doc</code> function within the scope of try/catch.
+                     by calling the <code>fn:doc</code> (or other dereferencing) function within the scope of try/catch.
                   </p>
                </li>
                <li>
                   <p>It allows selection of which documents to read based on their URI, for example
-                     they can be filtered to select those whose URIs end in <code>.xml</code>,
-                     or those that use the <code>https</code> scheme.
+                     they can be filtered to select those whose URIs end in <code>.xml</code>, or those
+                     that use the <code>https</code> scheme.
                   </p>
                </li>
                <li>
                   <p>An application might choose to limit the number of URIs processed in a single run,
                      for example it might process only the first 50 URIs in the collection; or it might
-                     present the
-                     URIs to the user and allow the user to select which of them need to be further processed.
+                     present the URIs to the user and allow the user to select which of them need to be
+                     further processed.
                   </p>
                </li>
                <li>
-                  <p>It allows the URIs to be modified before they are dereferenced, for example by adding
-                     or removing query parameters, or by redirecting the request to a local cache or to
-                     a mirror site.
+                  <p>It allows the URIs to be modified before they are dereferenced, for example by
+                     adding or removing query parameters, or by redirecting the request to a local
+                     cache or to a mirror site.
                   </p>
                </li>
             </ul>
-            <p>For some of these use cases, this assumes that the cost of calling <code>fn:collection</code>
-               might be significant (for example, it might involving retrieving all the documents
-               in the collection over the
-               network and parsing them). This will not necessarily be true of all implementations.
-            </p>
-            <p>Some implementations might ensure that calling <code>fn:uri-collection</code> and then applying
-               <code>fn:doc</code> to each of the returned URIs delivers the same result as calling <code>fn:collection</code>
-               with the same argument; however, this is not guaranteed.
-            </p>
-            <p>There is no requirement that the URIs returned by this function should all be
-               distinct, and no assumptions can be made about the order of URIs in the sequence,
-               unless the implementation defines otherwise.
+            <p>For some of these use cases, this assumes that the cost of calling
+               <code>fn:collection</code> might be significant (for example, it might involving
+               retrieving all the documents in the collection over the network and parsing them).
+               This
+               will not necessarily be true of all implementations.
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-uri-collection">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-uri-collection">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/uri-collection.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

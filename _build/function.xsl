@@ -32,9 +32,11 @@
    <xsl:variable name="spec-loc" select="/*/header/latestloc/loc[1]"/>
    <xsl:variable name="spec-url" select="$spec-loc/@href"/>
 
+   <xsl:variable name="spec-v3-loc" select="$spec-v3/*/header/latestloc/loc[1]"/>
    <xsl:variable name="spec-v2-loc" select="$spec-v2/*/header/latestloc/loc[1]"/>
 
    <xsl:template name="function">
+      <xsl:param name="exists-in-v3" as="xs:boolean"/>
       <xsl:param name="exists-in-v2" as="xs:boolean"/>
 
       <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
@@ -71,9 +73,16 @@
                   <ul>
                      <li>
                         <a href="{$spec-loc/@href}#func-{if (substring-before(head, ':') eq 'math') then 'math-' else ''}{substring-after(head, ':')}">
-                           <xsl:text>XPath 3.0 Functions and Operators</xsl:text>
+                           <xsl:text>XPath 3.1 Functions and Operators</xsl:text>
                         </a>
                      </li>
+                     <xsl:if test="$exists-in-v3">
+                        <li>
+                           <a href="{$spec-v3-loc/@href}#func-{substring-after(head, ':')}">
+                              <xsl:text>XPath 3.0 Functions and Operators</xsl:text>
+                           </a>
+                        </li>
+                     </xsl:if>
                      <xsl:if test="$exists-in-v2">
                         <li>
                            <a href="{$spec-v2-loc/@href}#func-{substring-after(head, ':')}">
@@ -126,7 +135,7 @@
    <xsl:template name="copyright">
       <small class="copyright">
          <xsl:text>Portions of this document were copied from </xsl:text>
-         <a href="{/*/header/altlocs/loc[string()='XML']/@href}">this file</a>
+         <a href="{/*/header/altlocs/loc[1]/@href}">this file</a>
          <xsl:text>, </xsl:text>
          <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
          <xsl:text>&#xa0;©&#xa0;2014&#xa0;</xsl:text>

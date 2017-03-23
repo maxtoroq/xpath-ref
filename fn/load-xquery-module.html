@@ -1,0 +1,251 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:load-xquery-module</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:load-xquery-module</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:load-xquery-module</h1>
+         </header>
+         <p>Provides access to the public functions and global variables of a dynamically-loaded
+            XQuery library module.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header><pre><code class="signature"><span class="function">fn:load-xquery-module</span><span class="parenthesis">(</span><span class="variable">$module-uri</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span></code></pre><pre><code class="signature"><span class="function">fn:load-xquery-module</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$module-uri</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$options</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-higher-order">higher-order</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The function loads an implementation-defined set of modules having the target namespace
+               <code>$module-uri</code>.
+            </p>
+            <p>Calling the one-argument version of the function has the same effect as calling the
+               two-argument version with an empty map
+               as the second argument.
+            </p>
+            <p>The <code>$options</code> argument can be used to control the way in which the function operates. 
+               The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> apply.
+            </p>KeyMeaning<code>xquery-version</code>The minimum level of the XQuery language that the
+            processor must support. 
+            <ul>
+               <li>
+                  <p>Type: <code>xs:decimal</code></p>
+               </li>
+               <li>
+                  <p>Default: <code>The version given in the prolog of the library module; or
+                        implementation-defined if this is absent.</code></p>
+               </li>
+            </ul><code>location-hints</code>A sequence of URIs (in the form of <code>xs:string</code> values) which may be used or ignored in an
+            <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a> way.
+            <ul>
+               <li>
+                  <p>Type: <code>xs:string*</code></p>
+               </li>
+               <li>
+                  <p>Default: <code>Empty sequence</code></p>
+               </li>
+            </ul><code>context-item</code>The item to be used as the initial context item when evaluating global variables in
+            the library module. Supplying
+            an empty sequence is equivalent to omitting the entry from the map, and indicates
+            the absence of a context item.
+            If the library module specifies a required type for the context item, then the supplied
+            value <b>must</b> conform to
+            this type, without conversion.
+            <ul>
+               <li>
+                  <p>Type: <code>item()?</code></p>
+               </li>
+               <li>
+                  <p>Default: <code>Absent</code></p>
+               </li>
+            </ul><code>variables</code>Values for external variables defined in the library module. Values <b>must</b> be supplied
+            for external variables that have no default value, and <b>may</b> be supplied for external variables
+            that do have a default value. The supplied value <b>must</b> conform to the required type of the variable, without conversion.
+            The map contains one entry for each external variable: the key is the variable's name,
+            and the associated value is
+            the variable's value. The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> do not apply
+            to this contained map.
+            <ul>
+               <li>
+                  <p>Type: <code>map(xs:QName, item()*)</code></p>
+               </li>
+               <li>
+                  <p>Default: <code>An empty map</code></p>
+               </li>
+            </ul><code>vendor-options</code>Values for vendor-defined configuration options for the XQuery processor used to process
+            the request. The key is the
+            name of an option, expressed as a QName: the namespace URI of the QName <b>should</b> be a URI controlled
+            by the vendor of the XQuery processor. The meaning of the associated value is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>.
+            Implementations <b>should</b> ignore options whose names are in an unrecognized namespace. 
+            The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> do not apply
+            to this contained map.
+            <ul>
+               <li>
+                  <p>Type: <code>map(xs:QName, item()*)</code></p>
+               </li>
+               <li>
+                  <p>Default: <code>An empty map</code></p>
+               </li>
+            </ul>
+            <p>The result of the function is a map <i>R</i> with two entries:
+            </p>
+            <ol>
+               <li>
+                  <p>There is an entry whose key is the <code>xs:string</code> value <code>"variables"</code> and whose associated value
+                     is a map <i>V</i>. This map (<i>V</i>) contains one entry for each public global variable declared in the library module.
+                     
+                     The key of the
+                     entry is the name of the variable, as an <code>xs:QName</code> value; the associated value is the value of the variable.
+                  </p>
+               </li>
+               <li>
+                  <p>There is an entry whose key is the <code>xs:string</code> value <code>"functions"</code> and whose associated value
+                     is a map <i>F</i>. This map (<i>F</i>) contains one entry for each public function declared in the library module, except
+                     that when two functions
+                     have the same name (but different arity), they share the same entry. The key of the
+                     entry is the name of the function(s), as an <code>xs:QName</code> value; the associated value is a map <i>A</i>.
+                     This map (<i>A</i>) contains one entry for each function with the given name; its key is the arity of
+                     the function,
+                     as an <code>xs:integer</code> value, and its associated value is the function itself, as a function item. The function
+                     can be invoked using the rules for dynamic function invocation.
+                     
+                  </p>
+               </li>
+            </ol>
+            <p>The static and dynamic context of the library module are established according to
+               the rules in 
+               <a href="#id-xq-context-components"></a>.
+            </p>
+            <p>It is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-implementation-defined">implementation-defined</a> whether constructs in the library module 
+               are evaluated in the same <a href="https://www.w3.org/TR/xpath-functions-31/#execution-scope">execution scope</a> as the calling module.
+            </p>
+            <p>The library module that is loaded may import other modules using an <code>import module</code> declaration. The result of
+               <code>fn:load-xquery-module</code> does not include global variables or functions declared in such a transitively-imported
+               module.
+               However, the <code>options</code> map supplied in the function call <b>may</b> 
+               (and if no default is defined, <b>must</b>)
+               supply values for external variables declared in transitively-loaded library modules.
+            </p>
+            <p>The library module that is loaded may import schema declarations using an <code>import schema</code> declaration. It is
+               <a href="https://www.w3.org/TR/xpath-functions-31/#dt-implementation-defined">implementation-defined</a> whether schema components in the in-scope 
+               schema definitions of the calling module
+               are automatically added to the in-scope schema definitions of the dynamically loaded
+               module. The in-scope schema definitions
+               of the calling and called modules must be consistent, according to the rules defined
+               in 
+               <a href="#id-consistency-constraints"></a>.
+            </p>
+            <p>Where nodes are passed to or from the dynamically loaded module, for example as an
+               argument or result of a function, 
+               they <b>should</b> if possible retain their node identity, their base URI, their type annotations, and
+               their relationships to all other nodes 
+               in the containing tree (including ancestors and siblings). If this is not possible,
+               for example because the only way of passing nodes 
+               to the chosen XQuery implementation is by serializing and re-parsing, then a node
+               <b>may</b> be passed in the form of a deep 
+               copy, which may lose information about the identity of the node, about its ancestors
+               and siblings, about its base URI, about its type annotations, and about its 
+               relationships to other nodes passed across the interface.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>If <code>$module-uri</code> is a zero length string, a dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOQM0001">ERRFOQM0001</a>].
+            </p>
+            <p>If the implementation is not able to find a library module with the specified target
+               namespace, 
+               an error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOQM0002">ERRFOQM0002</a>].
+            </p>
+            <p>If a static error (including a statically-detected type error) is encountered when
+               processing the library module, 
+               a dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOQM0003">ERRFOQM0003</a>].
+            </p>
+            <p>If a value is supplied for the initial context item or for an external variable and
+               the value does not conform to the required
+               type declared in the dynamically loaded module, a dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOQM0005">ERRFOQM0005</a>].
+            </p>
+            <p>If no suitable XQuery processor is available, a dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOQM0006">ERRFOQM0006</a>].
+               This includes (but is not limited to) the following cases:
+            </p>
+            <ol>
+               <li>
+                  <p>No XQuery processor is available;</p>
+               </li>
+               <li>
+                  <p>Use of the function has been disabled;</p>
+               </li>
+               <li>
+                  <p>No XQuery processor supporting the requested version of XQuery is available;</p>
+               </li>
+               <li>
+                  <p>No XQuery processor supporting the optional Module Feature is available.</p>
+               </li>
+            </ol>
+            <p>If a dynamic error (including a dynamically-detected type error) is encountered when
+               processing the module 
+               (for example, when evaluating its global variables), the dynamic error is returned
+               as is.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>As with all other functions in this specification, conformance requirements depend
+               on the host language.
+               For example, a host language might specify that provision of this function is optional,
+               or that it is excluded entirely,
+               or that implementations are required to support XQuery modules using a specified version
+               of XQuery.
+            </p>
+            <p>Even where support for this function is mandatory, it is <b>recommended</b> for security reasons that implementations
+               should provide a user option to disable its use, or to disable aspects of its functionality.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-load-xquery-module">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-load-xquery-module">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/load-xquery-module.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

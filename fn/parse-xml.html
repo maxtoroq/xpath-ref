@@ -26,22 +26,20 @@
          <header>
             <h1 class="page-header">fn:parse-xml</h1>
          </header>
-         <p>This function takes as input an XML document represented as a string, and
-            returns the document node at the root of an XDM tree representing the parsed
-            document.
+         <p>This function takes as input an XML document represented as a string, and returns
+            the
+            document node at the root of an XDM tree representing the parsed document.
          </p>
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:parse-xml</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">document-node</span><span class="parenthesis">(</span><span class="node-type">element</span><span class="parenthesis">(</span><span class="op">*</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:parse-xml</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">document-node</span><span class="parenthesis">(</span><span class="node-type">element</span><span class="parenthesis">(</span><span class="op">*</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-nondeterministic">nondeterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-               		static base uri.
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-nondeterministic">nondeterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		static base URI.
                	
             </p>
          </section>
@@ -49,25 +47,24 @@
             <header>
                <h2>Rules</h2>
             </header>
-            <p>If <code>$arg</code> is the empty sequence, the function returns the
-               empty sequence.
+            <p>If <code>$arg</code> is the empty sequence, the function returns the empty sequence.
             </p>
-            <p>The precise process used to construct the XDM instance is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a>. In
-               particular, it is implementation-defined whether DTD and/or schema validation is invoked,
-               and it is
-               implementation-defined whether an XML 1.0 or XML 1.1 parser is used.
+            <p>The precise process used to construct the XDM instance is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>. In particular, it is implementation-defined whether
+               DTD and/or schema validation is invoked, and it is implementation-defined whether
+               an XML
+               1.0 or XML 1.1 parser is used.
             </p>
-            <p>The Static Base URI property from the static context of the
-               <code>fn:parse-xml</code> function call is used both as the base URI used by the XML parser to resolve
-               relative entity references within the document, and as the base URI of the document
-               node
-               that is returned.
+            <p>The static base URI property from the static context of the <code>fn:parse-xml</code>
+               function call is used both as the base URI used by the XML parser to resolve relative
+               entity references within the document, and as the base URI of the document node that
+               is
+               returned.
             </p>
-            <p>The document URI of the returned node is <a href="http://www.w3.org/TR/xpath-functions-30/#absent">absent</a>.
+            <p>The document URI of the returned node is <a href="https://www.w3.org/TR/xpath-functions-31/#absent">absent</a>.
             </p>
             <p>The function is not
-               <a href="http://www.w3.org/TR/xpath-functions-30/#deterministic">deterministic</a>: that is, if the function is called
-               twice with the same arguments, it is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation-dependent</a> whether the same node is returned on both
+               <a href="https://www.w3.org/TR/xpath-functions-31/#deterministic">deterministic</a>: that is, if the function is called
+               twice with the same arguments, it is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a> whether the same node is returned on both
                occasions.
             </p>
          </section>
@@ -75,12 +72,11 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0006">ERRFODC0006</a>] if the content of
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0006">ERRFODC0006</a>] if the content of
                <code>$arg</code> is not a well-formed and namespace-well-formed XML document.
             </p>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0006">ERRFODC0006</a>] if DTD-based
-               validation is carried out and the content of <code>$arg</code> is not valid against its
-               DTD.
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0006">ERRFODC0006</a>] if DTD-based validation is
+               carried out and the content of <code>$arg</code> is not valid against its DTD.
             </p>
          </section>
          <section>
@@ -127,13 +123,14 @@
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-parse-xml">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-parse-xml">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/parse-xml.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

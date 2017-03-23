@@ -30,16 +30,14 @@
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:generate-id</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:generate-id</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:generate-id</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:generate-id</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>The zero-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. 
+            <p>The zero-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-dependent">focus-dependent</a>. 
             </p>
-            <p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>The one-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -51,17 +49,15 @@
                context item had been passed as the argument.
             </p>
             <p>If the argument is the empty sequence, the result is the zero-length string.</p>
-            <p>In other cases, the function returns a string that uniquely identifies a given node.</p>
+            <p>In other cases, the function returns a string that uniquely identifies a given node.
+               More formally, it is guaranteed that within a single
+               <a href="https://www.w3.org/TR/xpath-functions-31/#execution-scope">execution scope</a>, 
+               <code>fn:codepoint-equal(fn:generate-id($N), fn:generate-id($M))</code> returns true 
+               if and only if <code>($M is $N)</code> returns true.
+            </p>
             <p>The returned identifier <b>must</b> consist of ASCII alphanumeric characters
                and <b>must</b> start with an alphabetic character. Thus, the string is
                syntactically an XML name.
-            </p>
-            <p>An implementation is free to generate an identifier in any convenient way provided
-               that
-               it always generates the same identifier for the same node and that different identifiers
-               are always generated from different nodes. An implementation is under no obligation
-               to
-               generate the same identifiers each time a document is transformed or queried.
             </p>
          </section>
          <section>
@@ -70,18 +66,27 @@
             </header>
             <p>The following errors may be raised when <code>$arg</code> is omitted:
             </p>
-            <p>If the context
-               item is absent, dynamic error
-               [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
+            
+            <p>If the context item is absent,
+               dynamic error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
             </p>
-            <p>If the context item is not a
-               node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
+            
+            
+            <p>If the context item is not a node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
             </p>
+            
          </section>
          <section>
             <header>
                <h2>Notes</h2>
             </header>
+            <p>An implementation is free to generate an identifier in any convenient way provided
+               that
+               it always generates the same identifier for the same node and that different identifiers
+               are always generated from different nodes. An implementation is under no obligation
+               to
+               generate the same identifiers each time a document is transformed or queried.
+            </p>
             <p>There is no guarantee that a generated unique identifier will be distinct from any
                unique IDs specified in the source document.
             </p>
@@ -103,29 +108,45 @@
                writing (in either XSLT or XQuery):
             </p>
             <p>
-               <code>&lt;a name="{generate-id($sect)}"/&gt;</code>
+               <code>&lt;a name="{fn:generate-id($sect)}"/&gt;</code>
                
             </p>
             <p>and a link to that section can then be produced with code such as:</p>
             <p>
-               <code>see &lt;a href="#{generate-id($sect)}"&gt;here&lt;/a&gt;</code>
+               <code>see &lt;a href="#{fn:generate-id($sect)}"&gt;here&lt;/a&gt;</code>
                
             </p>
             <p>Note that anchors generated in this way will not necessarily be the same each time
                a
                document is republished.
             </p>
+            <p>Since the keys in a map must be atomic values, it is possible to use generated IDs
+               as surrogates for nodes when constructing a map. For example, in some implementations,
+               testing whether a node <code>$N</code> is a member of a large node-set <code>$S</code>
+               using the expression <code>fn:exists($N intersect $S)</code> may be expensive; there
+               may then be performance benefits in creating a map:
+            </p>
+            <p>
+               <code>let $SMap := map:merge($S!map{fn:generate-id(.) : .})</code>
+               
+            </p>
+            <p>and then testing for membership of the node-set using:</p>
+            <p>
+               <code>map:contains($SMap, fn:generate-id($N))</code>
+               
+            </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-generate-id">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-generate-id">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/generate-id.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

@@ -26,33 +26,31 @@
          <header>
             <h1 class="page-header">fn:compare</h1>
          </header>
-         <p>Returns -1, 0, or 1, depending on whether <code>$comparand1</code> collates
-            before, equal to, or after <code>$comparand2</code> according to the rules of a selected
+         <p>Returns -1, 0, or 1, depending on whether <code>$comparand1</code> collates before,
+            equal to, or after <code>$comparand2</code> according to the rules of a selected
             collation.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:compare</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:compare</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$comparand1</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$comparand2</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:compare</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$comparand1</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$comparand2</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$collation</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>The two-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+            <p>The two-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
                		collations.
                	
             </p>
-            <p>The three-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-               		collations, and static base uri.
+            <p>The three-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		collations, and static base URI.
                	
             </p>
          </section>
@@ -64,7 +62,7 @@
                respectively less than, equal to, or greater than the value of <code>$comparand2</code>,
                according to the rules of the collation that is used. 
             </p>
-            <p>The collation used by this function is determined according to the rules in <a href="http://www.w3.org/TR/xpath-functions-30/#choosing-a-collation">Choosing a collation</a>. 
+            <p>The collation used by this function is determined according to the rules in <a href="https://www.w3.org/TR/xpath-functions-31/#choosing-a-collation">Choosing a collation</a>. 
             </p>
             <p>If either <code>$comparand1</code> or <code>$comparand2</code> is the empty sequence,
                the function returns the empty sequence.
@@ -83,14 +81,12 @@
             <p>The expression <code>fn:compare('Strasse', 'Straße')</code> returns <code>0</code>. (Assuming the default collation includes provisions that equate
                ss and the (German) character ß
                (sharp-s). Otherwise, the returned value depends on the
-               semantics of the default collation.).
+               semantics of the default collation.)
             </p>
             <p>The expression <code>fn:compare('Strasse', 'Straße',
-                  'http://example.com/deutsch')</code> returns <code>0</code>. (Assuming the collation identified by the URI
-               <code>http://example.com/deutsch</code> includes provisions that equate
+                  'http://www.w3.org/2013/collation/UCA?lang=de;strength=primary')</code> returns <code>0</code>. (The specified collation equates
                ss and the (German) character ß
-               (sharp-s). Otherwise, the returned value depends on the
-               semantics of that collation.).
+               (sharp-s).)
             </p>
             <p>The expression <code>fn:compare('Strassen', 'Straße')</code> returns <code>1</code>. (Assuming the default collation includes provisions that treat
                differences between ss and the (German) character ß
@@ -101,6 +97,7 @@
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-compare">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-compare">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-compare">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/compare.html">Saxon Function Library</a></li>
@@ -108,7 +105,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

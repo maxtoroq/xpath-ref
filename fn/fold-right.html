@@ -26,24 +26,22 @@
          <header>
             <h1 class="page-header">fn:fold-right</h1>
          </header>
-         <p>Processes the supplied sequence from right to left, applying the supplied
-            function repeatedly to each item in turn, together with an accumulated result value.
+         <p>Processes the supplied sequence from right to left, applying the supplied function
+            repeatedly to each item in turn, together with an accumulated result value.
          </p>
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:fold-right</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:fold-right</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$seq</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$zero</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> &#xD;
-    </span><span class="variable">$f</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></p>
-         </section>
+    </span><span class="variable">$f</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-higher-order">higher-order</a>. 
             </p>
          </section>
          <section>
@@ -76,11 +74,12 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>As a consequence of the function signature and the function calling
-               rules, a type error occurs if the supplied function <i>$f</i> cannot be applied to
-               two arguments, where the first argument is any item in the sequence <i>$seq</i>, and
-               the second is either the value of <i>$zero</i> or the result of a previous
-               application of <i>$f</i>.
+            <p>As a consequence of the function signature and the function calling rules, a type
+               error
+               occurs if the supplied function <i>$f</i> cannot be applied to two arguments, where
+               the first argument is any item in the sequence <i>$seq</i>, and the second is either
+               the value of <i>$zero</i> or the result of a previous application of
+               <i>$f</i>.
             </p>
          </section>
          <section>
@@ -107,23 +106,26 @@
             <header>
                <h2>Examples</h2>
             </header>
-            <p>The expression <code>fn:fold-right(1 to 5, 0, function($a, $b) { $a + $b })</code> returns <code>15</code>. (This returns the sum of the items in the sequence).
+            <p>The expression <code>fn:fold-right(1 to 5, 0, function($a, $b) { $a + $b
+                  })</code> returns <code>15</code>. (This returns the sum of the items in the sequence).
             </p>
             <p>The expression <code>fn:fold-right(1 to 5, "", fn:concat(?, ".", ?))</code> returns <code>"1.2.3.4.5."</code>.
             </p>
-            <p>The expression <code>fn:fold-right(1 to 5, "$zero", concat("$f(", ?, ", ", ?, ")"))</code> returns <code>"$f(1, $f(2, $f(3, $f(4, $f(5, $zero)))))"</code>.
+            <p>The expression <code>fn:fold-right(1 to 5, "$zero", concat("$f(", ?, ", ", ?,
+                  ")"))</code> returns <code>"$f(1, $f(2, $f(3, $f(4, $f(5, $zero)))))"</code>.
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-fold-right">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-fold-right">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/fold-right.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

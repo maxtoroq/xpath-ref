@@ -30,14 +30,12 @@
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:current-dateTime</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:dateTimeStamp</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:current-dateTime</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:dateTimeStamp</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
                		implicit timezone.
                	
             </p>
@@ -46,18 +44,18 @@
             <header>
                <h2>Rules</h2>
             </header>
-            <p>Returns the current dateTime (with timezone) from the dynamic context. (See <a href="http://www.w3.org/TR/xpath-30/#id-xp-evaluation-context-components">Dynamic Context Components</a>.) This is an
+            <p>Returns the current dateTime (with timezone) from the dynamic context. (See <a href="#id-xp-evaluation-context-components"></a>.) This is an
                <code>xs:dateTime</code> that is current at some time during the evaluation of a
                query or transformation in which <code>fn:current-dateTime</code> is executed.
             </p>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>. The precise instant during the query or
-               transformation represented by the value of <code>fn:current-dateTime()</code> is
-               <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a>.
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>. The precise instant during the query
+               or transformation represented by the value of <code>fn:current-dateTime()</code> is
+               <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a>.
             </p>
-            <p>If the implementation supports data types from XSD 1.1 then the
-               returned value will be an instance of <code>xs:dateTimeStamp</code>. Otherwise, the only
-               guarantees are that it will be an instance of <code>xs:dateTime</code> and will have a
-               timezone component.
+            <p>If the implementation supports data types from XSD 1.1 then the returned value will
+               be
+               an instance of <code>xs:dateTimeStamp</code>. Otherwise, the only guarantees are that it
+               will be an instance of <code>xs:dateTime</code> and will have a timezone component.
             </p>
          </section>
          <section>
@@ -82,6 +80,7 @@
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-current-dateTime">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-current-dateTime">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-current-dateTime">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/current-dateTime.html">Saxon Function Library</a></li>
@@ -89,7 +88,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

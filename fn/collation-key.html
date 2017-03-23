@@ -1,0 +1,181 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:collation-key</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:collation-key</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:collation-key</h1>
+         </header>
+         <p>Given a string value and a collation, generates an internal value called a collation
+            key, with the property that
+            the matching and ordering of collation keys reflects the matching and ordering of
+            strings under the specified collation.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header><pre><code class="signature"><span class="function">fn:collation-key</span><span class="parenthesis">(</span><span class="variable">$key</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:base64Binary</span></code></pre><pre><code class="signature"><span class="function">fn:collation-key</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$key</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$collation</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:base64Binary</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		collations.
+               	
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>Calling the one-argument version of this function is equivalent to calling the
+               two-argument version supplying the default collation as the second argument.
+            </p>
+            <p>The function returns an <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a> 
+               value with the property that,
+               for any two strings <code>$K1</code> and <code>$K2</code>:
+            </p>
+            <ul>
+               <li>
+                  <p><code>collation-key($K1, $C) eq collation-key($K2, $C)</code> if and only if
+                     <code>compare($K1, $K2, $C) eq 0</code></p>
+               </li>
+               <li>
+                  <p><code>collation-key($K1, $C) lt collation-key($K2, $C)</code> if and only if
+                     <code>compare($K1, $K2, $C) lt 0</code></p>
+               </li>
+            </ul>
+            <p>The collation used by this function is determined according to the rules in <a href="https://www.w3.org/TR/xpath-functions-31/#choosing-a-collation">Choosing a collation</a>. Collation keys are defined as <code>xs:base64Binary</code> values
+               to ensure unambiguous and context-free comparison semantics.
+            </p>
+            <p>An implementation is free to generate a collation key in any convenient way provided
+               that it always generates the same collation key for two strings that are equal under
+               the
+               collation, and different collation keys for strings that are not equal. This holds
+               only
+               within a single <a href="https://www.w3.org/TR/xpath-functions-31/#">execution scope</a>;
+               an implementation is under no obligation to generate the same collation keys during
+               a
+               subsequent unrelated query or transformation.
+            </p>
+            <p>It is possible to define collations that do not have the ability to generate collation
+               keys. Supplying such a collation will cause the function to fail. The ability to
+               generate collation keys is an <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a> property of the
+               collation.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Error Conditions</h2>
+            </header>
+            <p>An error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOCH0004">ERRFOCH0004</a>] if the specified
+               collation does not support the generation of collation keys. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>The function is provided primarily for use with maps. If a map is required where
+               codepoint equality is inappropriate for comparing keys, then a common technique is
+               to
+               normalize the key so that equality matching becomes feasible. There are many ways
+               keys can be normalized, for example by use of functions such as
+               <code>fn:upper-case</code>, <code>fn:lower-case</code>,
+               <code>fn:normalize-space</code>, or <code>fn:normalize-unicode</code>, but this
+               function provides a way of normalizing them according to the rules of a specified
+               collation. For example, if the collation ignores accents, then the function will
+               generate the same collation key for two input strings that differ only in their use
+               of
+               accents.
+            </p>
+            <p>The result of the function is defined to be an <code>xs:base64Binary</code> value. Binary values
+               are chosen because they have unambiguous and context-free comparison semantics, because
+               the value space
+               is unbounded, and because the ordering rules are such that between any two values
+               in the ordered value space, an
+               arbitrary number of further values can be interpolated. The choice between <code>xs:base64Binary</code>
+               and <code>xs:hexBinary</code> is arbitrary; the only operation that behaves differently between the two binary
+               data types is conversion to/from a string, and this operation is not one that is normally
+               required for
+               effective use of collation keys.
+               
+            </p>
+            <p>For collations based on the Unicode Collation Algorithm, an algorithm for computing
+               collation keys is provided in <a href="http://www.unicode.org/reports/tr10/">[UTS #10]</a>. Implementations are
+               <b>not required</b> to use this algorithm.
+            </p>
+            <p>This specification does not mandate that collation keys should retain ordering. This
+               is
+               partly because the primary use case is for maps, where only equality comparisons are
+               required, and partly to allow the use of binary data types (which are currently
+               unordered types) for the result. The specification may be revised in a future release
+               to
+               specify that ordering is preserved.
+            </p>
+            <p>The fact that collation keys are ordered can be exploited in XQuery, whose <code>order by</code>
+               clause does not allow the collation to be selected dynamically. This restriction can
+               be circumvented
+               by rewriting the clause <code>order by $e/@key collation "URI"</code> as <code>order by fn:collation-key($e/@key, $collation)</code>,
+               where <code>$collation</code> allows the collation to be chosen dynamically.
+            </p>
+            <p>Note that <code>xs:base64Binary</code> becomes an ordered type
+               in XPath 3.1, making binary collation keys possible.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$C</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="op">'</span><span class="literal">http://www.w3.org/2013/collation/UCA?strength=primary</span><span class="op">'</span></code></pre><p>The expression <code>map:merge((map{collation-key("A", $C):1}, map{collation-key("a",
+                  $C):2}), map{"duplicates":"use-last"})(collation-key("A", $C))</code> returns <code>2</code>. (Given that the keys of the two entries are equal under the rules of
+               the chosen collation, only one of the entries can appear in the result; the one
+               that is chosen is the one from the last map in the input sequence.)
+            </p>
+            <p>The expression <code>let $M := map{collation-key("A", $C):1, collation-key("B", $C):2}
+                  return $M(collation-key("a", $C))</code> returns <code>1</code>. (The strings "A" and "a" have the same collation key under this
+               collation.)
+            </p>
+            <p>As the above examples illustrate, it is important that when the
+               <code>collation-key</code> function is used to add entries to a map, then it must
+               also be used when retrieving entries from the map. This process can be made less
+               error-prone by encapsulating the map within a function: <code>function($k)
+                  {$M(collation-key($k, $collation)}</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-collation-key">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-collation-key">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/collation-key.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

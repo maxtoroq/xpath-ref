@@ -26,26 +26,24 @@
          <header>
             <h1 class="page-header">fn:idref</h1>
          </header>
-         <p>Returns the sequence of element or attribute nodes with an <code>IDREF</code>
-            value matching the value of one or more of the <code>ID</code> values supplied in
+         <p>Returns the sequence of element or attribute nodes with an <code>IDREF</code> value
+            matching the value of one or more of the <code>ID</code> values supplied in
             <code>$arg</code>.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:idref</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre><pre><code class="signature"><span class="function">fn:idref</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:idref</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre><pre><code class="signature"><span class="function">fn:idref</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string*</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$node</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. 
+            <p>The one-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-dependent">focus-dependent</a>. 
             </p>
-            <p>The two-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>The two-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -76,12 +74,11 @@
                         </p>
                         <ul>
                            <li>
-                              <p>The <code>is-idrefs</code> property (see <a href="http://www.w3.org/TR/xpath-datamodel-30/#dm-is-idrefs">is-idrefs Accessor</a>) of <code>$N</code> is <code>true</code>.
+                              <p>The <code>is-idrefs</code> property (see <a href="#dm-is-idrefs"></a>) of <code>$N</code> is <code>true</code>.
                               </p>
                            </li>
                            <li>
-                              <p>The sequence <pre><code><span class="function">fn:tokenize</span><span class="parenthesis">(</span><span class="function">fn:normalize-space</span><span class="parenthesis">(</span><span class="function">fn:string</span><span class="parenthesis">(</span><span class="variable">$N</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal"> </span><span class="op">'</span><span class="parenthesis">)</span></code></pre>
-                                  contains a string that is
+                              <p>The sequence </p><pre><code><span class="function">fn:tokenize</span><span class="parenthesis">(</span><span class="function">fn:normalize-space</span><span class="parenthesis">(</span><span class="function">fn:string</span><span class="parenthesis">(</span><span class="variable">$N</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal"> </span><span class="op">'</span><span class="parenthesis">)</span></code></pre><p>contains a string that is
                                  equal to <code>V</code> under the rules of the <code>eq</code>
                                  operator using the Unicode code point collation
                                  (<code>http://www.w3.org/2005/xpath-functions/collation/codepoint</code>).
@@ -106,19 +103,21 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0001">ERRFODC0001</a>] if
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0001">ERRFODC0001</a>] if
                <code>$node</code>, or the context item if the second argument is omitted, is a node
                in a tree whose root is not a document node. 
             </p>
             <p>The following errors may be raised when <code>$node</code> is omitted:
             </p>
-            <p>If the context
-               item is absent, dynamic error
-               [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
+            
+            <p>If the context item is absent,
+               dynamic error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
             </p>
-            <p>If the context item is not a
-               node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
+            
+            
+            <p>If the context item is not a node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
             </p>
+            
          </section>
          <section>
             <header>
@@ -128,6 +127,9 @@
                validated against the schema type <code>xs:IDREF</code> or <code>xs:IDREFS</code>, or
                (for attributes only) by being described as of type <code>IDREF</code> or
                <code>IDREFS</code> in a DTD.
+            </p>
+            <p>Because the function is sensitive to the way in which the data model
+               is constructed, calls on this function are not always interoperable.
             </p>
             <p> No error is raised in respect of a candidate <code>ID</code> value that does not match
                the <code>IDREF</code> value of any element or attribute in the document. If no
@@ -146,17 +148,53 @@
                ill-formed candidate <code>ID</code> values and ill-formed <code>IDREF</code> values are
                ignored.
             </p>
-            <p>If the data model is constructed from a PSVI, the typed value of a
-               node that has the <code>is-idrefs</code> property will contain at least one atomic value
-               of type <code>xs:IDREF</code> (or a type derived by restriction from
-               <code>xs:IDREF</code>). It may also contain atomic values of other types. These
-               atomic values are treated as candidate <code>ID</code> values if their lexical form is
-               valid as an <code>xs:NCName</code>, and they are ignored otherwise.
+            <p>If the data model is constructed from a PSVI, the typed value of a node that has the
+               <code>is-idrefs</code> property will contain at least one atomic value of type
+               <code>xs:IDREF</code> (or a type derived by restriction from <code>xs:IDREF</code>).
+               It may also contain atomic values of other types. These atomic values are treated
+               as
+               candidate <code>ID</code> values if two conditions are met: their lexical form must be valid as an
+               <code>xs:NCName</code>, and there must be at least one instance of <code>xs:IDREF</code>
+               in the typed value of the node. If these conditions are not satisfied, such values
+               are ignored.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$emp</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> 
+      </span><span class="op">validate</span><span class="whitespace"> </span><span class="qname">lax</span><span class="whitespace"> </span><span class="op">{</span><span class="whitespace">  
+        </span><span class="axis">document</span><span class="whitespace"> </span><span class="op">{</span><span class="whitespace">    
+          </span><span class="es">&lt;</span><span class="en">employees</span><span class="atn"> xmlns:xsi</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2001/XMLSchema-instance</span><span class="z">"</span><span class="atn">  
+                     xmlns:xs</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2001/XMLSchema</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">  
+            </span><span class="es">&lt;</span><span class="en">employee</span><span class="atn"> xml:id</span><span class="atneq">=</span><span class="z">"</span><span class="av">ID21256</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">empnr</span><span class="atn"> xsi:type</span><span class="atneq">=</span><span class="z">"</span><span class="av">xs:ID</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">E21256</span><span class="sc">&lt;/</span><span class="cl">empnr</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">first</span><span class="z">&gt;</span><span class="txt">Anil</span><span class="sc">&lt;/</span><span class="cl">first</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">last</span><span class="z">&gt;</span><span class="txt">Singh</span><span class="sc">&lt;/</span><span class="cl">last</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">deputy</span><span class="atn"> xsi:type</span><span class="atneq">=</span><span class="z">"</span><span class="av">xs:IDREF</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">E30561</span><span class="sc">&lt;/</span><span class="cl">deputy</span><span class="z">&gt;</span><span class="txt">
+            </span><span class="sc">&lt;/</span><span class="cl">employee</span><span class="z">&gt;</span><span class="txt">
+            </span><span class="es">&lt;</span><span class="en">employee</span><span class="atn"> xml:id</span><span class="atneq">=</span><span class="z">"</span><span class="av">ID30561</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">empnr</span><span class="atn"> xsi:type</span><span class="atneq">=</span><span class="z">"</span><span class="av">xs:ID</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">E30561</span><span class="sc">&lt;/</span><span class="cl">empnr</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">first</span><span class="z">&gt;</span><span class="txt">John</span><span class="sc">&lt;/</span><span class="cl">first</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">last</span><span class="z">&gt;</span><span class="txt">Brown</span><span class="sc">&lt;/</span><span class="cl">last</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">manager</span><span class="atn"> xsi:type</span><span class="atneq">=</span><span class="z">"</span><span class="av">xs:IDREF</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">ID21256</span><span class="sc">&lt;/</span><span class="cl">manager</span><span class="z">&gt;</span><span class="txt">
+            </span><span class="sc">&lt;/</span><span class="cl">employee</span><span class="z">&gt;</span><span class="txt">
+          </span><span class="sc">&lt;/</span><span class="cl">employees</span><span class="z">&gt;</span><span class="whitespace">
+        </span><span class="op">}</span><span class="whitespace">
+      </span><span class="op">}</span><span class="whitespace">
+         </span></code></pre><p>The expression <code>$emp/(element-with-id('ID21256')/@xml:id =&gt; fn:idref())/ancestor::employee/last =&gt;
+                  string()</code> returns <code>"Brown"</code>. (Assuming that <code>manager</code> has the is-idref property, the call on <code>fn:idref</code> selects
+               the <code>manager</code> element. If, instead, the <code>manager</code> had a <code>ref</code>
+               attribute with the is-idref property, the call on <code>fn:idref</code> would select the attribute node.)
+            </p>
+            <p>The expression <code>$emp/(element-with-id('E30561')/empnr =&gt; fn:idref())/ancestor::employee/last =&gt; string()</code> returns <code>"Singh"</code>. (Assuming that <code>employee/deputy</code> has the is-idref property, the call on <code>fn:idref</code> selects
+               the <code>deputy</code> element.)
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-idref">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-idref">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-idref">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/idref.html">Saxon Function Library</a></li>
@@ -164,7 +202,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

@@ -26,20 +26,16 @@
          <header>
             <h1 class="page-header">math:acos</h1>
          </header>
-         <p>Returns the arc cosine of the argument, the result being in the range zero to
-            +<i>π</i> radians.
-         </p>
+         <p>Returns the arc cosine of the argument.</p>
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">math:acos</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">math:acos</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -48,23 +44,22 @@
             </header>
             <p>If <code>$arg</code> is the empty sequence, the function returns the empty sequence.
             </p>
-            <p>Otherwise the result is the arc cosine of <code>$</code><i>θ</i>,
-               treated as an angle in radians, as defined in the <span>[IEEE 754-2008]</span>
-               specification of the <code>acos</code> function applied to 64-bit binary floating point
-               values.
+            <p>Otherwise the result is the arc cosine of <code>$arg</code>, as defined in the <span>[IEEE 754-2008]</span> specification of the
+               <code>acos</code> function applied to 64-bit binary floating point values.
+               The result is in the range zero to +<i>π</i> radians.
             </p>
          </section>
          <section>
             <header>
                <h2>Notes</h2>
             </header>
-            <p>The treatment of the <code>invalidOperation</code> exception is defined in <a href="http://www.w3.org/TR/xpath-functions-30/#op.numeric">Arithmetic operators on numeric values</a>. 
+            <p>The treatment of the <code>invalidOperation</code> exception is defined in <a href="https://www.w3.org/TR/xpath-functions-31/#op.numeric">Arithmetic operators on numeric values</a>. 
             </p>
             <p>If <code>$arg</code> is <code>NaN</code>, or if its absolute value is greater than one,
                then the result is <code>NaN</code>.
             </p>
             <p>In other cases the result is an <code>xs:double</code> value representing an angle
-               <i>θ</i> in radians in the range <code>0 &lt;= $</code><i>θ</i><code> &lt;=
+               <i>θ</i> in radians in the range <code>0 &lt;= </code><i>θ</i><code> &lt;=
                   +</code><i>π</i>. 
             </p>
          </section>
@@ -94,13 +89,14 @@
          <footer>
             <h2>See Also</h2>
             <ul>
-               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-math-acos">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-math-acos">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-acos">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/math/acos.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

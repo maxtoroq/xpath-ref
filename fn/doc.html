@@ -26,21 +26,19 @@
          <header>
             <h1 class="page-header">fn:doc</h1>
          </header>
-         <p>Retrieves a document using a URI supplied as an
-            <code>xs:string</code>, and returns the corresponding document node.
+         <p>Retrieves a document using a URI supplied as an <code>xs:string</code>, and returns the
+            corresponding document node.
          </p>
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:doc</span><span class="parenthesis">(</span><span class="variable">$uri</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">document-node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:doc</span><span class="parenthesis">(</span><span class="variable">$uri</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">document-node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
-               		available documents, and static base uri.
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		available documents, and static base URI.
                	
             </p>
          </section>
@@ -50,26 +48,26 @@
             </header>
             <p>If <code>$uri</code> is the empty sequence, the result is an empty sequence.
             </p>
-            <p>If <code>$uri</code> is a relative URI reference, it is resolved
-               relative to the value of the Static Base URI property from the static context. The resulting
-               absolute URI is promoted to an <code>xs:string</code>.
+            <p>If <code>$uri</code> is a relative URI reference, it is resolved relative to the value
+               of the static base URI property from the static context. The resulting absolute URI is
+               promoted to an <code>xs:string</code>.
             </p>
-            <p>If the Available documents described in <a href="http://www.w3.org/TR/xpath-30/#eval_context">Dynamic Context</a> provides a mapping from this string to a document
-               node, the function returns that document node.
+            <p>If the available documents described in <a href="#eval_context"></a> provides a mapping from this string to a document node, the
+               function returns that document node.
             </p>
             <p>The URI may include a fragment identifier.</p>
-            <p>By default, this function is <a href="http://www.w3.org/TR/xpath-functions-30/#deterministic">deterministic</a>. Two calls on this function
-               return the same document node if the same URI Reference (after resolution to an absolute
-               URI Reference) is supplied to both calls. Thus, the following expression (if it does
-               not
-               raise an error) will always be true:
+            <p>By default, this function is <a href="https://www.w3.org/TR/xpath-functions-31/#deterministic">deterministic</a>. Two
+               calls on this function return the same document node if the same URI Reference (after
+               resolution to an absolute URI Reference) is supplied to both calls. Thus, the following
+               expression (if it does not raise an error) will always be true:
             </p><pre><code><span class="function">doc</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">foo.xml</span><span class="op">"</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">is</span><span class="whitespace"> </span><span class="function">doc</span><span class="parenthesis">(</span><span class="op">"</span><span class="literal">foo.xml</span><span class="op">"</span><span class="parenthesis">)</span></code></pre><p>However, for performance reasons, implementations may provide a user option to evaluate
                the function without a guarantee of determinism. The manner in which any such option
                is
                provided is implementation-defined. If the user has not selected such an option, a
                call
-               of the function must either return a deterministic result or must raise a dynamic error
-               [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0003">ERRFODC0003</a>].
+               of the function must either return a deterministic result or must raise a dynamic
+               error
+               [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0003">ERRFODC0003</a>].
             </p>
             <blockquote>
                <p>If <code>$uri</code> is read from a source document, it is generally appropriate to
@@ -94,20 +92,23 @@
                configurable machinery for locating resources and turning their contents into document
                nodes within the XPath data model. Both the set of resources that are reachable, and
                the
-               mechanisms by which those resources are parsed and validated, are <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a>.
+               mechanisms by which those resources are parsed and validated, are <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a>.
             </p>
             <p> One possible processing model for this function is as follows. The resource identified
-               by the URI Reference is retrieved. If the resource cannot be retrieved, a dynamic error is
-               raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>]. The data resulting from the retrieval action
-               is then parsed as an XML document and a tree is constructed in accordance with the
-               <a href="http://www.w3.org/TR/xpath-datamodel-30/">[Data Model (XDM) 3.0]</a>. If the top-level media type is known and is
+               by the URI Reference is retrieved. If the resource cannot be retrieved, a dynamic
+               error
+               is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0002">ERRFODC0002</a>]. The data resulting from the retrieval
+               action is then parsed as an XML document and a tree is constructed in accordance with
+               the <a href="http://www.w3.org/TR/xpath-datamodel-30/">[Data Model (XDM) 3.0]</a>. If the top-level media type is known and is
                "text", the content is parsed in the same way as if the media type were text/xml;
                otherwise, it is parsed in the same way as if the media type were application/xml.
                If
-               the contents cannot be parsed successfully, a dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>]. Otherwise, the result of the function is the document node at the root
-               of the resulting tree. This tree is then optionally validated against a schema.
+               the contents cannot be parsed successfully, a dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0002">ERRFODC0002</a>]. Otherwise, the result of the function is the document node
+               at the root of the resulting tree. This tree is then optionally validated against
+               a
+               schema.
             </p>
-            <p>Various aspects of this processing are <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a>.
+            <p>Various aspects of this processing are <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>.
                Implementations may provide external configuration options that allow any aspect of
                the
                processing to be controlled by the user. In particular:
@@ -127,7 +128,7 @@
                   </p>
                </li>
                <li>
-                  <p>It is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a> whether DTD validation and/or schema
+                  <p>It is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a> whether DTD validation and/or schema
                      validation is applied to the source document.
                   </p>
                </li>
@@ -144,29 +145,40 @@
                      function to return deterministic results.
                   </p>
                </li>
+               <li>
+                  <p>The effect of a fragment identifier in the supplied URI 
+                     is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>. One possible interpretation
+                     is to treat the fragment identifier as an ID attribute value, and to return a document
+                     node having the element with the selected ID value as its only child.
+                  </p>
+               </li>
             </ul>
          </section>
          <section>
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error <b>may</b> be raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0005">ERRFODC0005</a>] if <code>$uri</code> is not a valid URI.
+            <p>A dynamic error <b>may</b> be raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0005">ERRFODC0005</a>] if
+               <code>$uri</code> is not a valid URI reference.
             </p>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>] if the
-               available documents provides no mapping for the absolutized URI.
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0002">ERRFODC0002</a>] if a relative URI reference
+               is supplied, and the base-URI property in the static context is absent.
             </p>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0002">ERRFODC0002</a>] if the resource cannot be
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0002">ERRFODC0002</a>] if the available
+               documents provides no mapping for the absolutized URI.
+            </p>
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0002">ERRFODC0002</a>] if the resource cannot be
                retrieved or cannot be parsed successfully as XML.
             </p>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0003">ERRFODC0003</a>] if the implementation is not able
-               to guarantee that the result of the function will be deterministic, and the user has
-               not
-               indicated that an unstable result is acceptable.
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0003">ERRFODC0003</a>] if the implementation is
+               not able to guarantee that the result of the function will be deterministic, and the
+               user has not indicated that an unstable result is acceptable.
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-doc">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-doc">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-doc">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/doc.html">Saxon Function Library</a></li>
@@ -174,7 +186,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

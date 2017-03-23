@@ -1,0 +1,127 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>map:find</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">map:find</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">map:find</h1>
+         </header>
+         <p>Searches the supplied input sequence and any contained maps and arrays for a map entry
+            with the supplied key,
+            and returns the corresponding values.
+         </p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header><pre><code class="signature"><span class="function">map:find</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$key</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">array</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The function <code>map:find</code> searches the sequence supplied as <code>$input</code>
+               looking for map entries whose key is the <a href="https://www.w3.org/TR/xpath-functions-31/#dt-same-key">same key</a>
+               as <code>$key</code>. The associated value in any such map entry (each being in general a sequence)
+               is returned as a member of the result array.
+            </p>
+            <p>The search processes the <code>$input</code> sequence using the following recursively-defined rules 
+               (any equivalent algorithm may be used provided it delivers
+               the same result, respecting those rules that constrain the order of the result):
+            </p>
+            <ol>
+               <li>
+                  <p>To process a sequence, process each of its items in order.</p>
+               </li>
+               <li>
+                  <p>To process an item that is an array, process each of the array's members in order
+                     
+                     (each member is, in general, a sequence).
+                  </p>
+               </li>
+               <li>
+                  <p>To process an item that is a map, then for each key-value entry (<i>K</i>, <i>V</i>)
+                     in the map (in <a href="https://www.w3.org/TR/xpath-functions-31/#dt-implementation-dependent">implementation-dependent</a> order)
+                     perform both of the following steps, in order:
+                  </p>
+                  <ol>
+                     <li>
+                        <p>If <i>K</i> is the <a href="https://www.w3.org/TR/xpath-functions-31/#dt-same-key">same key</a> as <code>$key</code>, 
+                           then add <i>V</i> as a new member to the end of the result array.
+                        </p>
+                     </li>
+                     <li>
+                        <p>Process <i>V</i> (which is, in general, a sequence).
+                        </p>
+                     </li>
+                  </ol>
+               </li>
+               <li>
+                  <p>To process an item that is neither a map nor an array, do nothing. (Such items are
+                     ignored).
+                  </p>
+               </li>
+            </ol>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>If <code>$input</code> is an empty sequence, map, or array, or if the requested <code>$key</code> is not found,
+               the result will be a zero-length array.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$responses</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="filter">[</span><span class="qname">map</span><span class="op">{</span><span class="numeric">0</span><span class="op">:</span><span class="op">'</span><span class="literal">no</span><span class="op">'</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">1</span><span class="op">:</span><span class="op">'</span><span class="literal">yes</span><span class="op">'</span><span class="op">}</span><span class="op">,</span><span class="whitespace"> </span><span class="qname">map</span><span class="op">{</span><span class="numeric">0</span><span class="op">:</span><span class="op">'</span><span class="literal">non</span><span class="op">'</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">1</span><span class="op">:</span><span class="op">'</span><span class="literal">oui</span><span class="op">'</span><span class="op">}</span><span class="op">,</span><span class="whitespace"> 
+                  </span><span class="qname">map</span><span class="op">{</span><span class="numeric">0</span><span class="op">:</span><span class="op">'</span><span class="literal">nein</span><span class="op">'</span><span class="op">,</span><span class="whitespace"> </span><span class="numeric">1</span><span class="function">:</span><span class="parenthesis">(</span><span class="op">'</span><span class="literal">ja</span><span class="op">'</span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal">doch</span><span class="op">'</span><span class="parenthesis">)</span><span class="op">}</span><span class="filter">]</span></code></pre><p>The expression <code>map:find($responses, 0)</code> returns <code>['no', 'non', 'nein']</code>.
+            </p>
+            <p>The expression <code>map:find($responses, 1)</code> returns <code>['yes', 'oui', ('ja', 'doch')]</code>.
+            </p>
+            <p>The expression <code>map:find($responses, 2)</code> returns <code>[]</code>.
+            </p><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$inventory</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> </span><span class="qname">map</span><span class="op">{</span><span class="op">"</span><span class="property">name</span><span class="op">"</span><span class="op">:</span><span class="op">"</span><span class="literal">car</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="property">id</span><span class="op">"</span><span class="op">:</span><span class="op">"</span><span class="literal">QZ123</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> 
+      </span><span class="op">"</span><span class="property">parts</span><span class="op">"</span><span class="op">:</span><span class="whitespace"> </span><span class="filter">[</span><span class="qname">map</span><span class="op">{</span><span class="op">"</span><span class="property">name</span><span class="op">"</span><span class="op">:</span><span class="op">"</span><span class="literal">engine</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="property">id</span><span class="op">"</span><span class="op">:</span><span class="op">"</span><span class="literal">YW678</span><span class="op">"</span><span class="op">,</span><span class="whitespace"> </span><span class="op">"</span><span class="property">parts</span><span class="op">"</span><span class="op">:</span><span class="filter">[</span><span class="filter">]</span><span class="op">}</span><span class="filter">]</span><span class="op">}</span></code></pre><p>The expression <code>map:find($inventory, "parts")</code> returns <code>[[map{"name":"engine", "id":"YW678", "parts":[]}], []]</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-find">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/map/find.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

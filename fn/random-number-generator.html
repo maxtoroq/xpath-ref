@@ -1,0 +1,195 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:random-number-generator</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:random-number-generator</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:random-number-generator</h1>
+         </header>
+         <p>Returns a random number generator, which can be used to generate sequences of random
+            numbers.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header><pre><code class="signature"><span class="function">fn:random-number-generator</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="qname">xs:string</span><span class="op">,</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="parenthesis">)</span></code></pre><pre><code class="signature"><span class="function">fn:random-number-generator</span><span class="parenthesis">(</span><span class="variable">$seed</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:anyAtomicType</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="qname">xs:string</span><span class="op">,</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="parenthesis">)</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-higher-order">higher-order</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The function returns a random number generator. A random number generator is represented
+               as a map containing three entries. 
+               The keys of each entry are strings:
+            </p>
+            <ol>
+               <li>
+                  <p>The entry with key <code>"number"</code> holds a random number; it is an <code>xs:double</code> greater than or equal
+                     to zero (0.0e0), and less than one (1.0e0).
+                  </p>
+               </li>
+               <li>
+                  <p>The entry with key <code>"next"</code> is a zero-arity function that can be called to return another random number
+                     generator.
+                  </p>
+                  <p>The properties of this function are as follows:</p>
+                  <ul>
+                     <li>
+                        <p>name: absent</p>
+                     </li>
+                     <li>
+                        <p>parameter names: ()</p>
+                     </li>
+                     <li>
+                        <p>signature: <code>() =&gt; map(xs:string, item())</code></p>
+                     </li>
+                     <li>
+                        <p>non-local variable bindings: none</p>
+                     </li>
+                     <li>
+                        <p>implementation: implementation-dependent</p>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <p>The entry with key <code>"permute"</code> is a function with arity 1 (one), which takes an arbitrary sequence
+                     as its argument, and returns a random permutation of that sequence.
+                  </p>
+                  <p>The properties of this function are as follows:</p>
+                  <ul>
+                     <li>
+                        <p>name: absent</p>
+                     </li>
+                     <li>
+                        <p>parameter names: ("arg")</p>
+                     </li>
+                     <li>
+                        <p>signature: <code>(item()*) =&gt; item()*</code></p>
+                     </li>
+                     <li>
+                        <p>non-local variable bindings: none</p>
+                     </li>
+                     <li>
+                        <p>implementation: implementation-dependent</p>
+                     </li>
+                  </ul>
+               </li>
+            </ol>
+            <p>Calling the <code>fn:random-number-generator</code> function with no arguments is equivalent to calling the single-argument
+               form of the function with an implementation-dependent seed.
+            </p>
+            <p>Calling the <code>fn:random-number-generator</code> function with an empty sequence as the value of <code>$seed</code> 
+               is equivalent to calling the single-argument form of the function with an implementation-dependent
+               seed.
+            </p>
+            <p>If a <code>$seed</code> is supplied, it may be an atomic value of any type.
+            </p>
+            <p>Both forms of the function are <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>: calling the function twice with the same arguments, within a single
+               <a href="https://www.w3.org/TR/xpath-functions-31/#execution-scope">execution scope</a>, produces the same results.
+            </p>
+            <p>The value of the <code>number</code> entry <b>should</b> be such that all eligible <code>xs:double</code>
+               values are equally likely to be chosen.
+            </p>
+            <p>The function returned in the <code>permute</code> entry <b>should</b> be such that all permutations 
+               of the supplied sequence are equally likely to be chosen.
+            </p>
+            <p>The map returned by the <code>fn:random-number-generator</code> function <b>may</b> contain additional entries beyond
+               those specified here, but it <b>must</b> match the type <code>map(xs:string, item())</code>. The meaning of any additional entries
+               is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>. To avoid conflict with any future version of this specification, the keys of any
+               such entries <b>should</b> start with an underscore character.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>It is not meaningful to ask whether the functions returned in the <code>next</code> and <code>permute</code>
+               functions resulting from two separate calls with the same seed are "the same function",
+               but the functions must be equivalent in the sense
+               that calling them produces the same sequence of random numbers.
+            </p>
+            <p>The repeatability of the results of function calls in different execution scopes is
+               outside the scope of this
+               specification. It is <b>recommended</b> that when the same seed is provided explicitly, the same random number sequence
+               should be delivered even in different execution scopes; while if no seed is provided,
+               the processor should choose a seed
+               that is likely to be different from one execution scope to another. (The same effect
+               can be achieved explicitly by using
+               <code>fn:current-dateTime()</code> as a seed.)
+            </p>
+            <p>The specification does not place strong conformance requirements on the actual randomness
+               of the result; this is left to 
+               the implementation. It is desirable, for example, when generating a sequence
+               of random numbers that the sequence should not get into a repeating loop; but the
+               specification does not attempt to dictate this.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The following example returns a random permutation of the integers in the range 1
+               to 100: 
+               <code>fn:random-number-generator()?permute(1 to 100)</code>
+               
+            </p>
+            <p>The following example returns a 10% sample of the items in an input sequence <code>$seq</code>, chosen at random: 
+               <code>fn:random-number-generator()?permute($seq)[position() = 1 to (count($seq) idiv 10)]</code>
+               
+            </p>
+            <p>The following code defines a function that can be called to produce a random sequence
+               of <code>xs:double</code>
+               values in the range zero to one, of specified length:
+            </p><pre><code><span class="op">declare</span><span class="whitespace"> </span><span class="qname">%</span><span class="op">public</span><span class="whitespace"> </span><span class="op">function</span><span class="whitespace"> </span><span class="function">r:random-sequence</span><span class="parenthesis">(</span><span class="variable">$length</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double*</span><span class="whitespace"> </span><span class="op">{</span><span class="whitespace">
+  </span><span class="function">r:random-sequence</span><span class="parenthesis">(</span><span class="variable">$length</span><span class="op">,</span><span class="whitespace"> </span><span class="function">fn:random-number-generator</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace">
+</span><span class="op">}</span><span class="op">;</span><span class="whitespace">
+
+</span><span class="op">declare</span><span class="whitespace"> </span><span class="qname">%</span><span class="op">private</span><span class="whitespace"> </span><span class="op">function</span><span class="whitespace"> </span><span class="function">r:random-sequence</span><span class="parenthesis">(</span><span class="variable">$length</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="op">,</span><span class="whitespace"> 
+                                            </span><span class="variable">$G</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">map</span><span class="parenthesis">(</span><span class="qname">xs:string</span><span class="op">,</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">{</span><span class="whitespace">
+  </span><span class="if">if</span><span class="whitespace"> </span><span class="parenthesis">(</span><span class="variable">$length</span><span class="whitespace"> </span><span class="op">eq</span><span class="whitespace"> </span><span class="numeric">0</span><span class="parenthesis">)</span><span class="whitespace">
+  </span><span class="op">then</span><span class="whitespace"> </span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace">
+  </span><span class="op">else</span><span class="whitespace"> </span><span class="parenthesis">(</span><span class="variable">$G</span><span class="op">?</span><span class="qname">number</span><span class="op">,</span><span class="whitespace"> </span><span class="function">r:random-sequence</span><span class="parenthesis">(</span><span class="variable">$length</span><span class="whitespace"> </span><span class="op">-</span><span class="whitespace"> </span><span class="numeric">1</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$G</span><span class="op">?</span><span class="function">next</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace">
+</span><span class="op">}</span><span class="op">;</span><span class="whitespace">
+
+</span><span class="function">r:random-sequence</span><span class="parenthesis">(</span><span class="numeric">200</span><span class="parenthesis">)</span><span class="op">;</span><span class="whitespace">
+            </span></code></pre></section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-random-number-generator">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-random-number-generator">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/random-number-generator.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

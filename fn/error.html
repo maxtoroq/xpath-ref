@@ -26,27 +26,24 @@
          <header>
             <h1 class="page-header">fn:error</h1>
          </header>
-         <p>Calling the <code>fn:error</code> function raises an application-defined
-            error.
+         <p>Calling the <code>fn:error</code> function raises an application-defined error.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:error</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">none</span></code></pre><pre><code class="signature"><span class="function">fn:error</span><span class="parenthesis">(</span><span class="variable">$code</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:QName</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">none</span></code></pre><pre><code class="signature"><span class="function">fn:error</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:error</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">none</span></code></pre><pre><code class="signature"><span class="function">fn:error</span><span class="parenthesis">(</span><span class="variable">$code</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:QName</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">none</span></code></pre><pre><code class="signature"><span class="function">fn:error</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$code</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:QName</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$description</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">none</span></code></pre><pre><code class="signature"><span class="function">fn:error</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$code</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:QName</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$description</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$error-object</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">none</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">none</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-nondeterministic">nondeterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-nondeterministic">nondeterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -66,12 +63,9 @@
                or
                external processing environment. The way in which error information is returned to
                the
-               external processing environment is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-dependent">implementation dependent</a></p>
-            <p>If <code>fn:error</code> is called with no arguments, then its behavior is the same as
-               the function call: 
-            </p><pre><code><span class="function">fn:error</span><span class="parenthesis">(</span><span class="function">fn:QName</span><span class="parenthesis">(</span><span class="op">'</span><span class="literal">http://www.w3.org/2005/xqt-errors</span><span class="op">'</span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal">err:FOER0000</span><span class="op">'</span><span class="parenthesis">)</span><span class="parenthesis">)</span><span class="whitespace"> </span></code></pre><p>If <code>$code</code> is the empty sequence then the effective value is the
-               <code>xs:QName</code> constructed by:
-            </p><pre><code><span class="function">fn:QName</span><span class="parenthesis">(</span><span class="op">'</span><span class="literal">http://www.w3.org/2005/xqt-errors</span><span class="op">'</span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal">err:FOER0000</span><span class="op">'</span><span class="parenthesis">)</span></code></pre><p>There are three pieces of information that may be associated with an error:</p>
+               external processing environment is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a>.
+            </p>
+            <p>There are three pieces of information that may be associated with an error:</p>
             <ul>
                <li>
                   <p>The <code>$code</code> is an error code that distinguishes this error from others.
@@ -88,16 +82,29 @@
                      the form <code>NS#LP</code>. The namespace URI part of the error code should
                      therefore not include a fragment identifier.
                   </p>
+                  <p>If no value is supplied for the <code>$code</code> argument (that is,
+                     if the function is called with no arguments or if the first argument is an empty sequence),
+                     the effective value of the error code is <code>fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOER0000')</code>.
+                  </p>
                </li>
                <li>
                   <p>The <code>$description</code> is a natural-language description of the error
                      condition.
+                  </p>
+                  <p>If no value is supplied for the <code>$description</code>
+                     argument (that is, if the function is called with less than two arguments), then the
+                     effective value of the description is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a>.
                   </p>
                </li>
                <li>
                   <p>The <code>$error-object</code> is an arbitrary value used to convey additional
                      information about the error, and may be used in any way the application
                      chooses.
+                  </p>
+                  <p>If no value is supplied for the <code>$error-object</code>
+                     argument (that is, if the function is called with less than three arguments), then
+                     the
+                     effective value of the error object is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a>.
                   </p>
                </li>
             </ul>
@@ -106,7 +113,7 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>This function always raises a dynamic error. By default, it raises [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFOER0000">ERRFOER0000</a>]
+            <p>This function always raises a dynamic error. By default, it raises [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOER0000">ERRFOER0000</a>]
             </p>
          </section>
          <section>
@@ -118,31 +125,34 @@
             <p>The type none is a special type defined in <a href="http://www.w3.org/TR/xquery-semantics/">[XQuery 1.0 and XPath 2.0 Formal Semantics]</a> and is not available to the user. It indicates that the function never returns and
                ensures that it has the correct static type.
             </p>
-            <p>Any QName may be used as an error code; there are no reserved names or
-               namespaces. The error is always classified as a dynamic error, even if the error code
-               used is
-               one that is normally used for static errors or type errors.
+            <p>Any QName may be used as an error code; there are no reserved names or namespaces.
+               The
+               error is always classified as a dynamic error, even if the error code used is one
+               that
+               is normally used for static errors or type errors.
             </p>
          </section>
          <section>
             <header>
                <h2>Examples</h2>
             </header>
-            <p>The expression <code>fn:error()</code> raises error <code>FOER0000</code>. (This returns the URI <code>http://www.w3.org/2005/xqt-errors#FOER0000</code> (or the corresponding
-               <code>xs:QName</code>) to the external processing environment, unless the error is
-               caught using a try/catch construct in the host language.).
+            <p>The expression <code>fn:error()</code> raises error <code>FOER0000</code>. (This returns the URI
+               <code>http://www.w3.org/2005/xqt-errors#FOER0000</code> (or the corresponding
+               <code>xs:QName</code>) to the external processing environment, unless the error
+               is caught using a try/catch construct in the host language.)
             </p>
-            <p>The expression <code>fn:error(fn:QName('http://www.example.com/HR', 'myerr:toohighsal'), 'Does not
-                  apply because salary is too high')</code> raises error <code>myerr:toohighsal</code>. (This  returns
-               <code>http://www.example.com/HR#toohighsal</code> and the <code>xs:string</code>
+            <p>The expression <code>fn:error(fn:QName('http://www.example.com/HR', 'myerr:toohighsal'),
+                  'Does not apply because salary is too high')</code> raises error <code>myerr:toohighsal</code>. (This returns <code>http://www.example.com/HR#toohighsal</code> and the
+               <code>xs:string</code>
                <code>"Does not apply because salary is too high"</code> (or the corresponding
-               <code>xs:QName</code>) to the external processing environment, unless the error is
-               caught using a try/catch construct in the host language.).
+               <code>xs:QName</code>) to the external processing environment, unless the error
+               is caught using a try/catch construct in the host language.)
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-error">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-error">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-error">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/error.html">Saxon Function Library</a></li>
@@ -150,7 +160,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

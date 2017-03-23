@@ -26,26 +26,23 @@
          <header>
             <h1 class="page-header">fn:id</h1>
          </header>
-         <p>Returns the sequence of element nodes that have an <code>ID</code> value
-            matching the value of one or more of the <code>IDREF</code> values supplied in
-            <code>$arg</code>.
+         <p>Returns the sequence of element nodes that have an <code>ID</code> value matching the
+            value of one or more of the <code>IDREF</code> values supplied in <code>$arg</code>.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:id</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre><pre><code class="signature"><span class="function">fn:id</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:id</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre><pre><code class="signature"><span class="function">fn:id</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string*</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$node</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">node</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">element</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>The one-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-dependent">focus-dependent</a>. 
+            <p>The one-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-dependent">focus-dependent</a>. 
             </p>
-            <p>The two-argument form of this function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>The two-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -77,7 +74,7 @@
                         </p>
                         <ul>
                            <li>
-                              <p>The <code>is-id</code> property (See <a href="http://www.w3.org/TR/xpath-datamodel-30/#dm-is-id">is-id Accessor</a>.) of the element node is true, and the typed value
+                              <p>The <code>is-id</code> property (See <a href="#dm-is-id"></a>.) of the element node is true, and the typed value
                                  of the element node is equal to <code>V</code> under the rules of the
                                  <code>eq</code> operator using the Unicode codepoint collation
                                  (<code>http://www.w3.org/2005/xpath-functions/collation/codepoint</code>).
@@ -85,7 +82,7 @@
                            </li>
                            <li>
                               <p>The element has an attribute node whose <code>is-id</code> property
-                                 (See <a href="http://www.w3.org/TR/xpath-datamodel-30/#dm-is-id">is-id Accessor</a>.) is true and whose typed
+                                 (See <a href="#dm-is-id"></a>.) is true and whose typed
                                  value is equal to <code>V</code> under the rules of the
                                  <code>eq</code> operator using the Unicode code point collation
                                  (<code>http://www.w3.org/2005/xpath-functions/collation/codepoint</code>).
@@ -118,41 +115,41 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-functions-30/#ERRFODC0001">ERRFODC0001</a>] if
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFODC0001">ERRFODC0001</a>] if
                <code>$node</code>, or the context item if the second argument is absent, is a node
                in a tree whose root is not a document node.
             </p>
             <p>The following errors may be raised when <code>$node</code> is omitted:
             </p>
-            <p>If the context
-               item is absent, dynamic error
-               [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
+            
+            <p>If the context item is absent,
+               dynamic error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
             </p>
-            <p>If the context item is not a
-               node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
+            
+            
+            <p>If the context item is not a node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
             </p>
+            
          </section>
          <section>
             <header>
                <h2>Notes</h2>
             </header>
-            <p>The effect of this function is anomalous in respect of element
-               nodes with the <code>is-id</code> property. For legacy reasons, this function returns
-               the element that has the <code>is-id</code> property, whereas it would be more
-               appropriate to return its parent, that being the element that is uniquely identified
-               by
-               the ID. A new function element-with-id is being introduced with the
-               desired behavior.
+            <p>The effect of this function is anomalous in respect of element nodes with the
+               <code>is-id</code> property. For legacy reasons, this function returns the element
+               that has the <code>is-id</code> property, whereas it would be more appropriate to return
+               its parent, that being the element that is uniquely identified by the ID. A new function
+               <code>fn:element-with-id</code> has been introduced with the desired
+               behavior.
             </p>
             <p> If the data model is constructed from an Infoset, an attribute will have the
                <code>is-id</code> property if the corresponding attribute in the Infoset had an
                attribute type of <code>ID</code>: typically this means the attribute was declared as an
                <code>ID</code> in a DTD.
             </p>
-            <p> If the data model is constructed from a PSVI, an element or
-               attribute will have the <code>is-id</code> property if its typed value is a single
-               atomic value of type <code>xs:ID</code> or a type derived by restriction from
-               <code>xs:ID</code>.
+            <p> If the data model is constructed from a PSVI, an element or attribute will have the
+               <code>is-id</code> property if its typed value is a single atomic value of type
+               <code>xs:ID</code> or a type derived by restriction from <code>xs:ID</code>.
             </p>
             <p> No error is raised in respect of a candidate <code>IDREF</code> value that does not
                match the <code>ID</code> of any element in the document. If no candidate
@@ -181,25 +178,31 @@
          <section>
             <header>
                <h2>Examples</h2>
-            </header>
-            <p>let <code>$emp</code> := <pre><code><span class="whitespace">            </span><span class="es">&lt;</span><span class="en">employee</span><span class="atn"> xml:id</span><span class="atneq">=</span><span class="z">"</span><span class="av">ID21256</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
-               </span><span class="es">&lt;</span><span class="en">empnr</span><span class="z">&gt;</span><span class="txt">E21256</span><span class="sc">&lt;/</span><span class="cl">empnr</span><span class="z">&gt;</span><span class="txt">
+            </header><pre><code><span class="higher">let</span><span class="whitespace"> </span><span class="variable">$emp</span><span class="whitespace"> </span><span class="op">:=</span><span class="whitespace"> 
+        </span><span class="op">validate</span><span class="whitespace"> </span><span class="qname">lax</span><span class="op">{</span><span class="whitespace">    
+          </span><span class="qname">document</span><span class="op">{</span><span class="whitespace">
+            </span><span class="es">&lt;</span><span class="en">employee</span><span class="atn"> xml:id</span><span class="atneq">=</span><span class="z">"</span><span class="av">ID21256</span><span class="z">"</span><span class="atn">
+                      xmlns:xsi</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2001/XMLSchema-instance</span><span class="z">"</span><span class="atn">  
+                      xmlns:xs</span><span class="atneq">=</span><span class="z">"</span><span class="av">http://www.w3.org/2001/XMLSchema</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">
+               </span><span class="es">&lt;</span><span class="en">empnr</span><span class="atn"> xsi:type</span><span class="atneq">=</span><span class="z">"</span><span class="av">xs:ID</span><span class="z">"</span><span class="z">&gt;</span><span class="txt">E21256</span><span class="sc">&lt;/</span><span class="cl">empnr</span><span class="z">&gt;</span><span class="txt">
                </span><span class="es">&lt;</span><span class="en">first</span><span class="z">&gt;</span><span class="txt">John</span><span class="sc">&lt;/</span><span class="cl">first</span><span class="z">&gt;</span><span class="txt">
                </span><span class="es">&lt;</span><span class="en">last</span><span class="z">&gt;</span><span class="txt">Brown</span><span class="sc">&lt;/</span><span class="cl">last</span><span class="z">&gt;</span><span class="txt">
             </span><span class="sc">&lt;/</span><span class="cl">employee</span><span class="z">&gt;</span><span class="whitespace">
-         </span></code></pre></p>
-            <p>The expression <code>id('ID21256')/name()</code> returns <code>employee</code>. (The <code>xml:id</code> attribute has the <code>is-id</code> property,
-               so the employee element is selected.).
+          </span><span class="op">}</span><span class="whitespace">
+        </span><span class="op">}</span><span class="whitespace">
+         </span></code></pre><p>The expression <code>$emp/id('ID21256')/name()</code> returns <code>"employee"</code>. (The <code>xml:id</code> attribute has the <code>is-id</code> property,
+               so the employee element is selected.)
             </p>
-            <p>The expression <code>id('E21256')/name()</code> returns <code>empnr</code>. (Assuming the <code>empnr</code> element is given the type
+            <p>The expression <code>$emp/id('E21256')/name()</code> returns <code>"empnr"</code>. (Assuming the <code>empnr</code> element is given the type
                <code>xs:ID</code> as a result of schema validation, the element will have the
                <code>is-id</code> property and is therefore selected. Note the difference from
-               the behavior of <code>fn:element-with-id</code>.).
+               the behavior of <code>fn:element-with-id</code>.)
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-id">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-id">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-id">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/id.html">Saxon Function Library</a></li>
@@ -207,7 +210,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

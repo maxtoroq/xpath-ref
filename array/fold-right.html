@@ -1,0 +1,94 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>array:fold-right</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">array:fold-right</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">array:fold-right</h1>
+         </header>
+         <p>Evaluates the supplied function cumulatively on successive values of the supplied
+            array.
+         </p>
+         <section>
+            <header>
+               <h2>Signature</h2>
+            </header><pre><code class="signature"><span class="function">array:fold-right</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$array</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="node-type">array</span><span class="parenthesis">(</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$zero</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$function</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">function</span><span class="parenthesis">(</span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="op">,</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type">item</span><span class="parenthesis">(</span><span class="parenthesis">)</span><span class="quantifier">*</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-higher-order">higher-order</a>. 
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>The effect of the function is equivalent to the following recursive definition:</p><pre><code><span class="if">if</span><span class="whitespace"> </span><span class="parenthesis">(</span><span class="function">array:size</span><span class="parenthesis">(</span><span class="variable">$array</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">eq</span><span class="whitespace"> </span><span class="numeric">0</span><span class="parenthesis">)</span><span class="whitespace">
+</span><span class="op">then</span><span class="whitespace"> </span><span class="variable">$zero</span><span class="whitespace">
+</span><span class="op">else</span><span class="whitespace"> </span><span class="function">$function</span><span class="parenthesis">(</span><span class="whitespace"> </span><span class="function">array:head</span><span class="parenthesis">(</span><span class="variable">$array</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> 
+                </span><span class="function">array:fold-right</span><span class="parenthesis">(</span><span class="function">array:tail</span><span class="parenthesis">(</span><span class="variable">$array</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$zero</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$function</span><span class="parenthesis">)</span><span class="whitespace"> 
+              </span><span class="parenthesis">)</span><span class="whitespace">
+         </span></code></pre></section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>If the supplied array is empty, the function returns <code>$zero</code>.
+            </p>
+            <p>If the supplied array contains a single member <code>$m</code>, the function returns <code>$function($m, $zero)</code>.
+            </p>
+            <p>If the supplied array contains two members <code>$m</code> and <code>$n</code>, the function returns 
+               <code>$function($m, $function($n, $zero))</code>; and similarly for an input array with more than two members.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The expression <code>array:fold-right([true(), true(), false()], true(), function($x, $y){$x and $y})</code> returns <code>false()</code>. (Returns true if every member of the input array has an effective boolean value of
+               <code>true()</code>.)
+            </p>
+            <p>The expression <code>array:fold-right([true(), true(), false()], false(), function($x, $y){$x or $y})</code> returns <code>true()</code>. (Returns true if at least one member of the input array has an effective boolean value
+               of <code>true()</code>.)
+            </p>
+            <p>The expression <code>array:fold-right([1,2,3], [], function($x, $y){[$x, $y]})</code> returns <code>[1, [2, [3, []]]]</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-fold-right">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/array/fold-right.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

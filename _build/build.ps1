@@ -10,7 +10,7 @@ try {
 
    .\ensure-specs.ps1
 
-   &"$saxonPath\tools\Transform" -s:.\specs\xpath-functions-30.xml +spec-v2=.\specs\xpath-functions-20101214.xml -xsl:.\all-functions.xsl index-only=$indexOnlyXsd
+   &"$saxonPath\tools\Transform" -s:.\specs\xpath-functions-31.xml -xsl:.\all-functions.xsl index-only=$indexOnlyXsd
 
 } finally {
    Pop-Location

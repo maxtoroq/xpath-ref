@@ -26,30 +26,29 @@
          <header>
             <h1 class="page-header">fn:round-half-to-even</h1>
          </header>
-         <p>Rounds a value to a specified number of decimal places, rounding to make the
-            last digit even if two such values are equally near.
+         <p>Rounds a value to a specified number of decimal places, rounding to make the last
+            digit
+            even if two such values are equally near.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:round-half-to-even</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">numeric</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">numeric</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:round-half-to-even</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
-    </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">numeric</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
+            </header><pre><code class="signature"><span class="function">fn:round-half-to-even</span><span class="parenthesis">(</span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:numeric</span><span class="quantifier">?</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:numeric</span><span class="quantifier">?</span></code></pre><pre><code class="signature"><span class="function">fn:round-half-to-even</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$arg</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:numeric</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$precision</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:integer</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">numeric</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:numeric</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
             <header>
                <h2>Rules</h2>
             </header>
-            <p>General rules: see <a href="http://www.w3.org/TR/xpath-functions-30/#numeric-value-functions">Functions on numeric values</a>.
+            <p>General rules: see <a href="https://www.w3.org/TR/xpath-functions-31/#numeric-value-functions">Functions on numeric values</a>.
             </p>
             <p>The function returns the nearest (that is, numerically closest) value to
                <code>$arg</code> that is a multiple of ten to the power of minus
@@ -57,11 +56,15 @@
                part in <code>$arg</code> is exactly .500...), the function returns the one whose least
                significant digit is even.
             </p>
-            <p>If the type of <code>$arg</code> is one of the four numeric types <code>xs:float</code>,
-               <code>xs:double</code>, <code>xs:decimal</code> or <code>xs:integer</code> the type
-               of the result is the same as the type of <code>$arg</code>. If the type of
-               <code>$arg</code> is a type derived from one of the numeric types, the result is an
-               instance of the base numeric type.
+            <p>For the four types <code>xs:float</code>,
+               <code>xs:double</code>, <code>xs:decimal</code> and <code>xs:integer</code>, it is
+               guaranteed that if the type of <code>$arg</code> is an instance of type <i>T</i> then
+               the result will also be an instance of <i>T</i>. The result <b>may</b>
+               also be an instance of a type derived from one of these four by restriction. For example,
+               if
+               <code>$arg</code> is an instance of <code>xs:decimal</code> and <code>$precision</code>
+               is less than one, then the result <b>may</b>
+               be an instance of <code>xs:integer</code>.
             </p>
             <p> The first signature of this function produces the same result as the second signature
                with <code>$precision=0</code>.
@@ -75,11 +78,10 @@
                   </p>
                </li>
                <li>
-                  <p>In all other cases, the argument is cast to <code>xs:decimal</code>
-                     using an implementation of xs:decimal that imposes no
-                     limits on the number of digits that can be represented. The function
-                     is applied to this <code>xs:decimal</code> value, and the resulting
-                     <code>xs:decimal</code> is cast back to <code>xs:float</code> or
+                  <p>In all other cases, the argument is cast to <code>xs:decimal</code> using an
+                     implementation of xs:decimal that imposes no limits on the number of digits that
+                     can be represented. The function is applied to this <code>xs:decimal</code> value,
+                     and the resulting <code>xs:decimal</code> is cast back to <code>xs:float</code> or
                      <code>xs:double</code> as appropriate to form the function result. If the
                      resulting <code>xs:decimal</code> value is zero, then positive or negative zero is
                      returned according to the sign of the original argument.
@@ -91,9 +93,10 @@
             <header>
                <h2>Notes</h2>
             </header>
-            <p>This function is typically used in financial applications where the
-               argument is of type <code>xs:decimal</code>. For arguments of type <code>xs:float</code>
-               and <code>xs:double</code> the results may be counter-intuitive. For example, consider
+            <p>This function is typically used in financial applications where the argument is of
+               type
+               <code>xs:decimal</code>. For arguments of type <code>xs:float</code> and
+               <code>xs:double</code> the results may be counter-intuitive. For example, consider
                <code>round-half-to-even(xs:float(150.015), 2)</code>. The result is not 150.02 as
                might be expected, but 150.01. This is because the conversion of the
                <code>xs:float</code> value represented by the literal 150.015 to an
@@ -121,6 +124,7 @@
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-round-half-to-even">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-round-half-to-even">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-round-half-to-even">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/round-half-to-even.html">Saxon Function Library</a></li>
@@ -128,7 +132,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

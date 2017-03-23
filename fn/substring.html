@@ -26,29 +26,26 @@
          <header>
             <h1 class="page-header">fn:substring</h1>
          </header>
-         <p>Returns the portion of the value of <code>$sourceString</code> beginning at the
-            position indicated by the value of <code>$start</code> and continuing for the number of
-            <a href="http://www.w3.org/TR/xpath-functions-30/#character">characters</a> indicated by the value of
+         <p>Returns the portion of the value of <code>$sourceString</code> beginning at the position
+            indicated by the value of <code>$start</code> and continuing for the number of <a href="https://www.w3.org/TR/xpath-functions-31/#character">characters</a> indicated by the value of
             <code>$length</code>.
          </p>
          <section>
             <header>
                <h2>Signatures</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:substring</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+            </header><pre><code class="signature"><span class="function">fn:substring</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$sourceString</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$start</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="whitespace">&#xD;
 </span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre><pre><code class="signature"><span class="function">fn:substring</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
     </span><span class="variable">$sourceString</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$start</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="op">,</span><span class="whitespace"> &#xD;
     </span><span class="variable">$length</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:double</span><span class="whitespace">&#xD;
-</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></p>
-         </section>
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-independent">context-independent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>. 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-independent">context-independent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>. 
             </p>
          </section>
          <section>
@@ -58,7 +55,7 @@
             <p>If the value of <code>$sourceString</code> is the empty sequence, the function returns
                the zero-length string. 
             </p>
-            <p>Otherwise, the function returns a string comprising those <a href="http://www.w3.org/TR/xpath-functions-30/#character">characters</a> of <code>$sourceString</code> whose index position (counting
+            <p>Otherwise, the function returns a string comprising those <a href="https://www.w3.org/TR/xpath-functions-31/#character">characters</a> of <code>$sourceString</code> whose index position (counting
                from one) is greater than or equal to the value of <code>$start</code> (rounded to an
                integer), and (if <code>$length</code> is specified) less than the sum of
                <code>$start</code> and <code>$length</code> (both rounded to integers).
@@ -72,11 +69,11 @@
                <code>$sourceString</code> whose position <code>$p</code> satisfies:
             </p>
             <p>
-               <code>fn:round($start) &lt;= $p &lt; fn:round($start) + fn:round($length)</code>
+               <code>fn:round($start) &lt;= $p and $p &lt; fn:round($start) + fn:round($length)</code>
                
             </p>
             <p>The two argument version of the function assumes that <code>$length</code> is infinite
-               and thus returns the <a href="http://www.w3.org/TR/xpath-functions-30/#character">characters</a> in
+               and thus returns the <a href="https://www.w3.org/TR/xpath-functions-31/#character">characters</a> in
                <code>$sourceString</code> whose position <code>$p</code> satisfies:
             </p>
             <p>
@@ -92,50 +89,59 @@
                <h2>Notes</h2>
             </header>
             <p>The first character of a string is located at position 1, not position 0.</p>
+            <p>The second and third arguments allow <code>xs:double</code> values (rather than
+               requiring <code>xs:integer</code>) in order to achieve compatibility with XPath 1.0.
+            </p>
+            <p>A surrogate pair counts as one character, not two.</p>
+            <p>The consequences of supplying values such as <code>NaN</code> or positive or negative
+               infinity for the <code>$start</code> or <code>$length</code> arguments follow from the
+               above rules, and are not always intuitive.
+            </p>
          </section>
          <section>
             <header>
                <h2>Examples</h2>
             </header>
             <p>The expression <code>fn:substring("motor car", 6)</code> returns <code>" car"</code>. (Characters starting at position 6 to the end of
-               <code>$sourceString</code> are selected.).
+               <code>$sourceString</code> are selected.)
             </p>
             <p></p>
             <p>The expression <code>fn:substring("metadata", 4, 3)</code> returns <code>"ada"</code>. (Characters at positions greater than or equal to 4 and less than 7 are
-               selected.).
+               selected.)
             </p>
             <p>The expression <code>fn:substring("12345", 1.5, 2.6)</code> returns <code>"234"</code>. (Characters at positions greater than or equal to 2 and less than 5 are
-               selected.).
+               selected.)
             </p>
             <p>The expression <code>fn:substring("12345", 0, 3)</code> returns <code>"12"</code>. (Characters at positions greater than or equal to 0 and less than 3 are
                selected. Since the first position is 1, these are the characters at positions 1
-               and 2.).
+               and 2.)
             </p>
             <p>The expression <code>fn:substring("12345", 5, -3)</code> returns <code>""</code>. (Characters at positions greater than or equal to 5 and less than 2 are
-               selected.).
+               selected.)
             </p>
             <p>The expression <code>fn:substring("12345", -3, 5)</code> returns <code>"1"</code>. (Characters at positions greater than or equal to -3 and less than 2
                are selected. Since the first position is 1, this is the character at position
-               1.).
+               1.)
             </p>
             <p>The expression <code>fn:substring("12345", 0 div 0E0, 3)</code> returns <code>""</code>. (Since <code>0 div 0E0</code> returns <code>NaN</code>, and
                <code>NaN</code> compared to any other number returns <code>false</code>, no
-               characters are selected.).
+               characters are selected.)
             </p>
-            <p>The expression <code>fn:substring("12345", 1, 0 div 0E0)</code> returns <code>""</code>. (As above.).
+            <p>The expression <code>fn:substring("12345", 1, 0 div 0E0)</code> returns <code>""</code>. (As above.)
             </p>
             <p>The expression <code>fn:substring((), 1, 3)</code> returns <code>""</code>.
             </p>
-            <p>The expression <code>fn:substring("12345", -42, 1 div 0E0)</code> returns <code>"12345"</code>. (Characters at positions greater than or equal to -42 and less than <code>INF</code>
-               are selected.).
+            <p>The expression <code>fn:substring("12345", -42, 1 div 0E0)</code> returns <code>"12345"</code>. (Characters at positions greater than or equal to -42 and less than
+               <code>INF</code> are selected.)
             </p>
             <p>The expression <code>fn:substring("12345", -1 div 0E0, 1 div 0E0)</code> returns <code>""</code>. (Since the value of <code>-INF + INF</code> is <code>NaN</code>, no
-               characters are selected.).
+               characters are selected.)
             </p>
          </section>
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-substring">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-substring">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions/#func-substring">XPath 2.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/substring.html">Saxon Function Library</a></li>
@@ -143,7 +149,7 @@
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <title>fn:contains-token</title>
+      <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/site.css" />
+      <link rel="shortcut icon" href="../favicon.ico" />
+   </head>
+   <body>
+      <header role="navigation">
+         <nav class="container">
+            <div class="col-md-9 breadcrumb-col">
+               <ol class="breadcrumb" itemprop="breadcrumb">
+                  <li><a href="../">XPath Reference</a></li>
+                  <li class="active">fn:contains-token</li>
+               </ol>
+            </div>
+            <div class="col-md-3 search-col">
+               <form method="get" action="https://cse.google.com/cse"><input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny" /><div class="input-group"><input type="search" name="q" class="form-control" placeholder="Search" /><span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span></div>
+               </form>
+            </div>
+         </nav>
+      </header>
+      <article class="container" itemscope="itemscope" itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage">
+         <header>
+            <h1 class="page-header">fn:contains-token</h1>
+         </header>
+         <p>Determines whether or not any of the supplied strings, when tokenized at whitespace
+            boundaries, contains the supplied token,
+            under the rules of the supplied collation.
+         </p>
+         <section>
+            <header>
+               <h2>Signatures</h2>
+            </header><pre><code class="signature"><span class="function">fn:contains-token</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string*</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$token</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre><pre><code class="signature"><span class="function">fn:contains-token</span><span class="parenthesis">(</span><span class="whitespace">&#xD;
+    </span><span class="variable">$input</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string*</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$token</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="op">,</span><span class="whitespace"> &#xD;
+    </span><span class="variable">$collation</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="whitespace">&#xD;
+</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:boolean</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Properties</h2>
+            </header>
+            <p>The two-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		collations.
+               	
+            </p>
+            <p>The three-argument form of this function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
+               		collations, and static base URI.
+               	
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Rules</h2>
+            </header>
+            <p>If <code>$input</code> is the empty sequence, the function returns <code>false</code>.
+            </p>
+            <p>Leading and trailing whitespace is trimmed from the supplied value of <code>$token</code>. If the trimmed value of <code>$token</code>
+               is a zero-length string, the function returns <code>false</code>.
+            </p>
+            <p>The collation used by this function is determined according to the rules in <a href="https://www.w3.org/TR/xpath-functions-31/#choosing-a-collation">Choosing a collation</a>.
+            </p>
+            <p>The function returns true if and only if there is string in <code>$input</code> which, 
+               after tokenizing at whitespace boundaries, contains a token
+               that is equal to the trimmed value of <code>$token</code> under
+               the rules of the selected collation.
+            </p>
+            <p>That is, the function returns the value of the expression:</p><pre><code><span class="higher">some</span><span class="whitespace"> </span><span class="variable">$t</span><span class="whitespace"> </span><span class="op">in</span><span class="whitespace"> </span><span class="variable">$input</span><span class="op">!</span><span class="function">fn:tokenize</span><span class="parenthesis">(</span><span class="context">.</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">satisfies</span><span class="whitespace"> 
+                 </span><span class="function">compare</span><span class="parenthesis">(</span><span class="variable">$t</span><span class="op">,</span><span class="whitespace"> </span><span class="function">fn:replace</span><span class="parenthesis">(</span><span class="variable">$token</span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal">^\s*|\s*$</span><span class="op">'</span><span class="op">,</span><span class="whitespace"> </span><span class="op">'</span><span class="literal"></span><span class="op">'</span><span class="parenthesis">)</span><span class="op">,</span><span class="whitespace"> </span><span class="variable">$collation</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">eq</span><span class="whitespace"> </span><span class="numeric">0</span><span class="parenthesis">)</span></code></pre></section>
+         <section>
+            <header>
+               <h2>Notes</h2>
+            </header>
+            <p>Interior whitespace within <code>$token</code> will cause the function to return <code>false</code>,
+               unless such whitespace is ignored by the selected collation.
+            </p>
+            <p>This function can be used for processing space-separated attribute values
+               (for example, the XHTML and DITA class attribute),
+               where one often needs to test for the presence
+               of a single token in a space-separated list. The function is designed to work
+               both when the attribute has been validated against an XSD list type, and when it
+               appears as a single untyped string. It differs from the
+               HTML 5 definition in that HTML 5 recognizes form feed (x0C) as a separator.
+               To reproduce the HTML token matching behavior, the HTML ASCII case-insensitive collation
+               should be used: see <a href="https://www.w3.org/TR/xpath-functions-31/#html-ascii-case-insensitive-collation">The HTML ASCII Case-Insensitive Collation</a>.
+            </p>
+         </section>
+         <section>
+            <header>
+               <h2>Examples</h2>
+            </header>
+            <p>The expression <code>fn:contains-token("red green blue ", "red")</code> returns <code>true()</code>.
+            </p>
+            <p>The expression <code>fn:contains-token(("red", "green", "blue"), " red ")</code> returns <code>true()</code>.
+            </p>
+            <p>The expression <code>fn:contains-token("red, green, blue", "red")</code> returns <code>false()</code>.
+            </p>
+            <p>The expression <code>fn:contains-token("red green blue", "RED", "http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive")</code> returns <code>true()</code>.
+            </p>
+         </section>
+         <footer>
+            <h2>See Also</h2>
+            <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-contains-token">XPath 3.1 Functions and Operators</a></li>
+               <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-contains-token">XPath 3.0 Functions and Operators</a></li>
+               <li><a href="http://www.saxonica.com/html/documentation/functions/fn/contains-token.html">Saxon Function Library</a></li>
+            </ul>
+         </footer>
+      </article>
+      <footer>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+      </footer>
+   </body>
+</html>

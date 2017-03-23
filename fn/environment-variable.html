@@ -30,14 +30,12 @@
          <section>
             <header>
                <h2>Signature</h2>
-            </header>
-            <p><pre><code class="signature"><span class="function">fn:environment-variable</span><span class="parenthesis">(</span><span class="variable">$name</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre></p>
-         </section>
+            </header><pre><code class="signature"><span class="function">fn:environment-variable</span><span class="parenthesis">(</span><span class="variable">$name</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="parenthesis">)</span><span class="whitespace"> </span><span class="op">as</span><span class="whitespace"> </span><span class="type-name">xs:string</span><span class="quantifier">?</span></code></pre></section>
          <section>
             <header>
                <h2>Properties</h2>
             </header>
-            <p>This function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, <a href="http://www.w3.org/TR/xpath-functions-30/#dt-context-dependent">context-dependent</a>,  and <a href="http://www.w3.org/TR/xpath-functions-30/#dt-focus-independent">focus-independent</a>.  It depends on 
+            <p>This function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, <a href="https://www.w3.org/TR/xpath-functions-31/#dt-context-dependent">context-dependent</a>,  and <a href="https://www.w3.org/TR/xpath-functions-31/#dt-focus-independent">focus-independent</a>.  It depends on 
                		environment variables.
                	
             </p>
@@ -46,10 +44,10 @@
             <header>
                <h2>Rules</h2>
             </header>
-            <p>The set of available environment variables 
-               is a set of (name, value) pairs forming part
-               of the dynamic context, in which the name is unique within the set of pairs. The name
-               and value are arbitrary strings.
+            <p>The set of available environment
+               variables is a set of (name, value) pairs forming part of the dynamic
+               context, in which the name is unique within the set of pairs. The name and value are
+               arbitrary strings.
             </p>
             <p>If the <code>$name</code> argument matches the name of one of these pairs, the function
                returns the corresponding value.
@@ -58,14 +56,13 @@
                empty
                sequence.
             </p>
-            <p>The collation used for matching names is <a href="http://www.w3.org/TR/xpath-functions-30/#implementation-defined">implementation-defined</a>, but
+            <p>The collation used for matching names is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>, but
                must be the same as the collation used to ensure that the names of all environment
                variables are unique.
             </p>
-            <p>The function is <a href="http://www.w3.org/TR/xpath-functions-30/#dt-deterministic">deterministic</a>, 
-               which means that if it is called several times
-               within the same <a href="http://www.w3.org/TR/xpath-functions-30/#dt-execution-scope">execution scope</a>, with the same arguments,
-               it must return the same result.
+            <p>The function is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-deterministic">deterministic</a>, which means
+               that if it is called several times within the same <a href="https://www.w3.org/TR/xpath-functions-31/#execution-scope">execution scope</a>, with the same arguments, it must return the same
+               result.
             </p>
          </section>
          <section>
@@ -84,22 +81,23 @@
                <code>(letter|_) (letter|_|digit)*</code>, but this varies by platform.
             </p>
             <p>On some platforms, there may sometimes be multiple environment variables with the
-               same name;
-               in this case, it is implementation-dependent as to which is returned; see for example
-               <a href="http://pubs.opengroup.org/onlinepubs/9699919799/">[POSIX.1-2008]</a> (Chapter 8, Environment Variables).
-               Implementations <b>may</b> use prefixes or other naming conventions
-               to disambiguate the names.
+               same
+               name; in this case, it is implementation-dependent as to which is returned; see for
+               example <a href="http://pubs.opengroup.org/onlinepubs/9699919799/">[POSIX.1-2008]</a> (Chapter 8, Environment Variables). Implementations
+               <b>may</b> use prefixes or other naming conventions to disambiguate the
+               names.
             </p>
             <p>The requirement to ensure that the function is deterministic means in practice that
-               the implementation must make a snapshot of the environment variables at some time
-               during execution, and return values obtained from this snapshot, rather than using
-               live values that are subject to change at any time.
+               the
+               implementation must make a snapshot of the environment variables at some time during
+               execution, and return values obtained from this snapshot, rather than using live values
+               that are subject to change at any time.
             </p>
             <p>Operating system environment variables may be associated with a particular process,
-               while queries and stylesheets may execute across multiple processes (or multiple machines).
-               In such circumstances implementations <b>may</b> choose to provide access
-               to the environment variables associated with the process in which the query or stylesheet
-               processing was initiated.
+               while queries and stylesheets may execute across multiple processes (or multiple
+               machines). In such circumstances implementations <b>may</b> choose to
+               provide access to the environment variables associated with the process in which the
+               query or stylesheet processing was initiated.
             </p>
             <p>Security advice: Queries from untrusted sources should not be permitted unrestricted
                access to environment variables. For example, the name of the account under which
@@ -114,13 +112,14 @@
          <footer>
             <h2>See Also</h2>
             <ul>
+               <li><a href="https://www.w3.org/TR/xpath-functions-31/#func-environment-variable">XPath 3.1 Functions and Operators</a></li>
                <li><a href="http://www.w3.org/TR/xpath-functions-30/#func-environment-variable">XPath 3.0 Functions and Operators</a></li>
                <li><a href="http://www.saxonica.com/html/documentation/functions/fn/environment-variable.html">Saxon Function Library</a></li>
             </ul>
          </footer>
       </article>
       <footer>
-         <div class="container"><small class="copyright">Portions of this document were copied from <a href="http://www.w3.org/TR/2014/REC-xpath-functions-30-20140408/xpath-functions-30.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
+         <div class="container"><small class="copyright">Portions of this document were copied from <a href="https://www.w3.org/TR/2017/REC-xpath-functions-31-20170321/xpath-functions-31.xml">this file</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>&nbsp;©&nbsp;2014&nbsp;<a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.</small></div>
       </footer>
    </body>
 </html>
