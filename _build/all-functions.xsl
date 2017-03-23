@@ -18,7 +18,7 @@
    </xsl:character-map>
 
    <xsl:variable name="functions" select=".//*[head[not(*) and (some $prefix in ('fn', 'math', 'map', 'array') satisfies starts-with(text(), concat($prefix, ':')))]]"/>
-   <xsl:variable name="functions-30" select=".//*[head[not(*) and (some $prefix in ('fn', 'math') satisfies starts-with(text(), concat($prefix, ':')))]]"/>
+   <xsl:variable name="functions-30" select="$spec-v3//*[head[not(*) and (some $prefix in ('fn', 'math') satisfies starts-with(text(), concat($prefix, ':')))]]"/>
    <xsl:variable name="functions-20" select="$spec-v2//*[head/starts-with(string(), 'fn:') or example[@role='signature']/proto[@isOp='no' and not(@role='example')]]"/>
 
    <xsl:template match="/">
