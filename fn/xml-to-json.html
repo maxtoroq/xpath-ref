@@ -60,21 +60,45 @@
                takes place. The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> apply.
             </p>
             <p>The entries that may appear in the <code>$options</code> map are as follows:
-            </p>KeyValueMeaning<code>indent</code>Determines whether additional whitespace should be added to the output to improve
-            readability.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:boolean</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>false</code></p>
-               </li>
-            </ul><code>false</code>
-            The processor must not insert any insignificant whitespace between JSON tokens.
-            <code>true</code>
-            The processor <b>may</b> insert whitespace between JSON tokens in order to improve readability.
-            The specification imposes no constraints on how this is done.
-            
+            </p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Key</th>
+                     <th>Value</th>
+                     <th>Meaning</th>
+                  </tr>
+               </thead>
+               <tr>
+                  <td rowspan="3"><code>indent</code></td>
+                  <td colspan="2">Determines whether additional whitespace should be added to the output to improve
+                     readability.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:boolean</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>false</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>false</code></td>
+                  <td>
+                     The processor must not insert any insignificant whitespace between JSON tokens.
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>true</code></td>
+                  <td>
+                     The processor <b>may</b> insert whitespace between JSON tokens in order to improve readability.
+                     The specification imposes no constraints on how this is done.
+                     
+                  </td>
+               </tr>
+            </table>
             <p>The node supplied as <code>$input</code> must be one of the following: [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0006">ERRFOJS0006</a>]
             </p>
             <ol>

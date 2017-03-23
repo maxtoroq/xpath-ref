@@ -56,68 +56,101 @@
             </p>
             <p>The <code>$options</code> argument can be used to control the way in which the function operates. 
                The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> apply.
-            </p>KeyMeaning<code>xquery-version</code>The minimum level of the XQuery language that the
-            processor must support. 
-            <ul>
-               <li>
-                  <p>Type: <code>xs:decimal</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>The version given in the prolog of the library module; or
-                        implementation-defined if this is absent.</code></p>
-               </li>
-            </ul><code>location-hints</code>A sequence of URIs (in the form of <code>xs:string</code> values) which may be used or ignored in an
-            <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a> way.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string*</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Empty sequence</code></p>
-               </li>
-            </ul><code>context-item</code>The item to be used as the initial context item when evaluating global variables in
-            the library module. Supplying
-            an empty sequence is equivalent to omitting the entry from the map, and indicates
-            the absence of a context item.
-            If the library module specifies a required type for the context item, then the supplied
-            value <b>must</b> conform to
-            this type, without conversion.
-            <ul>
-               <li>
-                  <p>Type: <code>item()?</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Absent</code></p>
-               </li>
-            </ul><code>variables</code>Values for external variables defined in the library module. Values <b>must</b> be supplied
-            for external variables that have no default value, and <b>may</b> be supplied for external variables
-            that do have a default value. The supplied value <b>must</b> conform to the required type of the variable, without conversion.
-            The map contains one entry for each external variable: the key is the variable's name,
-            and the associated value is
-            the variable's value. The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> do not apply
-            to this contained map.
-            <ul>
-               <li>
-                  <p>Type: <code>map(xs:QName, item()*)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>An empty map</code></p>
-               </li>
-            </ul><code>vendor-options</code>Values for vendor-defined configuration options for the XQuery processor used to process
-            the request. The key is the
-            name of an option, expressed as a QName: the namespace URI of the QName <b>should</b> be a URI controlled
-            by the vendor of the XQuery processor. The meaning of the associated value is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>.
-            Implementations <b>should</b> ignore options whose names are in an unrecognized namespace. 
-            The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> do not apply
-            to this contained map.
-            <ul>
-               <li>
-                  <p>Type: <code>map(xs:QName, item()*)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>An empty map</code></p>
-               </li>
-            </ul>
+            </p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Key</th>
+                     <th>Meaning</th>
+                  </tr>
+               </thead>
+               <tr>
+                  <td><code>xquery-version</code></td>
+                  <td>The minimum level of the XQuery language that the
+                     processor must support. 
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:decimal</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>The version given in the prolog of the library module; or
+                                 implementation-defined if this is absent.</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>location-hints</code></td>
+                  <td>A sequence of URIs (in the form of <code>xs:string</code> values) which may be used or ignored in an
+                     <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a> way.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string*</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Empty sequence</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>context-item</code></td>
+                  <td>The item to be used as the initial context item when evaluating global variables in
+                     the library module. Supplying
+                     an empty sequence is equivalent to omitting the entry from the map, and indicates
+                     the absence of a context item.
+                     If the library module specifies a required type for the context item, then the supplied
+                     value <b>must</b> conform to
+                     this type, without conversion.
+                     <ul>
+                        <li>
+                           <p>Type: <code>item()?</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Absent</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>variables</code></td>
+                  <td>Values for external variables defined in the library module. Values <b>must</b> be supplied
+                     for external variables that have no default value, and <b>may</b> be supplied for external variables
+                     that do have a default value. The supplied value <b>must</b> conform to the required type of the variable, without conversion.
+                     The map contains one entry for each external variable: the key is the variable's name,
+                     and the associated value is
+                     the variable's value. The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> do not apply
+                     to this contained map.
+                     <ul>
+                        <li>
+                           <p>Type: <code>map(xs:QName, item()*)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>An empty map</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>vendor-options</code></td>
+                  <td>Values for vendor-defined configuration options for the XQuery processor used to process
+                     the request. The key is the
+                     name of an option, expressed as a QName: the namespace URI of the QName <b>should</b> be a URI controlled
+                     by the vendor of the XQuery processor. The meaning of the associated value is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>.
+                     Implementations <b>should</b> ignore options whose names are in an unrecognized namespace. 
+                     The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> do not apply
+                     to this contained map.
+                     <ul>
+                        <li>
+                           <p>Type: <code>map(xs:QName, item()*)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>An empty map</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
             <p>The result of the function is a map <i>R</i> with two entries:
             </p>
             <ol>

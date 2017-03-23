@@ -78,43 +78,82 @@
                </li>
                <li>
                   <p>The entries that may appear in the <code>$options</code> map are as follows:
-                  </p>KeyValueMeaning<code>duplicates</code>Determines the policy for handling duplicate keys: specifically, the action to be
-                  taken if two maps in the input sequence <code>$maps</code> contain entries with key values
-                  <i>K1</i> and <i>K2</i> where <i>K1</i> and <i>K2</i> are the 
-                  <a href="https://www.w3.org/TR/xpath-functions-31/#same-key">same key</a>.
-                  
-                  <ul>
-                     <li>
-                        <p>Type: <code>xs:string</code></p>
-                     </li>
-                     <li>
-                        <p>Default: <code>use-first</code></p>
-                     </li>
-                  </ul><code>reject</code>
-                  An error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0003">ERRFOJS0003</a>] if duplicate keys are encountered.
-                  <code>use-first</code>
-                  If duplicate keys are present, all but the first of a set of duplicates are ignored,
-                  
-                  where the ordering is based on the order of maps in the <code>$maps</code> argument.
-                  <code>use-last</code>
-                  If duplicate keys are present, all but the last of a set of duplicates are ignored,
-                  
-                  where the ordering is based on the order of maps in the <code>$maps</code> argument.
-                  <code>use-any</code>
-                  If duplicate keys are present, all but one of a set of duplicates are ignored, 
-                  and it is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a>
-                  which one is retained. 
-                  <code>combine</code>
-                  If duplicate keys are present, the result map includes an entry for the key whose
-                  
-                  associated value is the sequence-concatenation of all the values associated with the
-                  key, 
-                  retaining order based on the order of maps in the <code>$maps</code> argument.
-                  The key value in the result map that corresponds to such a set of duplicates must
-                  be the <a href="https://www.w3.org/TR/xpath-functions-31/#same-key">same key</a> as each of the duplicates, but it is
-                  otherwise unconstrained: for example if the duplicate keys are <code>xs:byte(1)</code>
-                  and <code>xs:short(1)</code>, the key in the result could legitimately be <code>xs:long(1)</code>.
-                  
+                  </p>
+                  <table>
+                     <thead>
+                        <tr>
+                           <th>Key</th>
+                           <th>Value</th>
+                           <th>Meaning</th>
+                        </tr>
+                     </thead>
+                     <tr>
+                        <td rowspan="6"><code>duplicates</code></td>
+                        <td colspan="2">Determines the policy for handling duplicate keys: specifically, the action to be
+                           taken if two maps in the input sequence <code>$maps</code> contain entries with key values
+                           <i>K1</i> and <i>K2</i> where <i>K1</i> and <i>K2</i> are the 
+                           <a href="https://www.w3.org/TR/xpath-functions-31/#same-key">same key</a>.
+                           
+                           <ul>
+                              <li>
+                                 <p>Type: <code>xs:string</code></p>
+                              </li>
+                              <li>
+                                 <p>Default: <code>use-first</code></p>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td><code>reject</code></td>
+                        <td>
+                           An error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0003">ERRFOJS0003</a>] if duplicate keys are encountered.
+                           
+                        </td>
+                     </tr>
+                     <tr>
+                        <td><code>use-first</code></td>
+                        <td>
+                           If duplicate keys are present, all but the first of a set of duplicates are ignored,
+                           
+                           where the ordering is based on the order of maps in the <code>$maps</code> argument.
+                           
+                        </td>
+                     </tr>
+                     <tr>
+                        <td><code>use-last</code></td>
+                        <td>
+                           If duplicate keys are present, all but the last of a set of duplicates are ignored,
+                           
+                           where the ordering is based on the order of maps in the <code>$maps</code> argument.
+                           
+                        </td>
+                     </tr>
+                     <tr>
+                        <td><code>use-any</code></td>
+                        <td>
+                           If duplicate keys are present, all but one of a set of duplicates are ignored, 
+                           and it is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-dependent">implementation-dependent</a>
+                           which one is retained. 
+                           
+                        </td>
+                     </tr>
+                     <tr>
+                        <td><code>combine</code></td>
+                        <td>
+                           If duplicate keys are present, the result map includes an entry for the key whose
+                           
+                           associated value is the sequence-concatenation of all the values associated with the
+                           key, 
+                           retaining order based on the order of maps in the <code>$maps</code> argument.
+                           The key value in the result map that corresponds to such a set of duplicates must
+                           be the <a href="https://www.w3.org/TR/xpath-functions-31/#same-key">same key</a> as each of the duplicates, but it is
+                           otherwise unconstrained: for example if the duplicate keys are <code>xs:byte(1)</code>
+                           and <code>xs:short(1)</code>, the key in the result could legitimately be <code>xs:long(1)</code>.
+                           
+                        </td>
+                     </tr>
+                  </table>
                </li>
             </ol>
             <p>The result of the function call <code>map:merge($MAPS, $OPTIONS)</code>

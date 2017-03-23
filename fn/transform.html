@@ -221,427 +221,638 @@
                   </ol>
                </li>
             </ol>
-            <p>The meanings of each option are defined in the table below.</p>KeyApplies toValueMeaning<code>base-output-uri</code>1.0, 2.0, 3.0The URI of the principal result document; also used as the base URI for
-            resolving relative URIs of secondary result documents. If the value is a relative
-            
-            reference, it is resolved against the static base URI of the <code>fn:transform</code> 
-            function call. 
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>The effect of not
-                        supplying a base output URI is defined by the XSLT specification; the implementation
-                        may supply a default, for example the directory containing the
-                        stylesheet, or the current working directory. </code></p>
-               </li>
-            </ul><code>cache</code>1.0, 2.0, 3.0This option has no effect on the result of the transformation but may affect
-            efficiency. The value <code>true</code> indicates an expectation that the same
-            stylesheet is likely to be used for more than one transformation; the value
-            <code>false</code> indicates an expectation that the stylesheet will be used once
-            only.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:boolean</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>true()</code></p>
-               </li>
-            </ul><code>delivery-format</code>1.0, 2.0, 3.0The manner in which the transformation results should be delivered. Applies both to
-            the
-            principal result document and to secondary result documents created using
-            <code>xsl:result-document</code>.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>document, unless the relevant
-                        xsl:output or xsl:result-document element specifies
-                        build-tree="no" (applies to XSLT 3.0 only), in which case the default
-                        is raw.</code></p>
-               </li>
-            </ul><code>document</code>The result is delivered as a
-            document node.<code>serialized</code>The result is delivered as
-            a string, representing the results of serialization. Note that (as with the
-            <code>fn:serialize</code> function) the final encoding stage of
-            serialization (which turns a sequence of characters into a sequence of
-            octets) is either skipped, or reversed by decoding the octet stream back
-            into a character stream.<code>raw</code>The result of the initial
-            template or function is returned as an arbitrary XDM value (after conversion
-            to the declared type, but without wrapping in a document node, and without
-            serialization): when this option is chosen, the returned map contains the
-            raw result.<code>enable-assertions</code>3.0Indicates whether any <code>xsl:assert</code> instructions in the stylesheet
-            are to be evaluated.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:boolean</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>false()</code></p>
-               </li>
-            </ul><code>enable-messages</code>1.0, 2.0, 3.0Indicates whether any <code>xsl:message</code> instructions in the stylesheet
-            are to be evaluated. The destination and formatting of any such messages is
-            implementation-defined.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:boolean</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Implementation-defined</code></p>
-               </li>
-            </ul><code>enable-trace</code>2.0, 3.0Indicates whether any <code>fn:trace</code> functions in the stylesheet are to
-            generate diagnostic messages. The destination and formatting of any such messages
-            is
-            implementation-defined.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:boolean</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Implementation-defined</code></p>
-               </li>
-            </ul><code>function-params</code>3.0An array of values to be used as the arguments to the initial function call.
-            The value is converted to the required type of the declared parameter using the function
-            conversion rules.
-            <ul>
-               <li>
-                  <p>Type: <code>array(item()*)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Empty array</code></p>
-               </li>
-            </ul><code>global-context-item</code>3.0The value of the global context item, as defined in XSLT 3.0
-            <ul>
-               <li>
-                  <p>Type: <code>item()</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>The value of source-node</code></p>
-               </li>
-            </ul><code>initial-function</code>3.0The name of the initial function to be called for call-function invocation. The
-            arity of the function is inferred from the length of
-            <code>function-params</code>.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:QName</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>initial-match-selection</code>3.0The value of the initial match selection, as defined in XSLT 3.0
-            <ul>
-               <li>
-                  <p>Type: <code>item()*</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>The value of source-node</code></p>
-               </li>
-            </ul><code>initial-mode</code>1.0, 2.0, 3.0The name of the initial processing mode.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:QName</code></p>
-               </li>
-               <li>
-                  <p>Default: <code></code></p>
-               </li>
-            </ul><code>initial-template</code>2.0, 3.0The name of a named template in the stylesheet to act as the initial entry
-            point.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:QName</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>xsl:initial-template</code></p>
-               </li>
-            </ul><code>package-name</code>3.0The name of the top-level stylesheet package to be invoked (an absolute
-            URI)
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>package-location</code>3.0The location of the top-level stylesheet package, as a relative or absolute
-            URI
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>package-node</code>3.0A document or element node containing the top-level stylesheet
-            package
-            <ul>
-               <li>
-                  <p>Type: <code>node()</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>package-text</code>3.0The top-level stylesheet package in the form of unparsed lexical
-            XML.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>package-version</code>3.0The version of the top-level stylesheet package to be invoked.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>"*" (any version)</code></p>
-               </li>
-            </ul><code>post-process</code>1.0 2.0 3.0A function that is used to post-process each result document of
-            the transformation (both the principal result and secondary results), in whatever
-            form it would otherwise be delivered (document, serialized, or raw). The first 
-            argument of the function is the key used to identify the result in the map return
-            by the <code>fn:transform</code> function (for example, this will be the supplied 
-            base output URI in the case of the principal result, or the string "output" if no
-            base output URI was supplied). The second argument is the 
-            actual value. The value that is returned in the result of the <code>fn:transform</code> 
-            function is the result of applying this post-processing.
-            
-            
-            <blockquote>
-               <p>If the implementation provides a way of writing or invoking functions 
-                  with side-effects, this post-processing function might be used to save 
-                  a copy of the result document to persistent storage. For example, if the 
-                  implementation provides access to the EXPath File library <a href="http://expath.org/">[EXPath]</a>, 
-                  then a serialized document might be written to filestore by calling the 
-                  <code>file:write</code> function. Similar mechanisms might be used to issue 
-                  an HTTP POST request that posts the result to an HTTP server, or to send 
-                  the document to an email recipient. The semantics of calling functions 
-                  with side-effects are entirely <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>.
-               </p>
-               <p>If the primary purpose of the post-processing function is achieved by 
-                  means of such side-effects, and if the actual results are not needed by 
-                  the caller of the <code>fn:transform</code> function, then it does not matter what 
-                  the post-processing function actually returns (it could be an empty 
-                  sequence, for example).
-               </p>
-               <p>Calls to <code>fn:transform</code> can potentially have side-effects 
-                  even in the absence of the post-processing option, because the XSLT 
-                  specification allows a stylesheet to invoke extension functions 
-                  that have side-effects. The semantics in this case are <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>.
-               </p>
-            </blockquote>
-            <ul>
-               <li>
-                  <p>Type: <code>function(xs:string, item()*) as item()*</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>function($a, $b) { $b }</code></p>
-               </li>
-            </ul><code>requested-properties</code>1.0, 2.0, 3.0The keys in the map are QNames that could legitimately be supplied in a call to
-            the XSLT <code>system-property</code> function; the values in the map are the requested
-            settings of the corresponding property. The boolean values <code>true()</code> and
-            <code>false()</code> are equivalent to the string values <code>yes</code> and
-            <code>no</code>. As a special case, setting a value for <code>xsl:version</code> has
-            no effect, because of the potential for conflict with other options. For example:
-            
-            <ul>
-               <li>
-                  <p>Setting <code>xsl:product-name</code> to a particular value requests a
-                     particular XSLT software product.
-                  </p>
-               </li>
-               <li>
-                  <p>Setting <code>xsl:product-version</code> requests a specific version of
-                     that product.
-                  </p>
-               </li>
-               <li>
-                  <p>Setting <code>xsl:is-schema-aware</code> to <code>true()</code> requests a
-                     schema-aware processor.
-                  </p>
-               </li>
-               <li>
-                  <p>Setting <code>xsl:xsd-version</code> to <code>"1.1"</code> requests a
-                     processor that supports XML Schema version 1.1.
-                  </p>
-               </li>
-            </ul> Setting a boolean property such as <code>xsl:supports-dynamic-evaluation</code>
-            to <code>false()</code> is interpreted as an explicit request for a processor in which
-            the value of the property is false. The effect if the requests cannot be precisely
-            met
-            is implementation-defined. In some cases it may be appropriate to ignore the request
-            or
-            to provide an alternative (for example, a later version of the product than the one
-            requested); in other cases it may be more appropriate to raise an error [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOXT0001">ERRFOXT0001</a>] indicating that no suitable XSLT processor
-            is available. 
-            <ul>
-               <li>
-                  <p>Type: <code>map(xs:QName, xs:anyAtomicType)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Empty map</code></p>
-               </li>
-            </ul><code>serialization-params</code>1.0, 2.0, 3.0Serialization parameters for the principal result document. The supplied map
-            follows the same rules that apply to a map supplied as the second argument of
-            <code>fn:serialize</code>. 
-            <ul>
-               <li>
-                  <p>When a parameter is supplied, the corresponding value overrides or augments
-                     the value specified in the unnamed <code>xsl:output</code> declaration (or
-                     its default), following the same rules as when one <code>xsl:output</code>
-                     declaration overrides another with lower import precedence.
-                  </p>
-               </li>
-               <li>
-                  <p>When a parameter is supplied and the corresponding value is an empty
-                     sequence (for example, <code>map{"standalone":()}</code>), any value
-                     specified in the unnamed <code>xsl:output</code> declaration is overridden
-                     by the default value. 
-                  </p>
-               </li>
-               <li>
-                  <p>When a parameter is not supplied in <code>serialization-params</code> (that
-                     is, when the key is absent) the value that applies is the value appearing in
-                     the unnamed <code>xsl:output</code> declaration, or its default. 
-                  </p>
-               </li>
-            </ul>
-            <ul>
-               <li>
-                  <p>Type: <code>map(xs:anyAtomicType, item()*)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Empty map</code></p>
-               </li>
-            </ul><code>source-node</code>1.0, 2.0, 3.0When <code>source-node</code> is supplied then the
-            <code>global-context-item</code> (the context item for evaluating global variables)
-            is the root of the tree containing the supplied node. In addition, for apply-templates
-            invocation, the <code>source-node</code> acts as the
-            <code>initial-match-selection</code>, that is, stylesheet execution starts by
-            applying templates to this node.
-            <ul>
-               <li>
-                  <p>Type: <code>node()</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>static-params</code>3.0The values of static parameters defined in the stylesheet; the keys are the
-            names of the parameters, and the associated values are their values. The value is
-            converted to the required type of the declared parameter using the function conversion
-            rules.
-            <ul>
-               <li>
-                  <p>Type: <code>map(xs:QName, item()*)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Empty map</code></p>
-               </li>
-            </ul><code>stylesheet-base-uri</code>1.0, 2.0, 3.0A string intended to be used as the static base URI of the principal stylesheet
-            module. This value <b>must</b> be used if no other static base URI is
-            available. If the supplied stylesheet already has a base URI (which will generally
-            be
-            the case if the stylesheet is supplied using <code>stylesheet-node</code> or
-            <code>stylesheet-location</code>) then it is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-implementation-defined">implementation-defined</a> whether this
-            parameter has any effect. If the value is a relative reference, it is resolved against
-            the static base URI of the <code>fn:transform</code> function call.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>stylesheet-location</code>1.0, 2.0, 3.0URI that can be used to locate the principal stylesheet module. If relative, it
-            is resolved against the static base URI of the <code>fn:transform</code> function call.
-            The value also acts as the default for stylesheet-base-uri.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>stylesheet-node</code>1.0, 2.0, 3.0Root of the tree containing the principal stylesheet module, as a document or
-            element node. The base URI of the node acts as the default for
-            stylesheet-base-uri.
-            <ul>
-               <li>
-                  <p>Type: <code>node()</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>stylesheet-params</code>1.0, 2.0, 3.0A map holding values to be supplied for stylesheet parameters. The keys are the
-            parameter names; the values are the corresponding parameter values. The values are
-            converted if necessary to the required type using the function conversion rules. The
-            default is an empty map.
-            <ul>
-               <li>
-                  <p>Type: <code>map(xs:QName, item()*)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Empty map</code></p>
-               </li>
-            </ul><code>stylesheet-text</code>1.0, 2.0, 3.0The principal stylesheet module in the form of unparsed lexical
-            XML.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>n/a</code></p>
-               </li>
-            </ul><code>template-params</code>3.0The values of non-tunnel parameters to be supplied to the initial template,
-            used with both apply-templates and call-template invocation. Each value is converted
-            to
-            the required type of the declared parameter using the function conversion
-            rules.
-            <ul>
-               <li>
-                  <p>Type: <code>map(xs:QName, item()*)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code></code></p>
-               </li>
-            </ul><code>tunnel-params</code>3.0The values of tunnel parameters to be supplied to the initial template, used
-            with both apply-templates and call-template invocation. Each value is converted to
-            the
-            required type of the declared parameter using the function conversion
-            rules.
-            <ul>
-               <li>
-                  <p>Type: <code>map(xs:QName, item()*)</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Empty map</code></p>
-               </li>
-            </ul><code>vendor-options</code>1.0, 2.0, 3.0Values for vendor-defined configuration options for the XSLT processor used to
-            process the request. The key is the name of an option, expressed as a QName: the
-            namespace URI of the QName <b>should</b> be a URI controlled by the vendor
-            of the XSLT processor. The meaning of the associated value is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>. Implementations
-            <b>should</b> ignore options whose names are in an unrecognized
-            namespace. Default is an empty map.
-            <ul>
-               <li>
-                  <p>Type: <code>map{xs:QName, item()*}</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Empty map</code></p>
-               </li>
-            </ul><code>xslt-version</code>1.0, 2.0, 3.0The minimum level of the XSLT language that the processor must support.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:decimal</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>The [xsl:]version attribute at the outermost level of the
-                        stylesheet.</code></p>
-               </li>
-            </ul>
+            <p>The meanings of each option are defined in the table below.</p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Key</th>
+                     <th>Applies to</th>
+                     <th>Value</th>
+                     <th>Meaning</th>
+                  </tr>
+               </thead>
+               <tr>
+                  <td><code>base-output-uri</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">The URI of the principal result document; also used as the base URI for
+                     resolving relative URIs of secondary result documents. If the value is a relative
+                     
+                     reference, it is resolved against the static base URI of the <code>fn:transform</code> 
+                     function call. 
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>The effect of not
+                                 supplying a base output URI is defined by the XSLT specification; the implementation
+                                 may supply a default, for example the directory containing the
+                                 stylesheet, or the current working directory. </code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>cache</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">This option has no effect on the result of the transformation but may affect
+                     efficiency. The value <code>true</code> indicates an expectation that the same
+                     stylesheet is likely to be used for more than one transformation; the value
+                     <code>false</code> indicates an expectation that the stylesheet will be used once
+                     only.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:boolean</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>true()</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="4"><code>delivery-format</code></td>
+                  <td rowspan="4">1.0, 2.0, 3.0</td>
+                  <td colspan="2">The manner in which the transformation results should be delivered. Applies both to
+                     the
+                     principal result document and to secondary result documents created using
+                     <code>xsl:result-document</code>.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>document, unless the relevant
+                                 xsl:output or xsl:result-document element specifies
+                                 build-tree="no" (applies to XSLT 3.0 only), in which case the default
+                                 is raw.</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>document</code></td>
+                  <td>The result is delivered as a
+                     document node.
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>serialized</code></td>
+                  <td>The result is delivered as
+                     a string, representing the results of serialization. Note that (as with the
+                     <code>fn:serialize</code> function) the final encoding stage of
+                     serialization (which turns a sequence of characters into a sequence of
+                     octets) is either skipped, or reversed by decoding the octet stream back
+                     into a character stream.
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>raw</code></td>
+                  <td>The result of the initial
+                     template or function is returned as an arbitrary XDM value (after conversion
+                     to the declared type, but without wrapping in a document node, and without
+                     serialization): when this option is chosen, the returned map contains the
+                     raw result.
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>enable-assertions</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">Indicates whether any <code>xsl:assert</code> instructions in the stylesheet
+                     are to be evaluated.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:boolean</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>false()</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>enable-messages</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">Indicates whether any <code>xsl:message</code> instructions in the stylesheet
+                     are to be evaluated. The destination and formatting of any such messages is
+                     implementation-defined.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:boolean</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Implementation-defined</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>enable-trace</code></td>
+                  <td>2.0, 3.0</td>
+                  <td colspan="2">Indicates whether any <code>fn:trace</code> functions in the stylesheet are to
+                     generate diagnostic messages. The destination and formatting of any such messages
+                     is
+                     implementation-defined.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:boolean</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Implementation-defined</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>function-params</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">An array of values to be used as the arguments to the initial function call.
+                     The value is converted to the required type of the declared parameter using the function
+                     conversion rules.
+                     <ul>
+                        <li>
+                           <p>Type: <code>array(item()*)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Empty array</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>global-context-item</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The value of the global context item, as defined in XSLT 3.0
+                     <ul>
+                        <li>
+                           <p>Type: <code>item()</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>The value of source-node</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>initial-function</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The name of the initial function to be called for call-function invocation. The
+                     arity of the function is inferred from the length of
+                     <code>function-params</code>.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:QName</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>initial-match-selection</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The value of the initial match selection, as defined in XSLT 3.0
+                     <ul>
+                        <li>
+                           <p>Type: <code>item()*</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>The value of source-node</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>initial-mode</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">The name of the initial processing mode.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:QName</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code></code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>initial-template</code></td>
+                  <td>2.0, 3.0</td>
+                  <td colspan="2">The name of a named template in the stylesheet to act as the initial entry
+                     point.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:QName</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>xsl:initial-template</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>package-name</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The name of the top-level stylesheet package to be invoked (an absolute
+                     URI)
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>package-location</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The location of the top-level stylesheet package, as a relative or absolute
+                     URI
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>package-node</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">A document or element node containing the top-level stylesheet
+                     package
+                     <ul>
+                        <li>
+                           <p>Type: <code>node()</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>package-text</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The top-level stylesheet package in the form of unparsed lexical
+                     XML.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>package-version</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The version of the top-level stylesheet package to be invoked.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>"*" (any version)</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>post-process</code></td>
+                  <td>1.0 2.0 3.0</td>
+                  <td colspan="2">A function that is used to post-process each result document of
+                     the transformation (both the principal result and secondary results), in whatever
+                     form it would otherwise be delivered (document, serialized, or raw). The first 
+                     argument of the function is the key used to identify the result in the map return
+                     by the <code>fn:transform</code> function (for example, this will be the supplied 
+                     base output URI in the case of the principal result, or the string "output" if no
+                     base output URI was supplied). The second argument is the 
+                     actual value. The value that is returned in the result of the <code>fn:transform</code> 
+                     function is the result of applying this post-processing.
+                     
+                     
+                     <blockquote>
+                        <p>If the implementation provides a way of writing or invoking functions 
+                           with side-effects, this post-processing function might be used to save 
+                           a copy of the result document to persistent storage. For example, if the 
+                           implementation provides access to the EXPath File library <a href="http://expath.org/">[EXPath]</a>, 
+                           then a serialized document might be written to filestore by calling the 
+                           <code>file:write</code> function. Similar mechanisms might be used to issue 
+                           an HTTP POST request that posts the result to an HTTP server, or to send 
+                           the document to an email recipient. The semantics of calling functions 
+                           with side-effects are entirely <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>.
+                        </p>
+                        <p>If the primary purpose of the post-processing function is achieved by 
+                           means of such side-effects, and if the actual results are not needed by 
+                           the caller of the <code>fn:transform</code> function, then it does not matter what 
+                           the post-processing function actually returns (it could be an empty 
+                           sequence, for example).
+                        </p>
+                        <p>Calls to <code>fn:transform</code> can potentially have side-effects 
+                           even in the absence of the post-processing option, because the XSLT 
+                           specification allows a stylesheet to invoke extension functions 
+                           that have side-effects. The semantics in this case are <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>.
+                        </p>
+                     </blockquote>
+                     <ul>
+                        <li>
+                           <p>Type: <code>function(xs:string, item()*) as item()*</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>function($a, $b) { $b }</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>requested-properties</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">The keys in the map are QNames that could legitimately be supplied in a call to
+                     the XSLT <code>system-property</code> function; the values in the map are the requested
+                     settings of the corresponding property. The boolean values <code>true()</code> and
+                     <code>false()</code> are equivalent to the string values <code>yes</code> and
+                     <code>no</code>. As a special case, setting a value for <code>xsl:version</code> has
+                     no effect, because of the potential for conflict with other options. For example:
+                     
+                     <ul>
+                        <li>
+                           <p>Setting <code>xsl:product-name</code> to a particular value requests a
+                              particular XSLT software product.
+                           </p>
+                        </li>
+                        <li>
+                           <p>Setting <code>xsl:product-version</code> requests a specific version of
+                              that product.
+                           </p>
+                        </li>
+                        <li>
+                           <p>Setting <code>xsl:is-schema-aware</code> to <code>true()</code> requests a
+                              schema-aware processor.
+                           </p>
+                        </li>
+                        <li>
+                           <p>Setting <code>xsl:xsd-version</code> to <code>"1.1"</code> requests a
+                              processor that supports XML Schema version 1.1.
+                           </p>
+                        </li>
+                     </ul> Setting a boolean property such as <code>xsl:supports-dynamic-evaluation</code>
+                     to <code>false()</code> is interpreted as an explicit request for a processor in which
+                     the value of the property is false. The effect if the requests cannot be precisely
+                     met
+                     is implementation-defined. In some cases it may be appropriate to ignore the request
+                     or
+                     to provide an alternative (for example, a later version of the product than the one
+                     requested); in other cases it may be more appropriate to raise an error [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOXT0001">ERRFOXT0001</a>] indicating that no suitable XSLT processor
+                     is available. 
+                     <ul>
+                        <li>
+                           <p>Type: <code>map(xs:QName, xs:anyAtomicType)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Empty map</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>serialization-params</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">Serialization parameters for the principal result document. The supplied map
+                     follows the same rules that apply to a map supplied as the second argument of
+                     <code>fn:serialize</code>. 
+                     <ul>
+                        <li>
+                           <p>When a parameter is supplied, the corresponding value overrides or augments
+                              the value specified in the unnamed <code>xsl:output</code> declaration (or
+                              its default), following the same rules as when one <code>xsl:output</code>
+                              declaration overrides another with lower import precedence.
+                           </p>
+                        </li>
+                        <li>
+                           <p>When a parameter is supplied and the corresponding value is an empty
+                              sequence (for example, <code>map{"standalone":()}</code>), any value
+                              specified in the unnamed <code>xsl:output</code> declaration is overridden
+                              by the default value. 
+                           </p>
+                        </li>
+                        <li>
+                           <p>When a parameter is not supplied in <code>serialization-params</code> (that
+                              is, when the key is absent) the value that applies is the value appearing in
+                              the unnamed <code>xsl:output</code> declaration, or its default. 
+                           </p>
+                        </li>
+                     </ul>
+                     <ul>
+                        <li>
+                           <p>Type: <code>map(xs:anyAtomicType, item()*)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Empty map</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>source-node</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">When <code>source-node</code> is supplied then the
+                     <code>global-context-item</code> (the context item for evaluating global variables)
+                     is the root of the tree containing the supplied node. In addition, for apply-templates
+                     invocation, the <code>source-node</code> acts as the
+                     <code>initial-match-selection</code>, that is, stylesheet execution starts by
+                     applying templates to this node.
+                     <ul>
+                        <li>
+                           <p>Type: <code>node()</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>static-params</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The values of static parameters defined in the stylesheet; the keys are the
+                     names of the parameters, and the associated values are their values. The value is
+                     converted to the required type of the declared parameter using the function conversion
+                     rules.
+                     <ul>
+                        <li>
+                           <p>Type: <code>map(xs:QName, item()*)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Empty map</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>stylesheet-base-uri</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">A string intended to be used as the static base URI of the principal stylesheet
+                     module. This value <b>must</b> be used if no other static base URI is
+                     available. If the supplied stylesheet already has a base URI (which will generally
+                     be
+                     the case if the stylesheet is supplied using <code>stylesheet-node</code> or
+                     <code>stylesheet-location</code>) then it is <a href="https://www.w3.org/TR/xpath-functions-31/#dt-implementation-defined">implementation-defined</a> whether this
+                     parameter has any effect. If the value is a relative reference, it is resolved against
+                     the static base URI of the <code>fn:transform</code> function call.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>stylesheet-location</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">URI that can be used to locate the principal stylesheet module. If relative, it
+                     is resolved against the static base URI of the <code>fn:transform</code> function call.
+                     The value also acts as the default for stylesheet-base-uri.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>stylesheet-node</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">Root of the tree containing the principal stylesheet module, as a document or
+                     element node. The base URI of the node acts as the default for
+                     stylesheet-base-uri.
+                     <ul>
+                        <li>
+                           <p>Type: <code>node()</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>stylesheet-params</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">A map holding values to be supplied for stylesheet parameters. The keys are the
+                     parameter names; the values are the corresponding parameter values. The values are
+                     converted if necessary to the required type using the function conversion rules. The
+                     default is an empty map.
+                     <ul>
+                        <li>
+                           <p>Type: <code>map(xs:QName, item()*)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Empty map</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>stylesheet-text</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">The principal stylesheet module in the form of unparsed lexical
+                     XML.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>n/a</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>template-params</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The values of non-tunnel parameters to be supplied to the initial template,
+                     used with both apply-templates and call-template invocation. Each value is converted
+                     to
+                     the required type of the declared parameter using the function conversion
+                     rules.
+                     <ul>
+                        <li>
+                           <p>Type: <code>map(xs:QName, item()*)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code></code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>tunnel-params</code></td>
+                  <td>3.0</td>
+                  <td colspan="2">The values of tunnel parameters to be supplied to the initial template, used
+                     with both apply-templates and call-template invocation. Each value is converted to
+                     the
+                     required type of the declared parameter using the function conversion
+                     rules.
+                     <ul>
+                        <li>
+                           <p>Type: <code>map(xs:QName, item()*)</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Empty map</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>vendor-options</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">Values for vendor-defined configuration options for the XSLT processor used to
+                     process the request. The key is the name of an option, expressed as a QName: the
+                     namespace URI of the QName <b>should</b> be a URI controlled by the vendor
+                     of the XSLT processor. The meaning of the associated value is <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a>. Implementations
+                     <b>should</b> ignore options whose names are in an unrecognized
+                     namespace. Default is an empty map.
+                     <ul>
+                        <li>
+                           <p>Type: <code>map{xs:QName, item()*}</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Empty map</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>xslt-version</code></td>
+                  <td>1.0, 2.0, 3.0</td>
+                  <td colspan="2">The minimum level of the XSLT language that the processor must support.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:decimal</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>The [xsl:]version attribute at the outermost level of the
+                                 stylesheet.</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+            </table>
             <p>The result of the transformation is returned as a map. There is one entry in the map
                for the principal result document, and one
                for each secondary result document. The key is a URI in the form of an <code>xs:string</code> value. The key for the principal

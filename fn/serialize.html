@@ -105,7 +105,155 @@
                      where further explanation is needed.
                   </p>
                </li>
-            </ol>ParameterRequired typeInterpretationDefault Value<code>allow-duplicate-names</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>no</code><code>byte-order-mark</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>no</code><code>cdata-section-elements</code><code>xs:QName*</code><code>()</code><code>doctype-public</code><code>xs:string?</code>Zero-length string and <code>()</code> both represent "absent"absent<code>doctype-system</code><code>xs:string?</code>Zero-length string and <code>()</code> both represent "absent"absent<code>encoding</code><code>xs:string?</code><code>utf-8</code><code>escape-uri-attributes</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>yes</code><code>html-version</code><code>xs:decimal?</code><code>5</code><code>include-content-type</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>yes</code><code>indent</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>no</code><code>item-separator</code><code>xs:string?</code>absent<code>json-node-output-method</code><code>union(xs:string, xs:QName)?</code>See Notes 1, 2<code>xml</code><code>media-type</code><code>xs:string?</code>(a media type suitable for the chosen <code>method</code>)<code>method</code><code>union(xs:string, xs:QName)?</code>See Notes 1, 2<code>xml</code><code>normalization-form</code><code>xs:string?</code><code>none</code><code>omit-xml-declaration</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>yes</code><code>standalone</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no", <code>()</code> means "omit"<code>omit</code><code>suppress-indentation</code><code>xs:QName*</code><code>()</code><code>undeclare-prefixes</code><code>xs:boolean?</code><code>true()</code> means "yes", <code>false()</code> means "no"<code>no</code><code>use-character-maps</code><code>map(xs:string, xs:string)?</code>See Note 3<code>map{}</code><code>version</code><code>xs:string?</code><code>1.0</code><p>Notes to the table:</p>
+            </ol>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Parameter</th>
+                     <th>Required type</th>
+                     <th>Interpretation</th>
+                     <th>Default Value</th>
+                  </tr>
+               </thead>
+               <tr>
+                  <td><code>allow-duplicate-names</code></td>
+                  <td><code>xs:boolean?</code></td>
+                  <td><code>true()</code> means "yes", <code>false()</code> means "no"
+                  </td>
+                  <td><code>no</code></td>
+               </tr>
+               <tr>
+                  <td><code>byte-order-mark</code></td>
+                  <td><code>xs:boolean?</code></td>
+                  <td><code>true()</code> means "yes", <code>false()</code> means "no"
+                  </td>
+                  <td><code>no</code></td>
+               </tr>
+               <tr>
+                  <td><code>cdata-section-elements</code></td>
+                  <td><code>xs:QName*</code></td>
+                  <td></td>
+                  <td><code>()</code></td>
+               </tr>
+               <tr>
+                  <td><code>doctype-public</code></td>
+                  <td><code>xs:string?</code></td>
+                  <td>Zero-length string and <code>()</code> both represent "absent"
+                  </td>
+                  <td>absent</td>
+               </tr>
+               <tr>
+                  <td><code>doctype-system</code></td>
+                  <td><code>xs:string?</code></td>
+                  <td>Zero-length string and <code>()</code> both represent "absent"
+                  </td>
+                  <td>absent</td>
+               </tr>
+               <tr>
+                  <td><code>encoding</code></td>
+                  <td><code>xs:string?</code></td>
+                  <td></td>
+                  <td><code>utf-8</code></td>
+               </tr>
+               <tr>
+                  <td><code>escape-uri-attributes</code></td>
+                  <td><code>xs:boolean?</code></td>
+                  <td><code>true()</code> means "yes", <code>false()</code> means "no"
+                  </td>
+                  <td><code>yes</code></td>
+               </tr>
+               <tr>
+                  <td><code>html-version</code></td>
+                  <td><code>xs:decimal?</code></td>
+                  <td></td>
+                  <td><code>5</code></td>
+               </tr>
+               <tr>
+                  <td><code>include-content-type</code></td>
+                  <td><code>xs:boolean?</code></td>
+                  <td><code>true()</code> means "yes", <code>false()</code> means "no"
+                  </td>
+                  <td><code>yes</code></td>
+               </tr>
+               <tr>
+                  <td><code>indent</code></td>
+                  <td><code>xs:boolean?</code></td>
+                  <td><code>true()</code> means "yes", <code>false()</code> means "no"
+                  </td>
+                  <td><code>no</code></td>
+               </tr>
+               <tr>
+                  <td><code>item-separator</code></td>
+                  <td><code>xs:string?</code></td>
+                  <td></td>
+                  <td>absent</td>
+               </tr>
+               <tr>
+                  <td><code>json-node-output-method</code></td>
+                  <td><code>union(xs:string, xs:QName)?</code></td>
+                  <td>See Notes 1, 2</td>
+                  <td><code>xml</code></td>
+               </tr>
+               <tr>
+                  <td><code>media-type</code></td>
+                  <td><code>xs:string?</code></td>
+                  <td></td>
+                  <td>(a media type suitable for the chosen <code>method</code>)
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>method</code></td>
+                  <td><code>union(xs:string, xs:QName)?</code></td>
+                  <td>See Notes 1, 2</td>
+                  <td><code>xml</code></td>
+               </tr>
+               <tr>
+                  <td><code>normalization-form</code></td>
+                  <td><code>xs:string?</code></td>
+                  <td></td>
+                  <td><code>none</code></td>
+               </tr>
+               <tr>
+                  <td><code>omit-xml-declaration</code></td>
+                  <td><code>xs:boolean?</code></td>
+                  <td><code>true()</code> means "yes", <code>false()</code> means "no"
+                  </td>
+                  <td><code>yes</code></td>
+               </tr>
+               <tr>
+                  <td><code>standalone</code></td>
+                  <td><code>xs:boolean?</code></td>
+                  <td><code>true()</code> means "yes", <code>false()</code> means "no", <code>()</code> means "omit"
+                  </td>
+                  <td><code>omit</code></td>
+               </tr>
+               <tr>
+                  <td><code>suppress-indentation</code></td>
+                  <td><code>xs:QName*</code></td>
+                  <td></td>
+                  <td><code>()</code></td>
+               </tr>
+               <tr>
+                  <td><code>undeclare-prefixes</code></td>
+                  <td><code>xs:boolean?</code></td>
+                  <td><code>true()</code> means "yes", <code>false()</code> means "no"
+                  </td>
+                  <td><code>no</code></td>
+               </tr>
+               <tr>
+                  <td><code>use-character-maps</code></td>
+                  <td><code>map(xs:string, xs:string)?</code></td>
+                  <td>See Note 3</td>
+                  <td><code>map{}</code></td>
+               </tr>
+               <tr>
+                  <td><code>version</code></td>
+                  <td><code>xs:string?</code></td>
+                  <td></td>
+                  <td><code>1.0</code></td>
+               </tr>
+            </table>
+            <p>Notes to the table:</p>
             <ol>
                <li>
                   <p>The notation <code>union(A, B)</code> is used to represent a union type whose member types are <code>A</code>

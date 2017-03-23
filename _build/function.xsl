@@ -205,6 +205,19 @@
       </blockquote>
    </xsl:template>
 
+   <xsl:template match="table|thead|tr">
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates/>
+      </xsl:element>
+   </xsl:template>
+
+   <xsl:template match="th|td">
+      <xsl:element name="{local-name()}">
+         <xsl:copy-of select="@rowspan[number() gt 1] | @colspan[number() gt 1]"/>
+         <xsl:apply-templates/>
+      </xsl:element>
+   </xsl:template>
+
    <xsl:template match="example[head and not(@role='signature')]">
       <div class="panel panel-default">
          <div class="panel-heading">

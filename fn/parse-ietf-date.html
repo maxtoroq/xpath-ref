@@ -47,77 +47,198 @@
             <p>The function accepts a string matching the production <code>input</code> in the
                following grammar:
             </p>
-            <code>input</code>
-            <code>::=</code>
-            <code>S? (dayname ","? S)? ((datespec S time) | asctime) S?</code>
-            
-            <code>dayname</code>
-            <code>::=</code>
-            <code>"Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun" | "Monday | "Tuesday"
-               | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday"</code>
-            
-            <code>datespec</code>
-            <code>::=</code>
-            <code>daynum dsep monthname dsep year</code>
-            
-            <code>asctime</code>
-            <code>::=</code>
-            <code>monthname dsep daynum S time S year</code>
-            
-            <code>dsep</code>
-            <code>::=</code>
-            <code>S | (S? "-" S?)</code>
-            
-            <code>daynum</code>
-            <code>::=</code>
-            <code>digit digit?</code>
-            
-            <code>year</code>
-            <code>::=</code>
-            <code>digit digit (digit digit)?</code>
-            
-            <code>digit</code>
-            <code>::=</code>
-            <code>[0-9]</code>
-            
-            <code>monthname</code>
-            <code>::=</code>
-            <code>"Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" |
-               "Oct" | "Nov" | "Dec"</code>
-            
-            <code>time</code>
-            <code>::=</code>
-            <code>hours ":" minutes (":" seconds)? (S? timezone)?</code>
-            
-            <code>hours</code>
-            <code>::=</code>
-            <code>digit digit?</code>
-            
-            <code>minutes</code>
-            <code>::=</code>
-            <code>digit digit</code>
-            
-            <code>seconds</code>
-            <code>::=</code>
-            <code>digit digit ("." digit+)?</code>
-            
-            <code>timezone</code>
-            <code>::=</code>
-            <code>tzname | tzoffset (S? "(" S? tzname S? ")")?</code>
-            
-            <code>tzname</code>
-            <code>::=</code>
-            <code>"UT" | "UTC" | "GMT" | "EST" | "EDT" | "CST" | "CDT" | "MST" | "MDT" | "PST"
-               | "PDT" </code>
-            
-            <code>tzoffset</code>
-            <code>::=</code>
-            <code>("+"|"-") hours ":"? minutes?</code>
-            
-            <code>S</code>
-            <code>::=</code>
-            <code>( x09 | x0A | x0D | x20 )+</code>
-            
+            <table>
+               <tr>
+                  <td>
+                     <code>input</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>S? (dayname ","? S)? ((datespec S time) | asctime) S?</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>dayname</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>"Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun" | "Monday | "Tuesday"
+                        | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday"</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>datespec</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>daynum dsep monthname dsep year</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>asctime</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>monthname dsep daynum S time S year</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>dsep</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>S | (S? "-" S?)</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>daynum</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>digit digit?</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>year</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>digit digit (digit digit)?</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>digit</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>[0-9]</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>monthname</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>"Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" |
+                        "Oct" | "Nov" | "Dec"</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>time</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>hours ":" minutes (":" seconds)? (S? timezone)?</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>hours</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>digit digit?</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>minutes</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>digit digit</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>seconds</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>digit digit ("." digit+)?</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>timezone</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>tzname | tzoffset (S? "(" S? tzname S? ")")?</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>tzname</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>"UT" | "UTC" | "GMT" | "EST" | "EDT" | "CST" | "CDT" | "MST" | "MDT" | "PST"
+                        | "PDT" </code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>tzoffset</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>("+"|"-") hours ":"? minutes?</code>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <code>S</code>
+                     
+                  </td>
+                  <td><code>::=</code></td>
+                  <td>
+                     <code>( x09 | x0A | x0D | x20 )+</code>
+                     
+                  </td>
+               </tr>
+            </table>
             <p>The input is case-insensitive: upper-case and lower-case distinctions in the above
                grammar show the conventional usage, but otherwise have no significance.
             </p>
@@ -155,7 +276,51 @@
             </ul>
             <p>If a <code>tzname</code> is supplied with no <code>tzoffset</code> then it is translated
                to a timezone offset as follows:
-            </p>tznameOffsetUT, UTC, GMT00:00EST-05:00EDT-04:00CST-06:00CDT-05:00MST-07:00MDT-06:00PST-08:00PDT-07:00
+            </p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>tzname</th>
+                     <th>Offset</th>
+                  </tr>
+               </thead>
+               <tr>
+                  <td>UT, UTC, GMT</td>
+                  <td>00:00</td>
+               </tr>
+               <tr>
+                  <td>EST</td>
+                  <td>-05:00</td>
+               </tr>
+               <tr>
+                  <td>EDT</td>
+                  <td>-04:00</td>
+               </tr>
+               <tr>
+                  <td>CST</td>
+                  <td>-06:00</td>
+               </tr>
+               <tr>
+                  <td>CDT</td>
+                  <td>-05:00</td>
+               </tr>
+               <tr>
+                  <td>MST</td>
+                  <td>-07:00</td>
+               </tr>
+               <tr>
+                  <td>MDT</td>
+                  <td>-06:00</td>
+               </tr>
+               <tr>
+                  <td>PST</td>
+                  <td>-08:00</td>
+               </tr>
+               <tr>
+                  <td>PDT</td>
+                  <td>-07:00</td>
+               </tr>
+            </table>
             <p>If neither a <code>tzoffset</code> nor <code>tzname</code> is supplied, a timezone
                offset of <code>00:00</code> is assumed.
             </p>

@@ -63,171 +63,255 @@
                takes place. The <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a> apply.
             </p>
             <p>The entries that may appear in the <code>$options</code> map are as follows:
-            </p>KeyValueMeaning<code>liberal</code>Determines whether deviations from the syntax of RFC7159 are permitted.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:boolean</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>false</code></p>
-               </li>
-            </ul><code>false</code>
-            The input <b>must</b> consist of an optional byte order mark (which is ignored) followed by a string
-            that conforms to the grammar of <code>JSON-text</code> in <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">[RFC 7159]</a>. An error <b>must</b> be raised
-            (see below) if the input does not conform to the grammar.
-            <code>true</code>
-            The input <b>may</b> contain deviations from the grammar of <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">[RFC 7159]</a>,
-            which are handled in an <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a> way. (Note: some popular
-            extensions include allowing quotes on keys to be omitted, allowing a comma
-            to appear after the last item in an array, allowing leading zeroes in numbers, and
-            allowing control characters such as
-            tab and newline to be present in unescaped form.) Since the extensions accepted
-            are implementation-defined, an error <b>may</b> be raised
-            (see below) if the input does not conform to the grammar.
-            <code>duplicates</code>Determines the policy for handling duplicate keys in a JSON object.
-            To determine whether keys are duplicates, they are compared using the Unicode codepoint
-            collation, after expanding escape
-            sequences, unless the <code>escape</code> option is set to <code>true</code>, in which
-            case keys are compared in escaped form. 
-            
-            <ul>
-               <li>
-                  <p>Type: <code>xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>If validate is true then reject, otherwise retain.</code></p>
-               </li>
-            </ul><code>reject</code>
-            An error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0003">ERRFOJS0003</a>] if duplicate keys are encountered.
-            <code>use-first</code>
-            If duplicate keys are present in a JSON object, all but the first of a set of duplicates
-            are ignored.
-            <code>retain</code>
-            If duplicate keys are present in a JSON object, the XML result of the function will
-            also contain duplicates (making
-            it invalid against the schema). This value is therefore incompatible with the option
-            <code>validate=true</code> 
-            [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0005">ERRFOJS0005</a>]
-            <code>validate</code>Determines whether the generated XML tree is schema-validated.
-            <ul>
-               <li>
-                  <p>Type: <code>xs:boolean</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>Implementation-defined.</code></p>
-               </li>
-            </ul><code>true</code>
-            Indicates that the resulting XDM instance must be typed; that is, the element
-            and attribute nodes must carry the type annotations that result from validation
-            against the schema given at <a href="https://www.w3.org/TR/xpath-functions-31/#schema-for-json">Schema for the result of fn:json-to-xml</a>, or against an
-            <a href="https://www.w3.org/TR/xpath-functions-31/#dt-implementation-defined">implementation-defined</a> schema 
-            if the <code>liberal</code> option has the value <code>true</code>.
-            <code>false</code>
-            Indicates that the resulting XDM instance must be untyped.
-            <code>escape</code>Determines whether special characters are represented in the XDM output 
-            in backslash-escaped form. 
-            <ul>
-               <li>
-                  <p>Type: <code>xs:boolean</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>false</code></p>
-               </li>
-            </ul><code>false</code>
-            All characters in the input that are valid
-            in the version of XML supported by the implementation, whether or not they are represented
-            
-            in the input by means of an escape sequence, are represented as unescaped characters
-            in the result. Any
-            characters or codepoints that are not valid XML characters 
-            (for example, unpaired surrogates) are passed to the <code>fallback</code> function
-            as described below; in the absence of a fallback function, they are replaced by
-            the Unicode <code>REPLACEMENT CHARACTER</code> (<code>xFFFD</code>).
-            The attributes <code>escaped</code> and <code>escaped-key</code> will not be present in the XDM output.
-            <code>true</code>
-            JSON escape sequences are used in the result to represent special characters in the
-            JSON input, as defined below, 
-            whether or not they were represented using JSON escape sequences in the input.
-            The characters that are considered "special" for this purpose are:
-            
-            <ul>
-               <li>
-                  <p>all codepoints in the range <code>x00</code> to <code>x1F</code> 
-                     or <code>x7F</code> to <code>x9F</code>;
-                  </p>
-               </li>
-               <li>
-                  <p>all codepoints that do not represent characters that are valid in the version of XML
-                     supported by the processor,
-                     including codepoints representing unpaired surrogates;
-                  </p>
-               </li>
-               <li>
-                  <p>the backslash character itself (<code>x5C</code>).
-                  </p>
-               </li>
-            </ul>
-            
-            Such characters are represented using a two-character
-            escape sequence where available (for example, <code>\t</code>), or a six-character escape sequence otherwise
-            (for example <code>\uDEAD</code>). Characters other than these will not be escaped in the result,
-            even if they were escaped in the input. In the result:
-            
-            
-            <ul>
-               <li>
-                  <p>Any <code>string</code> element whose string value contains a
-                     backslash character must have the attribute value <code>escaped="true"</code>.
-                  </p>
-               </li>
-               <li>
-                  <p>Any element that contains a <code>key</code> attribute whose string value
-                     contains a backslash character must have the attribute
-                     <code>escaped-key="true"</code>.
-                  </p>
-               </li>
-               <li>
-                  <p>The values of the <code>escaped</code> and
-                     <code>escaped-key</code> attributes are immaterial when there is no backslash
-                     present, and it is never necessary to include either attribute when its value
-                     is <code>false</code>.
-                  </p>
-               </li>
-            </ul>
-            <code>fallback</code>
-            Provides a function which is called when the input contains an escape sequence 
-            that represents a character that is not valid in the version of XML
-            supported by the implementation. 
-            
-            It is an error to supply the <code>fallback</code> option if the <code>escape</code> option is present
-            with the value <code>true</code>.
-            
-            <ul>
-               <li>
-                  <p>Type: <code>function(xs:string) as xs:string</code></p>
-               </li>
-               <li>
-                  <p>Default: <code>The default is effectively the function function($s){"&amp;#xFFFD;"}: that is,
-                        a function that replaces the escape sequence with the Unicode REPLACEMENT CHARACTER.</code></p>
-               </li>
-            </ul><code>User-supplied function</code>
-            The function is called when the JSON input contains an escape sequence that is valid
-            according to the JSON 
-            grammar, but which does not represent a character that is valid in the version of
-            XML supported
-            by the processor. In the case of surrogates, the function is called once for any six-character
-            escape sequence
-            that is not properly paired with another surrogate. The string supplied 
-            as the argument will always be a two- or six- character escape
-            sequence, starting with a backslash, that conforms to the rules in the JSON grammar
-            (as extended by the
-            implementation if <code>liberal:true()</code> is specified): for example
-            <code>\b</code> or <code>\uFFFF</code> or <code>\uDEAD</code>. The function is not
-            called for an escape sequence that is invalid against the grammar (for example <code>\x0A</code>). 
-            The function returns a string
-            which is inserted into the result in place of the invalid character. The
-            function also has the option of raising a dynamic error by calling <code>fn:error</code>.
-            
+            </p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Key</th>
+                     <th>Value</th>
+                     <th>Meaning</th>
+                  </tr>
+               </thead>
+               <tr>
+                  <td rowspan="3"><code>liberal</code></td>
+                  <td colspan="2">Determines whether deviations from the syntax of RFC7159 are permitted.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:boolean</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>false</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>false</code></td>
+                  <td>
+                     The input <b>must</b> consist of an optional byte order mark (which is ignored) followed by a string
+                     that conforms to the grammar of <code>JSON-text</code> in <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">[RFC 7159]</a>. An error <b>must</b> be raised
+                     (see below) if the input does not conform to the grammar.
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>true</code></td>
+                  <td>
+                     The input <b>may</b> contain deviations from the grammar of <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">[RFC 7159]</a>,
+                     which are handled in an <a href="https://www.w3.org/TR/xpath-functions-31/#implementation-defined">implementation-defined</a> way. (Note: some popular
+                     extensions include allowing quotes on keys to be omitted, allowing a comma
+                     to appear after the last item in an array, allowing leading zeroes in numbers, and
+                     allowing control characters such as
+                     tab and newline to be present in unescaped form.) Since the extensions accepted
+                     are implementation-defined, an error <b>may</b> be raised
+                     (see below) if the input does not conform to the grammar.
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="4"><code>duplicates</code></td>
+                  <td colspan="2">Determines the policy for handling duplicate keys in a JSON object.
+                     To determine whether keys are duplicates, they are compared using the Unicode codepoint
+                     collation, after expanding escape
+                     sequences, unless the <code>escape</code> option is set to <code>true</code>, in which
+                     case keys are compared in escaped form. 
+                     
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>If validate is true then reject, otherwise retain.</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>reject</code></td>
+                  <td>
+                     An error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0003">ERRFOJS0003</a>] if duplicate keys are encountered.
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>use-first</code></td>
+                  <td>
+                     If duplicate keys are present in a JSON object, all but the first of a set of duplicates
+                     are ignored.
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>retain</code></td>
+                  <td>
+                     If duplicate keys are present in a JSON object, the XML result of the function will
+                     also contain duplicates (making
+                     it invalid against the schema). This value is therefore incompatible with the option
+                     <code>validate=true</code> 
+                     [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOJS0005">ERRFOJS0005</a>]
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="3"><code>validate</code></td>
+                  <td colspan="2">Determines whether the generated XML tree is schema-validated.
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:boolean</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>Implementation-defined.</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>true</code></td>
+                  <td>
+                     Indicates that the resulting XDM instance must be typed; that is, the element
+                     and attribute nodes must carry the type annotations that result from validation
+                     against the schema given at <a href="https://www.w3.org/TR/xpath-functions-31/#schema-for-json">Schema for the result of fn:json-to-xml</a>, or against an
+                     <a href="https://www.w3.org/TR/xpath-functions-31/#dt-implementation-defined">implementation-defined</a> schema 
+                     if the <code>liberal</code> option has the value <code>true</code>.
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>false</code></td>
+                  <td>
+                     Indicates that the resulting XDM instance must be untyped.
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="3"><code>escape</code></td>
+                  <td colspan="2">Determines whether special characters are represented in the XDM output 
+                     in backslash-escaped form. 
+                     <ul>
+                        <li>
+                           <p>Type: <code>xs:boolean</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>false</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>false</code></td>
+                  <td>
+                     All characters in the input that are valid
+                     in the version of XML supported by the implementation, whether or not they are represented
+                     
+                     in the input by means of an escape sequence, are represented as unescaped characters
+                     in the result. Any
+                     characters or codepoints that are not valid XML characters 
+                     (for example, unpaired surrogates) are passed to the <code>fallback</code> function
+                     as described below; in the absence of a fallback function, they are replaced by
+                     the Unicode <code>REPLACEMENT CHARACTER</code> (<code>xFFFD</code>).
+                     The attributes <code>escaped</code> and <code>escaped-key</code> will not be present in the XDM output.
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>true</code></td>
+                  <td>
+                     JSON escape sequences are used in the result to represent special characters in the
+                     JSON input, as defined below, 
+                     whether or not they were represented using JSON escape sequences in the input.
+                     The characters that are considered "special" for this purpose are:
+                     
+                     <ul>
+                        <li>
+                           <p>all codepoints in the range <code>x00</code> to <code>x1F</code> 
+                              or <code>x7F</code> to <code>x9F</code>;
+                           </p>
+                        </li>
+                        <li>
+                           <p>all codepoints that do not represent characters that are valid in the version of XML
+                              supported by the processor,
+                              including codepoints representing unpaired surrogates;
+                           </p>
+                        </li>
+                        <li>
+                           <p>the backslash character itself (<code>x5C</code>).
+                           </p>
+                        </li>
+                     </ul>
+                     
+                     Such characters are represented using a two-character
+                     escape sequence where available (for example, <code>\t</code>), or a six-character escape sequence otherwise
+                     (for example <code>\uDEAD</code>). Characters other than these will not be escaped in the result,
+                     even if they were escaped in the input. In the result:
+                     
+                     
+                     <ul>
+                        <li>
+                           <p>Any <code>string</code> element whose string value contains a
+                              backslash character must have the attribute value <code>escaped="true"</code>.
+                           </p>
+                        </li>
+                        <li>
+                           <p>Any element that contains a <code>key</code> attribute whose string value
+                              contains a backslash character must have the attribute
+                              <code>escaped-key="true"</code>.
+                           </p>
+                        </li>
+                        <li>
+                           <p>The values of the <code>escaped</code> and
+                              <code>escaped-key</code> attributes are immaterial when there is no backslash
+                              present, and it is never necessary to include either attribute when its value
+                              is <code>false</code>.
+                           </p>
+                        </li>
+                     </ul>
+                     
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="2"><code>fallback</code></td>
+                  <td colspan="2">
+                     Provides a function which is called when the input contains an escape sequence 
+                     that represents a character that is not valid in the version of XML
+                     supported by the implementation. 
+                     
+                     It is an error to supply the <code>fallback</code> option if the <code>escape</code> option is present
+                     with the value <code>true</code>.
+                     
+                     <ul>
+                        <li>
+                           <p>Type: <code>function(xs:string) as xs:string</code></p>
+                        </li>
+                        <li>
+                           <p>Default: <code>The default is effectively the function function($s){"&amp;#xFFFD;"}: that is,
+                                 a function that replaces the escape sequence with the Unicode REPLACEMENT CHARACTER.</code></p>
+                        </li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td><code>User-supplied function</code></td>
+                  <td>
+                     The function is called when the JSON input contains an escape sequence that is valid
+                     according to the JSON 
+                     grammar, but which does not represent a character that is valid in the version of
+                     XML supported
+                     by the processor. In the case of surrogates, the function is called once for any six-character
+                     escape sequence
+                     that is not properly paired with another surrogate. The string supplied 
+                     as the argument will always be a two- or six- character escape
+                     sequence, starting with a backslash, that conforms to the rules in the JSON grammar
+                     (as extended by the
+                     implementation if <code>liberal:true()</code> is specified): for example
+                     <code>\b</code> or <code>\uFFFF</code> or <code>\uDEAD</code>. The function is not
+                     called for an escape sequence that is invalid against the grammar (for example <code>\x0A</code>). 
+                     The function returns a string
+                     which is inserted into the result in place of the invalid character. The
+                     function also has the option of raising a dynamic error by calling <code>fn:error</code>.
+                     
+                  </td>
+               </tr>
+            </table>
             <p>The various structures that can occur in JSON are transformed recursively to XDM values
                according to the rules given in <a href="https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping">XML Representation of JSON</a>.
             </p>
