@@ -176,7 +176,7 @@
    <xsl:template match="gitem/label[text() = 'Summary']" priority="1"/>
 
    <xsl:template match="p|code">
-      <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+      <xsl:element name="{local-name()}">
          <xsl:apply-templates select="node()" mode="#current"/>
       </xsl:element>
    </xsl:template>
@@ -205,16 +205,22 @@
       </blockquote>
    </xsl:template>
 
-   <xsl:template match="table|thead|tr">
+   <xsl:template match="table">
+      <table class="table">
+         <xsl:apply-templates mode="#current"/>
+      </table>
+   </xsl:template>
+
+   <xsl:template match="thead|tr">
       <xsl:element name="{local-name()}">
-         <xsl:apply-templates/>
+         <xsl:apply-templates mode="#current"/>
       </xsl:element>
    </xsl:template>
 
    <xsl:template match="th|td">
       <xsl:element name="{local-name()}">
          <xsl:copy-of select="@rowspan[number() gt 1] | @colspan[number() gt 1]"/>
-         <xsl:apply-templates/>
+         <xsl:apply-templates mode="#current"/>
       </xsl:element>
    </xsl:template>
 
