@@ -72,13 +72,13 @@
                   <h2>See Also</h2>
                   <ul>
                      <li>
-                        <a href="{$spec-loc/@href}#func-{if (substring-before(head, ':') eq 'math') then 'math-' else ''}{substring-after(head, ':')}">
+                        <a href="{$spec-loc/@href}#func-{if (substring-before(head, ':') eq 'fn') then substring-after(head, ':') else translate(head, ':', '-')}">
                            <xsl:text>XPath 3.1 Functions and Operators</xsl:text>
                         </a>
                      </li>
                      <xsl:if test="$exists-in-v3">
                         <li>
-                           <a href="{$spec-v3-loc/@href}#func-{substring-after(head, ':')}">
+                           <a href="{$spec-v3-loc/@href}#func-{if (substring-before(head, ':') eq 'fn') then substring-after(head, ':') else translate(head, ':', '-')}">
                               <xsl:text>XPath 3.0 Functions and Operators</xsl:text>
                            </a>
                         </li>
