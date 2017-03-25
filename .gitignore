@@ -1,7 +1,8 @@
+/packages/
+/_build/specs/
+
 [Bb]in
 [Oo]bj
 [Tt]est[Rr]esults
 *.suo
 *.user
-packages
-_build/specs/

@@ -138,7 +138,7 @@
          <a href="{/*/header/altlocs/loc[1]/@href}">this file</a>
          <xsl:text>, </xsl:text>
          <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
-         <xsl:text>&#xa0;©&#xa0;2014&#xa0;</xsl:text>
+         <xsl:text>&#xa0;©&#xa0;2017&#xa0;</xsl:text>
          <a href="http://www.w3.org/">
             <acronym title="World Wide Web Consortium">W3C</acronym>
          </a>
