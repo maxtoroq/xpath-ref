@@ -53,7 +53,7 @@
                string.
             </p>
             <p>If <i>$arg</i> is a node, the function returns the string value of the node, as obtained using the
-               <code>dm:string-value</code> accessor defined in <span>[XQuery and XPath Data Model (XDM) 3.1]</span> (see <a href="#dm-string-value"></a>).
+               <code>dm:string-value</code> accessor defined in <a href="https://www.w3.org/TR/xpath-datamodel-31/">[Data Model (XDM) 3.1]</a> (see <a href="https://www.w3.org/TR/xpath-datamodel-31/#dm-string-value">string-value Accessor</a>).
             </p>
             <p>If <i>$arg</i> is an atomic value, the function returns the result of the expression <code>$arg cast
                   as xs:string</code> (see <a href="https://www.w3.org/TR/xpath-functions-31/#casting">Casting</a>).
@@ -64,7 +64,7 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A dynamic error is raised [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>] by
+            <p>A dynamic error is raised [<a href="https://www.w3.org/TR/xpath-31/#ERRXPDY0002">ERRXPDY0002</a>] by
                the zero-argument version of the function if the context item is absent. 
             </p>
             <p>A type error is raised [<a href="https://www.w3.org/TR/xpath-functions-31/#ERRFOTY0014">ERRFOTY0014</a>] if

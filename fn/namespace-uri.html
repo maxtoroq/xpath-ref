@@ -52,14 +52,14 @@
             </p>
             <p>If the node identified by <code>$arg</code> is neither an element nor an attribute node,
                or if it is an element or attribute node whose expanded-QName (as determined by the
-               <code>dm:node-name</code> accessor in the <a href="#dm-node-name"></a>)
+               <code>dm:node-name</code> accessor in the <a href="https://www.w3.org/TR/xpath-datamodel-31/#dm-node-name">node-name Accessor</a>)
                is in no namespace, then the function returns the zero-length <code>xs:anyURI</code>
                value.
             </p>
             <p>Otherwise, the result will be the namespace URI part of the expanded-QName of the
                node
                identified by <code>$arg</code>, as determined by the <code>dm:node-name</code> accessor
-               defined in <a href="#dm-node-name"></a>), returned as an
+               defined in <a href="https://www.w3.org/TR/xpath-datamodel-31/#dm-node-name">node-name Accessor</a>), returned as an
                <code>xs:anyURI</code> value.
             </p>
          </section>
@@ -71,11 +71,11 @@
             </p>
             
             <p>If the context item is absent,
-               dynamic error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPDY0002">ERRXPDY0002</a>]
+               dynamic error [<a href="https://www.w3.org/TR/xpath-31/#ERRXPDY0002">ERRXPDY0002</a>]
             </p>
             
             
-            <p>If the context item is not a node, type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>].
+            <p>If the context item is not a node, type error [<a href="https://www.w3.org/TR/xpath-31/#ERRXPTY0004">ERRXPTY0004</a>].
             </p>
             
          </section>

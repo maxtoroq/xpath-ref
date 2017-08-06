@@ -27,7 +27,7 @@
             <h1 class="page-header">fn:serialize</h1>
          </header>
          <p>This function serializes the supplied input sequence <code>$arg</code> as described in
-            <span>[XSLT and XQuery Serialization 3.1]</span>, returning the serialized representation
+            <a href="https://www.w3.org/TR/xslt-xquery-serialization-31/">[Serialization 3.1]</a>, returning the serialized representation
             of the sequence as a string.
          </p>
          <section>
@@ -57,7 +57,7 @@
             <ol>
                <li>
                   <p>As an <code>output:serialization-parameters</code>
-                     element, having the format described in <a href="#serparams-in-xdm-instance"></a>. In this case the type of the supplied
+                     element, having the format described in <a href="https://www.w3.org/TR/xslt-xquery-serialization-31/#serparams-in-xdm-instance">Setting Serialization Parameters by Means of a Data Model Instance</a>. In this case the type of the supplied
                      argument must match the required type <code>element(output:serialization-parameters)</code>.
                   </p>
                </li>
@@ -281,7 +281,7 @@
             <header>
                <h2>Error Conditions</h2>
             </header>
-            <p>A type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>] occurs if the second argument
+            <p>A type error [<a href="https://www.w3.org/TR/xpath-31/#ERRXPTY0004">ERRXPTY0004</a>] occurs if the second argument
                is present and does not match either of the types <code>element(output:serialization-parameters)?</code>
                or <code>map(*)</code>.
             </p>
@@ -303,9 +303,9 @@
                and the supplied value is of the wrong type for the particular parameter, for example
                if the value of <code>indent</code>
                is a string rather than a boolean, then as defined by the <a href="https://www.w3.org/TR/xpath-functions-31/#option-parameter-conventions">option parameter conventions</a>,
-               a type error [<a href="http://www.w3.org/TR/xpath-30/#ERRXPTY0004">ERRXPTY0004</a>] is raised. 
+               a type error [<a href="https://www.w3.org/TR/xpath-31/#ERRXPTY0004">ERRXPTY0004</a>] is raised. 
                If the value is of the correct type, but does not satisfy the rules for that
-               parameter defined in <span>[XSLT and XQuery Serialization 3.1]</span>, then a dynamic error 
+               parameter defined in <a href="https://www.w3.org/TR/xslt-xquery-serialization-31/">[Serialization 3.1]</a>, then a dynamic error 
                [<a href="#ERRSER31PM0016">ERRSER31PM0016</a>] is raised. (For example, this occurs if the map supplied to
                <code>use-character-maps</code> includes a key that is a string whose length is not one (1)).
             </p>

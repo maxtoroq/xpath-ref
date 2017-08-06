@@ -49,7 +49,7 @@
             <p>This function takes an <code>xs:string</code> as argument and returns a sequence of
                items obtained by interpreting <code>$arg</code> as an <code>xs:anyURI</code> and
                resolving it according to the mapping specified in available 
-               collections described in <a href="#id-xp-evaluation-context-components"></a>.
+               collections described in <a href="https://www.w3.org/TR/xpath-31/#id-xp-evaluation-context-components">Dynamic Context Components</a>.
             </p>
             <p>If available collections provides a mapping from this string to a
                sequence of items, the function returns that sequence. If available 
@@ -57,7 +57,7 @@
                empty sequence.
             </p>
             <p>If <code>$arg</code> is not specified, the function returns the sequence of items in
-               the default collection in the dynamic context. See <a href="#id-xp-evaluation-context-components"></a>. 
+               the default collection in the dynamic context. See <a href="https://www.w3.org/TR/xpath-31/#id-xp-evaluation-context-components">Dynamic Context Components</a>. 
             </p>
             <p>If the value of <code>$arg</code> is a relative <code>xs:anyURI</code>, it is resolved
                against the value of the base-URI property from the static context. 

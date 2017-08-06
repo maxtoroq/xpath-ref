@@ -12,14 +12,17 @@
    <xsl:key name="id" match="*[@id]" use="@id"/>
 
    <xsl:variable name="xspecs" xmlns="">
-      <spec href="http://www.w3.org/TR/xpath-30/" specref="XP30" errorref="XP" bibref="xpath-30" title="XPath 3.0">
-         <xml href="../_build/specs/xpath-30.xml"/>
+      <spec href="https://www.w3.org/TR/xpath-31/" specref="XP31" errorref="XP" bibref="xpath-31" title="XPath 3.1">
+         <xml href="../_build/specs/xpath-31.xml"/>
       </spec>
-      <spec href="http://www.w3.org/TR/xpath-datamodel-30/" specref="DM30" errorref="DM" bibref="xpath-datamodel-30" title="Data Model (XDM) 3.0">
+      <spec href="https://www.w3.org/TR/xpath-datamodel-31/" specref="DM31" errorref="DM" bibref="xpath-datamodel-31" title="Data Model (XDM) 3.1">
+         <xml href="../_build/specs/xpath-datamodel-31.xml"/>
+      </spec>
+      <spec href="http://www.w3.org/TR/xpath-datamodel-30/" specref="DM30" bibref="xpath-datamodel-30" title="Data Model (XDM) 3.0">
          <xml href="../_build/specs/xpath-datamodel-30.xml"/>
       </spec>
-      <spec href="http://www.w3.org/TR/xslt-xquery-serialization-30/" specref="SER30" errorref="SER" bibref="xslt-xquery-serialization-30" title="Serialization 3.0">
-         <xml href="../_build/specs/xslt-xquery-serialization-30.xml"/>
+      <spec href="https://www.w3.org/TR/xslt-xquery-serialization-31/" specref="SER31" errorref="SER" bibref="xslt-xquery-serialization-31" title="Serialization 3.1">
+         <xml href="../_build/specs/xslt-xquery-serialization-31.xml"/>
       </spec>
       <spec href="http://www.w3.org/TR/xquery-semantics/" bibref="xquery-semantics"/>
       <spec href="http://www.w3.org/TR/xml/" bibref="xml" title="XML 1.0"/>
