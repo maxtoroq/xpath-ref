@@ -21,7 +21,7 @@
       <spec href="http://www.w3.org/TR/xpath-datamodel-30/" specref="DM30" bibref="xpath-datamodel-30" title="Data Model (XDM) 3.0">
          <xml href="../_build/specs/xpath-datamodel-30.xml"/>
       </spec>
-      <spec href="https://www.w3.org/TR/xslt-xquery-serialization-31/" specref="SER31" errorref="SER" bibref="xslt-xquery-serialization-31" title="Serialization 3.1">
+      <spec href="https://www.w3.org/TR/xslt-xquery-serialization-31/" specref="SER31" errorref="SER31" bibref="xslt-xquery-serialization-31" title="Serialization 3.1">
          <xml href="../_build/specs/xslt-xquery-serialization-31.xml"/>
       </spec>
       <spec href="http://www.w3.org/TR/xquery-semantics/" bibref="xquery-semantics"/>
