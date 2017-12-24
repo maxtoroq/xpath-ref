@@ -202,6 +202,19 @@
       </li>
    </xsl:template>
 
+   <xsl:template match="slist">
+      <blockquote>
+         <xsl:apply-templates mode="#current"/>
+      </blockquote>
+   </xsl:template>
+
+   <xsl:template match="sitem">
+      <xsl:apply-templates mode="#current"/>
+      <xsl:if test="position() ne last()">
+         <br/>
+      </xsl:if>
+   </xsl:template>
+
    <xsl:template match="note">
       <blockquote>
          <xsl:apply-templates select="node()" mode="#current"/>
