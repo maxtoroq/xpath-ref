@@ -36,7 +36,9 @@
    <xsl:variable name="spec-url" select="$spec-loc/@href"/>
 
    <xsl:variable name="spec-v3-loc" select="$spec-v3/*/header/latestloc/loc[1]"/>
-   <xsl:variable name="spec-v2-loc" select="$spec-v2/*/header/latestloc/loc[1]"/>
+   <xsl:variable name="spec-v2-loc" as="element()">
+      <loc xmlns="" href="https://www.w3.org/TR/xquery-operators/"/>
+   </xsl:variable>
 
    <xsl:template name="function">
       <xsl:param name="exists-in-v3" as="xs:boolean"/>

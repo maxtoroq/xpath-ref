@@ -7,7 +7,7 @@ try {
 
    ./ensure-nuget.ps1
 
-   &$nuget restore ..\packages.config
+   &$nuget restore ..\packages.config -SolutionDirectory ..
 
 } finally {
    Pop-Location
