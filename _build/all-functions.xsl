@@ -95,15 +95,15 @@
          <div id="function-filters">
             <div class="btn-group btn-group-xs" data-toggle="buttons">
                <label class="btn btn-default active">
-                  <input type="radio" name="version" value="3.1" checked="checked"/>
+                  <input type="radio" name="version" value="3.1" checked="checked" autocomplete="off"/>
                   <xsl:text>3.1</xsl:text>
                </label>
                <label class="btn btn-default">
-                  <input type="radio" name="version" value="3.0"/>
+                  <input type="radio" name="version" value="3.0" autocomplete="off"/>
                   <xsl:text>3.0</xsl:text>
                </label>
                <label class="btn btn-default">
-                  <input type="radio" name="version" value="2.0"/>
+                  <input type="radio" name="version" value="2.0" autocomplete="off"/>
                   <xsl:text>2.0</xsl:text>
                </label>
             </div>

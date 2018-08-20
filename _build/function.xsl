@@ -115,12 +115,12 @@
 
       <header role="navigation">
          <nav class="container">
-            <div class="col-md-9 breadcrumb-col">
+            <div class="col-sm-9 breadcrumb-col">
                <ol class="breadcrumb" itemprop="breadcrumb">
                   <xsl:sequence select="$breadcrumb-items"/>
                </ol>
             </div>
-            <div class="col-md-3 search-col">
+            <div class="col-sm-3 search-col">
                <form method="get" action="https://cse.google.com/cse">
                   <input type="hidden" name="cx" value="012329136009221431645:sv1eakamyny"/>
                   <div class="input-group">
