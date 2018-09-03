@@ -137,7 +137,8 @@
                         </header>
                         <ul class="list-unstyled">
                            <xsl:for-each select="current-group()">
-                              <xsl:sort select="substring-after(head, ':')" case-order="lower-first"/>
+                              <xsl:sort select="substring-before(head, ':') eq 'fn'" order="descending"/>
+                              <xsl:sort select="head" case-order="lower-first"/>
 
                               <li>
                                  <xsl:call-template name="function-link"/>
