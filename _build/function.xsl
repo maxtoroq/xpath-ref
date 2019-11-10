@@ -26,6 +26,7 @@
       </spec>
       <spec href="http://www.w3.org/TR/xquery-semantics/" bibref="xquery-semantics"/>
       <spec href="http://www.w3.org/TR/xml/" bibref="xml" title="XML 1.0"/>
+      <spec href="http://www.w3.org/TR/xml11/" bibref="xml11" title="XML 1.1"/>
       <spec href="http://www.w3.org/TR/xinclude/" bibref="xinclude" title="XInclude 1.0"/>
       <spec href="http://www.w3.org/TR/xquery/" bibref="xquery" title="XQuery 1.0"/>
       <spec href="http://www.w3.org/TR/xslt20/" bibref="xslt20" title="XSLT 2.0"/>
